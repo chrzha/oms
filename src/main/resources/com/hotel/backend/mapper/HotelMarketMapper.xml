@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hotel.backend.mapper.HotelMarketMapper">
+	<resultMap id="BaseResultMap" type="com.hotel.backend.entity.Market">
+		<id column="MKT_ID" jdbcType="CHAR" property="id" />
+		<result column="MKT_NAME" jdbcType="VARCHAR" property="name" />
+		<result column="MKT_ADDRESS" jdbcType="VARCHAR" property="address" />
+		<result column="MKT_AWAY" jdbcType="VARCHAR" property="away" />
+		<result column="MKT_ROUT" jdbcType="VARCHAR" property="rout" />
+		<result column="MKT_DESC" jdbcType="VARCHAR" property="description" />
+
+	</resultMap>
+
+
+	<sql id="Base_Column_List">
+		bsupermarket.MKT_ID,MKT_NAME,MKT_ADDRESS,MKT_AWAY,MKT_ROUT,MKT_DESC
+	</sql>
+
+	<select id="getMarketList" resultMap="BaseResultMap">
+
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		bsupermarket,l_mkt_hotel where
+		l_mkt_hotel.mkt_ID =
+		bsupermarket.MKT_ID
+
+	</select>
+
+	<select id="getMarketListByHotelId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		bsupermarket,l_mkt_hotel where
+		l_mkt_hotel.MKT_ID =
+		bsupermarket.MKT_ID and l_mkt_hotel.HOTEL_ID = #{hotelId};
+
+	</select>
+
+	<delete id="deleteMarketById" parameterType="java.lang.String">
+		delete from
+		bsupermarket where MKT_ID= #{mktId}
+	</delete>
+
+	<insert id="addMkt" parameterType="com.hotel.backend.entity.Market">
+
+		INSERT INTO
+		bsupermarket
+		(MKT_ID,MKT_NAME,MKT_ADDRESS,MKT_AWAY,MKT_DESC,MKT_ROUT)
+		VALUES
+		(#{id},#{name},#{address},#{away},#{description},#{rout})
+
+	</insert>
+
+</mapper>
+
+

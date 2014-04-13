@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hotel.backend.mapper.HotelViewMapper">
+	<resultMap id="BaseResultMap" type="com.hotel.backend.entity.View">
+
+		<id column="VIEW_ID" jdbcType="CHAR" property="id" />
+		<result column="VIEW_NAME" jdbcType="VARCHAR" property="name" />
+		<result column="VIEW_ADDRESS" jdbcType="VARCHAR" property="address" />
+		<result column="VIEW_AWAY" jdbcType="VARCHAR" property="away" />
+		<result column="VIEW_ROUT" jdbcType="VARCHAR" property="rout" />
+		<result column="VIEW_DESC" jdbcType="VARCHAR" property="description" />
+
+	</resultMap>
+
+
+	<sql id="Base_Column_List">
+		bview.VIEW_ID,VIEW_NAME,VIEW_ADDRESS,VIEW_AWAY,VIEW_ROUT,VIEW_DESC
+	</sql>
+
+	<select id="getViewList" resultMap="BaseResultMap">
+
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		BVIEW,l_view_hotel where
+		l_view_hotel.VIEW_ID =
+		BVIEW.VIEW_ID
+
+	</select>
+
+	<select id="getViewListByHotelId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		BVIEW,l_view_hotel where
+		l_view_hotel.VIEW_ID =
+		BVIEW.VIEW_ID and
+		l_view_hotel.HOTEL_ID = #{hotelId};
+	</select>
+
+	<delete id="deleteViewById" parameterType="java.lang.String">
+		delete from
+		bview where
+		VIEW_ID= #{viewId}
+	</delete>
+
+	<insert id="addView" parameterType="com.hotel.backend.entity.View">
+
+		INSERT INTO
+		bview
+		(VIEW_ID,VIEW_NAME,VIEW_ADDRESS,VIEW_AWAY,VIEW_DESC,VIEW_ROUT)
+		VALUES
+		(#{id},#{name},#{address},#{away},#{description},#{rout})
+
+	</insert>
+
+
+</mapper>
+
+

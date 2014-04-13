@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hotel.backend.mapper.LUserRoleMapper">
+	<resultMap id="BaseResultMap" type="com.hotel.backend.view.LUserRole">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="USER_ID" jdbcType="CHAR" property="userId" />
+		<result column="ROLE_ID" jdbcType="CHAR" property="roleId" />
+
+	</resultMap>
+
+
+	<sql id="Base_Column_List">
+		ID,USER_ID,ROLE_ID
+	</sql>
+	<insert id="insertLink" useGeneratedKeys="true"
+		parameterType="map" keyProperty="id">
+		INSERT
+		INTO
+		l_user_role
+		(USER_ID,ROLE_ID)
+		VALUES
+		(#{userId},#{roleId})
+	</insert>
+	
+	<update id="updateLink" parameterType="map">
+		update l_user_role
+		set
+		ROLE_ID = #{roleId}
+		where
+		USER_ID=#{userId}
+	</update>
+
+	<delete id="deleteLink" parameterType="map">
+		DELETE FROM l_user_role
+		WHERE USER_ID=#{userId}
+	</delete>
+	
+</mapper>

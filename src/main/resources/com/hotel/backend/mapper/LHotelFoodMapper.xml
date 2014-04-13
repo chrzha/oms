@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hotel.backend.mapper.LHotelFoodMapper">
+	<resultMap id="BaseResultMap" type="com.hotel.backend.view.LHotelFood">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="HOTEL_ID" jdbcType="CHAR" property="hotelId" />
+		<result column="FD_ID" jdbcType="CHAR" property="foodId" />
+
+	</resultMap>
+
+
+	<sql id="Base_Column_List">
+		ID,HOTEL_ID,FD_ID
+	</sql>
+	<insert id="insertLink" useGeneratedKeys="true" parameterType="map"
+		keyProperty="id">
+		INSERT
+		INTO
+		l_food_hotel
+		(HOTEL_ID,FD_ID)
+		VALUES
+		(#{hotelId},#{foodId})
+	</insert>
+
+	<update id="updateLink" parameterType="map">
+		update l_food_hotel
+		set
+		FD_ID = #{newFoodId}
+		where
+		HOTEL_ID=#{hotelId} AND FD_ID=#{oldFoodId}
+	</update>
+
+	<delete id="deleteLink" parameterType="map">
+		DELETE FROM l_food_hotel
+		WHERE HOTEL_ID=#{hotelId} AND FD_ID=#{foodId}
+	</delete>
+</mapper>

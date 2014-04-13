@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hotel.backend.mapper.UserViewMapper">
+	<resultMap id="BaseResultMap" type="com.hotel.backend.view.UserView">
+		<id column="USER_ID" jdbcType="CHAR" property="userId" />
+		<result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+		<result column="USER_PASSWORD" jdbcType="VARCHAR" property="userPassword" />
+		<result column="USER_EMAIL" jdbcType="VARCHAR" property="email" />
+		<result column="USER_PHONE" jdbcType="CHAR" property="phone" />
+		<result column="USER_DESC" jdbcType="VARCHAR" property="description" />
+		<result column="USER_STATUS" jdbcType="CHAR" property="status" />
+		<result column="USER_HOTEL_ID" jdbcType="CHAR" property="hotelId" />
+		<result column="ROLE_ID" jdbcType="CHAR" property="roleId" />
+		<result column="ROLE_NAME" jdbcType="VARCHAR" property="roleName" />
+
+	</resultMap>
+
+
+	<sql id="Base_Column_List">
+		buser.USER_ID,USER_NAME,USER_PASSWORD,USER_EMAIL,USER_PHONE,USER_DESC,USER_STATUS,USER_HOTEL_ID,brole.ROLE_ID,ROLE_NAME
+	</sql>
+
+	<select id="getUserViewList" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM buser,l_user_role,brole where buser.USER_ID=l_user_role.USER_ID
+		AND
+		l_user_role.ROLE_ID=brole.ROLE_ID AND brole.ROLE_ID AND
+		brole.ROLE_ID !='0001';
+	</select>
+	
+	<select id="getOperatorUserViewList" resultMap="BaseResultMap" parameterType="java.lang.String">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM buser,l_user_role,brole where buser.USER_ID=l_user_role.USER_ID
+		AND
+		l_user_role.ROLE_ID=brole.ROLE_ID AND brole.ROLE_ID AND buser.USER_HOTEL_ID = #{hotelId} AND
+		brole.ROLE_ID ='0003';
+	</select>
+
+	<select id="getUserViewByUserName" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM buser,l_user_role,brole where buser.USER_ID=l_user_role.USER_ID
+		AND
+		l_user_role.ROLE_ID=brole.ROLE_ID AND USER_NAME=#{userName};
+
+
+	</select>
+
+	<select id="getUserViewByUserId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM buser,l_user_role,brole where buser.USER_ID=l_user_role.USER_ID
+		AND
+		l_user_role.ROLE_ID=brole.ROLE_ID AND buser.USER_ID=#{userId};
+
+
+	</select>
+
+	<update id="updateUserViewById" parameterType="map">
+		update
+		BUSER,l_user_role
+		set
+		USER_STATUS = #{status},
+		ROLE_ID = #{roleId}
+		where
+		buser.USER_ID=l_user_role.USER_ID AND
+		buser.USER_ID=#{userId}
+
+
+
+
+	</update>
+
+</mapper>
+
+
