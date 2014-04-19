@@ -98,20 +98,49 @@ a:link {
 			</c:forEach> 
 			<tr>
 			<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-			<td ><button id="add_${status.count}"> <a href="#">添加</a></button></td>
+			<td ><button id="add_${status.count}"> <a href="#" id="addView">添加</a></button></td>
 			</tr>
 	
 		</tbody>
 	</table>
-  
-
   </div>
+  <div id="win" class="easyui-window" title="添加美食记录" closed="true" style="width:400px;height:270px;">    
+       <form name="form" action="#" ENCTYPE="multipart/form-data" modelAttribute="#" method="post" >
+	    	<table style="margin:10px 0 0 70px;">		
+			
+			<tr><td><span>名称*</span></td><td><input type="text" name="userName" maxlength="20"></td><td><span class="username"></span></td></tr>
+
+			<tr><td><span>类型*</span></td><td><input type="password" name="userPassword" maxlength="20"></td><td><span class="password"></span></td></tr>
+
+			<tr><td><span>地址*</span></td><td><input type="password" name="repassword" maxlength="20"></td><td><span class="repassword"></span></td></tr>
+
+			<tr><td><span>图片</span></td><td><input type="text" name="phone"></td><td><span class="telephone"></span></td></tr>
+
+			<tr><td><span>线路</span></td><td><input type="text" id="id1" name="email"></td><td><span class="email"></span></td></tr>
+
+			<tr><td><span>简介</span></td><td><input type="text" id="hotelId" name="hotelId"></td><td><span class="hotelId"></span></td></tr>
+
+			<input type="hidden" id = "hotelId" name="hotelId">
+			
+			<input type="hidden" id="status" name="status">
+					
+	    	</table>
+	    	<div class="submit" style="margin-left:120px;">
+	    		<input type="submit" name="register" value="添加"/>
+	    		<input type="reset" name="reset" value="重填"/>
+	    		<input type="button" id="cancle" value="取消" /></div>
+	    	</form>
+	    
+    </div>
 </body>
 <script type="text/javascript">
 $(document).ready(function(){
-$("#delete_${status.count}").click(function(){
-alert("vf");
-});
+    $("#addView").click(function(){
+	   $('#win').window('open'); 
+	});
+	$("#cancle").click(function(){
+	   $('#win').window('close'); 
+	});
 
 });
  
