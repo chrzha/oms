@@ -1,1 +1,5 @@
-cloud-based-hotel-manage
+基于云模式的酒店服务信息后台管理系统 
+项目名称：cloud-based-hotel-manage
+作者：张庆峰
+学校：南通大学
+时间：2014年2月---2014年6月
