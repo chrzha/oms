@@ -61,7 +61,7 @@
 	</div>
 	<div style="margin:0 0 0 140px">
 	<button id="confirmBtn">确认修改</button>
-	<button id="cancleBtn">取消</button>
+	<button id="cancleBtn">放弃修改</button>
 	
 	</div>
 	
@@ -102,7 +102,8 @@ $(document).ready(function(){
 	});
 	
 	$("#cancleBtn").click(function(){
-		
+	window.opener=null;
+		window.parent.close();
 	});
 	
 	
