@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hotel.backend.entity.Food;
 import com.hotel.backend.entity.Market;
 import com.hotel.backend.entity.View;
 import com.hotel.backend.service.HotelMarketService;
@@ -70,7 +71,7 @@ public class ViewController {
 	@RequestMapping("/addView")
 	public @ResponseBody
 	String addView(HttpServletRequest request, HttpServletResponse response,
-			@ModelAttribute("market") View view) {
+			@ModelAttribute("view") View view) {
 
 		String result = "";
 
@@ -79,7 +80,12 @@ public class ViewController {
 
 		String hotelId = userView.getHotelId();
 
-		long total = hotelViewService.getHotelViewList().size();
+        int size = hotelViewService.getViewListByHotelId(hotelId).size();
+		
+		String temp = hotelViewService.getViewListByHotelId(hotelId).get(size-1).getId();
+		
+		int total = Integer.parseInt(temp)+1;
+
 		String viewId = "";
 		if (total < 10) {
 			viewId = "000" + total;
@@ -94,7 +100,7 @@ public class ViewController {
 		Map<String, String> map = new HashMap<String, String>();
 
 		map.put("hotelId", hotelId);
-		map.put("mktId", viewId);
+		map.put("viewId", viewId);
 		view.setId(viewId);
 		lHotelViewService.insertLink(map);
 		if (hotelViewService.addView(view) > 0) {
@@ -107,7 +113,16 @@ public class ViewController {
 		return result;
 	}
 
-	
+	@RequestMapping("/updateView")
+	public @ResponseBody
+	String updateView(HttpServletRequest request, HttpServletResponse response,
+			@ModelAttribute("view") View view) {
+
+		String result = "success";
+		hotelViewService.updateView(view);
+      
+		return result;
+	}
 	
 
 }

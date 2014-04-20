@@ -93,8 +93,8 @@ a:link {
 					<td><a  id="mktAway_${status.count}">${list.away}</a></td>
 					<td><a  id="mktRout_${status.count}">${list.rout}</a><tetd>
 					<td><a  id="mktDesc_${status.count}">${list.description}</a></td>
-					<td><button id="update_${status.count}"> <a href="#">修改</a></button></td>
-					<td><button id="delete_${status.count}"> <a href="/hotel/deleteMktById?mktId=${list.id}">删除</a></button></td>
+					<td><button > <a id="update_${status.count}">修改</a></button></td>
+					<td><button > <a id="delete_${status.count}">删除</a></button></td>
 					
 				</tr>
 			</c:forEach> 
@@ -105,31 +105,54 @@ a:link {
 		</tbody>
 	</table>
  </div>
- <div id="win" class="easyui-window" title="添加美食记录" closed="true" style="width:400px;height:270px;">    
-       <form name="form" action="#" ENCTYPE="multipart/form-data" modelAttribute="#" method="post" >
+ 
+ 	<div id="win_add" class="easyui-window" title="添加商场记录" closed="true" style="width:400px;height:270px;">    
+       <form name="form"  id = "add_form" action="/hotel/addMkt" ENCTYPE="multipart/form-data" modelAttribute="market" method="market" >
 	    	<table style="margin:10px 0 0 70px;">		
 			
-			<tr><td><span>名称*</span></td><td><input type="text" name="userName" maxlength="20"></td><td><span class="username"></span></td></tr>
-
-			<tr><td><span>类型*</span></td><td><input type="password" name="userPassword" maxlength="20"></td><td><span class="password"></span></td></tr>
-
-			<tr><td><span>地址*</span></td><td><input type="password" name="repassword" maxlength="20"></td><td><span class="repassword"></span></td></tr>
-
-			<tr><td><span>图片</span></td><td><input type="text" name="phone"></td><td><span class="telephone"></span></td></tr>
-
-			<tr><td><span>线路</span></td><td><input type="text" id="id1" name="email"></td><td><span class="email"></span></td></tr>
-
-			<tr><td><span>简介</span></td><td><input type="text" id="hotelId" name="hotelId"></td><td><span class="hotelId"></span></td></tr>
-
-			<input type="hidden" id = "hotelId" name="hotelId">
+			<input type="hidden" name="id">
 			
-			<input type="hidden" id="status" name="status">
+			<tr><td><span>名称*</span></td><td><input type="text" name="name"></td></tr>
+
+			<tr><td><span>地址*</span></td><td><input type="text" name="address"></td></tr>
+
+			<tr><td><span>距离*</span></td><td><input type="text" name="away"></td></tr>
+
+			<tr><td><span>线路</span></td><td><input type="text" name="rout"></td></tr>
+
+			<tr><td><span>简介</span></td><td><input type="text" name="description"></td></tr>
 					
 	    	</table>
 	    	<div class="submit" style="margin-left:120px;">
-	    		<input type="submit" name="register" value="添加"/>
+	    		<input type="button" id="add_mkt" value="添加"/>
 	    		<input type="reset" name="reset" value="重填"/>
-	    		<input type="button" id="cancle" value="取消" /></div>
+	    		<input type="button" id="cancle_add" value="取消" /></div>
+	    	</form>
+	    
+    </div>
+ <div id="win_update" class="easyui-window" title="更新商场记录" closed="true" style="width:400px;height:270px;">    
+       <form name="form" id="update_form" action="/hotel/updateMarket" ENCTYPE="multipart/form-data" modelAttribute="market" method="post" >
+	    	<table style="margin:10px 0 0 70px;">		
+			
+			<input type="hidden" value="" name="id" id="hidden_id"></input>
+			
+			<tr><td><span>编号</span></td><td><label readonly="readonly" id="update_id"></label</td></tr>
+			
+			<tr><td><span>名称*</span></td><td><input type="text" name="name" id="update_name"></td></tr>
+
+			<tr><td><span>地址*</span></td><td><input type="text" name="address" id="update_address"></td></tr>
+
+			<tr><td><span>距离</span></td><td><input type="text" name="away" id="update_away"></td></tr>
+
+			<tr><td><span>线路</span></td><td><input type="text" name="rout" id="update_rout"></td></tr>
+
+			<tr><td><span>简介</span></td><td><input type="text" name="description" id="update_description"></td></tr>
+					
+	    	</table>
+	    	<div class="submit" style="margin-left:120px;">
+	    		<input type="button" id="update" value="更新"/>
+	    		<input type="reset" name="reset" value="重填"/>
+	    		<input type="button" id="update_cancle" value="取消" /></div>
 	    	</form>
 	    
     </div>
@@ -138,12 +161,94 @@ a:link {
 <script type="text/javascript">
 $(document).ready(function(){
 
+	$("#update_cancle").click(function(){
+	   $('#win_update').window('close'); 
+	});
+	$("#cancle_add").click(function(){
+	   $('#win_add').window('close'); 
+	});
+	
 	$("#addMkt").click(function(){
-	   $('#win').window('open'); 
+	   
+	   $('#win_add').window('open'); 
+	   
+	   $("#add_mkt").click(function(){
+	   
+	   var market = $("#add_form").serialize();
+	   $.post("/hotel/addMkt",market,function(data){
+				   if(data=="success"){
+						window.location.reload();
+				   }else{
+					  alert("error!");		   
+				   } 
+		 });
+	   
+	   
+	   });
+  
 	});
-	$("#cancle").click(function(){
-	   $('#win').window('close'); 
-	});
+	
+	$(".easyui-datagrid tbody tr").each(function(i){
+	
+	    var index = $(this).index();
+	    
+	    
+	    $("#update_"+i).click(function(){
+
+			var mktId = $("#mktId_"+index).text();
+			var mktName = $("#mktName_"+index).text();
+			var mktAddress = $("#mktAddress_"+index).text();
+			var mktAway = $("#mktAway_"+index).text();
+			var mktRout = $("#mktRout_"+index).text();
+			var mktDesc = $("#mktDesc_"+index).text();
+			
+
+			$("#update_id").text(mktId);
+			$("#hidden_id").val(mktId);
+			$("#update_name").val(mktName);
+			$("#update_address").val(mktAddress);
+			$("#update_away").val(mktAway);
+			$("#update_rout").val(mktDesc);
+			$("#update_description").val(mktDesc);
+			
+			$('#win_update').window('open'); 
+			
+			
+			$("#update").click(function(){
+			
+			var market = $("#update_form").serialize();
+				$.post("/hotel/updateMarket",market,function(data){
+				   if(data=="success"){
+						window.location.reload();
+				   }else{
+					  alert("error!");		   
+				   } 
+		   		});
+			});
+	
+		});
+	    		 
+	   $("#delete_"+i).click(function(){
+
+		var mktId = $("#mktId_"+index).text();
+		
+		 $.messager.confirm('确认', '确定要删除该条记录吗?', function(r){  
+		 if(r){
+		 	$.ajax({
+				url : "/hotel/deleteMktById?mktId="+mktId,
+				type : 'POST',
+				success : function(data) {
+				
+					window.location.reload();
+				},
+				error : function() {
+					alert("修改失败！");
+				}
+			});
+		 }
+		});
+	 });	    
+ });
 
 });
  

@@ -47,6 +47,8 @@
 </script>
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/SimpleTree.js">
 </script>
+<script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/local/easyui-lang-zh_CN.js">
+</script>
 <style>
 a:link {
  text-decoration: none;
@@ -92,55 +94,161 @@ a:link {
 					<td><a  id="viewAway_${status.count}">${list.away}</a></td>
 					<td><a  id="viewRout_${status.count}">${list.rout}</a></td>
 					<td><a  id="viewDesc_${status.count}">${list.description}</a></td>
-					<td><button id="update_${status.count}"> <a href="#">修改</a></button></td>
-				    <td><button id="delete_${status.count}"> <a href="/hotel/deleteViewById?viewId=${list.id}">删除</a></button></td>
+					<td><button > <a id="update_${status.count}">修改</a></button></td>
+				    <td><button > <a id="delete_${status.count}">删除</a></button></td>
 				</tr>
 			</c:forEach> 
 			<tr>
 			<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-			<td ><button id="add_${status.count}"> <a href="#" id="addView">添加</a></button></td>
+			<td ><button id="add_${status.count}"> <a id="addView">添加</a></button></td>
 			</tr>
 	
 		</tbody>
 	</table>
   </div>
-  <div id="win" class="easyui-window" title="添加美食记录" closed="true" style="width:400px;height:270px;">    
-       <form name="form" action="#" ENCTYPE="multipart/form-data" modelAttribute="#" method="post" >
+  <div id="win_add" class="easyui-window" title="添加景点记录" closed="true" style="width:400px;height:270px;">    
+       <form name="form"  id = "add_form" action="/hotel/View" ENCTYPE="multipart/form-data" modelAttribute="view" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			
-			<tr><td><span>名称*</span></td><td><input type="text" name="userName" maxlength="20"></td><td><span class="username"></span></td></tr>
-
-			<tr><td><span>类型*</span></td><td><input type="password" name="userPassword" maxlength="20"></td><td><span class="password"></span></td></tr>
-
-			<tr><td><span>地址*</span></td><td><input type="password" name="repassword" maxlength="20"></td><td><span class="repassword"></span></td></tr>
-
-			<tr><td><span>图片</span></td><td><input type="text" name="phone"></td><td><span class="telephone"></span></td></tr>
-
-			<tr><td><span>线路</span></td><td><input type="text" id="id1" name="email"></td><td><span class="email"></span></td></tr>
-
-			<tr><td><span>简介</span></td><td><input type="text" id="hotelId" name="hotelId"></td><td><span class="hotelId"></span></td></tr>
-
-			<input type="hidden" id = "hotelId" name="hotelId">
+			<input type="hidden" name="id">
 			
-			<input type="hidden" id="status" name="status">
+			<tr><td><span>名称*</span></td><td><input type="text" name="name"></td></tr>
+
+			<tr><td><span>地址*</span></td><td><input type="text" name="address"></td></tr>
+
+			<tr><td><span>距离*</span></td><td><input type="text" name="away"></td></tr>
+
+			<tr><td><span>线路</span></td><td><input type="text" name="rout"></td></tr>
+
+			<tr><td><span>简介</span></td><td><input type="text" name="description"></td></tr>
 					
 	    	</table>
 	    	<div class="submit" style="margin-left:120px;">
-	    		<input type="submit" name="register" value="添加"/>
+	    		<input type="button" id="add_view" value="添加"/>
 	    		<input type="reset" name="reset" value="重填"/>
-	    		<input type="button" id="cancle" value="取消" /></div>
+	    		<input type="button" id="cancle_add" value="取消" /></div>
 	    	</form>
 	    
     </div>
+ <div id="win_update" class="easyui-window" title="更新景点记录" closed="true" style="width:400px;height:270px;">    
+       <form name="form" id="update_form" action="/hotel/updateView" ENCTYPE="multipart/form-data" modelAttribute="view" method="post" >
+	    	<table style="margin:10px 0 0 70px;">		
+			
+			<input type="hidden" value="" name="id" id="hidden_id"></input>
+			
+			<tr><td><span>编号</span></td><td><label readonly="readonly" id="update_id"></label</td></tr>
+			
+			<tr><td><span>名称*</span></td><td><input type="text" name="name" id="update_name"></td></tr>
+
+			<tr><td><span>地址*</span></td><td><input type="text" name="address" id="update_address"></td></tr>
+
+			<tr><td><span>距离</span></td><td><input type="text" name="away" id="update_away"></td></tr>
+
+			<tr><td><span>线路</span></td><td><input type="text" name="rout" id="update_rout"></td></tr>
+
+			<tr><td><span>简介</span></td><td><input type="text" name="description" id="update_description"></td></tr>
+					
+	    	</table>
+	    	<div class="submit" style="margin-left:120px;">
+	    		<input type="button" id="update" value="更新"/>
+	    		<input type="reset" name="reset" value="重填"/>
+	    		<input type="button" id="update_cancle" value="取消" /></div>
+	    	</form>
+	    
+    </div>
+ 
 </body>
 <script type="text/javascript">
 $(document).ready(function(){
-    $("#addView").click(function(){
-	   $('#win').window('open'); 
+  
+	$("#update_cancle").click(function(){
+	   $('#win_update').window('close'); 
 	});
-	$("#cancle").click(function(){
-	   $('#win').window('close'); 
+	$("#cancle_add").click(function(){
+	   $('#win_add').window('close'); 
 	});
+	
+	$("#addView").click(function(){
+	   
+	   $('#win_add').window('open'); 
+	   
+	   $("#add_view").click(function(){
+	   
+	   var view = $("#add_form").serialize();
+	   $.post("/hotel/addView",view,function(data){
+				   if(data=="success"){
+						window.location.reload();
+				   }else{
+					  alert("error!");		   
+				   } 
+		 });
+	   
+	   
+	   });
+  
+	});
+	
+	$(".easyui-datagrid tbody tr").each(function(i){
+	
+	    var index = $(this).index();
+	    
+	    
+	    $("#update_"+i).click(function(){
+
+			var viewId = $("#viewId_"+index).text();
+			var viewName = $("#viewName_"+index).text();
+			var viewAddress = $("#viewAddress_"+index).text();
+			var viewAway = $("#viewAway_"+index).text();
+			var viewRout = $("#viewRout_"+index).text();
+			var viewDesc = $("#viewDesc_"+index).text();
+			
+
+			$("#update_id").text(viewId);
+			$("#hidden_id").val(viewId);
+			$("#update_name").val(viewName);
+			$("#update_address").val(viewAddress);
+			$("#update_away").val(viewAway);
+			$("#update_rout").val(viewDesc);
+			$("#update_description").val(viewDesc);
+			
+			$('#win_update').window('open'); 
+			
+			
+			$("#update").click(function(){
+			
+			var view = $("#update_form").serialize();
+				$.post("/hotel/updateView",view,function(data){
+				   if(data=="success"){
+						window.location.reload();
+				   }else{
+					  alert("error!");		   
+				   } 
+		   		});
+			});
+	
+		});
+	    		 
+	   $("#delete_"+i).click(function(){
+
+		var viewId = $("#viewId_"+index).text();
+		
+		 $.messager.confirm('确认', '确定要删除该条记录吗?', function(r){  
+		 if(r){
+		 	$.ajax({
+				url : "/hotel/deleteViewById?viewId="+viewId,
+				type : 'POST',
+				success : function(data) {
+				
+					window.location.reload();
+				},
+				error : function() {
+					alert("修改失败！");
+				}
+			});
+		 }
+		});
+	 });	    
+ });
 
 });
  

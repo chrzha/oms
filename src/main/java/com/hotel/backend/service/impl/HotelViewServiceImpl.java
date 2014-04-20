@@ -63,5 +63,12 @@ public class HotelViewServiceImpl implements HotelViewService {
 		return hotelViewMapper.addView(view);
 	}
 
+
+	@Override
+	public void updateView(View view) {
+		// TODO Auto-generated method stub
+		hotelViewMapper.updateView(view);
+	}
+
 }
 

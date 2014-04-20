@@ -53,6 +53,19 @@
 		(#{id},#{name},#{address},#{away},#{description},#{rout})
 
 	</insert>
+	
+	<update id="updateMkt" parameterType="com.hotel.backend.entity.Market">
+	update bsupermarket
+		set
+		MKT_NAME = #{name},
+		MKT_DESC = #{description},
+		MKT_ADDRESS = #{address},
+		MKT_ROUT = #{rout},
+		MKT_AWAY = #{away} 
+		where
+		MKT_ID=#{id}
+
+	</update>
 
 </mapper>
 

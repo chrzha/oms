@@ -21,5 +21,7 @@ public interface HotelMarketMapper {
 	  public void deleteMarketById(String mktId);
 	  
 	  public Integer addMkt(Market market);
+	  
+	  public void updateMkt(Market market);
 	    
 }

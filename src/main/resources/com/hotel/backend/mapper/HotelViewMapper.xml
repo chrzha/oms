@@ -55,6 +55,19 @@
 		(#{id},#{name},#{address},#{away},#{description},#{rout})
 
 	</insert>
+	
+	<update id="updateView" parameterType="com.hotel.backend.entity.View">
+	update bview
+		set
+		VIEW_NAME = #{name},
+		VIEW_DESC = #{description},
+		VIEW_ADDRESS = #{address},
+		VIEW_ROUT = #{rout},
+		VIEW_AWAY = #{away}
+		where
+		VIEW_ID=#{id}
+
+	</update>
 
 
 </mapper>

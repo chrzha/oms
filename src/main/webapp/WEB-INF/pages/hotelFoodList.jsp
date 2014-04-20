@@ -72,27 +72,95 @@ $(document).ready(function(){
 
 	$("#addFood").click(function(){
 	   $('#win_add').window('open'); 
+	   
+	   $("#add_food").click(function(){
+	   
+	   var food = $("#add_form").serialize();
+	   $.post("/hotel/addFood",food,function(data){
+				   if(data=="success"){
+						window.location.reload();
+				   }else{
+					  alert("error!");		   
+				   } 
+		 });
+	   
+	   
+	   });
+  
 	});
-	$("#cancle").click(function(){
+	$("#cancle_add").click(function(){
 	   $('#win_add').window('close'); 
+	   $('#win_update').window('close'); 
+	});	
+	$("#cancle_update").click(function(){
+	   $('#win_update').window('close'); 
+	});	
+	
+	$(".easyui-datagrid tbody tr").each(function(i){
+	
+	    var index = $(this).index();
+	
+	    $("#update_"+i).click(function(){
+
+			var foodId = $("#foodId_"+index).text();
+			var foodName = $("#foodName_"+index).text();
+			var foodType = $("#foodType_"+index).text();
+			var foodAddress = $("#foodAddress_"+index).text();
+			var foodPhoto = $("#foodPhoto_"+index).text();
+			var foodRout = $("#foodRout_"+index).text();
+			var foodDesc = $("#foodDesc_"+index).text();
+			
+
+			$("#update_id").text(foodId);
+			$("#hidden_id").val(foodId);
+			$("#update_name").val(foodName);
+			$("#update_type").val(foodType);
+			$("#update_address").val(foodAddress);
+			$("#update_photo").val(foodPhoto);
+			$("#update_rout").val(foodRout);
+			$("#update_description").val(foodDesc);
+			
+			$('#win_update').window('open'); 
+			
+			
+			$("#update").click(function(){
+			
+			var food = $("#update_form").serialize();
+				$.post("/hotel/updateFood",food,function(data){
+				   if(data=="success"){
+						window.location.reload();
+				   }else{
+					  alert("error!");		   
+				   } 
+		   		});
+			});
+	
+		});
+		 $("#delete_"+i).click(function(){
+
+			var foodId = $("#foodId_"+index).text();
+		
+		 $.messager.confirm('确认', '确定要删除该条记录吗?', function(r){  
+		 if(r){
+		 	$.ajax({
+				url : "/hotel/deleteFoodById?foodId="+foodId,
+				type : 'POST',
+				success : function(data) {
+				
+					window.location.reload();
+				},
+				error : function() {
+					alert("修改失败！");
+				}
+			});
+		 }
+		});
+	 });
+	
+	
 	});
 	
 });
-
-	function demo(elem){
-
-	var tr = $(elem).parent().parent().parent().parent();
-	var rowIndex = tr.index()+1;
-	var foodId = $("#foodId_"+rowIndex).text();
-	var foodName = $("#foodName_"+rowIndex).text();
-	var foodType = $("#foodType_"+rowIndex).text();
-	var foodAddress = $("#foodAddress_"+rowIndex).text();
-	var foodPhoto = $("#foodPhoto_"+rowIndex).text();
-	var foodDesc = $("#foodDesc_"+rowIndex).text();
-	
-	$("#update_id").text(foodId);
-    $('#win_update').window('open'); 
-	}
  
 </script>
 
@@ -124,8 +192,8 @@ $(document).ready(function(){
 					<td><a  id="foodPhoto_${status.count}">${list.photo}</a><tetd>
 					<td><a  id="foodRout_${status.count}">${list.rout}</a></td>
 					<td><a  id="foodDesc_${status.count}">${list.description}</a></td>
-					<td><button><a id="update" onclick="demo(this);">修改</a></button></td>
-					<td><button id="delete_${status.count}"> <a href="/hotel/deleteFoodById?foodId=${list.id}">删除</a></button></td>
+					<td><button><a id="update_${status.count}">修改</a></button></td>
+					<td><button> <a id="delete_${status.count}">删除</a></button></td>
 					
 				</tr>
 			</c:forEach> 
@@ -138,55 +206,53 @@ $(document).ready(function(){
 	
  </div>
 	<div id="win_add" class="easyui-window" title="添加美食记录" closed="true" style="width:400px;height:270px;">    
-       <form name="form" action="#" ENCTYPE="multipart/form-data" modelAttribute="#" method="post" >
+       <form name="form"  id = "add_form" action="/hotel/addFood" ENCTYPE="multipart/form-data" modelAttribute="food" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
-			
-			<tr><td><span>名称*</span></td><td><input type="text" name="userName" maxlength="20"></td><td><span class="username"></span></td></tr>
+			<input type="hidden" name="id">
+			<tr><td><span>名称*</span></td><td><input type="text" name="name" maxlength="20"></td></tr>
 
-			<tr><td><span>类型*</span></td><td><input type="password" name="userPassword" maxlength="20"></td><td><span class="password"></span></td></tr>
+			<tr><td><span>类型*</span></td><td><input type="text" name="type" maxlength="20"></td></tr>
 
-			<tr><td><span>地址*</span></td><td><input type="password" name="repassword" maxlength="20"></td><td><span class="repassword"></span></td></tr>
+			<tr><td><span>地址*</span></td><td><input type="text" name="address" maxlength="20"></td></tr>
 
-			<tr><td><span>图片</span></td><td><input type="text" name="phone"></td><td><span class="telephone"></span></td></tr>
+			<tr><td><span>图片</span></td><td><input type="text" name="photo"></td></tr>
 
-			<tr><td><span>线路</span></td><td><input type="text" id="id1" name="email"></td><td><span class="email"></span></td></tr>
+			<tr><td><span>线路</span></td><td><input type="text" name="rout"></td></tr>
 
-			<tr><td><span>简介</span></td><td><input type="text" id="hotelId" name="hotelId"></td><td><span class="hotelId"></span></td></tr>
-
-			<input type="hidden" id = "hotelId" name="hotelId">
-			
-			<input type="hidden" id="status" name="status">
+			<tr><td><span>简介</span></td><td><input type="text" name="description"></td></tr>
 					
 	    	</table>
 	    	<div class="submit" style="margin-left:120px;">
-	    		<input type="submit" name="register" value="添加"/>
+	    		<input type="button" name="add_food" id="add_food" value="添加"/>
 	    		<input type="reset" name="reset" value="重填"/>
-	    		<input type="button" id="cancle" value="取消" /></div>
+	    		<input type="button" id="cancle_add" value="取消" /></div>
 	    	</form>
 	    
     </div>
     <div id="win_update" class="easyui-window" title="修改美食记录" closed="true" style="width:400px;height:290px;">    
-       <form name="form" action="#" ENCTYPE="multipart/form-data" modelAttribute="#" method="post" >
+       <form name="form" id="update_form" action="#" ENCTYPE="multipart/form-data" modelAttribute="food" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			
-			<tr><td><span>编号</span></td><td><input type="text"  id="update_id"></td></tr>
+			<input type="hidden" value="" name="id" id="hidden_id"></input>
 			
-			<tr><td><span>名称*</span></td><td><input type="text" id="name"></td></tr>
+			<tr><td><span>编号</span></td><td><label readonly="readonly" id="update_id"></label</td></tr>
+			
+			<tr><td><span>名称*</span></td><td><input type="text" id="update_name" name="name"></td></tr>
 
-			<tr><td><span>类型*</span></td><td><input type="text" id="type"></td></tr>
+			<tr><td><span>类型*</span></td><td><input type="text" id="update_type" name="type"></td></tr>
 
-			<tr><td><span>地址*</span></td><td><input type="text" id="address"></td></tr>
+			<tr><td><span>地址*</span></td><td><input type="text" id="update_address" name="address"></td></tr>
 
-			<tr><td><span>图片</span></td><td><input type="text" id="photo"></td></tr>
+			<tr><td><span>图片</span></td><td><input type="text" id="update_photo" name="photo"></td></tr>
 
-			<tr><td><span>线路</span></td><td><input type="text" id="rout"></td></tr>
+			<tr><td><span>线路</span></td><td><input type="text" id="update_rout" name="rout"></td></tr>
 
-			<tr><td><span>简介</span></td><td><input type="text" id="description"></td></tr>
+			<tr><td><span>简介</span></td><td><input type="text" id="update_description" name="description"></td></tr>
 	    	</table>
 	    	<div class="submit" style="margin-left:120px;">
-	    		<input type="submit" name="register" value="添加"/>
+	    		<input type="button" id="update" value="更新"/>
 	    		<input type="reset" name="reset" value="重填"/>
-	    		<input type="button" id="cancle" value="取消" /></div>
+	    		<input type="button" id="cancle_update" value="取消" /></div>
 	    	</form>
 	    
     </div>

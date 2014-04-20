@@ -16,7 +16,7 @@
 		parameterType="map" keyProperty="id">
 		INSERT
 		INTO
-		l_hotel_view
+		l_view_hotel
 		(HOTEL_ID,VIEW_ID)
 		VALUES
 		(#{hotelId},#{viewId})

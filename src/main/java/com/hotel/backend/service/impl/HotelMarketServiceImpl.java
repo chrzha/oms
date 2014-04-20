@@ -47,4 +47,10 @@ public class HotelMarketServiceImpl implements HotelMarketService{
 		return hotelMarketMapper.addMkt(market);
 	}
 
+	@Override
+	public void updateMkt(Market market) {
+		// TODO Auto-generated method stub
+		hotelMarketMapper.updateMkt(market);
+	}
+
 }

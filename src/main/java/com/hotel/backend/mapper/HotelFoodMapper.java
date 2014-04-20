@@ -14,4 +14,6 @@ public interface HotelFoodMapper {
 	  public void deleteFoodById(String foodId);
 	  
 	  public Integer addFood(Food food);
+	  
+	  public void updateFood(Food food);
 }

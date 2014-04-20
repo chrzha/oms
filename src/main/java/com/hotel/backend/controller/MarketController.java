@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hotel.backend.entity.Food;
 import com.hotel.backend.entity.Market;
 import com.hotel.backend.service.HotelMarketService;
 import com.hotel.backend.service.LHotelMktService;
@@ -76,7 +77,12 @@ public class MarketController {
 
 		String hotelId = userView.getHotelId();
 
-		long total = hotelMarketService.getMarketListByHotelId(hotelId).size();
+        int size = hotelMarketService.getMarketListByHotelId(hotelId).size();
+		
+		String temp = hotelMarketService.getMarketListByHotelId(hotelId).get(size-1).getId();
+		
+		int total = Integer.parseInt(temp)+1;
+		
 		String mktId = "";
 		if (total < 10) {
 			mktId = "000" + total;
@@ -103,5 +109,16 @@ public class MarketController {
 		}
 		return result;
 	}
+	
+	@RequestMapping("/updateMarket")
+	public @ResponseBody
+	String updateMarket(HttpServletRequest request, HttpServletResponse response,
+			@ModelAttribute("market") Market market) {
+
+		String result = "success";
+        hotelMarketService.updateMkt(market);
+		return result;
+	}
+	
 
 }

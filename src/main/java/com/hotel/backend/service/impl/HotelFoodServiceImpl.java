@@ -39,4 +39,10 @@ public class HotelFoodServiceImpl implements HotelFoodService{
 		return hotelFoodMapper.addFood(food);
 	}
 
+	@Override
+	public void updateFood(Food food) {
+		// TODO Auto-generated method stub
+		hotelFoodMapper.updateFood(food);
+	}
+
 }

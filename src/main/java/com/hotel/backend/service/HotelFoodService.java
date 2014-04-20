@@ -13,5 +13,7 @@ public interface HotelFoodService {
 	public void deleteFoodById(String foodId);
 
 	public Integer addFood(Food food);
+	
+	public void updateFood(Food food);
 
 }

@@ -54,6 +54,21 @@
 		(#{id},#{name},#{photo},#{type},#{description},#{address},#{rout})
 
 	</insert>
+	
+	<update id="updateFood" parameterType="com.hotel.backend.entity.Food">
+	update bfood
+		set
+		FD_NAME = #{name},
+		FD_PHOTO = #{photo},
+		FD_TYPE =
+		#{type},
+		FD_DESC = #{description},
+		FD_ADDRESS = #{address},
+		FD_ROUT= #{rout}
+		where
+		FD_ID=#{id}
+
+	</update>
 
 </mapper>
 

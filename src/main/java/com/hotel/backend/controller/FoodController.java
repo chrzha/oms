@@ -62,7 +62,7 @@ public class FoodController {
 
 	@RequestMapping("/addFood")
 	public @ResponseBody
-	String addMkt(HttpServletRequest request, HttpServletResponse response,
+	String addFood(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("food") Food food) {
 
 		String result = "";
@@ -72,7 +72,13 @@ public class FoodController {
 
 		String hotelId = userView.getHotelId();
 
-		long total = hotelFoodService.getFoodListByHotelId(hotelId).size();
+		
+		int size = hotelFoodService.getFoodListByHotelId(hotelId).size();
+		
+		String temp = hotelFoodService.getFoodListByHotelId(hotelId).get(size-1).getId();
+		
+		int total = Integer.parseInt(temp)+1;
+		
 		String foodId = "";
 		if (total < 10) {
 			foodId = "000" + total;
@@ -97,6 +103,16 @@ public class FoodController {
 
 			return result = "error";
 		}
+		return result;
+	}
+
+	@RequestMapping("/updateFood")
+	public @ResponseBody
+	String updateFood(HttpServletRequest request, HttpServletResponse response,
+			@ModelAttribute("food") Food food) {
+
+		String result = "success";
+        hotelFoodService.updateFood(food);
 		return result;
 	}
 

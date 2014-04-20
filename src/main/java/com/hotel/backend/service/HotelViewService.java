@@ -27,6 +27,8 @@ public interface HotelViewService {
     public void deleteViewById(String viewId);
 	  
 	public Integer addView(View view);
+	
+	public void updateView(View view);
     
 
 }
