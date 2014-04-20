@@ -74,19 +74,20 @@
 					<td><a  id="userId_${status.count}">${list.userId}</a></td>
 					<td><a  id="userName_${status.count}">${list.userName}</a></td>
 					<td>
-					<a id="roleId_${status.count}">${list.roleName}</a>
+					<a id="roleName_${status.count}">${list.roleName}</a>
 					</td>
+					<input type="hidden" id="roleId_${status.count}" value="${list.roleId}" />
 					
 					<td><a  id="hotelId_${status.count}">${list.hotelId}</a></td>
 					<td>
-					<select id="status_${status.count}" disabled="disabled">
+					<select id="status_${status.count}">
 					<option value="1" <c:if test="${list.status=='1'}">selected="selected"</c:if> >通过</option>
 					<option value="0" <c:if test="${list.status=='0'}">selected="selected"</c:if> >未通过</option>
 					</select>
 					</td>
 					<td><a  id="phone_${status.count}">${list.phone}</a></td>
 					<td><a  id="email_${status.count}">${list.email}</a></td>
-					<td><button id="edit_${status.count}"> <a href="/hotel/editUser?userId=${list.userId}">编辑</a></button></td>
+					<td><button > <a id="save_${status.count}">保存</a></button></td>
 				</tr>
 			</c:forEach> 
 	
@@ -99,6 +100,40 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
+
+$(".easyui-datagrid tbody tr").each(function(i){
+
+		var index = $(this).index()+1;
+		
+	    var userId = $("#userId_"+index).text();
+	    
+	    var roleId = $("#roleId_"+index).val();
+	    
+		var status = $("#status_"+index).val();
+		
+		$("#status_"+index).change(function(){
+		
+		status = $(this).val();
+		
+		});
+
+
+	    $("#save_"+index).click(function(){
+
+	     $.ajax({
+			url : "/hotel/doEditUser?userId="+userId+"&status="+status+"&roleId="+roleId,
+			type : 'POST',
+			success : function(data) {
+			    alert("修改成功！");
+				window.location.reload();
+			},
+			error : function() {
+				alert("修改失败！");
+			}
+		});
+	    
+	 });
+  });
 });
  
 </script>
