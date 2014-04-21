@@ -108,6 +108,7 @@ public class RegisterController {
 	    
 	    if (hotelService.createHotel(hotel)>0) {
             //注册成功，发送邮件通知！
+	    	
 	     
             modelAndView.setViewName("success");
         } else {
