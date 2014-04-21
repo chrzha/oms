@@ -44,12 +44,7 @@ pageEncoding="utf-8"%>
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/SimpleTree.js">
 </script>
 
-<script type="text/javascript">
- $(document).ready(function(){
-	
-});
- 
-</script>
+
 <style>
 .username,.password,.repassword,.email,.description,.role,.phone,.hotelId{
 	display:block;
@@ -69,7 +64,7 @@ pageEncoding="utf-8"%>
   <div style="height:400px;width:410px;margin-left:490px;margin-top:10px;">
      <div class="easyui-panel"  title="注册" style="height:400px;width:400px;">
   	<div style="padding:10px 0 0 10px">
-	   <form name="form" action="/hotel/register" ENCTYPE="multipart/form-data" modelAttribute="user" method="post" >
+	   <form name="form" id="user_form"action="/hotel/register" ENCTYPE="multipart/form-data" modelAttribute="user" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			
 			<tr><td><span>用户名*</span></td><td><input type="text" name="userName" maxlength="20"></td><td><span class="username"></span></td></tr>
@@ -94,8 +89,16 @@ pageEncoding="utf-8"%>
 					
 	    	</table>
 	    	<div class="submit" style="margin-left:150px;">
-	    		<input type="submit" name="register" value="注册"/>
-	    		<input type="reset" name="reset" value="重填"/></div>
+	    		<input type="button" id="register" value="注册"/>
+	    		<input type="reset" name="reset" value="重填"/>
+	    		<input type="button" id="back" value="返回"/></div>
+	    	<div id="loading" style="width: 200px; margin-left: 40%; margin-top: 10px;z-index: 999; display: none">
+        						<div class="UpdateProgress">
+        						 <img src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/default/images/loading.gif" />
+            
+            						<span id="loadMess">数据加载中，请稍候...</span>
+        						</div>
+    		</div>
 	    	</form>
 	    
 	</div>
@@ -110,5 +113,35 @@ pageEncoding="utf-8"%>
 
 
 </body>
+<script type="text/javascript">
+ $(document).ready(function(){
+ 
+ $("#back").click(function(){
+ 
+ 	window.location = "/hotel";
+ 
+ });
+ 
+ $("#register").click(function(){
+	
+	$("#loading").css("display", "block");
+	
+	var user = $("#user_form").serialize();
+	   $.post("/hotel/register",user,function(data){
+	   
+				   if(data=="success"){
+                        $("#loading").css("display", "none");
+						$.messager.alert('消息','注册成功!管理员审核后方可登陆.','info');  
+
+				   }else{
+					  alert("error!");		   
+				   } 
+     });	
+   });
+ 
+	
+});
+ 
+</script>
 
 </html>

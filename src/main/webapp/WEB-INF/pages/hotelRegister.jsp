@@ -40,12 +40,7 @@
 	src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/SimpleTree.js">
 </script>
 
-<script type="text/javascript">
- $(document).ready(function(){
-	
-});
- 
-</script>
+
 <style>
 .name,.address,.phone,.email,.description {
 	display: block;
@@ -68,7 +63,7 @@
 			<div class="easyui-panel" title="酒店注册"
 				style="height: 300px; width: 400px;">
 				<div style="padding: 10px 0 0 10px">
-					<form name="form" action="/hotel/hotelRegister" modelAttribute="hotel"
+					<form name="form" id="hotel_form"action="/hotel/hotelRegister" modelAttribute="hotel"
 						method="post">
 						<table style="margin: 10px 0 0 70px;">
 
@@ -97,17 +92,25 @@
 							</tr>
 
 							<tr>
-								<td><span>邮箱*</span></td>
+								<td><span >邮箱*</span></td>
 								<td><input type="text" id="id1" name="email"></td>
-								<td><span class="email"></span></td>
+								<td><span class="email"></span></td><br>
 							</tr>
 							<input type="hidden" id="status" name="status">
-
 						</table>
 						<div class="submit" style="margin-left: 150px;">
-							<input type="submit" name="register" value="注册" /> <input
+							<input type="button" id="register" value="注册" /> <input
 								type="reset" name="reset" value="重填" />
+								<input type="button" id="back" value="返回"/>
+						  
 						</div>
+						<div id="loading" style="width: 200px; margin-left: 40%; margin-top: 10px;z-index: 999; display: none">
+        						<div class="UpdateProgress">
+        						 <img src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/default/images/loading.gif" />
+            
+            						<span id="loadMess">数据加载中，请稍候...</span>
+        						</div>
+    					</div>
 					</form>
 
 				</div>
@@ -119,9 +122,34 @@
 	<div region="south" style="height: 40px;">
 		<jsp:include page="copyright.jsp"></jsp:include>
 	</div>
-	
-
-
 </body>
+<script type="text/javascript">
+ $(document).ready(function(){
+ 
+ $("#back").click(function(){
+ 
+ 	window.location = "/hotel";
+ 
+ });
+	
+	$("#register").click(function(){
+	
+	$("#loading").css("display", "block");
+	
+	var hotel = $("#hotel_form").serialize();
+	   $.post("/hotel/hotelRegister",hotel,function(data){
+	   
+				   if(data=="success"){
+                        $("#loading").css("display", "none");
+						$.messager.alert('消息','注册成功!\n查看邮件中的编号进行注册管理员.','info');  
 
+				   }else{
+					  alert("error!");		   
+				   } 
+     });	
+   });
+   
+});
+ 
+</script>
 </html>

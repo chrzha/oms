@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hotel.backend.entity.Hotel;
@@ -25,6 +26,7 @@ import com.hotel.backend.service.HotelService;
 import com.hotel.backend.service.LUserRoleService;
 import com.hotel.backend.service.UserService;
 import com.hotel.backend.service.impl.UserServiceImpl;
+import com.hotel.backend.utility.Mail;
 
 @Controller
 @Path("/")
@@ -48,9 +50,9 @@ public class RegisterController {
 	}
 
 	@RequestMapping(value = "/register",method = RequestMethod.POST)
-	public ModelAndView registerController( @ModelAttribute("user") User user,
+	public @ResponseBody String registerController( @ModelAttribute("user") User user,
 			String roleId) {
-		ModelAndView modelAndView = new ModelAndView();
+		String result = "";
 		// 20140001
 		int total = userService.getUserTotalCount()+1;
 		String userId = "";
@@ -73,11 +75,11 @@ public class RegisterController {
 		if (userService.createUser(user)>0) {
 			lUserRoleService.insertLink(map);
 			//注册成功，发送邮件通知！
-			modelAndView.setViewName("success");
+			result = "success";
 		} else {
-			modelAndView.setViewName("error");
+			result = "error";
 		}
-		return modelAndView;
+		return result;
 	}
 	
 	@RequestMapping(value = "/hotelRegRedirect")
@@ -88,9 +90,8 @@ public class RegisterController {
 	}
 	
 	@RequestMapping("/hotelRegister")
-	public ModelAndView hotelRegister(@ModelAttribute("hotel") Hotel hotel){
-	    
-	    ModelAndView modelAndView = new ModelAndView();
+	public @ResponseBody String hotelRegister(@ModelAttribute("hotel") Hotel hotel,String email){
+	    String result = "";
 	    //05130001
 	    int total = hotelService.getHotelTotalCount()+1;
         String hotelId = "";
@@ -108,13 +109,21 @@ public class RegisterController {
 	    
 	    if (hotelService.createHotel(hotel)>0) {
             //注册成功，发送邮件通知！
-	    	
-	     
-            modelAndView.setViewName("success");
+	    	String smtp = "smtp.163.com";// smtp服务器
+			String from = "15251327856@163.com";// 邮件显示名称
+			String to = email;// 收件人的邮件地址，必须是真实地址
+			String copyto = "";// 抄送人邮件地址
+			String subject = "注册邮件";// 邮件标题
+			String content = "你好！您注册的酒店编号为："+hotelId+",请妥善保管！";// 邮件内容
+			String username = "15251327856";// 发件人真实的账户名
+			String password = "piano0713";// 发件人密码
+			Mail.sendAndCc(smtp, from, to, copyto, subject, content, username, password);
+
+           result = "success";
         } else {
-            modelAndView.setViewName("error");
+           result = "error";
         }
-        return modelAndView;
+        return result;
 	}
 	
 
