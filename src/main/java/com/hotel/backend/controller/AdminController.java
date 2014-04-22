@@ -8,15 +8,19 @@ import javax.ws.rs.Path;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hotel.backend.entity.Food;
+import com.hotel.backend.entity.Hotel;
 import com.hotel.backend.entity.Market;
- 
+
 import com.hotel.backend.entity.View;
 import com.hotel.backend.service.HotelFoodService;
 import com.hotel.backend.service.HotelMarketService;
+import com.hotel.backend.service.HotelService;
 import com.hotel.backend.service.HotelViewService;
 import com.hotel.backend.service.UserViewService;
 import com.hotel.backend.view.UserView;
@@ -41,12 +45,15 @@ public class AdminController {
 
 	@Autowired
 	HotelViewService hotelViewService;
-	
+
 	@Autowired
 	HotelMarketService hotelMarketService;
-	
+
 	@Autowired
 	HotelFoodService hotelFoodService;
+
+	@Autowired
+	HotelService hotelService;
 
 	@RequestMapping("/adminHome")
 	public ModelAndView goAdminHomePage(String hotelId) {
@@ -93,6 +100,7 @@ public class AdminController {
 
 		return new ModelAndView("hotelMktList", "list", list);
 	}
+
 	@RequestMapping("/hotelFoodList")
 	public ModelAndView hotelFoodList(HttpServletRequest request,
 			HttpServletResponse response, String hotelId) {
@@ -106,7 +114,33 @@ public class AdminController {
 
 		return new ModelAndView("hotelFoodList", "list", list);
 	}
-	
 
-	
+	// updateHotelInfo
+	@RequestMapping("/updateHotelInfo")
+	public ModelAndView updateHotelInfo(HttpServletRequest request,
+			HttpServletResponse response, String hotelId) {
+
+		UserView userView = (UserView) request.getSession()
+				.getAttribute("user");
+
+		hotelId = userView.getHotelId();
+
+		Hotel hotel = hotelService.getHotelById(hotelId);
+
+		return new ModelAndView("hotelInfo", "hotel", hotel);
+	}
+
+	@RequestMapping("/doUpdateHotelInfo")
+	public @ResponseBody
+	String doUpdateHotelInfo(@ModelAttribute("hotel") Hotel hotel) {
+
+		String result = "";
+		if (hotelService.updateHotelInfo(hotel) > 0) {
+			result = "success";
+		} else {
+			result = "error";
+		}
+		return result;
+	}
+
 }

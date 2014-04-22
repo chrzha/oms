@@ -23,7 +23,7 @@ public interface HotelService {
 	public Hotel getHotelById(String id);
 	public void deleteHotelById(String id);
 	public Integer createHotel(Hotel hotel);
-	public boolean updateHotelInfo(Hotel hotel);
+	public Integer updateHotelInfo(Hotel hotel);
 	public void validateHotel(Map<String , String> map);
 
 }

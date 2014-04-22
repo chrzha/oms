@@ -117,6 +117,18 @@
 				});
 		     }
 	});
+	//hotelInfoManage
+	$("#hotelInfoManage").click(function(){
+			if($("#tabs").tabs('exists','酒店信息')){
+				$("#tabs").tabs('select','酒店信息');
+			}else{
+				$('#tabs').tabs('add',{
+				title: '酒店信息',
+				content: '<iframe style="width:100%;height:480px;" src="/hotel/updateHotelInfo"></iframe>',
+				closable: true
+				});
+		     }
+	});
 	
 });
  
@@ -161,7 +173,7 @@
 			<span>酒店信息管理</span>
 			<ul>
 				<li>
-					<span>酒店信息管理</span>
+					<a id="hotelInfoManage">酒店信息管理</a>
 				</li>
 			</ul>
 		</li>

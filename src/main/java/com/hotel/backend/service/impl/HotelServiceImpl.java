@@ -77,7 +77,7 @@ public class HotelServiceImpl implements HotelService {
 	 * @see com.hotel.backend.service.HotelService#updateHotelInfo(com.hotel.backend.entity.Hotel)
 	 */
 	@Override
-	public boolean updateHotelInfo(Hotel hotel) {
+	public Integer updateHotelInfo(Hotel hotel) {
 		// TODO Auto-generated method stub
 		return hotelMapper.updateHotelInfo(hotel);
 	}
