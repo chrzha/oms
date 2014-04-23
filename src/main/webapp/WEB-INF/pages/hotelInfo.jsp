@@ -59,9 +59,10 @@
 					<form name="form" id="hotel_form"action="/hotel/doUpdateHotelInfo" modelAttribute="hotel"
 						method="post">
 						<table style="margin: 10px 0 0 70px;">
+						<input type="hidden" name="id"  value="${hotel.id}">
 							<tr>
 								<td><span>酒店编号</span></td>
-								<td><input type="text" name="id"  value="${hotel.id}"></td>
+								<td><input type="text"   disabled="disabled" value="${hotel.id}"></td>
 							</tr>
 							<tr>
 								<td><span>酒店名称*</span></td>
