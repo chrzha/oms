@@ -227,11 +227,10 @@
         <p style="padding-left:2em;">
             <span style="color:#ff0000;font-weight:bold;">1. 第一次登录后务必修改自己的密码，以确保操作安全。</span><br />
         <span id="conLabel"></span>
-    
-    
     </div>
   </div>
 </div>
+
 <div region="south" style="height:40px;">
 <jsp:include page="copyright.jsp"></jsp:include>
 </div>

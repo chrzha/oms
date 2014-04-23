@@ -99,9 +99,32 @@
 	
 		</tbody>
 	</table>
-  
-
+ 
   </div>
+  <div id="win_add" class="easyui-window" title="添加操作员" closed="true" style="width:400px;height:270px;">    
+       <form name="form"  id = "add_form" action="/hotel/adduUser" ENCTYPE="multipart/form-data" modelAttribute="user" method="user" >
+	    	<table style="margin:10px 0 0 70px;">		
+			
+			<input type="hidden" name="id" />
+			
+			<input type="hidden" name="hotelId" value="${user.hotelId}"/>
+			
+			<input type="hidden" name="roleId" value="0003"/>
+			
+			<tr><td><span>用户名*</span></td><td><input type="text" name="userName" /></td></tr>
+
+			<tr><td><span>密码*</span></td><td><input type="password" name="userPassword" /></td></tr>
+
+			<tr><td><span>确认密码*</span></td><td><input type="password" name="confirm"></td></tr>
+					
+	    	</table>
+	    	<div class="submit" style="margin-left:120px;">
+	    		<input type="button" id="add_user" value="添加"/>
+	    		<input type="reset" name="reset" value="重填"/>
+	    		<input type="button" id="cancle_add" value="取消" /></div>
+	    	</form>
+	    
+    </div>
 </body>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -157,8 +180,28 @@ $(".easyui-datagrid tbody tr").each(function(i){
 		      }        
           });  
 
-	    });   
-	    
+	    }); 
+	   $("#add").click(function(){
+	   
+	   		$('#win_add').window('open'); 
+	   
+	   		$("#add_user").click(function(){
+	   
+	   			var user = $("#add_form").serialize();
+	   			$.post("/hotel/register",user,function(data){
+				   	if(data=="success"){
+							window.location.reload();
+				   		}else{
+					  	alert("error!");		   
+				   	} 
+		 		});
+	   		});
+		});
+		$("#cancle_add").click(function(){
+
+            $('#win_add').window('close'); 
+		});
+    
   });
 });
  
