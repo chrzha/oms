@@ -78,6 +78,7 @@ public class RegisterController {
 			result = "success";
 		} else {
 			result = "error";
+			//需要判断是否存在，主键不是姓名
 		}
 		return result;
 	}
