@@ -51,10 +51,9 @@
 			if(data=="true"){
 				window.location="/hotel/login";
 				}
-			});
-		 }
-                
-       });  
+			 });
+		    }        
+          });  
 		
 	});
 	

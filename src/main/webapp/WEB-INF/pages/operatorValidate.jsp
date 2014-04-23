@@ -65,6 +65,7 @@
 				<th data-options="field:'phone',width:160,align:'center'">联系电话</th>
 				<th data-options="field:'email',width:160,align:'center'">电子邮箱</th>
 				<th data-options="field:'save',width:60,align:'center'"></th>
+				<th data-options="field:'delete',width:60,align:'center'"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -88,8 +89,13 @@
 					<td><a  id="phone_${status.count}">${list.phone}</a></td>
 					<td><a  id="email_${status.count}">${list.email}</a></td>
 					<td><button > <a id="save_${status.count}">保存</a></button></td>
+					<td><button > <a id="delete_${status.count}">删除</a></button></td>
 				</tr>
 			</c:forEach> 
+			<tr>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td><button > <a id="add">添加</a></button></td>
+			</tr>
 	
 		</tbody>
 	</table>
@@ -130,9 +136,29 @@ $(".easyui-datagrid tbody tr").each(function(i){
 			error : function() {
 				alert("修改失败！");
 			}
-		});
+		  });
+	    });
 	    
-	 });
+	    $("#delete_"+index).click(function(){
+	    
+	    $.messager.confirm('确认', '确定要删除吗?', function(r){  
+		 	if(r){
+		 	 $.ajax({
+					url : "/hotel/deleteUser?userId="+userId,
+					type : 'POST',
+					success : function(data) {
+			   	 	alert("删除成功！");
+					window.location.reload();
+					},
+					error : function() {
+					alert("删除失败失败！");
+					}
+		  		});
+		      }        
+          });  
+
+	    });   
+	    
   });
 });
  

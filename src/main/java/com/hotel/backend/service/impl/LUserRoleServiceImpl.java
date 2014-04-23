@@ -27,9 +27,9 @@ public class LUserRoleServiceImpl implements LUserRoleService{
      * @see com.hotel.backend.service.LUserRoleService#deleteLink(java.util.Map)
      */
     @Override
-    public void deleteLink(Map<String, String> map) {
+    public void deleteLink(String userId) {
         // TODO Auto-generated method stub
-        lUserRoleMapper.deleteLink(map);
+        lUserRoleMapper.deleteLink(userId);
     }
 
     /** (non-Javadoc)

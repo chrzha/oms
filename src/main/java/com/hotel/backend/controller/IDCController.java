@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hotel.backend.entity.Hotel;
 import com.hotel.backend.service.HotelService;
+import com.hotel.backend.service.LUserRoleService;
+import com.hotel.backend.service.UserService;
 import com.hotel.backend.service.UserViewService;
 import com.hotel.backend.view.UserView;
 
@@ -36,6 +38,12 @@ public class IDCController {
 	
 	@Autowired
 	private UserViewService userViewService;
+	
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private LUserRoleService lUserRoleService;
 	
 	@Autowired
 	private HotelService hotelService;
@@ -79,6 +87,15 @@ public class IDCController {
 		userViewService.updateUserViewById(map);
 		
 		return new ModelAndView("success");
+	}
+	
+	@RequestMapping("/deleteUser")
+	public @ResponseBody String deleteUser(String userId){
+		
+		String result = "success";
+		userService.deleteUserById(userId);
+		lUserRoleService.deleteLink(userId);
+		return result;
 	}
 	
 	//editHotel?hotelId
