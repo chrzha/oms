@@ -115,6 +115,9 @@ public class FoodController {
         hotelFoodService.updateFood(food);
 		return result;
 	}
+	
+	
+	
 
 
 }

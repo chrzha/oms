@@ -192,7 +192,7 @@ $(document).ready(function(){
 					<td><a  id="foodPhoto_${status.count}">${list.photo}</a><tetd>
 					<td><a  id="foodRout_${status.count}">${list.rout}</a></td>
 					<td><a  id="foodDesc_${status.count}">${list.description}</a></td>
-					<td><button><a id="update_${status.count}">修改</a></button></td>
+					<td><button <c:if test="${user.hotelId==null}">disabled="disabled"</c:if> id="update_${status.count}"> 修改 </button></td>
 					<td><button> <a id="delete_${status.count}">删除</a></button></td>
 					
 				</tr>

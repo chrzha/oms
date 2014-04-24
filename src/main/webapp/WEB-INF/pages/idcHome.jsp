@@ -94,6 +94,42 @@
 			});
 		}
 	});
+	//viewValidate
+	$("#viewValidate").click(function(){
+			if($("#tabs").tabs('exists','景点信息审核')){
+				$("#tabs").tabs('select','景点信息审核');
+			}else{
+			$('#tabs').tabs('add',{
+				title: '景点信息审核',
+				content: '<iframe style="width:100%;height:480px;" src="/hotel/viewList"></iframe>',
+				closable: true
+			});
+		}
+	});
+	//mktValidate
+	$("#mktValidate").click(function(){
+			if($("#tabs").tabs('exists','购物信息审核')){
+				$("#tabs").tabs('select','购物信息审核');
+			}else{
+				$('#tabs').tabs('add',{
+				title: '购物信息审核',
+				content: '<iframe style="width:100%;height:480px;" src="/hotel/mktList"></iframe>',
+				closable: true
+				});
+		     }
+	});
+	//foodValidate
+	$("#foodValidate").click(function(){
+			if($("#tabs").tabs('exists','美食信息审核')){
+				$("#tabs").tabs('select','美食信息审核');
+			}else{
+				$('#tabs').tabs('add',{
+				title: '美食信息审核',
+				content: '<iframe style="width:100%;height:480px;" src="/hotel/foodList"></iframe>',
+				closable: true
+				});
+		     }
+	});
 	
 });
  
@@ -149,8 +185,19 @@
 		<li data-options="state:'closed'">
 			<span>公共信息审核与管理</span>
 			<ul>
-				<li>
+				<li data-options="state:'closed'">
 					<span>公共信息审核</span>
+					<ul>
+						<li>
+							<a id="viewValidate">周围景点信息审核</a>
+						</li>
+						<li>
+							<a id="mktValidate">周围购物信息审核</a>
+						</li>
+						<li>
+							<a id="foodValidate">周围美食信息审核</a>
+						</li>
+					</ul>
 				</li>
 				<li>
 					<span>公共信息管理</span>

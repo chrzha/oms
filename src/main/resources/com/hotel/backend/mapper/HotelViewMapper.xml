@@ -17,7 +17,7 @@
 		bview.VIEW_ID,VIEW_NAME,VIEW_ADDRESS,VIEW_AWAY,VIEW_ROUT,VIEW_DESC
 	</sql>
 
-	<select id="getViewList" resultMap="BaseResultMap">
+	<select id="getHotelViewList" resultMap="BaseResultMap">
 
 		SELECT
 		<include refid="Base_Column_List" />
