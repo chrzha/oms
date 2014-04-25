@@ -192,14 +192,14 @@ $(document).ready(function(){
 					<td><a  id="foodPhoto_${status.count}">${list.photo}</a><tetd>
 					<td><a  id="foodRout_${status.count}">${list.rout}</a></td>
 					<td><a  id="foodDesc_${status.count}">${list.description}</a></td>
-					<td><button <c:if test="${user.hotelId==null}">disabled="disabled"</c:if> id="update_${status.count}"> 修改 </button></td>
+					<td><button <c:if test="${user.roleId=='0001'}">style="display:none;"</c:if> id="update_${status.count}"> 修改 </button></td>
 					<td><button> <a id="delete_${status.count}">删除</a></button></td>
 					
 				</tr>
 			</c:forEach> 
 			<tr>
 			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-			<td ><button id="add_${status.count}"> <a id="addFood">添加</a></button></td>
+			<td ><button id="add_${status.count}" <c:if test="${user.roleId=='0001'}">style="display:none;"</c:if>> <a id="addFood">添加</a></button></td>
 			</tr>
 		</tbody>
 	</table>
