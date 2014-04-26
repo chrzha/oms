@@ -49,6 +49,12 @@ public class LHotelViewServiceImpl implements LHotelViewService {
         // TODO Auto-generated method stub
         lHotelViewMapper.updateLink(map);
     }
+
+	@Override
+	public void deleteLinkByHotelId(String hotelId) {
+		// TODO Auto-generated method stub
+		lHotelViewMapper.deleteLinkByHotelId(hotelId);
+	}
     
     
 

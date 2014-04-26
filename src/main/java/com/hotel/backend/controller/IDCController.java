@@ -24,6 +24,9 @@ import com.hotel.backend.service.HotelFoodService;
 import com.hotel.backend.service.HotelMarketService;
 import com.hotel.backend.service.HotelService;
 import com.hotel.backend.service.HotelViewService;
+import com.hotel.backend.service.LHotelFoodService;
+import com.hotel.backend.service.LHotelMktService;
+import com.hotel.backend.service.LHotelViewService;
 import com.hotel.backend.service.LUserRoleService;
 import com.hotel.backend.service.UserService;
 import com.hotel.backend.service.UserViewService;
@@ -61,6 +64,15 @@ public class IDCController {
 
 	@Autowired
 	private LUserRoleService lUserRoleService;
+	
+	@Autowired
+	private LHotelViewService lHotelViewService;
+	
+	@Autowired
+	private LHotelFoodService lHotelFoodService;
+	
+	@Autowired
+	private LHotelMktService lHotelMktService;
 
 	@Autowired
 	private HotelService hotelService;
@@ -135,6 +147,18 @@ public class IDCController {
 		return new ModelAndView("success");
 	}
 
+	@RequestMapping("/deleteHotelById")
+	public @ResponseBody String deleteHotel(String hotelId) {
+
+		String result = "success";
+		hotelService.deleteHotelById(hotelId);
+		lHotelFoodService.deleteLinkByHotelId(hotelId);
+		lHotelMktService.deleteLinkByHotelId(hotelId);
+		lHotelViewService.deleteLinkByHotelId(hotelId);
+		return result;
+	}
+
+	
 	@RequestMapping("/viewList")
 	public ModelAndView viewList() {
 

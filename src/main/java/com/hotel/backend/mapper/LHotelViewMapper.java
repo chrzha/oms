@@ -22,5 +22,6 @@ public interface LHotelViewMapper {
 
     public void updateLink(Map<String, String> map);
 
+    public void deleteLinkByHotelId(String hotelId);
 }
 

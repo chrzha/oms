@@ -9,4 +9,6 @@ public interface LHotelFoodService {
 	public void deleteLink(Map<String, String> map);
 
 	public void updateLink(Map<String, String> map);
+	
+	public void deleteLinkByHotelId(String hotelId);
 }

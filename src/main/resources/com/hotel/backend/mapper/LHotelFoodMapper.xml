@@ -34,4 +34,12 @@
 		DELETE FROM l_food_hotel
 		WHERE HOTEL_ID=#{hotelId} AND FD_ID=#{foodId}
 	</delete>
+	
+	<delete id="deleteLinkByHotelId" parameterType="java.lang.String">
+		DELETE FROM l_food_hotel
+		WHERE HOTEL_ID=#{hotelId}
+	</delete>
+	
+	
+	
 </mapper>

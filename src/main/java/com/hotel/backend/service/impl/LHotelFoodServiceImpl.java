@@ -35,4 +35,10 @@ public class LHotelFoodServiceImpl implements LHotelFoodService{
 		
 	}
 
+	@Override
+	public void deleteLinkByHotelId(String hotelId) {
+		// TODO Auto-generated method stub
+		lHotelFoodMapper.deleteLinkByHotelId(hotelId);
+	}
+
 }

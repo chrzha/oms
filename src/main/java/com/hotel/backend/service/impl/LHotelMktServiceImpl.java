@@ -54,5 +54,11 @@ public class LHotelMktServiceImpl implements LHotelMktService{
         lHotelMktMapper.updateLink(map);
     }
 
+	@Override
+	public void deleteLinkByHotelId(String hotelId) {
+		// TODO Auto-generated method stub
+		lHotelMktMapper.deleteLinkByHotelId(hotelId);
+	}
+
 }
 
