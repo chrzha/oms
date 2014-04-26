@@ -57,20 +57,50 @@
        });  
 		
 	});
-	
-	$("#adminValidate").click(function(){
-	$('#tabs').tabs('add',{
-				title: '操作员审核',
-				content: '<iframe style="width:100%;height:480px;" src="/hotel/adminValidate"></iframe>',
-				closable: true
-			});
-	});
+
 	$("#changePwd").click(function(){
 	$('#tabs').tabs('add',{
 				title: '修改密码',
 				content: '<iframe style="width:100%;height:480px;" src="/hotel/changePwd"></iframe>',
 				closable: true
 			});
+	});
+	
+	//viewManage
+	$("#viewManage").click(function(){
+			if($("#tabs").tabs('exists','周围景点')){
+				$("#tabs").tabs('select','周围景点');
+			}else{
+			$('#tabs').tabs('add',{
+				title: '周围景点',
+				content: '<iframe style="width:100%;height:480px;" src="/hotel/hotelViewList"></iframe>',
+				closable: true
+			});
+		}
+	});
+	//mktManege
+	$("#mktManage").click(function(){
+			if($("#tabs").tabs('exists','周围购物商场')){
+				$("#tabs").tabs('select','周围购物商场');
+			}else{
+				$('#tabs').tabs('add',{
+				title: '周围购物商场',
+				content: '<iframe style="width:100%;height:480px;" src="/hotel/hotelMktList"></iframe>',
+				closable: true
+				});
+		     }
+	});
+	//foodManage
+	$("#foodManage").click(function(){
+			if($("#tabs").tabs('exists','周围美食')){
+				$("#tabs").tabs('select','周围美食');
+			}else{
+				$('#tabs').tabs('add',{
+				title: '周围美食',
+				content: '<iframe style="width:100%;height:480px;" src="/hotel/hotelFoodList"></iframe>',
+				closable: true
+				});
+		     }
 	});
 	
 });
@@ -116,7 +146,7 @@
 							<a id="mktManage">周围购物信息管理</a>
 						</li>
 						<li>
-							<span>周围美食信息管理</span>
+							<a id="foodManage">周围美食信息管理</a>
 						</li>
 					</ul>
 				</li>
