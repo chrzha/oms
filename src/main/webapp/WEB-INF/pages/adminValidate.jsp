@@ -64,7 +64,9 @@
 				<th data-options="field:'status',width:100,align:'center'">是否通过审核</th>
 				<th data-options="field:'phone',width:160,align:'center'">联系电话</th>
 				<th data-options="field:'email',width:160,align:'center'">电子邮箱</th>
-				<th data-options="field:'save',width:60,align:'center'"></th>
+				<th data-options="field:'validate',width:60,align:'center'"></th>
+				<th data-options="field:'delete',width:60,align:'center'"></th>
+				
 			</tr>
 		</thead>
 		<tbody>
@@ -87,8 +89,10 @@
 					<td><a  id="phone_${status.count}">${list.phone}</a></td>
 					<td><a  id="email_${status.count}">${list.email}</a></td>
 					<td><button id="edit_${status.count}"> <a href="/hotel/editUser?userId=${list.userId}">审核</a></button></td>
+					<td><button id="delete_${status.count}"> 删除 </button></td>
 				</tr>
 			</c:forEach> 
+			<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 	
 		</tbody>
 	</table>
@@ -98,9 +102,34 @@
 </body>
 <script type="text/javascript">
 $(document).ready(function(){
+  
+	$(".easyui-datagrid tbody tr").each(function(i){
+	
+	    var index = $(this).index();
+	 
+		 $("#delete_"+i).click(function(){
 
-});
+			var userId = $("#userId_"+index).text();
+		
+		 $.messager.confirm('确认', '确定要删除该条记录吗?', function(r){  
+		  if(r){
+		 	$.ajax({
+				url : "/hotel/deleteUser?userId="+userId,
+				type : 'POST',
+				success : function(data) {
+				
+					window.location.reload();
+				},
+				error : function() {
+					alert("修改失败！");
+				}
+			});
+		 }
+		});
+	 });
+   });
  
+});
 </script>
 
 </html>
