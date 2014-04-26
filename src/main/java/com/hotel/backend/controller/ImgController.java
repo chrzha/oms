@@ -66,7 +66,7 @@ public class ImgController {
         // F:\cloud-based-hotel-master\src\main\webapp\images/
         String ctxPath = request.getSession().getServletContext().getRealPath(  
                 "/")  
-                + "images/";  
+                + "webresource/hotel-img/";  
         File dirPath = new File(ctxPath);  
         if (!dirPath.exists()) {  
             dirPath.mkdir();  

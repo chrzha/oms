@@ -144,7 +144,6 @@
             酒店注册
           </button>
         </div>
-
       </div>
     </div>
 

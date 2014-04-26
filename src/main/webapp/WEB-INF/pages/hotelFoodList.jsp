@@ -178,10 +178,10 @@ $(document).ready(function(){
 		<thead>
 			<tr>
 				<th data-options="field:'foodId',width:100,align:'center'">美食编号</th>
+				<th data-options="field:'foodPhoto',width:100,align:'center'">图片</th>
 				<th data-options="field:'foodName',width:100,align:'center'">美食名称</th>
 				<th data-options="field:'foodType',width:100,align:'center'">类型</th>
 				<th data-options="field:'foodAddress',width:100,align:'center'">地址</th>
-				<th data-options="field:'foodPhoto',width:100,align:'center'">图片</th>
 				<th data-options="field:'foodRout',width:100,align:'center'">线路</th>
 				<th data-options="field:'foodDesc',width:160,align:'center'">简介</th>
 				<th data-options="field:'upload',width:80,align:'center'"></th>
@@ -194,20 +194,20 @@ $(document).ready(function(){
 		 <c:forEach var="list" items="${list}" varStatus="status">
 				<tr>
 					<td><a  id="foodId_${status.count}">${list.id}</a></td>
+					<td><img src="${pageContext.request.contextPath}/webresource/hotel-img/${list.photo}"/></td>
 					<td><a  id="foodName_${status.count}">${list.name}</a></td>
 					<td><a  id="foodType_${status.count}">${list.type}</a></td>
 					<td><a  id="foodAddress_${status.count}">${list.address}</a></td>
-					<td><a  id="foodPhoto_${status.count}">${list.photo}</a><tetd>
 					<td><a  id="foodRout_${status.count}">${list.rout}</a></td>
 					<td><a  id="foodDesc_${status.count}">${list.description}</a></td>
-					<td><button id="upload_${status.count}">上传图片</button></td>
+					<td><button id="upload_${status.count}">更换图片</button></td>
 					<td><button id="update_${status.count}">修改</button></td>
 					<td><button> <a id="delete_${status.count}">删除</a></button></td>
 					
 				</tr>
 			</c:forEach> 
 			<tr>
-			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 			<td ><button id="add_${status.count}"> <a id="addFood">添加</a></button></td>
 			</tr>
 		</tbody>
@@ -224,8 +224,6 @@ $(document).ready(function(){
 
 			<tr><td><span>地址*</span></td><td><input type="text" name="address" maxlength="20"></td></tr>
 
-		<!--	<tr><td><span>图片</span></td><td><input type="text" name="photo"></td></tr>
--->
 			<tr><td><span>线路</span></td><td><input type="text" name="rout"></td></tr>
 
 			<tr><td><span>简介</span></td><td><input type="text" name="description"></td></tr>
@@ -251,8 +249,6 @@ $(document).ready(function(){
 			<tr><td><span>类型*</span></td><td><input type="text" id="update_type" name="type"></td></tr>
 
 			<tr><td><span>地址*</span></td><td><input type="text" id="update_address" name="address"></td></tr>
-
-			<tr><td><span>图片</span></td><td><input type="text" id="update_photo" name="photo"></td></tr>
 
 			<tr><td><span>线路</span></td><td><input type="text" id="update_rout" name="rout"></td></tr>
 
