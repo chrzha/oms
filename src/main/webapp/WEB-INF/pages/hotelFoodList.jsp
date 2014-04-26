@@ -136,6 +136,13 @@ $(document).ready(function(){
 			});
 	
 		});
+		//上传图片
+		 $("#upload_"+i).click(function(){
+		 
+		 		var foodId = $("#foodId_"+index).text();
+				window.location="/hotel/upload?foodId="+foodId;
+		 });
+		
 		 $("#delete_"+i).click(function(){
 
 			var foodId = $("#foodId_"+index).text();
@@ -177,6 +184,7 @@ $(document).ready(function(){
 				<th data-options="field:'foodPhoto',width:100,align:'center'">图片</th>
 				<th data-options="field:'foodRout',width:100,align:'center'">线路</th>
 				<th data-options="field:'foodDesc',width:160,align:'center'">简介</th>
+				<th data-options="field:'upload',width:80,align:'center'"></th>
 				<th data-options="field:'update',width:60,align:'center'"></th>
 				<th data-options="field:'delete',width:60,align:'center'"></th>
 			</tr>
@@ -192,7 +200,8 @@ $(document).ready(function(){
 					<td><a  id="foodPhoto_${status.count}">${list.photo}</a><tetd>
 					<td><a  id="foodRout_${status.count}">${list.rout}</a></td>
 					<td><a  id="foodDesc_${status.count}">${list.description}</a></td>
-					<td><button id="update_${status.count}"> 修改 </button></td>
+					<td><button id="upload_${status.count}">上传图片</button></td>
+					<td><button id="update_${status.count}">修改</button></td>
 					<td><button> <a id="delete_${status.count}">删除</a></button></td>
 					
 				</tr>
@@ -215,8 +224,8 @@ $(document).ready(function(){
 
 			<tr><td><span>地址*</span></td><td><input type="text" name="address" maxlength="20"></td></tr>
 
-			<tr><td><span>图片</span></td><td><input type="text" name="photo"></td></tr>
-
+		<!--	<tr><td><span>图片</span></td><td><input type="text" name="photo"></td></tr>
+-->
 			<tr><td><span>线路</span></td><td><input type="text" name="rout"></td></tr>
 
 			<tr><td><span>简介</span></td><td><input type="text" name="description"></td></tr>

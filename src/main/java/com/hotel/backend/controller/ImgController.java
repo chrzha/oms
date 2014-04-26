@@ -32,16 +32,16 @@ import org.springframework.web.servlet.ModelAndView;
 public class ImgController {
 
 	@RequestMapping(value = "/upload", method = RequestMethod.GET)
-	public ModelAndView upload() {
+	public ModelAndView upload(String foodId) {
 
-		ModelAndView modelAndView = new ModelAndView("upload");
+		ModelAndView modelAndView = new ModelAndView("upload","foodId",foodId);
 		return modelAndView;
 	}
 	
 
 	@RequestMapping(value = "/doUpload", method = RequestMethod.POST)
 	public ModelAndView doUpload(HttpServletRequest request,     
-            HttpServletResponse response) throws IOException {
+            HttpServletResponse response,String foodId) throws IOException {
 		
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;  
         CommonsMultipartFile file = (CommonsMultipartFile) multipartRequest  
@@ -49,21 +49,21 @@ public class ImgController {
   
         String name = multipartRequest.getParameter("name");  
         System.out.println("name: " + name);  
-        // ����ļ���  
-        String realFileName = file.getOriginalFilename();  
-        System.out.println("����ļ���" + realFileName);  
-        // ��ȡ·��  
+        //图片名称，包括后缀
+        String realFileName = file.getOriginalFilename();    
+  
+        // F:\cloud-based-hotel-master\src\main\webapp\images/
         String ctxPath = request.getSession().getServletContext().getRealPath(  
                 "/")  
                 + "images/";  
-        // �����ļ�  
         File dirPath = new File(ctxPath);  
         if (!dirPath.exists()) {  
             dirPath.mkdir();  
         }  
-        File uploadFile = new File(ctxPath + realFileName);  //uploadFile save the path to mysql
+
+        //F:\cloud-based-hotel-master\src\main\webapp\images\logo.jpg
+        File uploadFile = new File(ctxPath + realFileName);  
         FileCopyUtils.copy(file.getBytes(), uploadFile);  
-      //  request.setAttribute("files", loadFiles(request));  
         return new ModelAndView("success");  
 	 
 	}

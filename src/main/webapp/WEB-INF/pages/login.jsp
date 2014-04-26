@@ -143,6 +143,7 @@
           <button id="hotelRegister">
             酒店注册
           </button>
+          <button><a href="/hotel/upload">测试上传图片</a></button>
         </div>
 
       </div>
