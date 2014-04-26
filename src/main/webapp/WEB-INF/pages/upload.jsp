@@ -33,8 +33,9 @@ textarea {
 
 		<div style="margin-top: 0px;" class="acxiom-table">
 			<form action="/hotel/doUpload" enctype="multipart/form-data" method="post">
-				<input type="file" id="imgfile" name="imgfile"></input>${foodId} <input
-					type="submit" value="UPLOAD">
+			<input type="hidden" name="foodId" value="${foodId}"/>
+				<input type="file" id="imgfile" name="imgfile"></input> <input
+					type="submit" value="上传">
 
 			</form>
 		</div>

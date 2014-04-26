@@ -67,8 +67,17 @@
 		FD_ROUT= #{rout}
 		where
 		FD_ID=#{id}
-
 	</update>
+	
+	
+	<update id="uploadFoodPhoto" parameterType="map">
+	update bfood
+		set
+		FD_PHOTO = #{photo}
+		where
+		FD_ID=#{id}
+	</update>
+	
 
 </mapper>
 

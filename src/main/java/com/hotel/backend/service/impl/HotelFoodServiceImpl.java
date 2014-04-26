@@ -1,6 +1,7 @@
 package com.hotel.backend.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,12 @@ public class HotelFoodServiceImpl implements HotelFoodService{
 	public void updateFood(Food food) {
 		// TODO Auto-generated method stub
 		hotelFoodMapper.updateFood(food);
+	}
+
+	@Override
+	public void uploadFoodPhoto(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		hotelFoodMapper.uploadFoodPhoto(map);
 	}
 
 }

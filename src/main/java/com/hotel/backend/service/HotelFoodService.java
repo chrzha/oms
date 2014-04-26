@@ -1,6 +1,7 @@
 package com.hotel.backend.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.hotel.backend.entity.Food;
 
@@ -15,5 +16,7 @@ public interface HotelFoodService {
 	public Integer addFood(Food food);
 	
 	public void updateFood(Food food);
+	
+	public void uploadFoodPhoto(Map<String, String> map);
 
 }
