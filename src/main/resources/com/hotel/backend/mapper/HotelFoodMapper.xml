@@ -59,7 +59,7 @@
 	update bfood
 		set
 		FD_NAME = #{name},
-		FD_PHOTO = #{photo},
+
 		FD_TYPE =
 		#{type},
 		FD_DESC = #{description},

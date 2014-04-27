@@ -95,6 +95,9 @@ $(document).ready(function(){
 	$("#cancle_update").click(function(){
 	   $('#win_update').window('close'); 
 	});	
+	$("#cancle_upload").click(function(){
+	   $('#win_upload').window('close'); 
+	});
 	
 	$(".easyui-datagrid tbody tr").each(function(i){
 	
@@ -140,7 +143,10 @@ $(document).ready(function(){
 		 $("#upload_"+i).click(function(){
 		 
 		 		var foodId = $("#foodId_"+index).text();
-				window.location="/hotel/upload?foodId="+foodId;
+				//window.location="/hotel/upload?foodId="+foodId;
+				$('#win_upload').window('open'); 
+				$("#foodId").val(foodId);
+		
 		 });
 		
 		 $("#delete_"+i).click(function(){
@@ -220,7 +226,9 @@ $(document).ready(function(){
 			<input type="hidden" name="id">
 			<tr><td><span>名称*</span></td><td><input type="text" name="name" maxlength="20"></td></tr>
 
-			<tr><td><span>类型*</span></td><td><input type="text" name="type" maxlength="20"></td></tr>
+			<tr><td><span>类型*</span></td><td><select id="type" name="type" style="width:155px;">
+			
+			<option>--请选择--</option><option value="本店特色">本店特色</option><option value="周边美食">周边美食</option><option value="商务宴请">商务宴请</option></select></td></tr>
 
 			<tr><td><span>地址*</span></td><td><input type="text" name="address" maxlength="20"></td></tr>
 
@@ -246,7 +254,9 @@ $(document).ready(function(){
 			
 			<tr><td><span>名称*</span></td><td><input type="text" id="update_name" name="name"></td></tr>
 
-			<tr><td><span>类型*</span></td><td><input type="text" id="update_type" name="type"></td></tr>
+			<tr><td><span>类型*</span></td><td><select id="update_type" name="type" style="width:155px;">
+			
+			<option value="本店特色">本店特色</option><option value="周边美食">周边美食</option><option value="商务宴请">商务宴请</option></select></td></tr>
 
 			<tr><td><span>地址*</span></td><td><input type="text" id="update_address" name="address"></td></tr>
 
@@ -261,7 +271,15 @@ $(document).ready(function(){
 	    	</form>
 	    
     </div>
- 
+   <div id="win_upload" class="easyui-window" title="上传图片" closed="true" style="width:400px;height:290px;">    
+      <form action="/hotel/doUpload" enctype="multipart/form-data" method="post">
+			<input type="hidden" name="foodId" id="foodId"/>
+				<input type="file" id="imgfile" name="imgfile"></input> <input
+					type="submit" value="上传"><input
+					type="button" id="cancle_upload" value="取消">
+
+			</form>
+    </div>
 </body>
 
 </html>

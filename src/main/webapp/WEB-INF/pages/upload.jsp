@@ -10,7 +10,10 @@
 
 <link rel="shortcut icon"
 	href="http://acxiom.wpengine.com/wp-content/uploads/2013/08/favicon.png" />
-
+<script src="${pageContext.request.contextPath}/webresource/hotel-js/jquery-1.7.2.min.js">
+</script>
+<script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/jquery.easyui.min.js">
+</script>
 <title>upload files</title>
 <style type="text/css">
 textarea {
@@ -35,7 +38,8 @@ textarea {
 			<form action="/hotel/doUpload" enctype="multipart/form-data" method="post">
 			<input type="hidden" name="foodId" value="${foodId}"/>
 				<input type="file" id="imgfile" name="imgfile"></input> <input
-					type="submit" value="上传">
+					type="submit" value="上传"><input
+					type="button" id="cancle" value="取消">
 
 			</form>
 		</div>
@@ -43,10 +47,14 @@ textarea {
 
 </body>
 
-</html>
-
 <script type="text/javascript">
+$("#cancle").click(function(){
 
+	window.history.back();
+
+});
 
 </script>
+</html>
+
 
