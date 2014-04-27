@@ -61,6 +61,14 @@
 		HOTEL_ID=#{id}
 	</update>
 	
+	<update id="uploadLogo" parameterType="map">
+		update BHOTEL
+		set
+		HOTEL_LOGO = #{logo}
+		where
+		HOTEL_ID=#{id}
+	</update>
+	
 	<update id="validateHotel" parameterType="map">
 		update BHOTEL
 		set

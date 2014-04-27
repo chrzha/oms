@@ -52,10 +52,10 @@
 <body class="easyui-layout">
 	<div region="center">
 		<div
-			style="height: 300px; width: 410px; margin-left: 300px; margin-top: 10px;">
+			style="height: 300px; width: 800px; margin-left: 250px; margin-top: 10px;">
 			<div class="easyui-panel" title="更改酒店信息"
-				style="height: 400px; width: 500px;">
-				<div style="padding: 10px 0 0 10px">
+				style="height: 300px; width: 600px;">
+				<div style="padding: 10px 0 0 10px;float:left;">
 					<form name="form" id="hotel_form"action="/hotel/doUpdateHotelInfo" modelAttribute="hotel"
 						method="post">
 						<table style="margin: 10px 0 0 70px;">
@@ -81,11 +81,11 @@
 								<td><input type="text" name="phone" value="${hotel.phone}"></td>
 								
 							</tr>
-							<tr>
+							<%--<tr>
 								<td><span>酒店Logo</span></td>
 								<td><input type="file" name="logo" ></td>
 								
-							</tr>
+							</tr>--%>
 							<tr>
 								<td><span>简介</span></td>
 								<td><input type="text" name="description" value="${hotel.description}"></td>
@@ -109,9 +109,25 @@
         						</div>
     					</div>
 					</form>
-
+				</div>
+			<div style="width:230px;height:140px;border:1px solid silver;margin:25px 0 0 10px;float:left;">
+					<div style="width:230px;height:140px;border:1px solid silver;">
+						<img src="${pageContext.request.contextPath}/webresource/hotel-img/${hotel.logo}"/>
+					</div>
+					<div style="margin:5px 0 0 80px;">
+						<button id="upload_logo">更换Logo</button>
+					</div>
 				</div>
 			</div>
+			
+			<div id="win_upload" class="easyui-window" title="上传图片" closed="true" style="width:400px;height:290px;">    
+      			<form action="/hotel/uploadLogo" enctype="multipart/form-data" method="post">
+					<input type="hidden" name="hotelId" id="hotelId"/>
+					<input type="file" id="imgfile" name="imgfile"></input> <input
+					type="submit" value="上传"><input
+					type="button" id="cancle_upload" value="取消">
+				</form>
+            </div>
 
 		</div>
 	</div>
@@ -120,6 +136,16 @@
 <script type="text/javascript">
  $(document).ready(function(){
  
+ $("#upload_logo").click(function(){
+ 	$('#win_upload').window('open'); 
+ 
+ 
+ });
+
+	$("#cancle_upload").click(function(){
+	   $('#win_upload').window('close'); 
+	});
+
  $("#back").click(function(){
  
  	window.close();

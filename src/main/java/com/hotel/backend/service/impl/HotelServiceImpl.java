@@ -89,5 +89,11 @@ public class HotelServiceImpl implements HotelService {
 		
 	}
 
+	@Override
+	public void uploadLogo(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		hotelMapper.uploadLogo(map);
+	}
+
 }
 

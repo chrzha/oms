@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hotel.backend.entity.Food;
 import com.hotel.backend.service.HotelFoodService;
+import com.hotel.backend.service.HotelService;
 import com.hotel.backend.view.UserView;
 
 /**
@@ -41,6 +42,9 @@ public class ImgController {
 	
 	@Autowired
 	private HotelFoodService hotelFoodService;
+	
+	@Autowired
+	private HotelService hotelService;
 
 	@RequestMapping(value = "/upload", method = RequestMethod.GET)
 	public ModelAndView upload(String foodId) {
@@ -92,6 +96,49 @@ public class ImgController {
         return new ModelAndView("hotelFoodList","list",list);  
 	 
 	}
+	
+	
+	@RequestMapping(value = "/uploadLogo", method = RequestMethod.POST)
+	public ModelAndView uploadLogo(HttpServletRequest request,     
+            HttpServletResponse response) throws IOException {
+		
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;  
+        CommonsMultipartFile file = (CommonsMultipartFile) multipartRequest  
+                .getFile("imgfile");  
+  
+        String name = multipartRequest.getParameter("name");  
+        System.out.println("name: " + name);  
+        //图片名称，包括后缀
+        String realFileName = file.getOriginalFilename();    
+  
+        // F:\cloud-based-hotel-master\src\main\webapp\images/
+        String ctxPath = request.getSession().getServletContext().getRealPath(  
+                "/")  
+                + "webresource/hotel-img/";  
+        File dirPath = new File(ctxPath);  
+        if (!dirPath.exists()) {  
+            dirPath.mkdir();  
+        }  
+
+        //F:\cloud-based-hotel-master\src\main\webapp\images\logo.jpg
+        File uploadFile = new File(ctxPath + realFileName);  
+        FileCopyUtils.copy(file.getBytes(), uploadFile);  
+        
+        UserView userView = (UserView) request.getSession()
+        		.getAttribute("user");
+        
+        String  hotelId = userView.getHotelId();
+
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("id", hotelId);
+        map.put("logo", realFileName);
+        
+        hotelService.uploadLogo(map);
+
+        return new ModelAndView("success");  
+	 
+	}
+	
 	
 
 }

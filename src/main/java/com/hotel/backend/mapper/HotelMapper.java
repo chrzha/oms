@@ -26,5 +26,6 @@ public interface HotelMapper {
 	public Integer createHotel(Hotel hotel);
 	public Integer updateHotelInfo(Hotel hotel);
 	public void validateHotel(Map<String , String> map);
+	public void uploadLogo(Map<String , String> map);
 }
 
