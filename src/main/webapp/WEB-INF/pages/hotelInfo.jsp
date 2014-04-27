@@ -96,9 +96,9 @@
 							<input type="hidden" id="status" name="status" value="${hotel.status}">
 						</table>
 						
-						<div class="submit" style="margin-left: 150px;">
+						<div class="submit" style="margin-left: 135px;">
 							<input type="button" id="update" value="提交修改" />
-								<input type="button" id="back" value="返回"/>
+								<input type="button" id="back" value="取消修改"/>
 						  
 						</div>
 						<div id="loading" style="width: 200px; margin-left: 40%; margin-top: 10px;z-index: 999; display: none">
@@ -148,7 +148,7 @@
 
  $("#back").click(function(){
  
- 	window.close();
+ 	window.parent('close');
  
  });
 	

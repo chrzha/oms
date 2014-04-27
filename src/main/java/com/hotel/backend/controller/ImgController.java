@@ -21,6 +21,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hotel.backend.entity.Food;
+import com.hotel.backend.entity.Hotel;
 import com.hotel.backend.service.HotelFoodService;
 import com.hotel.backend.service.HotelService;
 import com.hotel.backend.view.UserView;
@@ -134,8 +135,10 @@ public class ImgController {
         map.put("logo", realFileName);
         
         hotelService.uploadLogo(map);
+        
+        Hotel hotel = hotelService.getHotelById(hotelId);
 
-        return new ModelAndView("success");  
+        return new ModelAndView("hotelInfo", "hotel", hotel);  
 	 
 	}
 	
