@@ -95,6 +95,7 @@ public class FoodController {
 		map.put("hotelId", hotelId);
 		map.put("foodId", foodId);
 		food.setId(foodId);
+		food.setPhoto("default.jpg");
 		lHotelFoodService.insertLink(map);
 		if (hotelFoodService.addFood(food) > 0) {
 

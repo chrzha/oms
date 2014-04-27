@@ -59,7 +59,6 @@
 	update bfood
 		set
 		FD_NAME = #{name},
-
 		FD_TYPE =
 		#{type},
 		FD_DESC = #{description},
