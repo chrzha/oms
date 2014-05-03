@@ -104,5 +104,23 @@ public class LoginController {
 		return list;
 
 	}
+	
+	
+	//updateUserInfo
+	@RequestMapping("/updateUserInfo")
+	public @ResponseBody String updateUserInfo(){
+		
+		String result = "success";
+		
+		
+		
+		
+		
+		
+		return result;
+		
+	}
+	
+	
 
 }

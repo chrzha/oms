@@ -112,7 +112,7 @@
 				</div>
 			<div style="width:230px;height:140px;border:1px solid silver;margin:25px 0 0 10px;float:left;">
 					<div style="width:230px;height:140px;border:1px solid silver;">
-						<img src="${pageContext.request.contextPath}/webresource/hotel-img/${hotel.logo}"/>
+						<img style="align:middle;" src="${pageContext.request.contextPath}/webresource/hotel-img/${hotel.logo}" />
 					</div>
 					<div style="margin:5px 0 0 80px;">
 						<button id="upload_logo">更换Logo</button>

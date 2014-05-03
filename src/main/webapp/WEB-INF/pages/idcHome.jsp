@@ -130,6 +130,27 @@
 				});
 		     }
 	});
+	//update_userInfo
+	$("#update_userInfo").click(function(){
+	   $('#win_update_userInfo').window('open'); 
+	   
+	   $("#update_userInfo_btn").click(function(){
+	   
+	   	var user = $("#update_info_form").serialize();
+	  	 $.post("/hotel/updateUserInfo",user,function(data){
+				   if(data=="success"){
+						window.location.reload();
+				   }else{
+					  alert("error!");		   
+				   } 
+		 });
+
+	   });
+	});
+	//cancle_update_info
+	$("#cancle_update_info").click(function(){
+	   $('#win_update_userInfo').window('close'); 
+	});	
 	
 });
  
@@ -145,16 +166,33 @@
 </style>
 </head>
 <body class="easyui-layout" >
+
   <div region="north" style="height:70px;background-color:#99ccff;">
     <div style="width:500px;height:30px;margin-left:30%;"><h1>基于云模式的酒店服务信息后台管理系统</h1></div>
   </div>
 
 <div region="west" split="true" style="width:220px;" title="导航菜单">
     <div id="userInfo">
-        <div style="background-color:#99ccff;padding:2px 5px;font-weight:bold;">登录信息</div>
+        <div style="background-color:#99ccff;padding:2px 5px;font-weight:bold;">登录信息<a id="update_userInfo" style="color:#ff0000;font-weight:bold;margin-left:80px;cursor:pointer;">修改</a></div>
         用户名：${user.userName}<br />
         邮&nbsp;&nbsp;箱：${user.email}<br />
         电&nbsp;&nbsp;话：${user.phone}<br />
+    </div>
+    <div id="win_update_userInfo" class="easyui-window" title="修改联系方式" closed="true" style="width:400px;height:170px;">    
+       <form name="form"  id = "update_info_form" action="/hotel/???" ENCTYPE="multipart/form-data" modelAttribute="user" method="post" >
+	    	<table style="margin:10px 0 0 70px;">		
+			<input type="hidden" name="id" value=" ">
+			
+			<tr><td><span>联系电话</span></td><td><input type="text" name="phone" value="${user.phone}"></td></tr>
+
+			<tr><td><span>邮箱</span></td><td><input type="text" name="email" value="${user.email}"></td></tr>
+					
+	    	</table>
+	    	<div class="submit" style="margin-left:150px;">
+	    		<input type="button"  id="update_userInfo_btn" value="修改"/>
+	    		<input type="button" id="cancle_update_info" value="取消" /></div>
+	    	</form>
+	    
     </div>
 
     <div class="">
