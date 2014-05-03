@@ -53,14 +53,9 @@
 	<update id="updateUser" parameterType="com.hotel.backend.entity.User">
 		update BUSER
 		set
-		USER_NAME = #{userName},
-		USER_PASSWORD = #{userPassword},
 		USER_EMAIL =
 		#{email},
-		USER_PHONE = #{phone},
-		USER_DESC = #{description}
-		USER_STATUS= #{status}
-		USER_HOTEL_ID = #{hotelId}
+		USER_PHONE = #{phone}
 		where
 		USER_ID=#{userId}
 

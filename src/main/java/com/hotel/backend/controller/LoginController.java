@@ -11,14 +11,8 @@
 package com.hotel.backend.controller;
 
 import java.io.IOException;
-
 import java.util.ArrayList;
-
 import java.util.List;
-
-import com.hotel.backend.service.UserService;
-import com.hotel.backend.service.UserViewService;
-import com.hotel.backend.view.UserView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,10 +20,16 @@ import javax.ws.rs.Path;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.hotel.backend.entity.User;
+import com.hotel.backend.service.UserService;
+import com.hotel.backend.service.UserViewService;
+import com.hotel.backend.view.UserView;
 
 /**
  * ��Simple Functional Description��<br>
@@ -108,16 +108,16 @@ public class LoginController {
 	
 	//updateUserInfo
 	@RequestMapping("/updateUserInfo")
-	public @ResponseBody String updateUserInfo(){
+	public @ResponseBody List<String> updateUserInfo(@ModelAttribute("user") User user){
 		
-		String result = "success";
+		List<String> list = new ArrayList<String>();
 		
+		userService.updateUser(user);
+
+		list.add(user.getPhone());
+		list.add(user.getEmail());
 		
-		
-		
-		
-		
-		return result;
+		return list;
 		
 	}
 	

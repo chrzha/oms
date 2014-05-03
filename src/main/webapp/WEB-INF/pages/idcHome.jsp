@@ -138,8 +138,18 @@
 	   
 	   	var user = $("#update_info_form").serialize();
 	  	 $.post("/hotel/updateUserInfo",user,function(data){
-				   if(data=="success"){
-						window.location.reload();
+				   if(data!=null){
+						
+						var user_eamil = $("#user_email").text();
+						var user_phone = $("#user_phone").text();
+						alert(user_phone);
+						user_eamil = data[1];
+						user_phone = data[0];
+						alert(user_phone);
+						$("#user_email").text(user_eamil);
+						$("#user_phone").text(user_phone);
+						window.parent.location.reload();
+						
 				   }else{
 					  alert("error!");		   
 				   } 
@@ -175,13 +185,13 @@
     <div id="userInfo">
         <div style="background-color:#99ccff;padding:2px 5px;font-weight:bold;">登录信息<a id="update_userInfo" style="color:#ff0000;font-weight:bold;margin-left:80px;cursor:pointer;">修改</a></div>
         用户名：${user.userName}<br />
-        邮&nbsp;&nbsp;箱：${user.email}<br />
-        电&nbsp;&nbsp;话：${user.phone}<br />
+        邮&nbsp;&nbsp;箱：<a id="user_email">${user.email}</a><br />
+        电&nbsp;&nbsp;话：<a id="user_phone">${user.phone}</a><br />
     </div>
     <div id="win_update_userInfo" class="easyui-window" title="修改联系方式" closed="true" style="width:400px;height:170px;">    
        <form name="form"  id = "update_info_form" action="/hotel/???" ENCTYPE="multipart/form-data" modelAttribute="user" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
-			<input type="hidden" name="id" value=" ">
+			<input type="hidden" name="userId" value="${user.userId}">
 			
 			<tr><td><span>联系电话</span></td><td><input type="text" name="phone" value="${user.phone}"></td></tr>
 
