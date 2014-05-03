@@ -111,6 +111,7 @@ $(document).ready(function(){
 			var foodAddress = $("#foodAddress_"+index).text();
 			var foodPhoto = $("#foodPhoto_"+index).text();
 			var foodRout = $("#foodRout_"+index).text();
+			var foodPrice = $("#foodPrice_"+index).text();
 			var foodDesc = $("#foodDesc_"+index).text();
 			
 
@@ -121,6 +122,7 @@ $(document).ready(function(){
 			$("#update_address").val(foodAddress);
 			$("#update_photo").val(foodPhoto);
 			$("#update_rout").val(foodRout);
+			$("#update_price").val(foodPrice);
 			$("#update_description").val(foodDesc);
 			
 			$('#win_update').window('open'); 
@@ -180,16 +182,17 @@ $(document).ready(function(){
 </head>
 <body class="easyui-layout" >
   <div region="center" style="height:80px;" id="test">
-  <table class="easyui-datagrid" title="管理员列表" style="width:1000px;height:400px">
+  <table class="easyui-datagrid" title="管理员列表" style="width:1100px;height:400px">
 		<thead>
 			<tr>
-				<th data-options="field:'foodId',width:100,align:'center'">美食编号</th>
+				<th data-options="field:'foodId',width:80,align:'center'">美食编号</th>
 				<th data-options="field:'foodPhoto',width:100,align:'center'">图片</th>
 				<th data-options="field:'foodName',width:100,align:'center'">美食名称</th>
 				<th data-options="field:'foodType',width:100,align:'center'">类型</th>
-				<th data-options="field:'foodAddress',width:100,align:'center'">地址</th>
+				<th data-options="field:'foodPrice',width:50,align:'center'">价格</th>
+				<th data-options="field:'foodAddress',width:150,align:'center'">地址</th>
 				<th data-options="field:'foodRout',width:100,align:'center'">线路</th>
-				<th data-options="field:'foodDesc',width:160,align:'center'">简介</th>
+				<th data-options="field:'foodDesc',width:180,align:'center'">简介</th>
 				<th data-options="field:'upload',width:80,align:'center'"></th>
 				<th data-options="field:'update',width:60,align:'center'"></th>
 				<th data-options="field:'delete',width:60,align:'center'"></th>
@@ -203,6 +206,7 @@ $(document).ready(function(){
 					<td><img src="${pageContext.request.contextPath}/webresource/hotel-img/${list.photo}"/></td>
 					<td><a  id="foodName_${status.count}">${list.name}</a></td>
 					<td><a  id="foodType_${status.count}">${list.type}</a></td>
+					<td>￥<a  id="foodPrice_${status.count}">${list.price}</a></td>
 					<td><a  id="foodAddress_${status.count}">${list.address}</a></td>
 					<td><a  id="foodRout_${status.count}">${list.rout}</a></td>
 					<td><a  id="foodDesc_${status.count}">${list.description}</a></td>
@@ -213,7 +217,7 @@ $(document).ready(function(){
 				</tr>
 			</c:forEach> 
 			<tr>
-			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 			<td ><button id="add_${status.count}"> <a id="addFood">添加</a></button></td>
 			</tr>
 		</tbody>
@@ -230,7 +234,9 @@ $(document).ready(function(){
 			
 			<option>--请选择--</option><option value="本店特色">本店特色</option><option value="周边美食">周边美食</option><option value="商务宴请">商务宴请</option></select></td></tr>
 
-			<tr><td><span>地址*</span></td><td><input type="text" name="address" maxlength="20"></td></tr>
+			<tr><td><span>价格</span></td><td><input type="text" name="price"  ></td></tr>
+			
+			<tr><td><span>地址*</span></td><td><input type="text" name="address" ></td></tr>
 
 			<tr><td><span>线路</span></td><td><input type="text" name="rout"></td></tr>
 
@@ -257,6 +263,8 @@ $(document).ready(function(){
 			<tr><td><span>类型*</span></td><td><select id="update_type" name="type" style="width:155px;">
 			
 			<option value="本店特色">本店特色</option><option value="周边美食">周边美食</option><option value="商务宴请">商务宴请</option></select></td></tr>
+
+			<tr><td><span>价格</span></td><td><input type="text" id="update_price" name="price"></td></tr>
 
 			<tr><td><span>地址*</span></td><td><input type="text" id="update_address" name="address"></td></tr>
 

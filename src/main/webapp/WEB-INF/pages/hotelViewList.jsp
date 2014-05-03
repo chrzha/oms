@@ -77,6 +77,7 @@ a:link {
 				<th data-options="field:'viewAddress',width:100,align:'center'">地址</th>
 				<th data-options="field:'viewAway',width:100,align:'center'">距离</th>
 				<th data-options="field:'viewRout',width:100,align:'center'">线路</th>
+				<th data-options="field:'price',width:100,align:'center'">门票</th>
 				<th data-options="field:'viewDesc',width:160,align:'center'">简介</th>
 				<th data-options="field:'update',width:60,align:'center'"></th>
 				<th data-options="field:'delete',width:60,align:'center'"></th>
@@ -93,13 +94,14 @@ a:link {
 					 
 					<td><a  id="viewAway_${status.count}">${list.away}</a></td>
 					<td><a  id="viewRout_${status.count}">${list.rout}</a></td>
+					<td>￥<a  id="viewPrice_${status.count}">${list.price}</a></td>
 					<td><a  id="viewDesc_${status.count}">${list.description}</a></td>
 					<td><button > <a id="update_${status.count}">修改</a></button></td>
 				    <td><button > <a id="delete_${status.count}">删除</a></button></td>
 				</tr>
 			</c:forEach> 
 			<tr>
-			<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 			<td ><button id="add_${status.count}"> <a id="addView">添加</a></button></td>
 			</tr>
 	
@@ -119,6 +121,8 @@ a:link {
 			<tr><td><span>距离*</span></td><td><input type="text" name="away"></td></tr>
 
 			<tr><td><span>线路</span></td><td><input type="text" name="rout"></td></tr>
+			
+			<tr><td><span>门票</span></td><td><input type="text" name="price"></td></tr>
 
 			<tr><td><span>简介</span></td><td><input type="text" name="description"></td></tr>
 					
@@ -130,7 +134,7 @@ a:link {
 	    	</form>
 	    
     </div>
- <div id="win_update" class="easyui-window" title="更新景点记录" closed="true" style="width:400px;height:270px;">    
+ <div id="win_update" class="easyui-window" title="更新景点记录" closed="true" style="width:400px;height:290px;">    
        <form name="form" id="update_form" action="/hotel/updateView" ENCTYPE="multipart/form-data" modelAttribute="view" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			
@@ -145,6 +149,8 @@ a:link {
 			<tr><td><span>距离</span></td><td><input type="text" name="away" id="update_away"></td></tr>
 
 			<tr><td><span>线路</span></td><td><input type="text" name="rout" id="update_rout"></td></tr>
+			
+			<tr><td><span>门票</span></td><td><input type="text" name="price" id="update_price"></td></tr>
 
 			<tr><td><span>简介</span></td><td><input type="text" name="description" id="update_description"></td></tr>
 					
@@ -200,6 +206,7 @@ $(document).ready(function(){
 			var viewAddress = $("#viewAddress_"+index).text();
 			var viewAway = $("#viewAway_"+index).text();
 			var viewRout = $("#viewRout_"+index).text();
+			var viewPrice = $("#viewPrice_"+index).text();
 			var viewDesc = $("#viewDesc_"+index).text();
 			
 
@@ -208,7 +215,8 @@ $(document).ready(function(){
 			$("#update_name").val(viewName);
 			$("#update_address").val(viewAddress);
 			$("#update_away").val(viewAway);
-			$("#update_rout").val(viewDesc);
+			$("#update_rout").val(viewRout);
+			$("#update_price").val(viewPrice);
 			$("#update_description").val(viewDesc);
 			
 			$('#win_update').window('open'); 

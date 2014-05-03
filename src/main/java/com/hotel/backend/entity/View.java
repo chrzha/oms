@@ -18,6 +18,7 @@ public class View {
 	private String address;
 	private String away;
 	private String rout;
+	private float price;
 	private String description;
 	/**
 	 * @return the id
@@ -30,6 +31,13 @@ public class View {
 	 */
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public float getPrice() {
+		return price;
+	}
+	public void setPrice(float price) {
+		this.price = price;
 	}
 	/**
 	 * @return the name

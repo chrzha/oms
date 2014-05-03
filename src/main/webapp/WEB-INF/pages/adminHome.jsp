@@ -208,11 +208,11 @@
 			<span>操作员审核与管理</span>
 			<ul>
 				<li>
-					<a id="adminValidate">操作员审核</a>
+					<a id="adminValidate">操作员审核与管理</a>
 				</li>
-				<li>
+				<!--<li>
 					<span>操作员管理</span>
-				</li>
+				</li>-->
 			</ul>
 		</li>
 		<li data-options="state:'closed'">
@@ -226,7 +226,7 @@
 		<li data-options="state:'closed'">
 			<span>公共信息审核与管理</span>
 			<ul>
-				<li data-options="state:'closed'">
+				<!--<li data-options="state:'closed'">
 					<span>公共信息审核</span>
 					<ul>
 						<li>
@@ -239,18 +239,18 @@
 							<span>周围美食信息审核</span>
 						</li>
 					</ul>
-				</li>
+				</li>-->
 				<li data-options="state:'closed'">
-					<span>公共信息管理</span>
+					<span>公共信息审核与管理</span>
 					<ul>
 						<li>
-							<a id="viewManage">周围景点信息管理</a>
+							<a id="viewManage">周围景点审核与管理</a>
 						</li>
 						<li>
-							<a id="mktManage">周围购物信息管理</a>
+							<a id="mktManage">周围购物审核与管理</a>
 						</li>
 						<li>
-							<a id="foodManage">周围美食信息管理</a>
+							<a id="foodManage">周围美食审核与管理</a>
 						</li>
 					</ul>
 				</li>

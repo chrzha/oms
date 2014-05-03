@@ -8,13 +8,14 @@
 		<result column="VIEW_ADDRESS" jdbcType="VARCHAR" property="address" />
 		<result column="VIEW_AWAY" jdbcType="VARCHAR" property="away" />
 		<result column="VIEW_ROUT" jdbcType="VARCHAR" property="rout" />
+		<result column="VIEW_PRICE" jdbcType="FLOAT" property="price" />
 		<result column="VIEW_DESC" jdbcType="VARCHAR" property="description" />
 
 	</resultMap>
 
 
 	<sql id="Base_Column_List">
-		bview.VIEW_ID,VIEW_NAME,VIEW_ADDRESS,VIEW_AWAY,VIEW_ROUT,VIEW_DESC
+		bview.VIEW_ID,VIEW_PRICE,VIEW_NAME,VIEW_ADDRESS,VIEW_AWAY,VIEW_ROUT,VIEW_DESC
 	</sql>
 
 	<select id="getHotelViewList" resultMap="BaseResultMap">
@@ -50,9 +51,9 @@
 
 		INSERT INTO
 		bview
-		(VIEW_ID,VIEW_NAME,VIEW_ADDRESS,VIEW_AWAY,VIEW_DESC,VIEW_ROUT)
+		(VIEW_ID,VIEW_NAME,VIEW_ADDRESS,VIEW_AWAY,VIEW_DESC,VIEW_ROUT,VIEW_PRICE)
 		VALUES
-		(#{id},#{name},#{address},#{away},#{description},#{rout})
+		(#{id},#{name},#{address},#{away},#{description},#{rout},#{price})
 
 	</insert>
 	
@@ -63,6 +64,7 @@
 		VIEW_DESC = #{description},
 		VIEW_ADDRESS = #{address},
 		VIEW_ROUT = #{rout},
+		VIEW_PRICE = #{price},
 		VIEW_AWAY = #{away}
 		where
 		VIEW_ID=#{id}

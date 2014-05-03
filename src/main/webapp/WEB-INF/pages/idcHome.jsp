@@ -183,7 +183,7 @@
 
 <div region="west" split="true" style="width:220px;" title="导航菜单">
     <div id="userInfo">
-        <div style="background-color:#99ccff;padding:2px 5px;font-weight:bold;">登录信息<a id="update_userInfo" style="color:#ff0000;font-weight:bold;margin-left:80px;cursor:pointer;">修改</a></div>
+        <div style="background-color:#99ccff;padding:2px 5px;font-weight:bold;">登录信息<a id="update_userInfo" style="color:#ff0000;font-weight:bold;margin-left:70px;cursor:pointer;">修改</a></div>
         用户名：${user.userName}<br />
         邮&nbsp;&nbsp;箱：<a id="user_email">${user.email}</a><br />
         电&nbsp;&nbsp;话：<a id="user_phone">${user.phone}</a><br />
@@ -212,44 +212,44 @@
 			<span>管理员审核与管理</span>
 			<ul>
 				<li>
-					<a id="adminValidate">管理员审核</a>
+					<a id="adminValidate">管理员审核与管理</a>
 				</li>
-				<li>
+				<!--<li>
 					<span>管理员管理</span>
-				</li>
+				</li>-->
 			</ul>
 		</li>
 		<li data-options="state:'closed'">
 			<span>酒店审核与管理</span>
 			<ul>
 				<li>
-					<a id="hotelsValidate">酒店审核</a>
+					<a id="hotelsValidate">酒店审核与管理</a>
 				</li>
-				<li>
+				<!--<li>
 					<span>酒店管理</span>
-				</li>
+				</li>-->
 			</ul>
 		</li>
 		<li data-options="state:'closed'">
 			<span>公共信息审核与管理</span>
 			<ul>
 				<li data-options="state:'closed'">
-					<span>公共信息审核</span>
+					<span>公共信息审核与管理</span>
 					<ul>
 						<li>
-							<a id="viewValidate">周围景点信息审核</a>
+							<a id="viewValidate">景点信息审核</a>
 						</li>
 						<li>
-							<a id="mktValidate">周围购物信息审核</a>
+							<a id="mktValidate">购物信息审核</a>
 						</li>
 						<li>
-							<a id="foodValidate">周围美食信息审核</a>
+							<a id="foodValidate">美食信息审核</a>
 						</li>
 					</ul>
 				</li>
-				<li>
+				<!--<li>
 					<span>公共信息管理</span>
-				</li>
+				</li>-->
 			</ul>
 		</li>
 		<li>
