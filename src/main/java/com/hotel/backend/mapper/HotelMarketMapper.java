@@ -4,6 +4,7 @@
 package com.hotel.backend.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.hotel.backend.entity.Market;
 
@@ -14,7 +15,7 @@ import com.hotel.backend.entity.Market;
  */
 public interface HotelMarketMapper {
 
-	  public List<Market> getMarketList();
+	  public List<Market> getMarketList(Map<String, Integer> map);
 	    
 	  public List<Market> getMarketListByHotelId(String hotelId);
 	  

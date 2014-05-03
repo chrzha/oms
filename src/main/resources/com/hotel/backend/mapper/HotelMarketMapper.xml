@@ -16,14 +16,14 @@
 		bsupermarket.MKT_ID,MKT_NAME,MKT_ADDRESS,MKT_AWAY,MKT_ROUT,MKT_DESC
 	</sql>
 
-	<select id="getMarketList" resultMap="BaseResultMap">
+	<select id="getMarketList" resultMap="BaseResultMap" parameterType="map">
 
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM
 		bsupermarket,l_mkt_hotel where
 		l_mkt_hotel.mkt_ID =
-		bsupermarket.MKT_ID
+		bsupermarket.MKT_ID limit #{startIndex},#{pageSize}
 
 	</select>
 

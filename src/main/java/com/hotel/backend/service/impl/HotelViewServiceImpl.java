@@ -1,15 +1,14 @@
 package com.hotel.backend.service.impl;
 
-import com.hotel.backend.entity.Market;
-import com.hotel.backend.entity.View;
-import com.hotel.backend.mapper.HotelViewMapper;
-import com.hotel.backend.service.HotelViewService;
-
-
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.hotel.backend.entity.View;
+import com.hotel.backend.mapper.HotelViewMapper;
+import com.hotel.backend.service.HotelViewService;
 
 /**
  * //TODO Description
@@ -30,9 +29,9 @@ public class HotelViewServiceImpl implements HotelViewService {
     
     
     @Override
-    public List<View> getHotelViewList() {
+    public List<View> getHotelViewList(Map<String, Integer> map) {
         // TODO Auto-generated method stub
-        List<View> list = hotelViewMapper.getHotelViewList();
+        List<View> list = hotelViewMapper.getHotelViewList(map);
         
         return list;
     }

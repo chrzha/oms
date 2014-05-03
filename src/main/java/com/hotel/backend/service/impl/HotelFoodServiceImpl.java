@@ -17,9 +17,9 @@ public class HotelFoodServiceImpl implements HotelFoodService{
 	private HotelFoodMapper hotelFoodMapper;
 
 	@Override
-	public List<Food> getFoodList() {
+	public List<Food> getFoodList(Map<String, Integer> map) {
 		// TODO Auto-generated method stub
-		return hotelFoodMapper.getFoodList();
+		return hotelFoodMapper.getFoodList(map);
 	}
 
 	@Override

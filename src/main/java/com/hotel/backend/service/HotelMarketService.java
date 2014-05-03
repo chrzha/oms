@@ -4,6 +4,7 @@
 package com.hotel.backend.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.hotel.backend.entity.Market;
 
@@ -15,7 +16,7 @@ import com.hotel.backend.entity.Market;
 public interface HotelMarketService {
 
 	public List<Market> getMarketListByHotelId(String hotelId);
-	public List<Market> getMarketList();
+	public List<Market> getMarketList(Map<String, Integer> map);
 	public void deleteMarketById(String mktId);
 	public Integer addMkt(Market market);
 	public void updateMkt(Market market);

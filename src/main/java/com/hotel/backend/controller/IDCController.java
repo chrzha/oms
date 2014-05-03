@@ -5,13 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Path;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -49,13 +46,13 @@ public class IDCController {
 
 	@Autowired
 	private UserViewService userViewService;
-	
+
 	@Autowired
 	private HotelFoodService hotelFoodService;
-	
+
 	@Autowired
 	private HotelMarketService hotelMarketService;
-	
+
 	@Autowired
 	private HotelViewService hotelViewService;
 
@@ -64,13 +61,13 @@ public class IDCController {
 
 	@Autowired
 	private LUserRoleService lUserRoleService;
-	
+
 	@Autowired
 	private LHotelViewService lHotelViewService;
-	
+
 	@Autowired
 	private LHotelFoodService lHotelFoodService;
-	
+
 	@Autowired
 	private LHotelMktService lHotelMktService;
 
@@ -148,7 +145,8 @@ public class IDCController {
 	}
 
 	@RequestMapping("/deleteHotelById")
-	public @ResponseBody String deleteHotel(String hotelId) {
+	public @ResponseBody
+	String deleteHotel(String hotelId) {
 
 		String result = "success";
 		hotelService.deleteHotelById(hotelId);
@@ -159,26 +157,74 @@ public class IDCController {
 	}
 
 	
-	@RequestMapping("/viewList")
-	public ModelAndView viewList() {
-
-		List<View> list = hotelViewService.getHotelViewList();
-
-		return new ModelAndView("hotelViewList", "list", list);
-	}
 
 	@RequestMapping("/mktList")
-	public ModelAndView mktList() {
-		List<Market> list = hotelMarketService.getMarketList();
-		return new ModelAndView("hotelMktList", "list", list);
+	public @ResponseBody
+	List<Market> mktList(Integer startIndex, Integer pageSize) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startIndex", startIndex);
+		map.put("pageSize", pageSize);
+		List<Market> list = hotelMarketService.getMarketList(map);
+		return list;
 	}
 
+	@RequestMapping("/idcMktList")
+	public ModelAndView idcMktList() {
+
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startIndex", 0);
+		map.put("pageSize", 10);
+		List<Market> list = hotelMarketService.getMarketList(map);
+
+		return new ModelAndView("idcMktList", "list", list);
+	}
+
+	@RequestMapping("/idcFoodList")
+	public ModelAndView idcFoodList() {
+
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startIndex", 0);
+		map.put("pageSize", 10);
+		List<Food> list = hotelFoodService.getFoodList(map);
+
+		return new ModelAndView("idcFoodList", "list", list);
+	}
 	@RequestMapping("/foodList")
-	public ModelAndView foodList() {
+	public @ResponseBody
+	List<Food> foodList(Integer startIndex, Integer pageSize) {
 
-		List<Food> list = hotelFoodService.getFoodList();
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startIndex", startIndex);
+		map.put("pageSize", pageSize);
+		List<Food> list = hotelFoodService.getFoodList(map);
 
-		return new ModelAndView("hotelFoodList", "list", list);
+		return list;
 	}
+
+
+	@RequestMapping("/idcViewList")
+	public ModelAndView idcViewList() {
+
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startIndex", 0);
+		map.put("pageSize", 10);
+		List<View> list = hotelViewService.getHotelViewList(map);
+
+		return new ModelAndView("idcViewList", "list", list);
+	}
+
+	@RequestMapping("/viewList")
+	public @ResponseBody
+	List<View> viewList(Integer startIndex, Integer pageSize) {
+
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startIndex", startIndex);
+		map.put("pageSize", pageSize);
+
+		List<View> list = hotelViewService.getHotelViewList(map);
+
+		return list;
+	}
+	
 
 }

@@ -101,7 +101,7 @@
 			}else{
 			$('#tabs').tabs('add',{
 				title: '景点信息审核',
-				content: '<iframe style="width:100%;height:480px;" src="/hotel/viewList"></iframe>',
+				content: '<iframe style="width:100%;height:480px;" src="/hotel/idcViewList"></iframe>',
 				closable: true
 			});
 		}
@@ -113,7 +113,7 @@
 			}else{
 				$('#tabs').tabs('add',{
 				title: '购物信息审核',
-				content: '<iframe style="width:100%;height:480px;" src="/hotel/mktList"></iframe>',
+				content: '<iframe style="width:100%;height:480px;" src="/hotel/idcMktList"></iframe>',
 				closable: true
 				});
 		     }
@@ -125,7 +125,7 @@
 			}else{
 				$('#tabs').tabs('add',{
 				title: '美食信息审核',
-				content: '<iframe style="width:100%;height:480px;" src="/hotel/foodList"></iframe>',
+				content: '<iframe style="width:100%;height:480px;" src="/hotel/idcFoodList"></iframe>',
 				closable: true
 				});
 		     }

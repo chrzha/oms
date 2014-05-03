@@ -18,14 +18,14 @@
 		bview.VIEW_ID,VIEW_PRICE,VIEW_NAME,VIEW_ADDRESS,VIEW_AWAY,VIEW_ROUT,VIEW_DESC
 	</sql>
 
-	<select id="getHotelViewList" resultMap="BaseResultMap">
+	<select id="getHotelViewList" resultMap="BaseResultMap" parameterType="map">
 
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM
 		BVIEW,l_view_hotel where
 		l_view_hotel.VIEW_ID =
-		BVIEW.VIEW_ID
+		BVIEW.VIEW_ID limit #{startIndex},#{pageSize}
 
 	</select>
 

@@ -18,14 +18,14 @@
 		bfood.FD_ID,FD_NAME,FD_PHOTO,FD_TYPE,FD_PRICE,FD_DESC,FD_ADDRESS,FD_ROUT
 	</sql>
 
-	<select id="getFoodList" resultMap="BaseResultMap">
+	<select id="getFoodList" resultMap="BaseResultMap" parameterType="map">
 
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM
 		bfood,l_food_hotel where
 		l_food_hotel.FD_ID =
-		bfood.FD_ID
+		bfood.FD_ID limit #{startIndex},#{pageSize}
 
 	</select>
 

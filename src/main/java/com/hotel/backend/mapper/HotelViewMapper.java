@@ -1,10 +1,9 @@
 package com.hotel.backend.mapper;
 
-import com.hotel.backend.entity.Market;
-import com.hotel.backend.entity.View;
-
-
 import java.util.List;
+import java.util.Map;
+
+import com.hotel.backend.entity.View;
 
 /**
  * //TODO Description
@@ -20,7 +19,7 @@ import java.util.List;
 
 public interface HotelViewMapper {
     
-    public List<View> getHotelViewList();
+    public List<View> getHotelViewList(Map<String, Integer> map);
     
     public List<View> getViewListByHotelId(String hotelId);
     

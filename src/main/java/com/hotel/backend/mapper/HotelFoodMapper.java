@@ -8,7 +8,7 @@ import com.hotel.backend.entity.Food;
 
 public interface HotelFoodMapper {
 
-	  public List<Food> getFoodList();
+	  public List<Food> getFoodList(Map<String, Integer> map);
     
 	  public List<Food> getFoodListByHotelId(String hotelId);
 	  
