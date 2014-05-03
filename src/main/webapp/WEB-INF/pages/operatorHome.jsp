@@ -212,11 +212,12 @@
 <div region="center">
   <div id="tabs" class="easyui-tabs" fit="true" border="false">
     <div title="系统首页">
-     <p style="text-align:center;font-size:medium;color:#666;border-bottom:#ccc 1px solid;"><b>基于云模式的酒店服务信息后台管理系统</b></p>
+     <!--<p style="text-align:center;font-size:medium;color:#666;border-bottom:#ccc 1px solid;"><b>基于云模式的酒店服务信息后台管理系统</b></p>
         <p style="padding-left:2em;font-weight:bold;">基于云模式的酒店服务信息后台管理系统须知：</p>
         <p style="padding-left:2em;">
             <span style="color:#ff0000;font-weight:bold;">1. 第一次登录后务必修改自己的密码，以确保操作安全。</span><br />
-        <span id="conLabel"></span>
+        <span id="conLabel"></span>-->
+         <div style="margin-left:200px;margin-top:30px;"><img src="${pageContext.request.contextPath}/webresource/hotel-img/cloud.jpg" /></div>
     </div>
   </div>
 </div>

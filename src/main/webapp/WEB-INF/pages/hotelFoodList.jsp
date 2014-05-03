@@ -43,6 +43,8 @@
 </script>
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/jquery.easyui.min.js">
 </script>
+<script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/locale/easyui-lang-zh_CN.js">
+</script>
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/tabs.js">
 </script>
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/SimpleTree.js">
@@ -180,9 +182,9 @@ $(document).ready(function(){
 </script>
 
 </head>
-<body class="easyui-layout" >
+<body class="easyui-layout" style="width:100%;height:600px;">
   <div region="center" style="height:80px;" id="test">
-  <table class="easyui-datagrid" title="管理员列表" style="width:1100px;height:400px">
+  <table class="easyui-datagrid" title="美食列表" style="width:1120px;height:450px">
 		<thead>
 			<tr>
 				<th data-options="field:'foodId',width:80,align:'center'">美食编号</th>
@@ -222,6 +224,7 @@ $(document).ready(function(){
 			</tr>
 		</tbody>
 	</table>
+	<div class="easyui-pagination" data-options="total:114" style="border:1px solid #ddd;"></div>
 	
  </div>
 	<div id="win_add" class="easyui-window" title="添加美食记录" closed="true" style="width:400px;height:270px;">    
