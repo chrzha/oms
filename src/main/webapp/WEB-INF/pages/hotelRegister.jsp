@@ -46,6 +46,7 @@
 	display: block;
 	color: red;
 	font-size: 13px;
+	font-weight:bold;
 }
 </style>
 </head>
@@ -86,16 +87,16 @@
 							</tr>
 
 							<tr>
+								<td><span >邮箱*</span></td>
+								<td><input type="text" id="id1" name="email" class="easyui-validatebox" data-options="validType:'email'"></td>
+								<td><span class="email"></span></td><br>
+							</tr>
+							<tr>
 								<td><span>简介</span></td>
-								<td><input type="text" name="description"></td>
+								<td><textarea rows="3" cols="19" name="description"></textarea></td>
 								<td><span class="description"></span></td>
 							</tr>
 
-							<tr>
-								<td><span >邮箱*</span></td>
-								<td><input type="text" id="id1" name="email"></td>
-								<td><span class="email"></span></td><br>
-							</tr>
 							<input type="hidden" id="status" name="status">
 						</table>
 						<div class="submit" style="margin-left: 150px;">
@@ -125,7 +126,7 @@
 </body>
 <script type="text/javascript">
  $(document).ready(function(){
- 
+
  $("#back").click(function(){
  
  	window.location = "/hotel";
@@ -133,6 +134,36 @@
  });
 	
 	$("#register").click(function(){
+	
+	var name = $("[name='name']").val();
+	var address = $("[name='address']").val();
+	var phone = $("[name='phone']").val();
+	var email = $("[name='email']").val();
+	
+	if(name==null||name==""){
+		$(".name").text("请输入名称！");
+		return false;
+	}else{
+		$(".name").text(" ");
+	}
+	if(address==null||address==""){
+		$(".address").text("请输入地址！");
+		return false;
+	}else{
+		$(".address").text(" ");
+	}
+	if(phone==null||phone==""){
+		$(".phone").text("请输入联系电话！");
+		return false;
+	}else{
+		$(".phone").text(" ");
+	}
+	if(email==null||email==""){
+		$(".email").text("请输入电子邮箱！");
+		return false;
+	}else{
+		$(".email").text(" ");
+	}
 	
 	$("#loading").css("display", "block");
 	

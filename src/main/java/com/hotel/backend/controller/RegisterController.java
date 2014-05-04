@@ -57,7 +57,7 @@ public class RegisterController {
 		
 		int size = userService.getAllUser().size();
 		String temp = userService.getAllUser().get(size-1).getUserId();
-		int total = Integer.parseInt(temp.substring(4, size+1))+1;
+		int total = Integer.parseInt(temp.substring(4, temp.length()))+1;
 		
 		
 		String userId = "";
@@ -99,7 +99,10 @@ public class RegisterController {
 	public @ResponseBody String hotelRegister(@ModelAttribute("hotel") Hotel hotel,String email){
 	    String result = "";
 	    //05130001
-	    int total = hotelService.getHotelTotalCount()+1;
+	    int size = hotelService.getHotelTotalCount();
+	    String temp = hotelService.getHotelList().get(size-1).getId();
+	    int total = Integer.parseInt(temp.substring(4, temp.length()))+1;
+	    
         String hotelId = "";
         if (total < 10) {
             hotelId = "0513000" + total;
@@ -110,6 +113,7 @@ public class RegisterController {
         } else {
             hotelId = "0513" + total;
         }
+        hotel.setPhone(hotel.getPhone().trim());
 	    hotel.setId(hotelId);
 	    hotel.setStatus("0");
 	    
