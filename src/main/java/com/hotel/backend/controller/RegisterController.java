@@ -54,7 +54,12 @@ public class RegisterController {
 			String roleId) {
 		String result = "";
 		// 20140001
-		int total = userService.getUserTotalCount()+1;
+		
+		int size = userService.getAllUser().size();
+		String temp = userService.getAllUser().get(size-1).getUserId();
+		int total = Integer.parseInt(temp.substring(4, size+1))+1;
+		
+		
 		String userId = "";
 		if (total < 10) {
 			userId = "2014000" + total;

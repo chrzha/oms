@@ -39,6 +39,8 @@ pageEncoding="utf-8"%>
 </script>
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/jquery.easyui.min.js">
 </script>
+<script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/locale/easyui-lang-zh_CN.js">
+</script>
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/tabs.js">
 </script>
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/SimpleTree.js">
@@ -46,10 +48,12 @@ pageEncoding="utf-8"%>
 
 
 <style>
-.username,.password,.repassword,.email,.description,.role,.phone,.hotelId{
+.username,.password,.repassword,.email,.description,.roleId,.phone,.hotelId{
 	display:block;
 	color:red;
-	font-size:13px;
+	font-size:10px;
+	font-weight:bold;
+	width:120px;
 }
 
 </style>
@@ -62,24 +66,24 @@ pageEncoding="utf-8"%>
 
 <div region="center">
   <div style="height:400px;width:410px;margin-left:490px;margin-top:10px;">
-     <div class="easyui-panel"  title="注册" style="height:400px;width:400px;">
+     <div class="easyui-panel"  title="注册" style="height:400px;width:450px;">
   	<div style="padding:10px 0 0 10px">
 	   <form name="form" id="user_form"action="/hotel/register" ENCTYPE="multipart/form-data" modelAttribute="user" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			
-			<tr><td><span>用户名*</span></td><td><input type="text" name="userName" maxlength="20"></td><td><span class="username"></span></td></tr>
+			<tr><td><span>用户名*</span></td><td><input type="text" name="userName" maxlength="20"  ></td><td><span class="username"></span></td></tr>
 
-			<tr><td><span>密码*</span></td><td><input type="password" name="userPassword" maxlength="20"></td><td><span class="password"></span></td></tr>
+			<tr><td><span>密码*</span></td><td><input type="password" name="userPassword" maxlength="20"  ></td><td><span class="password"></span></td></tr>
 
-			<tr><td><span>确认密码*</span></td><td><input type="password" name="repassword" maxlength="20"></td><td><span class="repassword"></span></td></tr>
+			<tr><td><span>确认密码*</span></td><td><input type="password" name="repassword" maxlength="20"  ></td><td><span class="repassword"></span></td></tr>
 
-			<tr><td><span>电话*</span></td><td><input type="text" name="phone"></td><td><span class="telephone"></span></td></tr>
+			<tr><td><span>电话*</span></td><td><input type="text" name="phone"  ></td><td><span class="phone"></span></td></tr>
 
-			<tr><td><span>邮箱*</span></td><td><input type="text" id="id1" name="email"></td><td><span class="email"></span></td></tr>
+			<tr><td><span>邮箱*</span></td><td><input type="text" id="id1" name="email" class="easyui-validatebox" data-options="validType:'email'"></td><td><span class="email"></span></td></tr>
 
-			<tr><td><span>所在酒店编号*</span></td><td><input type="text" id="hotelId" name="hotelId"></td><td><span class="hotelId"></span></td></tr>
+			<tr><td><span>所在酒店编号*</span></td><td><input type="text" id="hotelId" name="hotelId" ></td><td><span class="hotelId"></span></td></tr>
 
-			<tr><td><span>注册角色*</span></td><td><select id="roleId" name="roleId" style="width:155px;"><option>--请选择--</option><option value="0002">酒店管理员</option><option value="0003">酒店操作员</option></select></td><td><span class="role"></span></td></tr>
+			<tr><td><span>注册角色*</span></td><td><select id="roleId" name="roleId" style="width:155px;"  ><option>--请选择--</option><option value="0002">酒店管理员</option><option value="0003">酒店操作员</option></select></td><td><span class="roleId"></span></td></tr>
 
 			<tr><td><span>备注</span></td><td><input type="text" id="id1" name="description"></td><td></td></tr>
 			
@@ -124,8 +128,77 @@ pageEncoding="utf-8"%>
  
  $("#register").click(function(){
 	
-	$("#loading").css("display", "block");
 	
+	//validation
+	//用户名是否被注册
+	
+	var userName = $("[name='userName']").val();
+	if(userName==null||userName==""){
+		$(".username").text("请输入用户名！");
+		return false;
+	}
+		$.post("isExsit",{username:userName},function(data){
+				   if(data==false){
+						$(".username").text("该用户名已被注册！");
+						return false;
+				   }else{
+					   $(".username").text("");
+				   }
+		});
+	
+	
+	var userPassword = $("[name='userPassword']").val();
+	var repassword = $("[name='repassword']").val();
+	var phone = $("[name='phone']").val();
+	var email = $("[name='email']").val();
+	var hotelId = $("[name='hotelId']").val();
+	var roleId = $("[name='roleId']").val();
+	
+	if(userPassword==null||userPassword==""){
+		$(".password").text("请输入密码！");
+		return false;
+	}else{
+		$(".password").text(" ");
+	}
+	if(repassword==repassword==""){
+		$(".repassword").text("请再次输入密码！");
+		return false;
+	}else{
+		$(".repassword").text(" ");
+	}
+	if(userPassword!=repassword){
+		$(".repassword").text("密码不一致！");
+		return false;
+	}else{
+		$(".repassword").text(" ");
+	}
+	if(phone==null||phone==""){
+		$(".phone").text("请输入联系电话！");
+		return false;
+	}else{
+		$(".phone").text(" ");
+	}
+	if(email==null||email==""){
+		$(".email").text("请输入电子邮箱！");
+		return false;
+	}else{
+		$(".email").text(" ");
+	}
+	if(hotelId==null||hotelId==""){
+		$(".hotelId").text("所在酒店编号不能为空！");
+		return false;
+	}else{
+		$(".hotelId").text(" ");
+	}
+	if(roleId!="0002"&&roleId!="0003"){
+		$(".roleId").text("角色不能为空！");
+		return false;
+	}else{
+		$(".roleId").text(" ");
+	
+	}
+	
+	$("#loading").css("display", "block");
 	var user = $("#user_form").serialize();
 	   $.post("/hotel/register",user,function(data){
 	   
@@ -137,6 +210,9 @@ pageEncoding="utf-8"%>
 					  alert("error!");		   
 				   } 
      });	
+	
+	 
+	
    });
  
 	
