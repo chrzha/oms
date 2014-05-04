@@ -41,6 +41,8 @@
 </script>
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/SimpleTree.js">
 </script>
+<script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/locale/easyui-lang-zh_CN.js">
+</script>
 <script type="text/javascript">
  $(document).ready(function(){
 	$("#exit").click(function(){

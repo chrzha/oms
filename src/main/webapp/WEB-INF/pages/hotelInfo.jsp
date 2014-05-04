@@ -120,13 +120,16 @@
 				</div>
 			</div>
 			
-			<div id="win_upload" class="easyui-window" title="上传图片" closed="true" style="width:400px;height:290px;">    
-      			<form action="/hotel/uploadLogo" enctype="multipart/form-data" method="post">
+			<div id="win_upload" class="easyui-window" title="上传图片" closed="true" style="width:400px;height:140px;">    
+      			<div style="margin:20px 0 0 20px;">
+      			<form id="upload_form" action="/hotel/uploadLogo" enctype="multipart/form-data" method="post">
 					<input type="hidden" name="hotelId" id="hotelId"/>
 					<input type="file" id="imgfile" name="imgfile"></input> <input
-					type="submit" value="上传"><input
+					type="button" value="上传" id="upload_submit"><input
 					type="button" id="cancle_upload" value="取消">
-				</form>
+				</form>      			
+      			</div>
+			 <div id="p" class="easyui-progressbar" style="width:300px;margin-left:50px;margin-top:20px;"></div>  
             </div>
 
 		</div>
@@ -168,6 +171,21 @@
 				   } 
      });	
    });
+   $("#upload_submit").click(function(){
+   
+           var value = $('#p').progressbar('getValue');  
+           if (value < 100){  
+               value += Math.floor(Math.random() * 30);  
+              $('#p').progressbar('setValue', value);  
+               setTimeout(arguments.callee, 200);  
+           }else{
+           		$("#upload_form").submit();
+           }
+           
+           
+   
+   });
+      
    
 });
  
