@@ -52,4 +52,10 @@ public class HotelFoodServiceImpl implements HotelFoodService{
 		hotelFoodMapper.uploadFoodPhoto(map);
 	}
 
+	@Override
+	public Integer getTotalCount() {
+		// TODO Auto-generated method stub
+		return hotelFoodMapper.getTotalCount();
+	}
+
 }

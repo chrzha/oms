@@ -19,4 +19,6 @@ public interface HotelFoodMapper {
 	  public void updateFood(Food food);
 	  
 	  public void uploadFoodPhoto(Map<String, String> map);
+	  
+	  public Integer getTotalCount();
 }

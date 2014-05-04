@@ -54,6 +54,17 @@ public class FoodController {
 		String result = "success";
 		return result;
 	}
+	@RequestMapping("/deleteFoodByIDC")
+	public @ResponseBody
+	String deleteFoodByIDC(HttpServletRequest request,
+			HttpServletResponse response, String foodId) {
+
+		hotelFoodService.deleteFoodById(foodId);
+
+		String result = "success";
+		return result;
+	}
+
 	
 	@RequestMapping("/goAddFood")
 	public ModelAndView goAddMkt(){

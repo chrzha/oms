@@ -18,15 +18,19 @@
 		bfood.FD_ID,FD_NAME,FD_PHOTO,FD_TYPE,FD_PRICE,FD_DESC,FD_ADDRESS,FD_ROUT
 	</sql>
 
-	<select id="getFoodList" resultMap="BaseResultMap" parameterType="map">
+	<select id="getFoodList" resultMap="BaseResultMap"
+		parameterType="map">
 
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM
-		bfood,l_food_hotel where
-		l_food_hotel.FD_ID =
-		bfood.FD_ID limit #{startIndex},#{pageSize}
+		bfood limit
+		#{startIndex},#{pageSize}
 
+	</select>
+
+	<select id="getTotalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM BFOOD
 	</select>
 
 	<select id="getFoodListByHotelId" parameterType="java.lang.String"
@@ -37,13 +41,15 @@
 		FROM
 		bfood,l_food_hotel where
 		l_food_hotel.FD_ID =
-		bfood.FD_ID and l_food_hotel.HOTEL_ID = #{hotelId};
+		bfood.FD_ID and
+		l_food_hotel.HOTEL_ID = #{hotelId};
 
 	</select>
 
 	<delete id="deleteFoodById" parameterType="java.lang.String">
 		delete from
-		bfood where FD_ID= #{foodId}
+		bfood where
+		FD_ID= #{foodId}
 	</delete>
 
 	<insert id="addFood" parameterType="com.hotel.backend.entity.Food">
@@ -55,11 +61,12 @@
 		(#{id},#{name},#{photo},#{type},#{price},#{description},#{address},#{rout})
 
 	</insert>
-	
+
 	<update id="updateFood" parameterType="com.hotel.backend.entity.Food">
-	update bfood
+		update bfood
 		set
-		FD_NAME = #{name},
+		FD_NAME =
+		#{name},
 		FD_TYPE =
 		#{type},
 		FD_PRICE = #{price},
@@ -69,16 +76,16 @@
 		where
 		FD_ID=#{id}
 	</update>
-	
-	
+
+
 	<update id="uploadFoodPhoto" parameterType="map">
-	update bfood
+		update bfood
 		set
 		FD_PHOTO = #{photo}
 		where
 		FD_ID=#{id}
 	</update>
-	
+
 
 </mapper>
 

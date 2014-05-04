@@ -7,7 +7,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
   <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>
       酒店周围美食信息
     </title>
@@ -25,17 +25,26 @@
         type="text/css"
         href="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/default/easyui.css">
 
+
+
+
   </link>
   <link 
       rel="stylesheet"
       type="text/css"
       href="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/icon.css">
 
+
+
+
 </link>
 <link 
     rel="stylesheet"
     type="text/css"
     href="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/tree_themes/SimpleTree.css">
+
+
+
 
 </link>
 
@@ -52,104 +61,84 @@
 
 
 <style>
-a:link {
- text-decoration: none;
- color: #F60;
- }
- a:visited {
- text-decoration: none;
- }
- a:hover {
- text-decoration: none;
- }
- a:active {
- text-decoration: none;
- font-size: 14px;
- font-weight: bold;
- }
 
+  a:link { text-decoration: none; color: #F60; } a:visited { text-decoration: none; } a:hover { text-decoration: none; }
+  a:active { text-decoration: none; font-size: 14px; font-weight: bold; }
 </style>
 
 </head>
 <body class="easyui-layout" style="width:100%;height:600px;">
   <div region="center" style="height:80px;" id="test">
-  <table class="easyui-datagrid" title="美食列表" style="width:1120px;height:450px">
-		<thead>
-			<tr>
-				<th data-options="field:'foodId',width:80,align:'center'">美食编号</th>
-				<th data-options="field:'foodPhoto',width:100,align:'center'">图片</th>
-				<th data-options="field:'foodName',width:100,align:'center'">美食名称</th>
-				<th data-options="field:'foodType',width:100,align:'center'">类型</th>
-				<th data-options="field:'foodPrice',width:50,align:'center'">价格</th>
-				<th data-options="field:'foodAddress',width:150,align:'center'">地址</th>
-				<th data-options="field:'foodRout',width:100,align:'center'">线路</th>
-				<th data-options="field:'foodDesc',width:180,align:'center'">简介</th>
-				<th data-options="field:'delete',width:60,align:'center'"></th>
-			</tr>
-		</thead>
-		<tbody id="myBody">
-		 <c:forEach var="list" items="${list}" varStatus="status">
-				<tr>
-					<td><a  id="foodId_${status.count}">${list.id}</a></td>
-					<td><img src="${pageContext.request.contextPath}/webresource/hotel-img/${list.photo}"/></td>
-					<td><a  id="foodName_${status.count}">${list.name}</a></td>
-					<td><a  id="foodType_${status.count}">${list.type}</a></td>
-					<td>￥<a  id="foodPrice_${status.count}">${list.price}</a></td>
-					<td><a  id="foodAddress_${status.count}">${list.address}</a></td>
-					<td><a  id="foodRout_${status.count}">${list.rout}</a></td>
-					<td><a  id="foodDesc_${status.count}">${list.description}</a></td>
-					<td><button> <a id="delete_${status.count}">删除</a></button></td>
-					
-				</tr>
-			</c:forEach> 
-		</tbody>
-	</table>
-	<div class="easyui-pagination" data-options="total:114" style="border:1px solid #ddd;"></div>
-	
- </div>
+    <table 
+        id="dg"
+        title="美食列表"
+        class="easyui-datagrid"
+        style="width:1100px;height:480px"
+        data-options="singleSelect:true,collapsible:true,url:'/hotel/foodList' "
+        toolbar="#toolbar"
+        pagination="true"
+        rownumbers="true"
+        fitColumns="true"
+        singleSelect="true">
+
+      <thead>
+        <tr>
+          <th data-options="field:'id',width:80,align:'center'">
+            美食编号
+          </th>
+         <!-- <th data-options="field:'photo',width:100,align:'center'">
+            图片
+          </th>-->
+          <th data-options="field:'name',width:100,align:'center'">
+            美食名称
+          </th>
+          <th data-options="field:'type',width:100,align:'center'">
+            类型
+          </th>
+          <th data-options="field:'price',width:50,align:'center'">
+            价格
+          </th>
+          <th data-options="field:'address',width:150,align:'center'">
+            地址
+          </th>
+          <th data-options="field:'rout',width:100,align:'center'">
+            线路
+          </th>
+          <th data-options="field:'description',width:180,align:'center'">
+            简介
+          </th>
+   
+        </tr>
+      </thead>
+
+    </table>
+
+  
+   <div id="toolbar"><a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="destroyUser();" 
+详细出处参考：http://www.jb51.net/article/42016.htm>删除</a>
+    </div>
+  </div>
 </body>
 <script type="text/javascript">
-$(document).ready(function(){
+  function destroyUser() {
+            var row = $('#dg').datagrid('getSelected');
+            if (row) {
+                $.messager.confirm('Confirm', '确定要删除吗?', function (r) {
+                    if (r) {
+                        $.post('/hotel/deleteFoodByIDC', { foodId: row.id }, function (result) {
+                            if (result=="success") {
+                                $('#dg').datagrid('reload');    // reload the user data  
+                            } else {
+                                $.messager.show({   // show error message  
+                                    title: 'Error',
+                                    msg:  "ERROR"
+                                });
+                            }
+                        }, 'json');
+                    }
+                });
+            }
+        }  
 
-	var startIndex = 0;
-	var pageSize = 5;
-	
-	$.ajax({
-				url : "/hotel/foodList?startIndex="+startIndex+"&pageSize="+pageSize,
-				type : 'GET',
-				success : function(data) {
-				initTable(data);
-				},
-				error : function() {
-					alert("修改失败！");
-				}
-	});
-	
-	
-	function initTable(data) {
-		
-            var len = data.length;
-          
-            $("#myBody tr").remove();
-            
-            for (var i = 0; i < len; i++) {
-            	
-            	 $(".easyui-datagrid #myBody").append("<tr></tr>");
-                 $(".easyui-datagrid #myBody tr:last").append("<td><a>"+data[i].id+"</a></td>");
-                 $(".easyui-datagrid #myBody tr:last").append("<td><a>"+data[i].photo+"</a></td>");
-                 $(".easyui-datagrid #myBody tr:last").append("<td><a>"+data[i].name+"</a></td>");
-                 $(".easyui-datagrid #myBody tr:last").append("<td><a>"+data[i].type+"</a></td>");
-                 $(".easyui-datagrid #myBody tr:last").append("<td><a>"+data[i].price+"</a></td>");
-                 $(".easyui-datagrid #myBody tr:last").append("<td><a>"+data[i].address+"</a></td>");
-                 $(".easyui-datagrid #myBody tr:last").append("<td><a>"+data[i].rout+"</a></td>");
-                 $(".easyui-datagrid #myBody tr:last").append("<td><a>"+data[i].description+"</a></td>");
-                 $(".easyui-datagrid #myBody tr:last").append("<td><a>delete</a></td>");
-                
-		}
-	}
-
-});
- 
 </script>
-
 </html>

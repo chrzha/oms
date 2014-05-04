@@ -73,6 +73,25 @@ public class IDCController {
 
 	@Autowired
 	private HotelService hotelService;
+	
+	private int page; //当前页,名字必须为page   
+	private int rows ; //每页大小,名字必须为rows   
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+
+	public int getRows() {
+		return rows;
+	}
+
+	public void setRows(int rows) {
+		this.rows = rows;
+	}
 
 	@RequestMapping("/idcHome")
 	public ModelAndView goIDCHomePage() {
@@ -156,8 +175,6 @@ public class IDCController {
 		return result;
 	}
 
-	
-
 	@RequestMapping("/mktList")
 	public @ResponseBody
 	List<Market> mktList(Integer startIndex, Integer pageSize) {
@@ -181,26 +198,34 @@ public class IDCController {
 
 	@RequestMapping("/idcFoodList")
 	public ModelAndView idcFoodList() {
-
+/*
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("startIndex", 0);
 		map.put("pageSize", 10);
 		List<Food> list = hotelFoodService.getFoodList(map);
-
-		return new ModelAndView("idcFoodList", "list", list);
+*/
+		return new ModelAndView("idcFoodList");
 	}
+
 	@RequestMapping("/foodList")
 	public @ResponseBody
-	List<Food> foodList(Integer startIndex, Integer pageSize) {
+	Map<String, Object> foodList(Integer page, Integer rows,Map<String, Object> map) {
 
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("startIndex", startIndex);
-		map.put("pageSize", pageSize);
-		List<Food> list = hotelFoodService.getFoodList(map);
+		Map<String, Integer> mapSearch = new HashMap<String, Integer>();
+		mapSearch.put("startIndex", (page-1)*rows);
+		mapSearch.put("pageSize", rows);
+		List<Food> list = hotelFoodService.getFoodList(mapSearch);
+		// 获取总记录数
+		int totalRows = hotelFoodService.getTotalCount();
 
-		return list;
+		map.put("total", totalRows);
+
+		map.put("rows", list);
+
+		// 返回指定格式的Map，Jackson会把Map转换未Json
+
+		return map;
 	}
-
 
 	@RequestMapping("/idcViewList")
 	public ModelAndView idcViewList() {
@@ -225,6 +250,5 @@ public class IDCController {
 
 		return list;
 	}
-	
 
 }
