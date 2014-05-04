@@ -153,6 +153,20 @@ $(document).ready(function(){
 		
 		 });
 		
+		 $("#upload_submit").click(function(){
+		 
+		 var imgfile = $("#imgfile").val();
+		 
+           var value = $('#p').progressbar('getValue');  
+           if (value < 100){  
+               value += Math.floor(Math.random() * 30);  
+              $('#p').progressbar('setValue', value);  
+               setTimeout(arguments.callee, 200);  
+           }else{
+           		$("#upload_form").submit();
+           }
+   		});
+		
 		 $("#delete_"+i).click(function(){
 
 			var foodId = $("#foodId_"+index).text();
@@ -282,14 +296,17 @@ $(document).ready(function(){
 	    	</form>
 	    
     </div>
-   <div id="win_upload" class="easyui-window" title="上传图片" closed="true" style="width:400px;height:290px;">    
-      <form action="/hotel/doUpload" enctype="multipart/form-data" method="post">
+   <div id="win_upload" class="easyui-window" title="上传图片" closed="true" style="width:400px;height:140px;"> 
+   	<div style="margin:20px 0 0 20px;">   
+      <form id="upload_form" action="/hotel/doUpload" enctype="multipart/form-data" method="post">
 			<input type="hidden" name="foodId" id="foodId"/>
 				<input type="file" id="imgfile" name="imgfile"></input> <input
-					type="submit" value="上传"><input
+					type="button" value="上传" id="upload_submit"><input
 					type="button" id="cancle_upload" value="取消">
 
 			</form>
+	</div>
+	<div id="p" class="easyui-progressbar" style="width:300px;margin-left:50px;margin-top:20px;"></div>  		
     </div>
 </body>
 
