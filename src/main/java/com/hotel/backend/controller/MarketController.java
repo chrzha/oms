@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hotel.backend.entity.Food;
 import com.hotel.backend.entity.Market;
 import com.hotel.backend.service.HotelMarketService;
 import com.hotel.backend.service.LHotelMktService;
@@ -59,7 +58,16 @@ public class MarketController {
 		String result = "success";
 		return result;
 	}
-	
+	@RequestMapping("/deleteMktByIDC")
+	public @ResponseBody
+	String deleteMktByIDC(HttpServletRequest request,
+			HttpServletResponse response, String mktId) {
+
+		hotelMarketService.deleteMarketById(mktId);
+
+		String result = "success";
+		return result;
+	}
 	@RequestMapping("/goAddMkt")
 	public ModelAndView goAddMkt(){
 		return new ModelAndView("addMkt");

@@ -24,5 +24,7 @@ public interface HotelMarketMapper {
 	  public Integer addMkt(Market market);
 	  
 	  public void updateMkt(Market market);
+	  
+	  public Integer getTotalCount();
 	    
 }

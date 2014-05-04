@@ -69,46 +69,56 @@ a:link {
 </head>
 <body class="easyui-layout" >
   <div region="center" style="height:80px;">
-  <table class="easyui-datagrid" title="管理员列表" style="width:1000px;height:400px">
+ <table 
+        id="dg"
+        title="景点列表"
+        class="easyui-datagrid"
+        style="width:1100px;height:480px"
+        data-options="singleSelect:true,collapsible:true,url:'/hotel/viewList' "
+        toolbar="#toolbar"
+        pagination="true"
+        rownumbers="true"
+        fitColumns="true"
+        singleSelect="true">
+
 		<thead>
 			<tr>
-				<th data-options="field:'viewId',width:100,align:'center'">景点编号</th>
-				<th data-options="field:'viewName',width:100,align:'center'">景点名称</th>
-				<th data-options="field:'viewAddress',width:100,align:'center'">地址</th>
-				<th data-options="field:'viewAway',width:100,align:'center'">距离</th>
-				<th data-options="field:'viewRout',width:100,align:'center'">线路</th>
+				<th data-options="field:'id',width:100,align:'center'">景点编号</th>
+				<th data-options="field:'name',width:100,align:'center'">景点名称</th>
+				<th data-options="field:'address',width:100,align:'center'">地址</th>
+				<th data-options="field:'away',width:100,align:'center'">距离</th>
+				<th data-options="field:'rout',width:100,align:'center'">线路</th>
 				<th data-options="field:'price',width:100,align:'center'">门票</th>
-				<th data-options="field:'viewDesc',width:160,align:'center'">简介</th>
-				
-				<th data-options="field:'delete',width:60,align:'center'"></th>
+				<th data-options="field:'description',width:160,align:'center'">简介</th>
 				
 			</tr>
 		</thead>
-		<tbody>
-		
-		 <c:forEach var="list" items="${list}" varStatus="status">
-				<tr>
-					<td><a  id="viewId_${status.count}">${list.id}</a></td>
-					<td><a  id="viewName_${status.count}">${list.name}</a></td>
-					<td><a  id="viewAddress_${status.count}">${list.address}</a></td>
-					 
-					<td><a  id="viewAway_${status.count}">${list.away}</a></td>
-					<td><a  id="viewRout_${status.count}">${list.rout}</a></td>
-					<td>￥<a  id="viewPrice_${status.count}">${list.price}</a></td>
-					<td><a  id="viewDesc_${status.count}">${list.description}</a></td>
-					
-				    <td><button > <a id="delete_${status.count}">删除</a></button></td>
-				</tr>
-			</c:forEach> 
-			
-		</tbody>
 	</table>
   </div>
-
+ <div id="toolbar"><a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="destroyUser();" >删除</a>
+    </div>
  
 </body>
 <script type="text/javascript">
-
+ function destroyUser() {
+            var row = $('#dg').datagrid('getSelected');
+            if (row) {
+                $.messager.confirm('Confirm', '确定要删除吗?', function (r) {
+                    if (r) {
+                        $.post('/hotel/deleteViewByIDC', { viewId: row.id }, function (result) {
+                            if (result=="success") {
+                                $('#dg').datagrid('reload');    // reload the user data  
+                            } else {
+                                $.messager.show({   // show error message  
+                                    title: 'Error',
+                                    msg:  "ERROR"
+                                });
+                            }
+                        }, 'json');
+                    }
+                });
+            }
+        }  
 </script>
 
 </html>

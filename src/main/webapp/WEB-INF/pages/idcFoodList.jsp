@@ -114,8 +114,7 @@
     </table>
 
   
-   <div id="toolbar"><a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="destroyUser();" 
-详细出处参考：http://www.jb51.net/article/42016.htm>删除</a>
+   <div id="toolbar"><a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="destroyUser();" >删除</a>
     </div>
   </div>
 </body>

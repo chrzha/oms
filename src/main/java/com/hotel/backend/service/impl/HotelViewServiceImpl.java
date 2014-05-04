@@ -69,5 +69,12 @@ public class HotelViewServiceImpl implements HotelViewService {
 		hotelViewMapper.updateView(view);
 	}
 
+
+	@Override
+	public Integer getTotalCount() {
+		// TODO Auto-generated method stub
+		return hotelViewMapper.getTotalCount();
+	}
+
 }
 

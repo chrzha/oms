@@ -8,16 +8,21 @@ import java.util.Map;
 
 import com.hotel.backend.entity.Market;
 
-
 /**
  * @author chrzha
- *
+ * 
  */
 public interface HotelMarketService {
 
 	public List<Market> getMarketListByHotelId(String hotelId);
+
 	public List<Market> getMarketList(Map<String, Integer> map);
+
 	public void deleteMarketById(String mktId);
+
 	public Integer addMkt(Market market);
+
 	public void updateMkt(Market market);
+
+	public Integer getTotalCount();
 }

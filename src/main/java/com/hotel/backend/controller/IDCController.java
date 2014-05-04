@@ -177,33 +177,30 @@ public class IDCController {
 
 	@RequestMapping("/mktList")
 	public @ResponseBody
-	List<Market> mktList(Integer startIndex, Integer pageSize) {
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("startIndex", startIndex);
-		map.put("pageSize", pageSize);
-		List<Market> list = hotelMarketService.getMarketList(map);
-		return list;
+	Map<String, Object> mktList(Integer page, Integer rows,Map<String, Object> map) {
+		Map<String, Integer> mapSearch = new HashMap<String, Integer>();
+		mapSearch.put("startIndex", (page-1)*rows);
+		mapSearch.put("pageSize", rows);
+		List<Market> list = hotelMarketService.getMarketList(mapSearch);
+		// 获取总记录数
+		int totalRows = hotelMarketService.getTotalCount();
+
+		map.put("total", totalRows);
+
+		map.put("rows", list);
+
+		return map;
 	}
 
 	@RequestMapping("/idcMktList")
 	public ModelAndView idcMktList() {
 
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("startIndex", 0);
-		map.put("pageSize", 10);
-		List<Market> list = hotelMarketService.getMarketList(map);
-
-		return new ModelAndView("idcMktList", "list", list);
+		return new ModelAndView("idcMktList");
 	}
 
 	@RequestMapping("/idcFoodList")
 	public ModelAndView idcFoodList() {
-/*
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("startIndex", 0);
-		map.put("pageSize", 10);
-		List<Food> list = hotelFoodService.getFoodList(map);
-*/
+
 		return new ModelAndView("idcFoodList");
 	}
 
@@ -222,33 +219,31 @@ public class IDCController {
 
 		map.put("rows", list);
 
-		// 返回指定格式的Map，Jackson会把Map转换未Json
-
 		return map;
 	}
 
 	@RequestMapping("/idcViewList")
 	public ModelAndView idcViewList() {
 
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("startIndex", 0);
-		map.put("pageSize", 10);
-		List<View> list = hotelViewService.getHotelViewList(map);
-
-		return new ModelAndView("idcViewList", "list", list);
+		return new ModelAndView("idcViewList");
 	}
 
 	@RequestMapping("/viewList")
 	public @ResponseBody
-	List<View> viewList(Integer startIndex, Integer pageSize) {
+	Map<String, Object> viewList(Integer page, Integer rows,Map<String, Object> map) {
 
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("startIndex", startIndex);
-		map.put("pageSize", pageSize);
+		Map<String, Integer> mapSearch = new HashMap<String, Integer>();
+		mapSearch.put("startIndex", (page-1)*rows);
+		mapSearch.put("pageSize", rows);
+		List<View> list = hotelViewService.getHotelViewList(mapSearch);
+		// 获取总记录数
+		int totalRows = hotelViewService.getTotalCount();
 
-		List<View> list = hotelViewService.getHotelViewList(map);
+		map.put("total", totalRows);
 
-		return list;
+		map.put("rows", list);
+
+		return map;
 	}
 
 }

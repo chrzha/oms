@@ -40,6 +40,10 @@
 		BVIEW.VIEW_ID and
 		l_view_hotel.HOTEL_ID = #{hotelId};
 	</select>
+	
+	<select id="getTotalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM bview
+	</select>
 
 	<delete id="deleteViewById" parameterType="java.lang.String">
 		delete from

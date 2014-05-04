@@ -26,6 +26,10 @@
 		bsupermarket.MKT_ID limit #{startIndex},#{pageSize}
 
 	</select>
+	
+	<select id="getTotalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM bsupermarket
+	</select>
 
 	<select id="getMarketListByHotelId" parameterType="java.lang.String"
 		resultMap="BaseResultMap">

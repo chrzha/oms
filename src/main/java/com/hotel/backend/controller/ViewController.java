@@ -17,12 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hotel.backend.entity.Food;
-import com.hotel.backend.entity.Market;
 import com.hotel.backend.entity.View;
-import com.hotel.backend.service.HotelMarketService;
 import com.hotel.backend.service.HotelViewService;
-import com.hotel.backend.service.LHotelMktService;
 import com.hotel.backend.service.LHotelViewService;
 import com.hotel.backend.view.UserView;
 
@@ -62,7 +58,16 @@ public class ViewController {
 		String result = "success";
 		return result;
 	}
-	
+	@RequestMapping("/deleteViewByIDC")
+	public @ResponseBody
+	String deleteViewByIDC(HttpServletRequest request,
+			HttpServletResponse response, String viewId) {
+
+		hotelViewService.deleteViewById(viewId);
+
+		String result = "success";
+		return result;
+	}
 	@RequestMapping("/goAddView")
 	public ModelAndView goAddMkt(){
 		return new ModelAndView("addView");

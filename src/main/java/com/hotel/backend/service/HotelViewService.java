@@ -18,17 +18,17 @@ import com.hotel.backend.entity.View;
  */
 
 public interface HotelViewService {
-    
-    public List<View> getHotelViewList(Map<String, Integer> map);
-    
-    public List<View> getViewListByHotelId(String hotelId);
-    
-    public void deleteViewById(String viewId);
-	  
+
+	public List<View> getHotelViewList(Map<String, Integer> map);
+
+	public List<View> getViewListByHotelId(String hotelId);
+
+	public void deleteViewById(String viewId);
+
 	public Integer addView(View view);
-	
+
 	public void updateView(View view);
-    
+
+	public Integer getTotalCount();
 
 }
-
