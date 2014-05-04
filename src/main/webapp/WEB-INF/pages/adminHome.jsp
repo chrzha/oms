@@ -142,10 +142,10 @@
 						
 						var user_eamil = $("#user_email").text();
 						var user_phone = $("#user_phone").text();
-						//alert(user_phone);
+						
 						user_eamil = data[1];
 						user_phone = data[0];
-						//alert(user_phone);
+						
 						$("#user_email").text(user_eamil);
 						$("#user_phone").text(user_phone);
 						window.parent.location.reload();
@@ -194,7 +194,7 @@
 			
 			<tr><td><span>联系电话</span></td><td><input type="text" name="phone" value="${user.phone}"></td></tr>
 
-			<tr><td><span>邮箱</span></td><td><input type="text" name="email" value="${user.email}"></td></tr>
+			<tr><td><span>邮箱</span></td><td><input type="text" name="email" value="${user.email}" class="easyui-validatebox" data-options="validType:'email'"></td></tr>
 					
 	    	</table>
 	    	<div class="submit" style="margin-left:150px;">

@@ -168,7 +168,7 @@
 			
 			<tr><td><span>联系电话</span></td><td><input type="text" name="phone" value="${user.phone}"></td></tr>
 
-			<tr><td><span>邮箱</span></td><td><input type="text" name="email" value="${user.email}"></td></tr>
+			<tr><td><span>邮箱</span></td><td><input type="text" name="email" value="${user.email}" class="easyui-validatebox" data-options="validType:'email'"></td></tr>
 					
 	    	</table>
 	    	<div class="submit" style="margin-left:150px;">
