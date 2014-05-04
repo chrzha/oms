@@ -224,7 +224,7 @@ $(document).ready(function(){
 			</tr>
 		</tbody>
 	</table>
-	<div class="easyui-pagination" data-options="total:114" style="border:1px solid #ddd;"></div>
+	
 	
  </div>
 	<div id="win_add" class="easyui-window" title="添加美食记录" closed="true" style="width:400px;height:270px;">    

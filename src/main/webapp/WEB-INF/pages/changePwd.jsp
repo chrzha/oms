@@ -43,6 +43,8 @@
 </script>
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/jquery.easyui.min.js">
 </script>
+<script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/locale/easyui-lang-zh_CN.js">
+</script>
  
 </head>
 <body class="easyui-layout" >

@@ -37,6 +37,8 @@
 </script>
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/jquery.easyui.min.js">
 </script>
+<script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/locale/easyui-lang-zh_CN.js">
+</script>
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/tabs.js">
 </script>
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/SimpleTree.js">
