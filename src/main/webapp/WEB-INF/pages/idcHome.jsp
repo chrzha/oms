@@ -166,24 +166,42 @@
 	
 	//dbbackup
 	$("#dbbackup").click(function(){
+	 	 
+	 	 $('#win_backup').window('open'); 
+		 
 		 $.post("/hotel/backup",function(data){
-				   if(data=="success"){
-						alert("success");
-				   }else{
-					  alert("error!");		   
-				   } 
+	 	 
+	 	   var value = $('#p').progressbar('getValue');  
+           if (value < 100){  
+               value += Math.floor(Math.random() * 10);  
+              $('#p').progressbar('setValue', value);  
+               setTimeout(arguments.callee, 200);  
+           }else{   
+                   $('#win_backup').window('close'); 
+                    $.messager.alert('提示','数据备份成功!','info');  
+           }
+           
 		 });
 	
 	});
 	
 	//restoreDB
 	$("#dbrestore").click(function(){
+	  
+	 	 $('#win_backup').window('open'); 
+		 
 		 $.post("/hotel/restoreDB",function(data){
-				   if(data=="success"){
-						alert("success");
-				   }else{
-					  alert("error!");		   
-				   } 
+		 
+	 	   var value = $('#p').progressbar('getValue');  
+           if (value < 100){  
+               value += Math.floor(Math.random() * 10);  
+              $('#p').progressbar('setValue', value);  
+               setTimeout(arguments.callee, 200);  
+           }else{   
+                   $('#win_backup').window('close'); 
+                    $.messager.alert('提示','数据还原成功!','info');  
+           }
+           
 		 });
 	
 	});
@@ -317,6 +335,9 @@
     
     </div>
   </div>
+  		<div id="win_backup" class="easyui-window" title="数据备份与还原" closed="true" style="width:400px;height:100px;">    
+			 <div id="p" class="easyui-progressbar" style="width:300px;margin-left:50px;margin-top:20px;"></div>  
+        </div>
 </div>
 <div region="south" style="height:40px;">
 <jsp:include page="copyright.jsp"></jsp:include>
