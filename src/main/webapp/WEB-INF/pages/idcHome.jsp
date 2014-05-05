@@ -254,6 +254,20 @@
 				</li>-->
 			</ul>
 		</li>
+		
+		<li data-options="state:'closed'">
+			<span>数据库维护</span>
+			<ul>
+			
+						<li>
+							<a id="viewValidate">数据库备份</a>
+						</li>
+						<li>
+							<a id="mktValidate">数据库还原</a>
+						</li>
+			</ul>
+		</li>
+		
 		<li>
 			<a id="changePwd">修改密码</a>
 		</li>
