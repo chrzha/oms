@@ -164,6 +164,30 @@
 	   $('#win_update_userInfo').window('close'); 
 	});	
 	
+	//dbbackup
+	$("#dbbackup").click(function(){
+		 $.post("/hotel/backup",function(data){
+				   if(data=="success"){
+						alert("success");
+				   }else{
+					  alert("error!");		   
+				   } 
+		 });
+	
+	});
+	
+	//restoreDB
+	$("#dbrestore").click(function(){
+		 $.post("/hotel/restoreDB",function(data){
+				   if(data=="success"){
+						alert("success");
+				   }else{
+					  alert("error!");		   
+				   } 
+		 });
+	
+	});
+	
 });
  
 </script>
@@ -260,10 +284,10 @@
 			<ul>
 			
 						<li>
-							<a id="viewValidate">数据库备份</a>
+							<a id="dbbackup">数据库备份</a>
 						</li>
 						<li>
-							<a id="mktValidate">数据库还原</a>
+							<a id="dbrestore">数据库还原</a>
 						</li>
 			</ul>
 		</li>

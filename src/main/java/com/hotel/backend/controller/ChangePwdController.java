@@ -1,7 +1,6 @@
 package com.hotel.backend.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hotel.backend.entity.User;
 import com.hotel.backend.service.UserService;
-import com.hotel.backend.view.UserView;
 
 
 @Controller
