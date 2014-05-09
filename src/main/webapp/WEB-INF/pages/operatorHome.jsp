@@ -136,6 +136,19 @@
 	   $('#win_update_userInfo').window('close'); 
 	});	
 	
+	//applyAdmin
+	$("#applyAdmin").click(function(){
+	
+	 		$.post("/hotel/applyAdmin",function(data){
+				    if(data=="success"){
+					alert("success!");
+				   }else{
+					  alert("error!");		   
+				   } 
+	  		});
+	
+	});
+	
 });
  
 </script>
@@ -200,6 +213,9 @@
 					</ul>
 				</li>
 			</ul>
+		</li>
+		<li>
+			<a id="applyAdmin">申请为管理员</a>
 		</li>
 		<li>
 			<a id="changePwd">修改密码</a>

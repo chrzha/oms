@@ -1,17 +1,10 @@
 package com.hotel.backend.controller;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
-import org.apache.commons.mail.EmailException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,7 +18,6 @@ import com.hotel.backend.entity.User;
 import com.hotel.backend.service.HotelService;
 import com.hotel.backend.service.LUserRoleService;
 import com.hotel.backend.service.UserService;
-import com.hotel.backend.service.impl.UserServiceImpl;
 import com.hotel.backend.utility.Mail;
 
 @Controller
