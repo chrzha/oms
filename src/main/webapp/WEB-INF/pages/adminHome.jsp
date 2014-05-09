@@ -84,11 +84,11 @@
 	});
 	//viewManage
 	$("#viewManage").click(function(){
-			if($("#tabs").tabs('exists','周围景点')){
-				$("#tabs").tabs('select','周围景点');
+			if($("#tabs").tabs('exists','景点')){
+				$("#tabs").tabs('select','景点');
 			}else{
 			$('#tabs').tabs('add',{
-				title: '周围景点',
+				title: '景点',
 				content: '<iframe style="width:100%;height:480px;" src="/hotel/hotelViewList"></iframe>',
 				closable: true
 			});
@@ -96,11 +96,11 @@
 	});
 	//mktManege
 	$("#mktManage").click(function(){
-			if($("#tabs").tabs('exists','周围购物商场')){
-				$("#tabs").tabs('select','周围购物商场');
+			if($("#tabs").tabs('exists','购物商场')){
+				$("#tabs").tabs('select','购物商场');
 			}else{
 				$('#tabs').tabs('add',{
-				title: '周围购物商场',
+				title: '购物商场',
 				content: '<iframe style="width:100%;height:480px;" src="/hotel/hotelMktList"></iframe>',
 				closable: true
 				});
@@ -108,11 +108,11 @@
 	});
 	//foodManage
 	$("#foodManage").click(function(){
-			if($("#tabs").tabs('exists','周围美食')){
-				$("#tabs").tabs('select','周围美食');
+			if($("#tabs").tabs('exists','美食')){
+				$("#tabs").tabs('select','美食');
 			}else{
 				$('#tabs').tabs('add',{
-				title: '周围美食',
+				title: '美食',
 				content: '<iframe style="width:100%;height:480px;" src="/hotel/hotelFoodList"></iframe>',
 				closable: true
 				});
@@ -232,13 +232,13 @@
 					<span>公共信息审核</span>
 					<ul>
 						<li>
-							<span>周围景点信息审核</span>
+							<span>景点信息审核</span>
 						</li>
 						<li>
-							<span>周围购物信息审核</span>
+							<span>购物信息审核</span>
 						</li>
 						<li>
-							<span>周围美食信息审核</span>
+							<span>美食信息审核</span>
 						</li>
 					</ul>
 				</li>-->
@@ -246,13 +246,13 @@
 					<span>公共信息审核与管理</span>
 					<ul>
 						<li>
-							<a id="viewManage">周围景点审核与管理</a>
+							<a id="viewManage">景点审核与管理</a>
 						</li>
 						<li>
-							<a id="mktManage">周围购物审核与管理</a>
+							<a id="mktManage">购物审核与管理</a>
 						</li>
 						<li>
-							<a id="foodManage">周围美食审核与管理</a>
+							<a id="foodManage">美食审核与管理</a>
 						</li>
 					</ul>
 				</li>

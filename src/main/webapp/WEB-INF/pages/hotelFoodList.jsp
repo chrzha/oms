@@ -9,7 +9,7 @@
   <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>
-      酒店周围美食信息
+      酒店美食信息
     </title>
     <%
     String path = request.getContextPath();
