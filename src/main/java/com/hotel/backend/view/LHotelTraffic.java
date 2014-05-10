@@ -1,10 +1,10 @@
 package com.hotel.backend.view;
 
-public class LHotelFood {
-
+public class LHotelTraffic {
+	
 	private Integer id;
 	private String hotelId;
-	private String foodId;
+	private String trafficId;
 	public Integer getId() {
 		return id;
 	}
@@ -17,11 +17,12 @@ public class LHotelFood {
 	public void setHotelId(String hotelId) {
 		this.hotelId = hotelId;
 	}
-	public String getFoodId() {
-		return foodId;
+	public String getTrafficId() {
+		return trafficId;
 	}
-	public void setFoodId(String foodId) {
-		this.foodId = foodId;
+	public void setTrafficId(String trafficId) {
+		this.trafficId = trafficId;
 	}
 	
+
 }
