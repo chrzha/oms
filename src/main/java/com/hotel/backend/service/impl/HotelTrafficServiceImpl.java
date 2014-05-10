@@ -23,11 +23,6 @@ public class HotelTrafficServiceImpl implements HotelTrafficService{
 	@Autowired
 	private HotelTrafficMapper hotelTrafficMapper;
 
-	@Override
-	public List<Traffic> getTrafficList(Map<String, Integer> map) {
-		// TODO Auto-generated method stub
-		return hotelTrafficMapper.getTrafficList(map);
-	}
 
 	@Override
 	public List<Traffic> getTrafficListByHotelId(String hotelId) {
@@ -60,5 +55,19 @@ public class HotelTrafficServiceImpl implements HotelTrafficService{
 		// TODO Auto-generated method stub
 		return hotelTrafficMapper.getTotalCount();
 	}
+
+	@Override
+	public List<Traffic> getAllTrafficList() {
+		// TODO Auto-generated method stub
+		return hotelTrafficMapper.getAllTrafficList();
+	}
+
+	@Override
+	public List<Traffic> getTrafficListPaged(Map<String, Integer> map) {
+		// TODO Auto-generated method stub
+		return hotelTrafficMapper.getTrafficListPaged(map);
+	}
+
+	
 
 }

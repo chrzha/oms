@@ -79,28 +79,36 @@ public class MarketController {
 			@ModelAttribute("market") Market market) {
 
 		String result = "";
+		String mktId = "";
 
 		UserView userView = (UserView) request.getSession()
 				.getAttribute("user");
 
 		String hotelId = userView.getHotelId();
 
-        int size = hotelMarketService.getMarketListByHotelId(hotelId).size();
+        int size = hotelMarketService.getAllMarketList().size();
+        
+        if (size==0) {
+        	
+			mktId = "0001";
 		
-		String temp = hotelMarketService.getMarketListByHotelId(hotelId).get(size-1).getId();
-		
-		int total = Integer.parseInt(temp)+1;
-		
-		String mktId = "";
-		if (total < 10) {
-			mktId = "000" + total;
-		} else if (total >= 10 && total < 100) {
-			mktId = "00" + total;
-		} else if (total >= 100 && total < 1000) {
-			mktId = "0" + total;
-		} else {
-			mktId = "" + total;
+        }else {
+			
+			String temp = hotelMarketService.getAllMarketList().get(size-1).getId();
+			
+			int total = Integer.parseInt(temp)+1;
+			
+			if (total < 10) {
+				mktId = "000" + total;
+			} else if (total >= 10 && total < 100) {
+				mktId = "00" + total;
+			} else if (total >= 100 && total < 1000) {
+				mktId = "0" + total;
+			} else {
+				mktId = "" + total;
+			}
 		}
+		
 
 		Map<String, String> map = new HashMap<String, String>();
 

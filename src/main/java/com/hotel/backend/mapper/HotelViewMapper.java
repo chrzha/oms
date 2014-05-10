@@ -18,6 +18,8 @@ import com.hotel.backend.entity.View;
  */
 
 public interface HotelViewMapper {
+	
+	public List<View> getAllViewList();
 
 	public List<View> getViewListPaged(Map<String, Integer> map);
 

@@ -23,7 +23,7 @@
 		TRAFFIC_STARTSTATION,TRAFFIC_ENDSTATION,TRAFFIC_DESC
 	</sql>
 
-	<select id="getTrafficList" resultMap="BaseResultMap"
+	<select id="getTrafficListPaged" resultMap="BaseResultMap"
 		parameterType="map">
 
 		SELECT
@@ -31,6 +31,15 @@
 		FROM
 		bTraffic limit
 		#{startIndex},#{pageSize}
+
+	</select>
+	
+	<select id="getAllTrafficList" resultMap="BaseResultMap">
+
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		bTraffic
 
 	</select>
 

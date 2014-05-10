@@ -6,6 +6,8 @@ import java.util.Map;
 import com.hotel.backend.entity.Food;
 
 public interface HotelFoodService {
+	
+	public List<Food> getAllFoodList();
 
 	public List<Food> getFoodListPaged(Map<String, Integer> map);
 

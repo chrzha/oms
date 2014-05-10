@@ -58,18 +58,43 @@ public class TrafficController {
 			@ModelAttribute("traffic") Traffic traffic) {
 
 		String result = "success";
-		String trafficId = "T001";// ...
-		
+		String trafficId = "";
+		String temp = "";
+
 		UserView userView = (UserView) request.getSession()
 				.getAttribute("user");
 
 		String hotelId = userView.getHotelId();
 
+		int size = hotelTrafficService.getAllTrafficList().size();
+
+		if (size == 0) {
+
+			trafficId = "0001";
+
+		} else {
+
+			temp = hotelTrafficService.getAllTrafficList().get(size - 1)
+					.getId();
+			int total = Integer.parseInt(temp) + 1;
+
+			if (total < 10) {
+				trafficId = "000" + total;
+			} else if (total >= 10 && total < 100) {
+				trafficId = "00" + total;
+			} else if (total >= 100 && total < 1000) {
+				trafficId = "0" + total;
+			} else {
+				trafficId = "" + total;
+			}
+		}
+
+
 		Map<String, String> map = new HashMap<String, String>();
 
 		map.put("hotelId", hotelId);
 		map.put("trafficId", trafficId);
-		
+
 		traffic.setId(trafficId);
 
 		hotelTrafficService.addTraffic(traffic);
@@ -80,7 +105,7 @@ public class TrafficController {
 	@RequestMapping("/updateTraffic")
 	public @ResponseBody
 	String updateTraffic(HttpServletRequest request,
-			HttpServletResponse response,Traffic traffic) {
+			HttpServletResponse response, Traffic traffic) {
 
 		String result = "success";
 		hotelTrafficService.updateTraffic(traffic);

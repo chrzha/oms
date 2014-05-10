@@ -28,6 +28,14 @@
 		#{startIndex},#{pageSize}
 
 	</select>
+	<select id="getAllFoodList" resultMap="BaseResultMap">
+
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		bfood
+
+	</select>
 
 	<select id="getTotalCount" resultType="java.lang.Integer">
 		SELECT COUNT(*) FROM BFOOD

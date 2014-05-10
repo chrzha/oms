@@ -60,4 +60,10 @@ public class HotelMarketServiceImpl implements HotelMarketService{
 		return hotelMarketMapper.getTotalCount();
 	}
 
+	@Override
+	public List<Market> getAllMarketList() {
+		// TODO Auto-generated method stub
+		return getAllMarketList();
+	}
+
 }

@@ -13,6 +13,8 @@ import com.hotel.backend.entity.Market;
  * 
  */
 public interface HotelMarketService {
+	
+	public List<Market> getAllMarketList();
 
 	public List<Market> getMarketListByHotelId(String hotelId);
 

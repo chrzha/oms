@@ -79,28 +79,34 @@ public class ViewController {
 			@ModelAttribute("view") View view) {
 
 		String result = "";
+		String viewId = "";
 
 		UserView userView = (UserView) request.getSession()
 				.getAttribute("user");
 
 		String hotelId = userView.getHotelId();
 
-        int size = hotelViewService.getViewListByHotelId(hotelId).size();
-		
-		String temp = hotelViewService.getViewListByHotelId(hotelId).get(size-1).getId();
-		
-		int total = Integer.parseInt(temp)+1;
-
-		String viewId = "";
-		if (total < 10) {
-			viewId = "000" + total;
-		} else if (total >= 10 && total < 100) {
-			viewId = "00" + total;
-		} else if (total >= 100 && total < 1000) {
-			viewId = "0" + total;
-		} else {
-			viewId = "" + total;
+        int size = hotelViewService.getAllViewList().size();
+        
+        if (size==0) {
+			viewId = "0001";
+		}else {
+			
+			String temp = hotelViewService.getAllViewList().get(size-1).getId();
+			
+			int total = Integer.parseInt(temp)+1;
+			
+			if (total < 10) {
+				viewId = "000" + total;
+			} else if (total >= 10 && total < 100) {
+				viewId = "00" + total;
+			} else if (total >= 100 && total < 1000) {
+				viewId = "0" + total;
+			} else {
+				viewId = "" + total;
+			}
 		}
+		
 
 		Map<String, String> map = new HashMap<String, String>();
 

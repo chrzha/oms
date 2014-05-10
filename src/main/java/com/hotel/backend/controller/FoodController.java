@@ -77,6 +77,7 @@ public class FoodController {
 			@ModelAttribute("food") Food food) {
 
 		String result = "";
+		String foodId = "";
 
 		UserView userView = (UserView) request.getSession()
 				.getAttribute("user");
@@ -84,22 +85,27 @@ public class FoodController {
 		String hotelId = userView.getHotelId();
 
 		
-		int size = hotelFoodService.getFoodListByHotelId(hotelId).size();
+		int size = hotelFoodService.getAllFoodList().size();
 		
-		String temp = hotelFoodService.getFoodListByHotelId(hotelId).get(size-1).getId();
-		
-		int total = Integer.parseInt(temp)+1;
-		
-		String foodId = "";
-		if (total < 10) {
-			foodId = "000" + total;
-		} else if (total >= 10 && total < 100) {
-			foodId = "00" + total;
-		} else if (total >= 100 && total < 1000) {
-			foodId = "0" + total;
-		} else {
-			foodId = "" + total;
+		if (size==0) {
+			foodId = "0001";
+		}else {
+			
+			String temp = hotelFoodService.getAllFoodList().get(size-1).getId();
+			
+			int total = Integer.parseInt(temp)+1;
+			
+			if (total < 10) {
+				foodId = "000" + total;
+			} else if (total >= 10 && total < 100) {
+				foodId = "00" + total;
+			} else if (total >= 100 && total < 1000) {
+				foodId = "0" + total;
+			} else {
+				foodId = "" + total;
+			}
 		}
+		
 
 		Map<String, String> map = new HashMap<String, String>();
 

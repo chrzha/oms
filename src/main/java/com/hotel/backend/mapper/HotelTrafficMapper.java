@@ -14,7 +14,9 @@ import com.hotel.backend.entity.Traffic;
  */
 public interface HotelTrafficMapper {
 	
-	public List<Traffic> getTrafficList(Map<String, Integer> map);
+	public List<Traffic> getAllTrafficList();
+	
+	public List<Traffic> getTrafficListPaged(Map<String, Integer> map);
 
 	public List<Traffic> getTrafficListByHotelId(String hotelId);
 

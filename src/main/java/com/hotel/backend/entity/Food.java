@@ -8,7 +8,7 @@ public class Food {
 	private String type;
 	private String address;
 	private String rout;
-	private float price;
+	private Float price;
 	private String description;
 	public String getId() {
 		return id;
@@ -16,10 +16,10 @@ public class Food {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public float getPrice() {
+	public Float getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 	public String getName() {

@@ -76,5 +76,12 @@ public class HotelViewServiceImpl implements HotelViewService {
 		return hotelViewMapper.getTotalCount();
 	}
 
+
+	@Override
+	public List<View> getAllViewList() {
+		// TODO Auto-generated method stub
+		return hotelViewMapper.getAllViewList();
+	}
+
 }
 

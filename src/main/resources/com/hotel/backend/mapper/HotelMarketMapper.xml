@@ -26,6 +26,14 @@
 		bsupermarket.MKT_ID limit #{startIndex},#{pageSize}
 
 	</select>
+	<select id="getAllMarketList" resultMap="BaseResultMap">
+
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		bsupermarket
+
+	</select>
 	
 	<select id="getTotalCount" resultType="java.lang.Integer">
 		SELECT COUNT(*) FROM bsupermarket

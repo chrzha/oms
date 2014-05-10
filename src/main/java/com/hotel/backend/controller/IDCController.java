@@ -16,10 +16,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.hotel.backend.entity.Food;
 import com.hotel.backend.entity.Hotel;
 import com.hotel.backend.entity.Market;
+import com.hotel.backend.entity.Traffic;
 import com.hotel.backend.entity.View;
 import com.hotel.backend.service.HotelFoodService;
 import com.hotel.backend.service.HotelMarketService;
 import com.hotel.backend.service.HotelService;
+import com.hotel.backend.service.HotelTrafficService;
 import com.hotel.backend.service.HotelViewService;
 import com.hotel.backend.service.LHotelFoodService;
 import com.hotel.backend.service.LHotelMktService;
@@ -55,6 +57,9 @@ public class IDCController {
 
 	@Autowired
 	private HotelViewService hotelViewService;
+	
+	@Autowired
+	private HotelTrafficService hotelTrafficService;
 
 	@Autowired
 	private UserService userService;
@@ -238,6 +243,30 @@ public class IDCController {
 		List<View> list = hotelViewService.getViewListPaged(mapSearch);
 		// 获取总记录数
 		int totalRows = hotelViewService.getTotalCount();
+
+		map.put("total", totalRows);
+
+		map.put("rows", list);
+
+		return map;
+	}
+	
+	@RequestMapping("/trafficViewList")
+	public ModelAndView trafficViewList() {
+
+		return new ModelAndView("trafficViewList");
+	}
+
+	@RequestMapping("/trafficList")
+	public @ResponseBody
+	Map<String, Object> trafficList(Integer page, Integer rows,Map<String, Object> map) {
+
+		Map<String, Integer> mapSearch = new HashMap<String, Integer>();
+		mapSearch.put("startIndex", (page-1)*rows);
+		mapSearch.put("pageSize", rows);
+		List<Traffic> list = hotelTrafficService.getTrafficListPaged(mapSearch);
+		// 获取总记录数
+		int totalRows = hotelTrafficService.getTotalCount();
 
 		map.put("total", totalRows);
 

@@ -58,4 +58,10 @@ public class HotelFoodServiceImpl implements HotelFoodService{
 		return hotelFoodMapper.getTotalCount();
 	}
 
+	@Override
+	public List<Food> getAllFoodList() {
+		// TODO Auto-generated method stub
+		return hotelFoodMapper.getAllFoodList();
+	}
+
 }
