@@ -63,7 +63,7 @@ public class HotelMarketServiceImpl implements HotelMarketService{
 	@Override
 	public List<Market> getAllMarketList() {
 		// TODO Auto-generated method stub
-		return getAllMarketList();
+		return hotelMarketMapper.getAllMarketList();
 	}
 
 }

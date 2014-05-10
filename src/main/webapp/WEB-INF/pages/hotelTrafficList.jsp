@@ -145,7 +145,7 @@ a:link {
 	    	</form>
 	    
     </div>
- <div id="win_update" class="easyui-window" title="更新交通信息记录" closed="true" style="width:400px;height:370px;">    
+ <div id="win_update" class="easyui-window" title="更新交通信息记录" closed="true" style="width:400px;height:390px;">    
        <form name="form" id="update_form" action="/hotel/updateTraffic" ENCTYPE="multipart/form-data" modelAttribute="traffic" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			
@@ -155,7 +155,7 @@ a:link {
 			
 			<tr><td><span>名称*</span></td><td><input type="text" name="name" id="update_name"></td></tr>
 
-			<tr><td><span>类型*</span></td><td><input type="text" name="type" id="update_type"></td></tr>
+			<tr><td><span>类型</span></td><td><input type="text" name="type" id="update_type"></td></tr>
 
 			<tr><td><span>票价</span></td><td><input type="text" name="price" id="update_price"></td></tr>
 
@@ -163,9 +163,9 @@ a:link {
 			
 			<tr><td><span>起始站</span></td><td><input name="startStation" id="update_startStation" ></td></tr>
 			
-			<tr><td><span>沿途经过*</span></td><td><input type="text" name="pass" id="update_pass"></td></tr>
+			<tr><td><span>沿途经过</span></td><td><input type="text" name="pass" id="update_pass"></td></tr>
 
-			<tr><td><span>终点站*</span></td><td><input type="text" name="endStation" id="update_endStation"></td></tr>
+			<tr><td><span>终点站</span></td><td><input type="text" name="endStation" id="update_endStation"></td></tr>
 
 			<tr><td><span>末班时间</span></td><td><input type="text" name="endTime" id="update_endTime"></td></tr>
 
