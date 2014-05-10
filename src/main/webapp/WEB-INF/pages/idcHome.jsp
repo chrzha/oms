@@ -108,6 +108,20 @@
 			});
 		}
 	});
+	//trafficValidate
+	$("#trafficValidate").click(function(){
+			if($("#tabs").tabs('exists','交通信息审核')){
+				$("#tabs").tabs('select','交通信息审核');
+			}else{
+			$('#tabs').tabs('add',{
+				title: '交通信息审核',
+				content: '<iframe style="width:100%;height:480px;" src="/hotel/idcTrafficList"></iframe>',
+				closable: true
+			});
+		}
+	});
+	
+	
 	//mktValidate
 	$("#mktValidate").click(function(){
 			if($("#tabs").tabs('exists','购物信息审核')){
@@ -280,6 +294,9 @@
 				<li data-options="state:'closed'">
 					<span>公共信息审核与管理</span>
 					<ul>
+						<li>
+							<a id="trafficValidate">交通信息审核</a>
+						</li>
 						<li>
 							<a id="viewValidate">景点信息审核</a>
 						</li>

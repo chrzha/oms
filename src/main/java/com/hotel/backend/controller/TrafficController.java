@@ -134,5 +134,17 @@ public class TrafficController {
 		hotelTrafficService.deleteTrafficById(trafficId);
 		return result;
 	}
+	
+	//deleteTrafficByIDC
+	@RequestMapping("/deleteTrafficByIDC")
+	public @ResponseBody
+	String deleteTrafficByIDC(HttpServletRequest request,
+			HttpServletResponse response, String trafficId) {
+
+		hotelTrafficService.deleteTrafficById(trafficId);
+
+		String result = "success";
+		return result;
+	}
 
 }

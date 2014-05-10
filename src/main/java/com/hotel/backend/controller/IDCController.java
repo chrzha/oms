@@ -251,10 +251,10 @@ public class IDCController {
 		return map;
 	}
 	
-	@RequestMapping("/trafficViewList")
+	@RequestMapping("/idcTrafficList")
 	public ModelAndView trafficViewList() {
 
-		return new ModelAndView("trafficViewList");
+		return new ModelAndView("idcTrafficList");
 	}
 
 	@RequestMapping("/trafficList")
