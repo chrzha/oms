@@ -18,7 +18,7 @@
 		bfood.FD_ID,FD_NAME,FD_PHOTO,FD_TYPE,FD_PRICE,FD_DESC,FD_ADDRESS,FD_ROUT
 	</sql>
 
-	<select id="getFoodList" resultMap="BaseResultMap"
+	<select id="getFoodListPaged" resultMap="BaseResultMap"
 		parameterType="map">
 
 		SELECT

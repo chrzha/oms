@@ -16,7 +16,7 @@ public interface HotelMarketService {
 
 	public List<Market> getMarketListByHotelId(String hotelId);
 
-	public List<Market> getMarketList(Map<String, Integer> map);
+	public List<Market> getMarketListPaged(Map<String, Integer> map);
 
 	public void deleteMarketById(String mktId);
 

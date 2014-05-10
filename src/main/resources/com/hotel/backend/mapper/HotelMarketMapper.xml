@@ -16,7 +16,7 @@
 		bsupermarket.MKT_ID,MKT_NAME,MKT_ADDRESS,MKT_AWAY,MKT_ROUT,MKT_DESC
 	</sql>
 
-	<select id="getMarketList" resultMap="BaseResultMap" parameterType="map">
+	<select id="getMarketListPaged" resultMap="BaseResultMap" parameterType="map">
 
 		SELECT
 		<include refid="Base_Column_List" />

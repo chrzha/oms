@@ -31,9 +31,9 @@ public class HotelMarketServiceImpl implements HotelMarketService{
 	}
 
 	@Override
-	public List<Market> getMarketList(Map<String, Integer> map) {
+	public List<Market> getMarketListPaged(Map<String, Integer> map) {
 		// TODO Auto-generated method stub
-		return hotelMarketMapper.getMarketList(map);
+		return hotelMarketMapper.getMarketListPaged(map);
 	}
 
 	@Override

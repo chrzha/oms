@@ -19,7 +19,7 @@ import com.hotel.backend.entity.View;
 
 public interface HotelViewMapper {
 
-	public List<View> getHotelViewList(Map<String, Integer> map);
+	public List<View> getViewListPaged(Map<String, Integer> map);
 
 	public List<View> getViewListByHotelId(String hotelId);
 

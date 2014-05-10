@@ -181,7 +181,7 @@ public class IDCController {
 		Map<String, Integer> mapSearch = new HashMap<String, Integer>();
 		mapSearch.put("startIndex", (page-1)*rows);
 		mapSearch.put("pageSize", rows);
-		List<Market> list = hotelMarketService.getMarketList(mapSearch);
+		List<Market> list = hotelMarketService.getMarketListPaged(mapSearch);
 		// 获取总记录数
 		int totalRows = hotelMarketService.getTotalCount();
 
@@ -211,7 +211,7 @@ public class IDCController {
 		Map<String, Integer> mapSearch = new HashMap<String, Integer>();
 		mapSearch.put("startIndex", (page-1)*rows);
 		mapSearch.put("pageSize", rows);
-		List<Food> list = hotelFoodService.getFoodList(mapSearch);
+		List<Food> list = hotelFoodService.getFoodListPaged(mapSearch);
 		// 获取总记录数
 		int totalRows = hotelFoodService.getTotalCount();
 
@@ -235,7 +235,7 @@ public class IDCController {
 		Map<String, Integer> mapSearch = new HashMap<String, Integer>();
 		mapSearch.put("startIndex", (page-1)*rows);
 		mapSearch.put("pageSize", rows);
-		List<View> list = hotelViewService.getHotelViewList(mapSearch);
+		List<View> list = hotelViewService.getViewListPaged(mapSearch);
 		// 获取总记录数
 		int totalRows = hotelViewService.getTotalCount();
 

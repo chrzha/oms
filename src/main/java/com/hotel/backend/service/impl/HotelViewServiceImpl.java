@@ -29,9 +29,9 @@ public class HotelViewServiceImpl implements HotelViewService {
     
     
     @Override
-    public List<View> getHotelViewList(Map<String, Integer> map) {
+    public List<View> getViewListPaged(Map<String, Integer> map) {
         // TODO Auto-generated method stub
-        List<View> list = hotelViewMapper.getHotelViewList(map);
+        List<View> list = hotelViewMapper.getViewListPaged(map);
         
         return list;
     }

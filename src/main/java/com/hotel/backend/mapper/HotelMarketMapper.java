@@ -15,7 +15,7 @@ import com.hotel.backend.entity.Market;
  */
 public interface HotelMarketMapper {
 
-	  public List<Market> getMarketList(Map<String, Integer> map);
+	  public List<Market> getMarketListPaged(Map<String, Integer> map);
 	    
 	  public List<Market> getMarketListByHotelId(String hotelId);
 	  
