@@ -92,10 +92,10 @@ $(document).ready(function(){
 				type : 'GET',
 				success : function(data) {
 					if(data=="success"){
-					   alert('密码修改成功！');  
+					   $.messager.alert('消息','修改成功!','info');
             			window.parent.location.href = '/hotel/login';
 					}else if(data=="error"){
-					alert("密码修改失败");
+					$.messager.alert('错误','修改失败，请重试!','error');
 					}
 				}
 			});

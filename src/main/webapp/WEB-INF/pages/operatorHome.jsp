@@ -135,17 +135,28 @@
 	$("#cancle_update_info").click(function(){
 	   $('#win_update_userInfo').window('close'); 
 	});	
+	$("#cancle_apply").click(function(){
+	   $('#win_apply').window('close'); 
+	});	
 	
 	//applyAdmin
 	$("#applyAdmin").click(function(){
 	
-	 		$.post("/hotel/applyAdmin",function(data){
+	      $('#win_apply').window('open'); 
+			$("#send_apply").click(function(){
+			
+			var source = $("#apply_form").serialize();
+	 		$.post("/hotel/applyAdmin",source,function(data){
 				    if(data=="success"){
-					alert("success!");
+					$.messager.alert('消息','申请已发送，请等待审核.','info'); 
+					$('#win_apply').window('close');  
 				   }else{
-					  alert("error!");		   
+					 $.messager.alert('错误','申请发送失败，请重试！.','error');  		   
 				   } 
 	  		});
+			
+			
+			});
 	
 	});
 	
@@ -187,6 +198,20 @@
 	    	<div class="submit" style="margin-left:150px;">
 	    		<input type="button"  id="update_userInfo_btn" value="修改"/>
 	    		<input type="button" id="cancle_update_info" value="取消" /></div>
+	    	</form>
+	    
+    </div>
+     <div id="win_apply" class="easyui-window" title="申请理由" closed="true" style="width:400px;height:170px;">    
+       <form name="form"  id = "apply_form" action="/hotel/???" ENCTYPE="multipart/form-data" modelAttribute="user" method="post" >
+	    	<table style="margin:10px 0 0 70px;">		
+			<input type="hidden" name="userId" value="${user.userId}">
+			
+			<tr><td><span>申请理由</span></td><td><textarea rows="3" cols="19" name="reason"></textarea></tr>
+
+	    	</table>
+	    	<div class="submit" style="margin-left:150px;">
+	    		<input type="button"  id="send_apply" value="发送"/>
+	    		<input type="button" id="cancle_apply" value="取消" /></div>
 	    	</form>
 	    
     </div>
