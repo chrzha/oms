@@ -102,7 +102,6 @@ var status = $("#status").children("select").val();
 	});
 	
 	$("#saveBtn").click(function(){
-	alert("/hotel/doEditHotel?id="+id+"&status="+status);
 	
 	$.ajax({
 			url : "/hotel/doEditHotel?id="+id+"&status="+status,

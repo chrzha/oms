@@ -161,7 +161,7 @@
 						
 						$("#user_email").text(user_eamil);
 						$("#user_phone").text(user_phone);
-						window.parent.location.reload();
+						window.reload();
 						
 				   }else{
 					  alert("error!");		   

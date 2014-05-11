@@ -107,7 +107,7 @@ a:link {
  function destroyUser() {
             var row = $('#dg').datagrid('getSelected');
             if (row) {
-                $.messager.confirm('Confirm', '确定要删除吗?', function (r) {
+                $.messager.confirm('确认', '确定要删除吗?', function (r) {
                     if (r) {
                         $.post('/hotel/deleteTrafficByIDC', { trafficId: row.id }, function (result) {
                             if (result=="success") {
