@@ -69,7 +69,7 @@ pageEncoding="utf-8"%>
      <div class="easyui-panel"  title="注册" style="height:400px;width:450px;">
   	<div style="padding:10px 0 0 10px">
 	   <form name="form" id="user_form"action="/hotel/register" ENCTYPE="multipart/form-data" modelAttribute="user" method="post" >
-	    	<table style="margin:10px 0 0 70px;">		
+	    	<table style="margin:10px 0 0 60px;">		
 			
 			<tr><td><span>用户名*</span></td><td><input type="text" name="userName" maxlength="20"  ></td><td><span class="username"></span></td></tr>
 
@@ -81,9 +81,13 @@ pageEncoding="utf-8"%>
 
 			<tr><td><span>邮箱*</span></td><td><input type="text" id="id1" name="email" class="easyui-validatebox" data-options="validType:'email'"></td><td><span class="email"></span></td></tr>
 
-			<tr><td><span>所在酒店编号*</span></td><td><input type="text" id="hotelId" name="hotelId" ></td><td><span class="hotelId"></span></td></tr>
+			<tr><td><span>所在酒店编号*</span></td><td><input type="text" id="hotelId" name="hotelId" ><br></td>
+			
+			<td><img style="cursor:pointer;" title="该编号为酒店注册时系统产生的编号，如不知道，请查看邮件或联系管理员！" src="${pageContext.request.contextPath}/webresource/hotel-img/help.png"/><span class="hotelId"></span></td></tr>
 
-			<tr><td><span>注册角色*</span></td><td><select id="roleId" name="roleId" style="width:155px;"  ><option>--请选择--</option><option value="0002">酒店管理员</option><option value="0003">酒店操作员</option></select></td><td><span class="roleId"></span></td></tr>
+			<tr><td><span>注册角色*</span></td><td><select id="roleId" name="roleId" style="width:155px;"  >
+			
+			<option>--请选择--</option><option value="0002">酒店管理员</option><option value="0003">酒店操作员</option></select></td><td><span class="roleId"></span></td></tr>
 
 			<tr><td><span>备注</span></td><td><input type="text" id="id1" name="description"></td><td></td></tr>
 			
