@@ -155,7 +155,11 @@ $(document).ready(function(){
 		
 		 $("#upload_submit").click(function(){
 		 
+           
 		 var imgfile = $("#imgfile").val();
+		 if(imgfile==null||imgfile==""){
+		 	$.messager.alert('错误','文件不能为空!','error');
+		 }else{
 		 
            var value = $('#p').progressbar('getValue');  
            if (value < 100){  
@@ -165,6 +169,8 @@ $(document).ready(function(){
            }else{
            		$("#upload_form").submit();
            }
+		 }
+		 
    		});
 		
 		 $("#delete_"+i).click(function(){

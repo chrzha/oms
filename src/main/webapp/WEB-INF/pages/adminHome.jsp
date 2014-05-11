@@ -3,7 +3,7 @@
 <html>
   <head>
     <title>
-      酒店管理员界面
+      酒店管理员首页
     </title>
     <%
     String path = request.getContextPath();
