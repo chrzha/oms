@@ -96,19 +96,19 @@ a:link {
 					<td><a  id="viewRout_${status.count}">${list.rout}</a></td>
 					<td>￥<a  id="viewPrice_${status.count}">${list.price}</a></td>
 					<td><a  id="viewDesc_${status.count}">${list.description}</a></td>
-					<td><button > <a id="update_${status.count}">修改</a></button></td>
-				    <td><button > <a id="delete_${status.count}">删除</a></button></td>
+					<td> <a id="update_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">修改</a> </td>
+				    <td> <a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove">删除</a> </td>
 				</tr>
 			</c:forEach> 
 			<tr>
 			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-			<td ><button id="add_${status.count}"> <a id="addView">添加</a></button></td>
+			<td ><a id="addView" class="easyui-linkbutton" plain="true" iconCls="icon-add">添加</a></td>
 			</tr>
 	
 		</tbody>
 	</table>
   </div>
-  <div id="win_add" class="easyui-window" title="添加景点记录" closed="true" style="width:400px;height:270px;">    
+  <div id="win_add" class="easyui-window" title="添加景点记录" closed="true" style="width:400px;height:280px;">    
        <form name="form"  id = "add_form" action="/hotel/View" ENCTYPE="multipart/form-data" modelAttribute="view" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			
@@ -128,13 +128,12 @@ a:link {
 					
 	    	</table>
 	    	<div class="submit" style="margin-left:120px;">
-	    		<input type="button" id="add_view" value="添加"/>
-	    		<input type="reset" name="reset" value="重填"/>
-	    		<input type="button" id="cancle_add" value="取消" /></div>
+	    		<a id="add_view" class="easyui-linkbutton" plain="true" iconCls="icon-save">保存</a>
+	    		<a id="cancle_add" class="easyui-linkbutton" plain="true" iconCls="icon-cancel">取消</a></div>
 	    	</form>
 	    
     </div>
- <div id="win_update" class="easyui-window" title="更新景点记录" closed="true" style="width:400px;height:290px;">    
+ <div id="win_update" class="easyui-window" title="更新景点记录" closed="true" style="width:400px;height:300px;">    
        <form name="form" id="update_form" action="/hotel/updateView" ENCTYPE="multipart/form-data" modelAttribute="view" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			
@@ -156,9 +155,9 @@ a:link {
 					
 	    	</table>
 	    	<div class="submit" style="margin-left:120px;">
-	    		<input type="button" id="update" value="更新"/>
-	    		<input type="reset" name="reset" value="重填"/>
-	    		<input type="button" id="update_cancle" value="取消" /></div>
+	    		<a id="update"class="easyui-linkbutton" plain="true" iconCls="icon-save">保存</a>
+	    		 
+	    		<a id="update_cancle" class="easyui-linkbutton" plain="true" iconCls="icon-cancel">取消</a>
 	    	</form>
 	    
     </div>

@@ -95,14 +95,14 @@ a:link {
 					<td><a  id="mktAway_${status.count}">${list.away}</a></td>
 					<td><a  id="mktRout_${status.count}">${list.rout}</a><tetd>
 					<td><a  id="mktDesc_${status.count}">${list.description}</a></td>
-					<td><button > <a id="update_${status.count}">修改</a></button></td>
-					<td><button > <a id="delete_${status.count}">删除</a></button></td>
+					<td><a id="update_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">修改</a></td>
+					<td><a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove">删除</a></td>
 					
 				</tr>
 			</c:forEach> 
 			<tr>
 			<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-			<td ><button id="add_${status.count}"> <a id="addMkt">添加</a></button></td>
+			<td ><a id="addMkt" class="easyui-linkbutton" plain="true" iconCls="icon-add">添加</a></td>
 			</tr>
 		</tbody>
 	</table>
@@ -126,9 +126,9 @@ a:link {
 					
 	    	</table>
 	    	<div class="submit" style="margin-left:120px;">
-	    		<input type="button" id="add_mkt" value="添加"/>
-	    		<input type="reset" name="reset" value="重填"/>
-	    		<input type="button" id="cancle_add" value="取消" /></div>
+	    		<a id="add_mkt" class="easyui-linkbutton" plain="true" iconCls="icon-save">保存</a>
+	    		 
+	    		<a id="cancle_add" class="easyui-linkbutton" plain="true" iconCls="icon-cancel">取消</a></div>
 	    	</form>
 	    
     </div>
@@ -152,9 +152,9 @@ a:link {
 					
 	    	</table>
 	    	<div class="submit" style="margin-left:120px;">
-	    		<input type="button" id="update" value="更新"/>
-	    		<input type="reset" name="reset" value="重填"/>
-	    		<input type="button" id="update_cancle" value="取消" /></div>
+	    		<a id="update"class="easyui-linkbutton" plain="true" iconCls="icon-save">保存</a>
+	    		 
+	    		<a id="update_cancle" class="easyui-linkbutton" plain="true" iconCls="icon-cancel">取消</a></div>
 	    	</form>
 	    
     </div>

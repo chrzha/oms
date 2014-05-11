@@ -232,22 +232,22 @@ $(document).ready(function(){
 					<td><a  id="foodAddress_${status.count}">${list.address}</a></td>
 					<td><a  id="foodRout_${status.count}">${list.rout}</a></td>
 					<td><a  id="foodDesc_${status.count}">${list.description}</a></td>
-					<td><button id="upload_${status.count}">更换图片</button></td>
-					<td><button id="update_${status.count}">修改</button></td>
-					<td><button> <a id="delete_${status.count}">删除</a></button></td>
+					<td><a id="upload_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-search">换图</a></td>
+					<td><a id="update_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">修改</a></td>
+					<td><a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove">删除</a></td>
 					
 				</tr>
 			</c:forEach> 
 			<tr>
 			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-			<td ><button id="add_${status.count}"> <a id="addFood">添加</a></button></td>
+			<td ><a id="addFood" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a></td>
 			</tr>
 		</tbody>
 	</table>
 	
 	
  </div>
-	<div id="win_add" class="easyui-window" title="添加美食记录" closed="true" style="width:400px;height:270px;">    
+	<div id="win_add" class="easyui-window" title="添加美食记录" closed="true" style="width:400px;height:280px;">    
        <form name="form"  id = "add_form" action="/hotel/addFood" ENCTYPE="multipart/form-data" modelAttribute="food" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			<input type="hidden" name="id">
@@ -267,13 +267,12 @@ $(document).ready(function(){
 					
 	    	</table>
 	    	<div class="submit" style="margin-left:120px;">
-	    		<input type="button" name="add_food" id="add_food" value="添加"/>
-	    		<input type="reset" name="reset" value="重填"/>
-	    		<input type="button" id="cancle_add" value="取消" /></div>
+	    		<a id="add_food" class="easyui-linkbutton" plain="true" iconCls="icon-save">保存</a>
+	    		<a id="cancle_add" class="easyui-linkbutton" plain="true" iconCls="icon-cancel">取消</a></div>
 	    	</form>
 	    
     </div>
-    <div id="win_update" class="easyui-window" title="修改美食记录" closed="true" style="width:400px;height:290px;">    
+    <div id="win_update" class="easyui-window" title="修改美食记录" closed="true" style="width:400px;height:300px;">    
        <form name="form" id="update_form" action="#" ENCTYPE="multipart/form-data" modelAttribute="food" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			
@@ -296,23 +295,21 @@ $(document).ready(function(){
 			<tr><td><span>简介</span></td><td><input type="text" id="update_description" name="description"></td></tr>
 	    	</table>
 	    	<div class="submit" style="margin-left:120px;">
-	    		<input type="button" id="update" value="更新"/>
-	    		<input type="reset" name="reset" value="重填"/>
-	    		<input type="button" id="cancle_update" value="取消" /></div>
+	    		<a id="update" class="easyui-linkbutton" plain="true" iconCls="icon-save">保存</a>
+	    		<a id="cancle_update" class="easyui-linkbutton" plain="true" iconCls="icon-cancel">取消</a></div>
 	    	</form>
 	    
     </div>
-   <div id="win_upload" class="easyui-window" title="上传图片" closed="true" style="width:400px;height:140px;"> 
-   	<div style="margin:20px 0 0 20px;">   
-      <form id="upload_form" action="/hotel/doUpload" enctype="multipart/form-data" method="post">
-			<input type="hidden" name="foodId" id="foodId"/>
-				<input type="file" id="imgfile" name="imgfile"></input> <input
-					type="button" value="上传" id="upload_submit"><input
-					type="button" id="cancle_upload" value="取消">
-
+   <div id="win_upload" class="easyui-window" title="上传图片" closed="true" style="width:480px;height:140px;"> 
+   	  <div style="margin:20px 0 0 20px;float:left;">   
+            <form id="upload_form" action="/hotel/doUpload" enctype="multipart/form-data" method="post">
+			    <input type="hidden" name="foodId" id="foodId"/>
+				<input type="file" id="imgfile" name="imgfile"></input> 
 			</form>
-	</div>
-	<div id="p" class="easyui-progressbar" style="width:300px;margin-left:50px;margin-top:20px;"></div>  		
+	  </div>
+	  <div id="p" class="easyui-progressbar" style="width:160px;margin:20px 0 20px 20px;float:left;"></div>  	
+	  <div style="margin-left:140px;"><a id="upload_submit" class="easyui-linkbutton"  iconCls="icon-ok">上传</a>
+				<a id="cancle_upload" class="easyui-linkbutton" iconCls="icon-cancel">取消</a></div>	
     </div>
 </body>
 

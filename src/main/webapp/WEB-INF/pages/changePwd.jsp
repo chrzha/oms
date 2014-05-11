@@ -62,8 +62,8 @@
 	    </form>
 	</div>
 	<div style="margin:0 0 0 140px">
-	<button id="confirmBtn">确认修改</button>
-	<button id="cancleBtn">放弃修改</button>
+	<a id="confirmBtn" class="easyui-linkbutton" plain="true" iconCls="icon-save">确认修改</a>
+	<a id="cancleBtn" class="easyui-linkbutton" plain="true" iconCls="icon-cancel">放弃修改</a>
 	
 	</div>
 	
@@ -104,8 +104,7 @@ $(document).ready(function(){
 	});
 	
 	$("#cancleBtn").click(function(){
-	window.opener=null;
-		window.parent.close();
+		
 	});
 	
 	

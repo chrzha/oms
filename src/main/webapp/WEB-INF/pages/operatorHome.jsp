@@ -196,8 +196,8 @@
 					
 	    	</table>
 	    	<div class="submit" style="margin-left:150px;">
-	    		<input type="button"  id="update_userInfo_btn" value="修改"/>
-	    		<input type="button" id="cancle_update_info" value="取消" /></div>
+	    		<a id="update_userInfo_btn" class="easyui-linkbutton" plain="true" iconCls="icon-save">保存</a>
+	    		<a id="cancle_update_info" class="easyui-linkbutton" plain="true" iconCls="icon-cancel">取消</a></div>
 	    	</form>
 	    
     </div>

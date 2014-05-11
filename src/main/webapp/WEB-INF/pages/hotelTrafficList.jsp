@@ -100,14 +100,14 @@ a:link {
 					<td><a  id="trafficPass_${status.count}">${list.pass}</a></td>
 					<td><a  id="trafficEndStation_${status.count}">${list.endStation}</a></td>				 
 					<td><a  id="trafficEndTime_${status.count}">${list.endTime}</a></td>
-					<td><button > <a id="update_${status.count}">修改</a></button></td>
-					<td><button > <a id="delete_${status.count}">删除</a></button></td>
+					<td> <a id="update_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">修改</a> </td>
+					<td> <a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove">删除</a> </td>
 					
 				</tr>
 			</c:forEach> 
 			<tr>
 			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-			<td ><button id="add_${status.count}"> <a id="addTraffic">添加</a></button></td>
+			<td ><a id="addTraffic" class="easyui-linkbutton" plain="true" iconCls="icon-add">添加</a></td>
 			</tr>
 		</tbody>
 	</table>
@@ -139,9 +139,9 @@ a:link {
 					
 	    	</table>
 	    	<div class="submit" style="margin-left:120px;">
-	    		<input type="button" id="add_traffic" value="添加"/>
-	    		<input type="reset" name="reset" value="重填"/>
-	    		<input type="button" id="cancle_add" value="取消" /></div>
+	    		<a id="add_traffic" class="easyui-linkbutton" plain="true" iconCls="icon-save">保存</a>
+	    		 
+	    		<a id="cancle_add" class="easyui-linkbutton" plain="true" iconCls="icon-cancel">取消</a></div>
 	    	</form>
 	    
     </div>
@@ -173,9 +173,9 @@ a:link {
 					
 	    	</table>
 	    	<div class="submit" style="margin-left:120px;">
-	    		<input type="button" id="update" value="更新"/>
-	    		<input type="reset" name="reset" value="重填"/>
-	    		<input type="button" id="update_cancle" value="取消" /></div>
+	    		<a  id="update" class="easyui-linkbutton" plain="true" iconCls="icon-save">保存</a>
+	    		 
+	    		<a id="update_cancle" class="easyui-linkbutton" plain="true" iconCls="icon-cancel">取消</a></div>
 	    	</form>
 	    
     </div>
