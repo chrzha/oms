@@ -108,7 +108,7 @@ a:link {
 	</table>
  </div>
  
- 	<div id="win_add" class="easyui-window" title="添加商场记录" closed="true" style="width:400px;height:270px;">    
+ 	<div id="win_add" class="easyui-window" title="添加商场记录" closed="true" style="width:400px;height:270px;" data-options="iconCls:'icon-add'">    
        <form name="form"  id = "add_form" action="/hotel/addMkt" ENCTYPE="multipart/form-data" modelAttribute="market" method="market" >
 	    	<table style="margin:10px 0 0 70px;">		
 			
@@ -132,7 +132,7 @@ a:link {
 	    	</form>
 	    
     </div>
- <div id="win_update" class="easyui-window" title="更新商场记录" closed="true" style="width:400px;height:270px;">    
+ <div id="win_update" class="easyui-window" title="更新商场记录" closed="true" style="width:400px;height:270px;" data-options="iconCls:'icon-edit'">    
        <form name="form" id="update_form" action="/hotel/updateMarket" ENCTYPE="multipart/form-data" modelAttribute="market" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			

@@ -108,7 +108,7 @@ a:link {
 		</tbody>
 	</table>
   </div>
-  <div id="win_add" class="easyui-window" title="添加景点记录" closed="true" style="width:400px;height:280px;">    
+  <div id="win_add" class="easyui-window" title="添加景点记录" closed="true" style="width:400px;height:280px;" data-options="iconCls:'icon-add'">    
        <form name="form"  id = "add_form" action="/hotel/View" ENCTYPE="multipart/form-data" modelAttribute="view" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			
@@ -133,7 +133,7 @@ a:link {
 	    	</form>
 	    
     </div>
- <div id="win_update" class="easyui-window" title="更新景点记录" closed="true" style="width:400px;height:300px;">    
+ <div id="win_update" class="easyui-window" title="更新景点记录" closed="true" style="width:400px;height:300px;" data-options="iconCls:'icon-edit'">    
        <form name="form" id="update_form" action="/hotel/updateView" ENCTYPE="multipart/form-data" modelAttribute="view" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			

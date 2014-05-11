@@ -113,7 +113,7 @@ a:link {
 	</table>
  </div>
  
- 	<div id="win_add" class="easyui-window" title="添加交通记录" closed="true" style="width:400px;height:370px;">    
+ 	<div id="win_add" class="easyui-window" title="添加交通记录" closed="true" style="width:400px;height:370px;" data-options="iconCls:'icon-add'">    
        <form name="form"  id = "add_form" action="/hotel/addTraffic" ENCTYPE="multipart/form-data" modelAttribute="traffic" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			
@@ -145,7 +145,7 @@ a:link {
 	    	</form>
 	    
     </div>
- <div id="win_update" class="easyui-window" title="更新交通信息记录" closed="true" style="width:400px;height:390px;">    
+ <div id="win_update" class="easyui-window" title="更新交通信息记录" closed="true" style="width:400px;height:390px;" data-options="iconCls:'icon-edit'">    
        <form name="form" id="update_form" action="/hotel/updateTraffic" ENCTYPE="multipart/form-data" modelAttribute="traffic" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			

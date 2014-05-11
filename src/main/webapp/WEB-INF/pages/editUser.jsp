@@ -92,8 +92,10 @@
 					</td>
 					<td><a  id="phone" name="phone">${userView.phone}</a></td>
 					<td><a  id="email" name="email">${userView.email}</a></td>
-					<td><input type="submit" name="save" id="saveBtn" value="保存"/></td>
+					<td><a id="saveBtn" class="easyui-linkbutton" plain="true" iconCls="icon-save">保存</a></td>
 				</tr>
+				<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+				<td><a id="backBtn" class="easyui-linkbutton" plain="true" iconCls="icon-back">返回</a></td></tr>
 		 
 		</tbody>
 	</table>
@@ -133,6 +135,12 @@ var roleId = $("#roleId").children("select").val();
 				alert("修改失败！");
 			}
 		});
+	});
+	
+	$("#backBtn").click(function(){
+	
+		history.back();
+	
 	});
 
 });

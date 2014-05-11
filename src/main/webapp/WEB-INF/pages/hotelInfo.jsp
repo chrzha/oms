@@ -52,9 +52,9 @@
 <body class="easyui-layout">
 	<div region="center">
 		<div
-			style="height: 300px; width: 800px; margin-left: 250px; margin-top: 10px;">
+			style="height: 300px; width: 800px; margin-left: 250px; margin-top: 60px;">
 			<div class="easyui-panel" title="更改酒店信息"
-				style="height: 300px; width: 600px;">
+				style="height: 300px; width: 600px;" data-options="iconCls:'icon-edit'">
 				<div style="padding: 10px 0 0 10px;float:left;">
 					<form name="form" id="hotel_form"action="/hotel/doUpdateHotelInfo" modelAttribute="hotel"
 						method="post">
@@ -97,8 +97,8 @@
 						</table>
 						
 						<div class="submit" style="margin-left: 135px;">
-							<input type="button" id="update" value="提交修改" />
-								<input type="button" id="back" value="取消修改"/>
+							<a id="update" class="easyui-linkbutton" plain="true" iconCls="icon-save">保存修改</a>
+						   <a id="back" class="easyui-linkbutton" plain="true" iconCls="icon-undo">取消修改</a>
 						  
 						</div>
 						<div id="loading" style="width: 200px; margin-left: 40%; margin-top: 10px;z-index: 999; display: none">
@@ -115,7 +115,7 @@
 						<img style="align:middle;" src="${pageContext.request.contextPath}/webresource/hotel-img/${hotel.logo}" />
 					</div>
 					<div style="margin:5px 0 0 80px;">
-						<button id="upload_logo">更换Logo</button>
+						<a id="upload_logo" class="easyui-linkbutton" plain="true" iconCls="icon-search">更换Logo</a>
 					</div>
 				</div>
 			</div>
@@ -124,9 +124,9 @@
       			<div style="margin:20px 0 0 20px;">
       			<form id="upload_form" action="/hotel/uploadLogo" enctype="multipart/form-data" method="post">
 					<input type="hidden" name="hotelId" id="hotelId"/>
-					<input type="file" id="imgfile" name="imgfile"></input> <input
-					type="button" value="上传" id="upload_submit"><input
-					type="button" id="cancle_upload" value="取消">
+					<input type="file" id="imgfile" name="imgfile"></input>
+					 <a id="upload_submit" class="easyui-linkbutton" plain="true" iconCls="icon-ok">上传</a>
+					<a id="cancle_upload" class="easyui-linkbutton" plain="true" iconCls="icon-cancel">取消</a>
 				</form>      			
       			</div>
 			 <div id="p" class="easyui-progressbar" style="width:300px;margin-left:50px;margin-top:20px;"></div>  

@@ -77,18 +77,19 @@
 					<td><a  id="hotelName_${status.count}">${list.name}</a></td>
 					<td><a  id="address_${status.count}">${list.address}</a></td>
 					<td>
-					<select id="status_${status.count}">
+					<select id="status_${status.count}" disabled="disabled">
 					<option value="1" <c:if test="${list.status=='1'}">selected="selected"</c:if> >通过</option>
 					<option value="0" <c:if test="${list.status=='0'}">selected="selected"</c:if> >未通过</option>
 					</select>
 					</td>
 					<td><a  id="phone_${status.count}">${list.phone}</a></td>
 					
-					<td><button id="save_${status.count}"><a href="/hotel/editHotel?id=${list.id}">审核</a></button></td>
-					<td><button id="delete_${status.count}">删除</button></td>
+					<td> <a href="/hotel/editHotel?id=${list.id}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">审核</a> </td>
+					<td><a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove">删除</a></td>
 				</tr>
 			</c:forEach> 
-			<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td><a id="reload" class="easyui-linkbutton" plain="true" iconCls="icon-reload">刷新</a></td></tr>
 	
 		</tbody>
 	</table>
@@ -98,6 +99,13 @@
 </body>
 <script type="text/javascript">
 $(document).ready(function(){
+
+	$("#reload").click(function(){
+
+		window.location.reload();
+
+	});
+
 $(".easyui-datagrid tbody tr").each(function(i){
 	   
 	    var index = $(this).index();		 

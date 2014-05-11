@@ -174,9 +174,12 @@
 </style>
 </head>
 <body class="easyui-layout" >
-  <div region="north" style="height:70px;background-color:#99ccff;">
-    <div style="width:500px;height:30px;margin-left:30%;"><h1>基于云模式的酒店服务信息后台管理系统</h1></div>
-  </div>
+  <div region="north" style="height:70px;background-color:#339966;">
+        <div style="width:700px;height:30px;margin-left:360px;">
+          <div style="font-family:华文新魏; font-size:28pt; color:#000099; margin: 18px 0px 2px 0px; font-weight:bold;">基于云模式的酒店服务信息后台管理系统 </div>
+          
+        </div>
+      </div>
 
 <div region="west" split="true" style="width:220px;" title="导航菜单">
     <div id="userInfo">
@@ -185,7 +188,7 @@
         邮&nbsp;&nbsp;箱：<a id="user_email">${user.email}</a><br />
         电&nbsp;&nbsp;话：<a id="user_phone">${user.phone}</a><br />
     </div>
-    <div id="win_update_userInfo" class="easyui-window" title="修改联系方式" closed="true" style="width:400px;height:170px;">    
+    <div id="win_update_userInfo" class="easyui-window" title="修改联系方式" closed="true" style="width:400px;height:170px;" data-options="iconCls:'icon-edit'">    
        <form name="form"  id = "update_info_form" action="/hotel/???" ENCTYPE="multipart/form-data" modelAttribute="user" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			<input type="hidden" name="userId" value="${user.userId}">
@@ -201,17 +204,17 @@
 	    	</form>
 	    
     </div>
-     <div id="win_apply" class="easyui-window" title="申请理由" closed="true" style="width:400px;height:170px;">    
+     <div id="win_apply" class="easyui-window" title="申请理由" closed="true" style="width:400px;height:170px;" data-options="iconCls:'icon-edit'">    
        <form name="form"  id = "apply_form" action="/hotel/???" ENCTYPE="multipart/form-data" modelAttribute="user" method="post" >
-	    	<table style="margin:10px 0 0 70px;">		
+	    	<table style="margin:10px 0 0 30px;">		
 			<input type="hidden" name="userId" value="${user.userId}">
 			
-			<tr><td><span>申请理由</span></td><td><textarea rows="3" cols="19" name="reason"></textarea></tr>
+			<tr><td><span>申请理由</span></td><td><textarea rows="4" cols="30" name="reason"></textarea></tr>
 
 	    	</table>
 	    	<div class="submit" style="margin-left:150px;">
-	    		<input type="button"  id="send_apply" value="发送"/>
-	    		<input type="button" id="cancle_apply" value="取消" /></div>
+	    		<a id="send_apply" class="easyui-linkbutton" plain="true" iconCls="icon-ok">发送</a>
+	    		<a id="cancle_apply" class="easyui-linkbutton" plain="true" iconCls="icon-cancel">取消</a></div>
 	    	</form>
 	    
     </div>

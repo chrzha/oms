@@ -247,7 +247,7 @@ $(document).ready(function(){
 	
 	
  </div>
-	<div id="win_add" class="easyui-window" title="添加美食记录" closed="true" style="width:400px;height:280px;">    
+	<div id="win_add" class="easyui-window" title="添加美食记录" closed="true" style="width:400px;height:280px;" data-options="iconCls:'icon-add'">    
        <form name="form"  id = "add_form" action="/hotel/addFood" ENCTYPE="multipart/form-data" modelAttribute="food" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			<input type="hidden" name="id">
@@ -272,7 +272,7 @@ $(document).ready(function(){
 	    	</form>
 	    
     </div>
-    <div id="win_update" class="easyui-window" title="修改美食记录" closed="true" style="width:400px;height:300px;">    
+    <div id="win_update" class="easyui-window" title="修改美食记录" closed="true" style="width:400px;height:300px;" data-options="iconCls:'icon-edit'">    
        <form name="form" id="update_form" action="#" ENCTYPE="multipart/form-data" modelAttribute="food" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			
@@ -300,7 +300,7 @@ $(document).ready(function(){
 	    	</form>
 	    
     </div>
-   <div id="win_upload" class="easyui-window" title="上传图片" closed="true" style="width:480px;height:140px;"> 
+   <div id="win_upload" class="easyui-window" title="上传图片" closed="true" style="width:480px;height:140px;" data-options="iconCls:'icon-edit'"> 
    	  <div style="margin:20px 0 0 20px;float:left;">   
             <form id="upload_form" action="/hotel/doUpload" enctype="multipart/form-data" method="post">
 			    <input type="hidden" name="foodId" id="foodId"/>

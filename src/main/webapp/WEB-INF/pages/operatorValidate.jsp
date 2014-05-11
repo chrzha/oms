@@ -90,13 +90,13 @@
 					</td>
 					<td><a  id="phone_${status.count}">${list.phone}</a></td>
 					<td><a  id="email_${status.count}">${list.email}</a></td>
-					<td><button > <a id="save_${status.count}">保存</a></button></td>
-					<td><button > <a id="delete_${status.count}">删除</a></button></td>
+					<td><a id="save_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-save">保存</a></td>
+					<td> <a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove">删除</a> </td>
 				</tr>
 			</c:forEach> 
 			<tr>
 			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-			<td><button > <a id="add">添加</a></button></td>
+			<td> <a id="add" class="easyui-linkbutton" plain="true" iconCls="icon-add">添加</a> </td>
 			</tr>
 	
 		</tbody>

@@ -97,9 +97,9 @@ pageEncoding="utf-8"%>
 					
 	    	</table>
 	    	<div class="submit" style="margin-left:150px;">
-	    		<input type="button" id="register" value="注册"/>
-	    		<input type="reset" name="reset" value="重填"/>
-	    		<input type="button" id="back" value="返回"/></div>
+	    		<a id="register" class="easyui-linkbutton" plain="true" iconCls="icon-ok">注册</a>
+	    		
+	    		<a  id="back" class="easyui-linkbutton" plain="true" iconCls="icon-cancel">返回</a></div>
 	    	<div id="loading" style="width: 200px; margin-left: 40%; margin-top: 10px;z-index: 999; display: none">
         						<div class="UpdateProgress">
         						 <img src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/default/images/loading.gif" />

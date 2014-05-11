@@ -242,9 +242,12 @@
 </head>
 <body class="easyui-layout" >
 
-  <div region="north" style="height:70px;background-color:#99ccff;">
-    <div style="width:500px;height:30px;margin-left:30%;"><h1>基于云模式的酒店服务信息后台管理系统</h1></div>
-  </div>
+  <div region="north" style="height:70px;background-color:#339966;">
+        <div style="width:700px;height:30px;margin-left:360px;">
+          <div style="font-family:华文新魏; font-size:28pt; color:#000099; margin: 18px 0px 2px 0px; font-weight:bold;">基于云模式的酒店服务信息后台管理系统 </div>
+          
+        </div>
+      </div>
 
 <div region="west" split="true" style="width:220px;" title="导航菜单">
     <div id="userInfo">
@@ -253,7 +256,7 @@
         邮&nbsp;&nbsp;箱：<a id="user_email">${user.email}</a><br />
         电&nbsp;&nbsp;话：<a id="user_phone">${user.phone}</a><br />
     </div>
-    <div id="win_update_userInfo" class="easyui-window" title="修改联系方式" closed="true" style="width:400px;height:170px;">    
+    <div id="win_update_userInfo" class="easyui-window" title="修改联系方式" closed="true" style="width:400px;height:170px;" data-options="iconCls:'icon-edit'">    
        <form name="form"  id = "update_info_form" action="/hotel/???" ENCTYPE="multipart/form-data" modelAttribute="user" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			<input type="hidden" name="userId" value="${user.userId}">
@@ -359,7 +362,7 @@
     
     </div>
   </div>
-  		<div id="win_backup" class="easyui-window" title="数据备份与还原" closed="true" style="width:400px;height:100px;">    
+  		<div id="win_backup" class="easyui-window" title="数据备份与还原" closed="true" style="width:400px;height:100px;" data-options="iconCls:'icon-edit'">    
 			 <div id="p" class="easyui-progressbar" style="width:300px;margin-left:50px;margin-top:20px;"></div>  
         </div>
 </div>

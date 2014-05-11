@@ -49,7 +49,7 @@
 </head>
 <body class="easyui-layout" >
 <div style="height:210px;width:410px;margin:100px 0 0 300px;">
-  <div class="easyui-panel"  title="修改密码" style="height:200px;width:400px;">
+  <div class="easyui-panel"  title="修改密码" style="height:200px;width:400px;" data-options="iconCls:'icon-edit'">
   	<div style="padding:10px 0 0 10px">
 	    <form id="ff" method="post">
 	    	<table style="margin:10px 0 0 70px;">

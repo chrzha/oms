@@ -59,7 +59,7 @@
   <table class="easyui-datagrid" title="管理员列表" style="width:1000px;height:400px">
 		<thead>
 			<tr>
-				<th data-options="field:'userId',width:100,align:'center'">管理员编号</th>
+				<th data-options="field:'userId',width:100,align:'center'">编号</th>
 				<th data-options="field:'userName',width:100,align:'center'">用户名</th>
 				<th data-options="field:'role',width:100,align:'center'">角色</th>
 				<th data-options="field:'hotel',width:100,align:'center'">所在酒店</th>
@@ -90,11 +90,12 @@
 					</td>
 					<td><a  id="phone_${status.count}">${list.phone}</a></td>
 					<td><a  id="email_${status.count}">${list.email}</a></td>
-					<td><button id="edit_${status.count}"> <a href="/hotel/editUser?userId=${list.userId}">审核</a></button></td>
-					<td><button id="delete_${status.count}"> 删除 </button></td>
+					<td> <a href="/hotel/editUser?userId=${list.userId}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">审核</a></td>
+					<td><a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove"> 删除 </a></td>
 				</tr>
 			</c:forEach> 
-			<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td><a id="reload" class="easyui-linkbutton" plain="true" iconCls="icon-reload">刷新</a></td></tr>
 	
 		</tbody>
 	</table>
@@ -104,6 +105,12 @@
 </body>
 <script type="text/javascript">
 $(document).ready(function(){
+
+    $("#reload").click(function(){
+
+		window.location.reload();
+
+	});
   
 	$(".easyui-datagrid tbody tr").each(function(i){
 	

@@ -7,10 +7,10 @@
 </head>
 <style type="text/css" >
 #copyright{
-color:gray;
-font-size:13px;
-line-height:13px;
-clear:left;
+
+color: #357cc5;
+font-size: 12;
+
 }
 </style>
 <body>

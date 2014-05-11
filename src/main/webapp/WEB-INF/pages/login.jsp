@@ -59,27 +59,30 @@
         window.location.href="/hotel/hotelRegRedirect";
       });
   });
-      </script>
-      <style>
-
-
-        #userName_error,#userPassword_error,#roleId_error{ display:block; color:red; font-size:13px; }
-      </style>
-    </head>
+</script>
+  <style>
+   #userName_error,#userPassword_error,#roleId_error{ 
+    display:block;
+	color:red;
+	font-size:10px;
+	font-weight:bold;
+	width:100px;
+   }
+</style>
+ </head>
     <body class="easyui-layout" >
 
-      <div region="north" style="height:70px;background-color:#99ccff;">
-        <div style="width:500px;height:30px;margin-left:460px;">
-          <h1>
-            基于云模式的酒店服务信息后台管理系统
-          </h1>
+      <div region="north" style="height:70px;background-color:#339966;">
+        <div style="width:700px;height:30px;margin-left:360px;">
+          <div style="font-family:华文新魏; font-size:28pt; color:#000099; margin: 18px 0px 2px 0px; font-weight:bold;">基于云模式的酒店服务信息后台管理系统 </div>
+          
         </div>
       </div>
 
 
       <div region="center">
         <div style="height:210px;width:410px;margin-left:490px;margin-top:10px;">
-          <div class="easyui-panel"  title="登录" style="height:200px;width:400px;">
+          <div class="easyui-panel"  title="登录" style="height:200px;width:420px;">
             <div style="padding:10px 0 0 10px">
 
               <table style="margin:10px 0 0 70px;">
