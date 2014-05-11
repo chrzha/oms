@@ -180,43 +180,50 @@
 	
 	//dbbackup
 	$("#dbbackup").click(function(){
-	 	 
-	 	 $('#win_backup').window('open'); 
+	
+	    $.messager.confirm('确认', '确定要吗?', function(r){  
+		 if(r){
+	 	 	$('#win_backup').window('open'); 
 		 
-		 $.post("/hotel/backup",function(data){
+		 	$.post("/hotel/backup",function(data){
 	 	 
-	 	   var value = $('#p').progressbar('getValue');  
-           if (value < 100){  
-               value += Math.floor(Math.random() * 10);  
-              $('#p').progressbar('setValue', value);  
-               setTimeout(arguments.callee, 200);  
-           }else{   
+	 	   			var value = $('#p').progressbar('getValue');  
+           			if (value < 100){  
+               		value += Math.floor(Math.random() * 10);  
+              		$('#p').progressbar('setValue', value);  
+               		setTimeout(arguments.callee, 200);  
+           		}else{   
                    $('#win_backup').window('close'); 
                     $.messager.alert('提示','数据备份成功!','info');  
-           }
-           
-		 });
+           		}
+		 	});		 	
+		 }
+		});
+	 	 
 	
 	});
 	
 	//restoreDB
 	$("#dbrestore").click(function(){
-	  
-	 	 $('#win_backup').window('open'); 
+	
+	 $.messager.confirm('确认', '确定要还原吗?', function(r){  
+		 if(r){
+	 	 	$('#win_backup').window('open'); 
 		 
-		 $.post("/hotel/restoreDB",function(data){
-		 
-	 	   var value = $('#p').progressbar('getValue');  
-           if (value < 100){  
-               value += Math.floor(Math.random() * 10);  
-              $('#p').progressbar('setValue', value);  
-               setTimeout(arguments.callee, 200);  
-           }else{   
+		 	$.post("/hotel/restoreDB",function(data){
+	 	 
+	 	   			var value = $('#p').progressbar('getValue');  
+           			if (value < 100){  
+               		value += Math.floor(Math.random() * 10);  
+              		$('#p').progressbar('setValue', value);  
+               		setTimeout(arguments.callee, 200);  
+           		}else{   
                    $('#win_backup').window('close'); 
-                    $.messager.alert('提示','数据还原成功!','info');  
-           }
-           
-		 });
+                    $.messager.alert('提示','数据库还原成功!','info');  
+           		}
+		 	});		 	
+		 }
+		});
 	
 	});
 	
