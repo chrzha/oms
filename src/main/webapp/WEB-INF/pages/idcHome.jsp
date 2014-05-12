@@ -146,6 +146,19 @@
 				});
 		     }
 	});
+	//facilitiesValidate
+	$("#facilitiesValidate").click(function(){
+			if($("#tabs").tabs('exists','设施信息审核')){
+				$("#tabs").tabs('select','设施信息审核');
+			}else{
+				$('#tabs').tabs('add',{
+				title: '设施信息审核',
+				content: '<iframe style="width:100%;height:480px;" src="/hotel/idcFacilitiesList"></iframe>',
+				closable: true
+				});
+		     }
+	});
+	
 	//update_userInfo
 	$("#update_userInfo").click(function(){
 	   $('#win_update_userInfo').window('open'); 
@@ -297,6 +310,9 @@
 				<li data-options="state:'closed'">
 					<span>公共信息审核与管理</span>
 					<ul>
+					    <li>
+							<a id="facilitiesValidate">设施信息审核</a>
+						</li>
 						<li>
 							<a id="trafficValidate">交通信息审核</a>
 						</li>

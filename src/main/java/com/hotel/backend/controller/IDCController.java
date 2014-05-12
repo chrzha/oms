@@ -13,18 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hotel.backend.entity.Facilities;
 import com.hotel.backend.entity.Food;
 import com.hotel.backend.entity.Hotel;
 import com.hotel.backend.entity.Market;
 import com.hotel.backend.entity.Traffic;
 import com.hotel.backend.entity.View;
+import com.hotel.backend.service.HotelFacilitiesService;
 import com.hotel.backend.service.HotelFoodService;
 import com.hotel.backend.service.HotelMarketService;
 import com.hotel.backend.service.HotelService;
 import com.hotel.backend.service.HotelTrafficService;
 import com.hotel.backend.service.HotelViewService;
+import com.hotel.backend.service.LHotelFacilitiesService;
 import com.hotel.backend.service.LHotelFoodService;
 import com.hotel.backend.service.LHotelMktService;
+import com.hotel.backend.service.LHotelTrafficService;
 import com.hotel.backend.service.LHotelViewService;
 import com.hotel.backend.service.LUserRoleService;
 import com.hotel.backend.service.UserService;
@@ -60,6 +64,9 @@ public class IDCController {
 	
 	@Autowired
 	private HotelTrafficService hotelTrafficService;
+	
+	@Autowired
+	private HotelFacilitiesService hotelFacilitiesService;
 
 	@Autowired
 	private UserService userService;
@@ -75,6 +82,12 @@ public class IDCController {
 
 	@Autowired
 	private LHotelMktService lHotelMktService;
+	
+	@Autowired
+	private LHotelFacilitiesService lHotelFacilitiesService;
+	
+	@Autowired
+	private LHotelTrafficService lHotelTrafficService;
 
 	@Autowired
 	private HotelService hotelService;
@@ -177,6 +190,8 @@ public class IDCController {
 		lHotelFoodService.deleteLinkByHotelId(hotelId);
 		lHotelMktService.deleteLinkByHotelId(hotelId);
 		lHotelViewService.deleteLinkByHotelId(hotelId);
+		lHotelFacilitiesService.deleteLinkByHotelId(hotelId);
+		lHotelTrafficService.deleteLinkByHotelId(hotelId);
 		return result;
 	}
 
@@ -201,6 +216,12 @@ public class IDCController {
 	public ModelAndView idcMktList() {
 
 		return new ModelAndView("idcMktList");
+	}
+	
+	@RequestMapping("/idcFacilitiesList")
+	public ModelAndView idcFacilitiesList() {
+
+		return new ModelAndView("idcFacilitiesList");
 	}
 
 	@RequestMapping("/idcFoodList")
@@ -265,6 +286,24 @@ public class IDCController {
 		mapSearch.put("startIndex", (page-1)*rows);
 		mapSearch.put("pageSize", rows);
 		List<Traffic> list = hotelTrafficService.getTrafficListPaged(mapSearch);
+		// 获取总记录数
+		int totalRows = hotelTrafficService.getTotalCount();
+
+		map.put("total", totalRows);
+
+		map.put("rows", list);
+
+		return map;
+	}
+	
+	@RequestMapping("/facilitiesList")
+	public @ResponseBody
+	Map<String, Object> facilitiesList(Integer page, Integer rows,Map<String, Object> map) {
+
+		Map<String, Integer> mapSearch = new HashMap<String, Integer>();
+		mapSearch.put("startIndex", (page-1)*rows);
+		mapSearch.put("pageSize", rows);
+		List<Facilities> list = hotelFacilitiesService.getFacilitiesListPaged(mapSearch);
 		// 获取总记录数
 		int totalRows = hotelTrafficService.getTotalCount();
 

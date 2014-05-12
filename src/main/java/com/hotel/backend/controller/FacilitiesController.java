@@ -36,7 +36,8 @@ public class FacilitiesController {
 	@Autowired
 	private LHotelFacilitiesService lHotelFacilitiesService;
 
-	
+
+
 	@RequestMapping("/deleteFacilitiesById")
 	public @ResponseBody
 	String deleteFacilitiesById(HttpServletRequest request,
@@ -131,7 +132,7 @@ public class FacilitiesController {
 	@RequestMapping("/updateFacilities")
 	public @ResponseBody
 	String updateFood(HttpServletRequest request, HttpServletResponse response,
-			@ModelAttribute("food") Facilities facilities) {
+			@ModelAttribute("facilities") Facilities facilities) {
 
 		String result = "success";
 		hotelFacilitiesService.updateFacilities(facilities);

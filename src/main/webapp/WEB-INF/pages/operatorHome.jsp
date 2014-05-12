@@ -92,6 +92,18 @@
 				});
 		     }
 	});
+	//facilitiesManage
+	$("#facilitiesManage").click(function(){
+			if($("#tabs").tabs('exists','设施娱乐')){
+				$("#tabs").tabs('select','设施娱乐');
+			}else{
+				$('#tabs').tabs('add',{
+				title: '设施娱乐',
+				content: '<iframe style="width:100%;height:480px;" src="/hotel/hotelFacilitiesList"></iframe>',
+				closable: true
+				});
+		     }
+	});
 	//foodManage
 	$("#foodManage").click(function(){
 			if($("#tabs").tabs('exists','美食信息')){
@@ -221,6 +233,9 @@
 				<li>
 					<span>公共信息管理</span>
 					<ul>
+						<li>
+							<a id="facilitiesManage">设施娱乐信息管理</a>
+						</li>
 						<li>
 							<a id="viewManage">景点信息管理</a>
 						</li>

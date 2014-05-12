@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hotel.backend.entity.Facilities;
 import com.hotel.backend.entity.Food;
 import com.hotel.backend.entity.Hotel;
 import com.hotel.backend.entity.Market;
-
 import com.hotel.backend.entity.View;
+import com.hotel.backend.service.HotelFacilitiesService;
 import com.hotel.backend.service.HotelFoodService;
 import com.hotel.backend.service.HotelMarketService;
 import com.hotel.backend.service.HotelService;
@@ -54,6 +55,9 @@ public class AdminController {
 
 	@Autowired
 	HotelService hotelService;
+	
+	@Autowired
+	HotelFacilitiesService hotelFacilitiesService;
 
 	@RequestMapping("/adminHome")
 	public ModelAndView goAdminHomePage(String hotelId) {
@@ -85,6 +89,20 @@ public class AdminController {
 		List<View> list = hotelViewService.getViewListByHotelId(hotelId);
 
 		return new ModelAndView("hotelViewList", "list", list);
+	}
+	
+	@RequestMapping("/hotelFacilitiesList")
+	public ModelAndView hotelFacilitiesList(HttpServletRequest request,
+			HttpServletResponse response, String hotelId) {
+
+		UserView userView = (UserView) request.getSession()
+				.getAttribute("user");
+
+		hotelId = userView.getHotelId();
+
+		List<Facilities> list = hotelFacilitiesService.getFacilitiesListByHotelId(hotelId);
+
+		return new ModelAndView("hotelFacilitiesList", "list", list);
 	}
 
 	@RequestMapping("/hotelMktList")

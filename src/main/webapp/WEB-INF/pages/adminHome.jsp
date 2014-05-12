@@ -106,6 +106,18 @@
 				});
 		     }
 	});
+	//facilitiesManage
+	$("#facilitiesManage").click(function(){
+			if($("#tabs").tabs('exists','设施娱乐')){
+				$("#tabs").tabs('select','设施娱乐');
+			}else{
+				$('#tabs').tabs('add',{
+				title: '设施娱乐',
+				content: '<iframe style="width:100%;height:480px;" src="/hotel/hotelFacilitiesList"></iframe>',
+				closable: true
+				});
+		     }
+	});
 	//foodManage
 	$("#foodManage").click(function(){
 			if($("#tabs").tabs('exists','美食信息')){
@@ -254,16 +266,19 @@
 					<span>公共信息审核与管理</span>
 					<ul>
 						<li>
+							<a id="facilitiesManage">设施娱乐信息审核与管理</a>
+						</li>
+						<li>
 							<a id="trafficManage">交通信息审核与管理</a>
 						</li>
 						<li>
-							<a id="viewManage">景点审核与管理</a>
+							<a id="viewManage">景点信息审核与管理</a>
 						</li>
 						<li>
-							<a id="mktManage">购物审核与管理</a>
+							<a id="mktManage">购物信息审核与管理</a>
 						</li>
 						<li>
-							<a id="foodManage">美食审核与管理</a>
+							<a id="foodManage">美食信息审核与管理</a>
 						</li>
 					</ul>
 				</li>
