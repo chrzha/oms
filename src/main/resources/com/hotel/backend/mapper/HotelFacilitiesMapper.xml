@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hotel.backend.mapper.HotelFacilitiesMapper">
+	<resultMap id="BaseResultMap" type="com.hotel.backend.entity.Facilities">
+		<id column="FACILITIES_ID" jdbcType="CHAR" property="id" />
+		<result column="FACILITIES_NAME" jdbcType="VARCHAR" property="name" />
+		<result column="FACILITIES_TYPE" jdbcType="VARCHAR" property="type" />
+		<result column="FACILITIES_PRICE" jdbcType="FLOAT" property="price" />
+		<result column="FACILITIES_DESC" jdbcType="VARCHAR" property="description" />
+		<result column="FACILITIES_AWAY" jdbcType="VARCHAR" property="away" />
+
+	</resultMap>
+
+
+	<sql id="Base_Column_List">
+		BFACILITIES.FACILITIES_ID,FACILITIES_NAME,FACILITIES_TYPE,FACILITIES_PRICE,FACILITIES_DESC,FACILITIES_AWAY
+	</sql>
+
+	<select id="getFacilitiesListPaged" resultMap="BaseResultMap"
+		parameterType="map">
+
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		BFACILITIES limit
+		#{startIndex},#{pageSize}
+
+	</select>
+	<select id="getAllFacilitiesList" resultMap="BaseResultMap">
+
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		BFACILITIES
+
+	</select>
+
+	<select id="getTotalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM BFACILITIES
+	</select>
+
+	<select id="getFacilitiesListByHotelId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		BFACILITIES,l_facilities_hotel where
+		l_facilities_hotel.FACILITIES_ID =
+		BFACILITIES.FACILITIES_ID and
+		l_facilities_hotel.HOTEL_ID = #{hotelId};
+
+	</select>
+
+	<delete id="deleteFacilitiesById" parameterType="java.lang.String">
+		delete from
+		BFACILITIES where
+		FACILITIES_ID= #{facilitiesId}
+	</delete>
+
+	<insert id="addFacilities" parameterType="com.hotel.backend.entity.Facilities">
+
+		INSERT INTO
+		BFACILITIES
+		(FACILITIES_ID,FACILITIES_NAME,FACILITIES_TYPE,FACILITIES_PRICE,FACILITIES_DESC,FACILITIES_AWAY)
+		VALUES
+		(#{id},#{name},#{type},#{price},#{description},#{away})
+
+	</insert>
+
+	<update id="updateFacilities" parameterType="com.hotel.backend.entity.Facilities">
+		update BFACILITIES
+		set
+		FACILITIES_NAME =
+		#{name},
+		FACILITIES_TYPE =
+		#{type},
+		FACILITIES_PRICE = #{price},
+		FACILITIES_DESC = #{description},
+		FACILITIES_AWAY = #{away}
+		where
+		FACILITIES_ID=#{id}
+	</update>
+
+</mapper>
+
+
