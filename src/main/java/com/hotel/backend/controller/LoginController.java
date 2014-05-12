@@ -108,16 +108,19 @@ public class LoginController {
 	
 	//updateUserInfo
 	@RequestMapping("/updateUserInfo")
-	public @ResponseBody List<String> updateUserInfo(@ModelAttribute("user") User user){
+	public @ResponseBody String updateUserInfo(HttpServletRequest request,
+			HttpServletResponse response,@ModelAttribute("user") User user){
 		
-		List<String> list = new ArrayList<String>();
+		String result = "success";
 		
 		userService.updateUser(user);
-
-		list.add(user.getPhone());
-		list.add(user.getEmail());
 		
-		return list;
+		UserView userView = (UserView) request.getSession().getAttribute("user");
+		
+		userView.setEmail(user.getEmail());
+		userView.setPhone(user.getPhone());
+
+		return result;
 		
 	}
 	

@@ -108,11 +108,11 @@
 	});
 	//foodManage
 	$("#foodManage").click(function(){
-			if($("#tabs").tabs('exists','美食')){
-				$("#tabs").tabs('select','美食');
+			if($("#tabs").tabs('exists','美食信息')){
+				$("#tabs").tabs('select','美食信息');
 			}else{
 				$('#tabs').tabs('add',{
-				title: '美食',
+				title: '美食信息',
 				content: '<iframe style="width:100%;height:480px;" src="/hotel/hotelFoodList"></iframe>',
 				closable: true
 				});
@@ -120,11 +120,11 @@
 	});
 	//trafficManage
 	$("#trafficManage").click(function(){
-			if($("#tabs").tabs('exists','交通')){
-				$("#tabs").tabs('select','交通');
+			if($("#tabs").tabs('exists','交通信息')){
+				$("#tabs").tabs('select','交通信息');
 			}else{
 				$('#tabs').tabs('add',{
-				title: '交通',
+				title: '交通信息',
 				content: '<iframe style="width:100%;height:480px;" src="/hotel/hotelTrafficList"></iframe>',
 				closable: true
 				});
@@ -151,20 +151,12 @@
 	   
 	   	var user = $("#update_info_form").serialize();
 	  	 $.post("/hotel/updateUserInfo",user,function(data){
-				   if(data!=null){
-						
-						var user_eamil = $("#user_email").text();
-						var user_phone = $("#user_phone").text();
-						
-						user_eamil = data[1];
-						user_phone = data[0];
-						
-						$("#user_email").text(user_eamil);
-						$("#user_phone").text(user_phone);
-						window.reload();
+				   if(data=="success"){
+				       $('#win_update_userInfo').window('close'); 
+						window.parent.location.reload();
 						
 				   }else{
-					  alert("error!");		   
+					  $.messager.alert('错误','修改成功!','error');	   
 				   } 
 		 });
 
@@ -189,7 +181,7 @@
 </style>
 </head>
 <body class="easyui-layout" >
-  <div region="north" style="height:70px;background-color:#339966;">
+  <div region="north" style="height:70px;">
         <div style="width:700px;height:30px;margin-left:360px;">
           <div style="font-family:华文新魏; font-size:28pt; color:#000099; margin: 18px 0px 2px 0px; font-weight:bold;">基于云模式的酒店服务信息后台管理系统 </div>
           
@@ -197,7 +189,7 @@
       </div>
 
 <div region="west" split="true" style="width:220px;" title="导航菜单">
-    <div id="userInfo">
+    <div id="userInfo" >
         <div style="background-color:#99ccff;padding:2px 5px;font-weight:bold;">登录信息<a id="update_userInfo" style="color:#ff0000;font-weight:bold;margin-left:80px;cursor:pointer;">修改</a></div>
         用户名：${user.userName}<br />
         邮&nbsp;&nbsp;箱：<a id="user_email">${user.email}</a><br />

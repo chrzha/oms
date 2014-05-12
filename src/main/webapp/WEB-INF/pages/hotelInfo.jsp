@@ -114,22 +114,22 @@
 					<div style="width:230px;height:140px;border:1px solid silver;">
 						<img style="align:middle;" src="${pageContext.request.contextPath}/webresource/hotel-img/${hotel.logo}" />
 					</div>
-					<div style="margin:5px 0 0 80px;">
+					<div style="margin:12px 0 0 80px;">
 						<a id="upload_logo" class="easyui-linkbutton" plain="true" iconCls="icon-search">更换Logo</a>
 					</div>
 				</div>
 			</div>
 			
-			<div id="win_upload" class="easyui-window" title="上传图片" closed="true" style="width:400px;height:140px;">    
-      			<div style="margin:20px 0 0 20px;">
+			<div id="win_upload" class="easyui-window" title="上传图片" closed="true" style="width:480px;height:140px;">    
+      			<div style="margin:20px 0 0 20px;float:left;">
       			<form id="upload_form" action="/hotel/uploadLogo" enctype="multipart/form-data" method="post">
 					<input type="hidden" name="hotelId" id="hotelId"/>
 					<input type="file" id="imgfile" name="imgfile"></input>
-					 <a id="upload_submit" class="easyui-linkbutton" plain="true" iconCls="icon-ok">上传</a>
-					<a id="cancle_upload" class="easyui-linkbutton" plain="true" iconCls="icon-cancel">取消</a>
 				</form>      			
       			</div>
-			 <div id="p" class="easyui-progressbar" style="width:300px;margin-left:50px;margin-top:20px;"></div>  
+			 <div id="p" class="easyui-progressbar" style="width:160px;margin:20px 0 20px 20px;float:left;"></div>  
+			   <div style="margin-left:140px;"><a id="upload_submit" class="easyui-linkbutton"  iconCls="icon-ok">上传</a>
+				<a id="cancle_upload" class="easyui-linkbutton" iconCls="icon-cancel">取消</a></div>	
             </div>
 
 		</div>

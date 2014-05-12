@@ -154,20 +154,13 @@
 	   
 	   	var user = $("#update_info_form").serialize();
 	  	 $.post("/hotel/updateUserInfo",user,function(data){
-				   if(data!=null){
-						
-						var user_eamil = $("#user_email").text();
-						var user_phone = $("#user_phone").text();
+				   if(data=="success"){
 						 
-						user_eamil = data[1];
-						user_phone = data[0];
-						 
-						$("#user_email").text(user_eamil);
-						$("#user_phone").text(user_phone);
+				       $('#win_update_userInfo').window('close'); 
 						window.parent.location.reload();
 						
 				   }else{
-					  alert("error!");		   
+					   $.messager.alert('错误','修改成功!','error');	      
 				   } 
 		 });
 
@@ -242,7 +235,7 @@
 </head>
 <body class="easyui-layout" >
 
-  <div region="north" style="height:70px;background-color:#339966;">
+  <div region="north" style="height:70px;">
         <div style="width:700px;height:30px;margin-left:360px;">
           <div style="font-family:华文新魏; font-size:28pt; color:#000099; margin: 18px 0px 2px 0px; font-weight:bold;">基于云模式的酒店服务信息后台管理系统 </div>
           
