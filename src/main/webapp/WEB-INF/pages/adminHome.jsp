@@ -266,7 +266,7 @@
 					<span>公共信息审核与管理</span>
 					<ul>
 						<li>
-							<a id="facilitiesManage">设施娱乐信息审核与管理</a>
+							<a id="facilitiesManage">设施娱乐审核与管理</a>
 						</li>
 						<li>
 							<a id="trafficManage">交通信息审核与管理</a>

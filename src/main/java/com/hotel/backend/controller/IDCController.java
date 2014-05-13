@@ -1,6 +1,7 @@
 package com.hotel.backend.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,12 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hotel.backend.entity.ApplyInfo;
 import com.hotel.backend.entity.Facilities;
 import com.hotel.backend.entity.Food;
 import com.hotel.backend.entity.Hotel;
 import com.hotel.backend.entity.Market;
 import com.hotel.backend.entity.Traffic;
 import com.hotel.backend.entity.View;
+import com.hotel.backend.service.ApplyAdminService;
 import com.hotel.backend.service.HotelFacilitiesService;
 import com.hotel.backend.service.HotelFoodService;
 import com.hotel.backend.service.HotelMarketService;
@@ -70,6 +73,9 @@ public class IDCController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private ApplyAdminService applyAdminService;
 
 	@Autowired
 	private LUserRoleService lUserRoleService;
@@ -145,6 +151,13 @@ public class IDCController {
 		map.put("userId", userId);
 		map.put("status", status);
 		map.put("roleId", roleId);
+		ApplyInfo applyInfo = new ApplyInfo();
+		applyInfo.setUserId(userId);
+		applyInfo.setConfirmDate(new Date());
+		if (roleId.equals("0002")) {
+			applyInfo.setFlag("1");			
+		}
+		applyAdminService.updateApply(applyInfo);
 
 		userViewService.updateUserViewById(map);
 

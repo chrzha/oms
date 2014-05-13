@@ -108,6 +108,7 @@ public class RegisterController {
         hotel.setPhone(hotel.getPhone().trim());
 	    hotel.setId(hotelId);
 	    hotel.setStatus("0");
+	    hotel.setLogo("default.jpg");
 	    
 	    if (hotelService.createHotel(hotel)>0) {
             //注册成功，发送邮件通知！

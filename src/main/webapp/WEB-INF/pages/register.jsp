@@ -59,9 +59,12 @@ pageEncoding="utf-8"%>
 </style>
 </head>
 <body class="easyui-layout" >
-  <div region="north" style="height:70px;background-color:#99ccff;">
-    <div style="width:500px;height:30px;margin-left:460px;"><h1>基于云模式的酒店服务信息后台管理系统</h1></div>
-  </div>
+   <div region="north" style="height:70px;background-color:#E0ECFF;">
+        <div style="width:700px;height:30px;margin-left:360px;">
+          <div style="font-family:华文新魏; font-size:28pt; color:#000099; margin: 18px 0px 2px 0px; font-weight:bold;">基于云模式的酒店服务信息后台管理系统 </div>
+          
+        </div>
+      </div>
 
 
 <div region="center">

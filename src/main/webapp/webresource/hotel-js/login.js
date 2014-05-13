@@ -41,7 +41,7 @@ $(document).ready(function() {
 					}else if(data[0]=="error_2"){
 						$("#userName_error").text("");
 						$("#userPassword_error").text("");
-						$("#roleId_error").text("角色错误！");
+						$("#roleId_error").text("角色错误或未通过审核！");
 					}else if(data[0]=="idcHome"){
 						window.location.href = '/hotel/idcHome';
 					}else if(data[0]=="adminHome"){

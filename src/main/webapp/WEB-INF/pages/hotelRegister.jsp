@@ -51,18 +51,19 @@
 </style>
 </head>
 <body class="easyui-layout">
-	<div region="north" style="height: 70px; background-color: #99ccff;">
-		<div style="width: 500px; height: 30px; margin-left: 460px;">
-			<h1>基于云模式的酒店服务信息后台管理系统</h1>
-		</div>
-	</div>
+	 <div region="north" style="height:70px;background-color:#E0ECFF;">
+        <div style="width:700px;height:30px;margin-left:360px;">
+          <div style="font-family:华文新魏; font-size:28pt; color:#000099; margin: 18px 0px 2px 0px; font-weight:bold;">基于云模式的酒店服务信息后台管理系统 </div>
+          
+        </div>
+      </div>
 
 
 	<div region="center">
 		<div
 			style="height: 300px; width: 410px; margin-left: 490px; margin-top: 10px;">
 			<div class="easyui-panel" title="酒店注册"
-				style="height: 300px; width: 400px;">
+				style="height: 310px; width: 400px;">
 				<div style="padding: 10px 0 0 10px">
 					<form name="form" id="hotel_form"action="/hotel/hotelRegister" modelAttribute="hotel"
 						method="post">

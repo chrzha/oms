@@ -46,15 +46,20 @@
 <script type="text/javascript">
  $(document).ready(function(){
  
-      $.messager.show({  
-              title:'系统消息',  
-              msg:'有新的申请消息！',  
-              timeout:0,  
-              width:400,
-              height:200,
-              showSpeed:1000,
-              showType:'fade'  
-      });  
+ 
+ 		$.post("/hotel/getAllApplyList",null,function(data){
+			if(data!=null){
+				      $.messager.show({  
+				              title:'系统消息',  
+				              msg:'有新的申请消息！\n用户编号：'+data[0].userId+",所在酒店："+data[0].hotelId,  
+				              timeout:0,  
+				              width:400,
+				              height:200,
+				              showSpeed:1000,
+				              showType:'fade'  
+				      });  
+				}
+		});
  
  
  
@@ -200,7 +205,7 @@
 	//dbbackup
 	$("#dbbackup").click(function(){
 	
-	    $.messager.confirm('确认', '确定要吗?', function(r){  
+	    $.messager.confirm('确认', '确定要备份吗?', function(r){  
 		 if(r){
 	 	 	$('#win_backup').window('open'); 
 		 
