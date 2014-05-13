@@ -58,10 +58,32 @@
       $("#hotelRegister").click(function(){
         window.location.href="/hotel/hotelRegRedirect";
       });
+      
+      	$(function(){         
+         	$('#kaptchaImage').click(function () {//生成验证码  
+     		$(this).hide().attr('src', '/hotel/getKaptchaImage?' + Math.floor(Math.random()*100) ).fadeIn();  
+     		event.cancelBubble=true;  
+    		});  
+		});   
+  
+  
+        window.onbeforeunload = function(){  
+    		//关闭窗口时自动退出  
+   		 if(event.clientX>360&&event.clientY<0||event.altKey){     
+        	alert(parent.document.location);  
+    		}  
+		};  
+  
+  
+		function changeCode() {  
+    		$('#kaptchaImage').hide().attr('src', '/hotel/getKaptchaImage?' + Math.floor(Math.random()*100) ).fadeIn();  
+    		event.cancelBubble=true;  
+		}  
+	   
   });
 </script>
   <style>
-   #userName_error,#userPassword_error,#roleId_error{ 
+   #userName_error,#userPassword_error,#roleId_error,#code_error{ 
     display:block;
 	color:red;
 	font-size:10px;
@@ -82,7 +104,7 @@
 
       <div region="center">
         <div style="height:210px;width:410px;margin-left:490px;margin-top:10px;">
-          <div class="easyui-panel"  title="登录" style="height:200px;width:420px;">
+          <div class="easyui-panel"  title="登录" style="height:220px;width:450px;">
             <div style="padding:10px 0 0 10px">
 
               <table style="margin:10px 0 0 70px;">
@@ -134,6 +156,20 @@
                 <span id='roleId_error'>
                 </span>
               </td>
+            </tr>
+             <tr>
+                <td>
+                  验证码:
+                </td>
+                <td>
+                  <input name="clientCode" id="clientCode" type="text"  maxlength="4" class="chknumber_input">
+                </input>
+              </td>
+              <td>
+                <img src="/hotel/getKaptchaImage" id="kaptchaImage"  style="margin-bottom: -3px;cursor:pointer;" 
+                onclick="changeCode()" class="easyui-tooltip" title="点击更换验证码"/>  <span id='code_error'>
+                </span> </td>
+      
             </tr>
           </table>
 

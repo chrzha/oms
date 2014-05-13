@@ -27,13 +27,16 @@ $(document).ready(function() {
 			var userName = $("#userName").val();
 			var userPassword = $("#userPassword").val();
 			var roleId = $("#roleId").val();
+			var clientCode = $("#clientCode").val();
 			
 			$.ajax({
-				url : "/hotel/validate?userName="+userName+"&userPassword="+userPassword+"&roleId="+roleId,
+				url : "/hotel/validate?userName="+userName+"&userPassword="+userPassword+"&roleId="+roleId+"&clientCode="+clientCode,
+				
 				type : 'GET',
 				success : function(data) {
-					
-					if(data[0]=="error_0"){
+					if(data[0]=="error_code"){
+						$("#code_error").text("验证码错误！");
+					}else if(data[0]=="error_0"){
 						$("#userName_error").text("该用户不存在");
 					}else if(data[0]=="error_1"){
 						$("#userName_error").text("");
