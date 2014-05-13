@@ -128,8 +128,8 @@ var roleId = $("#roleId").children("select").val();
 			url : "/hotel/doEditUser?userId="+userId+"&status="+status+"&roleId="+roleId,
 			type : 'POST',
 			success : function(data) {
-			alert("修改成功！");
-				window.location.reload();
+				    alert("修改成功！");
+				     window.location.reload();
 			},
 			error : function() {
 				alert("修改失败！");

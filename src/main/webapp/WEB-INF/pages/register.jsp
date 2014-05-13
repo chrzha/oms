@@ -83,7 +83,7 @@ pageEncoding="utf-8"%>
 
 			<tr><td><span>所在酒店编号*</span></td><td><input type="text" id="hotelId" name="hotelId" ><br></td>
 			
-			<td><img style="cursor:pointer;" title="该编号为酒店注册时系统产生的编号，如不知道，请查看邮件或联系管理员！" src="${pageContext.request.contextPath}/webresource/hotel-img/help.png"/><span class="hotelId"></span></td></tr>
+			<td><img style="cursor:pointer;" title="该编号为酒店注册时系统产生的编号，如不知道，请查看邮件或联系管理员！" class="easyui-tooltip" src="${pageContext.request.contextPath}/webresource/hotel-img/help.png"/><span class="hotelId"></span></td></tr>
 
 			<tr><td><span>注册角色*</span></td><td><select id="roleId" name="roleId" style="width:155px;"  >
 			

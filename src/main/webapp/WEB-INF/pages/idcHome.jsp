@@ -45,6 +45,19 @@
 </script>
 <script type="text/javascript">
  $(document).ready(function(){
+ 
+      $.messager.show({  
+              title:'系统消息',  
+              msg:'有新的申请消息！',  
+              timeout:0,  
+              width:400,
+              height:200,
+              showSpeed:1000,
+              showType:'fade'  
+      });  
+ 
+ 
+ 
 	$("#exit").click(function(){
 	
 		 $.messager.confirm('确认', '确定要退出系统吗?', function(r){  
