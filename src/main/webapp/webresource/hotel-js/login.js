@@ -1,4 +1,37 @@
 $(document).ready(function() {
+	
+	
+	
+	 		$("#register").click(function(){
+	 			window.location.href="/hotel/regRedirect";
+
+	 		});
+
+	      $("#hotelRegister").click(function(){
+	        window.location.href="/hotel/hotelRegRedirect";
+	      });
+	      
+	      	$(function(){         
+	         	$('#kaptchaImage').click(function () {//生成验证码  
+	     		$(this).hide().attr('src', '/hotel/getKaptchaImage?' + Math.floor(Math.random()*100) ).fadeIn();  
+	     		event.cancelBubble=true;  
+	    		});  
+			});   
+	  
+	  
+	        window.onbeforeunload = function(){  
+	    		//关闭窗口时自动退出  
+	   		 if(event.clientX>360&&event.clientY<0||event.altKey){     
+	        	alert(parent.document.location);  
+	    		}  
+			};  
+	  
+	  
+			function changeCode() {  
+	    		$('#kaptchaImage').hide().attr('src', '/hotel/getKaptchaImage?' + Math.floor(Math.random()*100) ).fadeIn();  
+	    		event.cancelBubble=true;  
+			}  
+		   
  
 		$("input[type=text],input[type=password]").bind("click", function() {
 			$(this).addClass("hightline");
@@ -36,6 +69,7 @@ $(document).ready(function() {
 				success : function(data) {
 					if(data[0]=="error_code"){
 						$("#code_error").text("验证码错误！");
+						 return changeCode();
 					}else if(data[0]=="error_0"){
 						$("#userName_error").text("该用户不存在");
 					}else if(data[0]=="error_1"){
