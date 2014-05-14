@@ -84,8 +84,9 @@
 					<td><a  id="hotelId_${status.count}">${list.hotelId}</a></td>
 					<td>
 					<select id="status_${status.count}">
-					<option value="1" <c:if test="${list.status=='1'}">selected="selected"</c:if> >通过</option>
 					<option value="0" <c:if test="${list.status=='0'}">selected="selected"</c:if> >未通过</option>
+					<option value="1" <c:if test="${list.status=='1'}">selected="selected"</c:if> >通过</option>
+					<option value="2" <c:if test="${list.status=='2'}">selected="selected"</c:if> >锁定</option>
 					</select>
 					</td>
 					<td><a  id="phone_${status.count}">${list.phone}</a></td>

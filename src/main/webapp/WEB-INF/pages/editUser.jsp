@@ -75,6 +75,7 @@
 					<td>
 					<span  id="roleId">
 					<select>
+					<option value="0000" <c:if test="${userView.roleId=='0000'}">selected</c:if> >锁定</option>
 					<option value="0002" <c:if test="${userView.roleId=='0002'}">selected</c:if> >酒店管理员</option>
 					<option value="0003" <c:if test="${userView.roleId=='0003'}">selected</c:if> >酒店操作员</option>
 					</select>

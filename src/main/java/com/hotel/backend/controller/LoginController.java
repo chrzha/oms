@@ -86,8 +86,8 @@ public class LoginController {
 			} else if (!userView.getUserPassword().equals(userPassword)) {
 				// list.removeAll(list);
 				list.add("error_1");
-			} else if (userView.getStatus().equals("0")) {
-				list.add("error_2");// 未经过审核
+			} else if (userView.getStatus().equals("0")||userView.getStatus().equals("2")) {
+				list.add("error_2");// 未经过审核或被锁定
 			} else if (userView != null
 					&& userView.getUserPassword().equals(userPassword)
 					&& userView.getRoleId().equals("0001")
