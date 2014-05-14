@@ -69,7 +69,7 @@ $(document).ready(function() {
 				success : function(data) {
 					if(data[0]=="error_code"){
 						$("#code_error").text("验证码错误！");
-						 return changeCode();
+						  changeCode();
 					}else if(data[0]=="error_0"){
 						$("#userName_error").text("该用户不存在");
 					}else if(data[0]=="error_1"){

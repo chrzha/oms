@@ -76,7 +76,7 @@ pageEncoding="utf-8"%>
 			
 			<tr><td><span>用户名*</span></td><td><input type="text" name="userName" maxlength="20"  ></td><td><span class="username"></span></td></tr>
 
-			<tr><td><span>密码*</span></td><td><input type="password" name="userPassword" maxlength="20"  ></td><td><span class="password"></span></td></tr>
+			<tr><td><span>密码*</span></td><td><input type="password" name="userPassword" maxlength="20"  ></td><td><span class="password">(6-20位数字、字母)</span></td></tr>
 
 			<tr><td><span>确认密码*</span></td><td><input type="password" name="repassword" maxlength="20"  ></td><td><span class="repassword"></span></td></tr>
 
@@ -161,12 +161,20 @@ pageEncoding="utf-8"%>
 	var hotelId = $("[name='hotelId']").val();
 	var roleId = $("[name='roleId']").val();
 	
+    reg=  /[a-zA-Z0-9]{6,20}/; 
+        
 	if(userPassword==null||userPassword==""){
 		$(".password").text("请输入密码！");
 		return false;
+	}else if(!reg.test(userPassword)){
+		$(".password").text("密码不符合要求！");
+		return false;
 	}else{
-		$(".password").text(" ");
+	
+		$(".password").text("");
+	
 	}
+	
 	if(repassword==repassword==""){
 		$(".repassword").text("请再次输入密码！");
 		return false;
