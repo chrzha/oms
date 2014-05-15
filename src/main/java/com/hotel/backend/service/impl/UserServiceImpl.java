@@ -113,4 +113,10 @@ public class UserServiceImpl implements UserService {
 		return userMpapper.changePwdById(map);
 	}
 
+	@Override
+	public User getAdminByFoodId(String foodId) {
+		// TODO Auto-generated method stub
+		return userMpapper.getAdminByFoodId(foodId);
+	}
+
 }

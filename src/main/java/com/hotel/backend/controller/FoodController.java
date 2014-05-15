@@ -16,10 +16,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hotel.backend.entity.Food;
  
+import com.hotel.backend.entity.User;
 import com.hotel.backend.service.HotelFoodService;
  
 import com.hotel.backend.service.LHotelFoodService;
  
+import com.hotel.backend.service.UserService;
+import com.hotel.backend.utility.Mail;
 import com.hotel.backend.view.UserView;
 
 @Controller
@@ -28,6 +31,9 @@ public class FoodController {
 	
 	@Autowired
 	private HotelFoodService hotelFoodService;
+	
+	@Autowired
+	private UserService userService;
 
 	@Autowired
 	private LHotelFoodService lHotelFoodService;
@@ -37,15 +43,6 @@ public class FoodController {
 	String deleteFoodById(HttpServletRequest request,
 			HttpServletResponse response, String foodId) {
 
-		/*UserView userView = (UserView) request.getSession()
-				.getAttribute("user");
-
-		String hotelId = userView.getHotelId();
-
-		Map<String, String> map = new HashMap<String, String>();
-
-		map.put("hotelId", hotelId);
-		map.put("foodId", foodId);*/
 
 		lHotelFoodService.deleteLink(foodId);
 
@@ -58,10 +55,37 @@ public class FoodController {
 	public @ResponseBody
 	String deleteFoodByIDC(HttpServletRequest request,
 			HttpServletResponse response, String foodId) {
-
-		hotelFoodService.deleteFoodById(foodId);
-
+		
+		
 		String result = "success";
+
+		UserView userView = (UserView) request.getSession()
+				.getAttribute("user");
+
+		
+		User user = userService.getAdminByFoodId(foodId);
+		
+		if (userView.getRoleId().equals("0001")) {
+			//如果是IDC管理员，则发邮件通知酒店，信息未通过审核
+			    String smtp = "smtp.163.com";// smtp服务器
+			    String from = "15251327856@163.com";// 邮件显示名称
+			    String to = user.getEmail();// 收件人的邮件地址，必须是真实地址
+			    String copyto = "";// 抄送人邮件地址
+			    String subject = "信息审核未通过";// 邮件标题
+			    String content = "你好！您所在酒店编号为："+foodId+"的美食信息未通过审核，已被删除！";// 邮件内容
+			    String username = "15251327856";// 发件人真实的账户名
+			    String password = "piano0713";// 发件人密码
+			    
+			    if (Mail.sendAndCc(smtp, from, to, copyto, subject, content, username, password)) {
+		           result = "success";
+		        } else {
+		           result = "error";
+		        }
+			
+		}
+
+        lHotelFoodService.deleteLink(foodId);
+		hotelFoodService.deleteFoodById(foodId);
 		return result;
 	}
 

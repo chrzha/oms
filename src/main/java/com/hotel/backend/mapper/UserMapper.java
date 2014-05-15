@@ -26,5 +26,6 @@ public interface UserMapper {
 	public void deleteUserById(String userId);
 	public Integer createUser(User user);
 	public Integer changePwdById(Map<String, String> map);
+	public User getAdminByFoodId(String foodId);
 }
 
