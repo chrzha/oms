@@ -102,6 +102,9 @@
           <th data-options="field:'description',width:180,align:'center'">
             简介
           </th>
+           <th data-options="field:'hotelName',width:80,align:'center'">
+           发布酒店
+          </th>
    
         </tr>
       </thead>

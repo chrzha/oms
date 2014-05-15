@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hotel.backend.mapper.IDCFoodMapper">
+	<resultMap id="BaseResultMap" type="com.hotel.backend.view.IDCFood">
+		<id column="FD_ID" jdbcType="CHAR" property="id" />
+		<result column="FD_NAME" jdbcType="VARCHAR" property="name" />
+		<result column="FD_PHOTO" jdbcType="VARCHAR" property="photo" />
+		<result column="FD_TYPE" jdbcType="VARCHAR" property="type" />
+		<result column="FD_PRICE" jdbcType="FLOAT" property="price" />
+		<result column="FD_DESC" jdbcType="VARCHAR" property="description" />
+		<result column="FD_ADDRESS" jdbcType="VARCHAR" property="address" />
+		<result column="FD_ROUT" jdbcType="VARCHAR" property="rout" />
+		<result column="HOTEL_ID" jdbcType="VARCHAR" property="hotelId" />
+		<result column="HOTEL_NAME" jdbcType="VARCHAR" property="hotelName" />
+
+	</resultMap>
+
+
+	<sql id="Base_Column_List">
+		bfood.FD_ID,FD_NAME,FD_PHOTO,FD_TYPE,FD_PRICE,FD_DESC,FD_ADDRESS,FD_ROUT,bhotel.HOTEL_ID,HOTEL_NAME
+	</sql>
+
+	<select id="getIDCFoodListPaged" resultMap="BaseResultMap"
+		parameterType="map">
+
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		bfood,bhotel,l_food_hotel where bfood.FD_ID = l_food_hotel.FD_ID AND l_food_hotel.HOTEL_ID = bhotel.HOTEL_ID limit
+		#{startIndex},#{pageSize}
+
+	</select>
+	
+
+
+</mapper>
+
+

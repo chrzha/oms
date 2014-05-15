@@ -119,7 +119,7 @@ public class TrafficController {
 
 		String result = "success";
 
-		UserView userView = (UserView) request.getSession()
+	/*	UserView userView = (UserView) request.getSession()
 				.getAttribute("user");
 
 		String hotelId = userView.getHotelId();
@@ -127,9 +127,9 @@ public class TrafficController {
 		Map<String, String> map = new HashMap<String, String>();
 
 		map.put("hotelId", hotelId);
-		map.put("trafficId", trafficId);
+		map.put("trafficId", trafficId);*/
 
-		lHotelTrafficService.deleteLink(map);
+		lHotelTrafficService.deleteLink(trafficId);
 
 		hotelTrafficService.deleteTrafficById(trafficId);
 		return result;

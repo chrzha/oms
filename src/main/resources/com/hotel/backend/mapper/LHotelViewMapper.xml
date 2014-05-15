@@ -30,9 +30,9 @@
 		HOTEL_ID=#{hotelId} AND VIEW_ID=#{oldViewId}
 	</update>
 
-	<delete id="deleteLink" parameterType="map">
+	<delete id="deleteLink" parameterType="java.lang.String">
 		DELETE FROM l_view_hotel
-		WHERE HOTEL_ID=#{hotelId} AND VIEW_ID=#{viewId}
+		WHERE VIEW_ID=#{viewId}
 	</delete>
 	
 	<delete id="deleteLinkByHotelId" parameterType="java.lang.String">

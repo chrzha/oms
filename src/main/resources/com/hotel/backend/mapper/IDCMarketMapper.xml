@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hotel.backend.mapper.IDCMarketMapper">
+	<resultMap id="BaseResultMap" type="com.hotel.backend.view.IDCMarket">
+		<id column="MKT_ID" jdbcType="CHAR" property="id" />
+		<result column="MKT_NAME" jdbcType="VARCHAR" property="name" />
+		<result column="MKT_ADDRESS" jdbcType="VARCHAR" property="address" />
+		<result column="MKT_AWAY" jdbcType="VARCHAR" property="away" />
+		<result column="MKT_ROUT" jdbcType="VARCHAR" property="rout" />
+		<result column="MKT_DESC" jdbcType="VARCHAR" property="description" />
+		<result column="HOTEL_ID" jdbcType="VARCHAR" property="hotelId" />
+		<result column="HOTEL_NAME" jdbcType="VARCHAR" property="hotelName" />
+		
+
+	</resultMap>
+
+
+	<sql id="Base_Column_List">
+		bsupermarket.MKT_ID,MKT_NAME,MKT_ADDRESS,MKT_AWAY,MKT_ROUT,MKT_DESC,BHOTEL.HOTEL_ID,HOTEL_NAME
+	</sql>
+
+	<select id="getIDCMarketListPaged" resultMap="BaseResultMap" parameterType="map">
+
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		bsupermarket,l_mkt_hotel ,bhotel where
+		l_mkt_hotel.mkt_ID =
+		bsupermarket.MKT_ID AND l_mkt_hotel.HOTEL_ID = bhotel.HOTEL_ID limit #{startIndex},#{pageSize}
+
+	</select>
+	
+</mapper>
+
+

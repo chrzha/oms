@@ -15,12 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hotel.backend.entity.ApplyInfo;
-import com.hotel.backend.entity.Facilities;
-import com.hotel.backend.entity.Food;
 import com.hotel.backend.entity.Hotel;
-import com.hotel.backend.entity.Market;
-import com.hotel.backend.entity.Traffic;
-import com.hotel.backend.entity.View;
 import com.hotel.backend.service.ApplyAdminService;
 import com.hotel.backend.service.HotelFacilitiesService;
 import com.hotel.backend.service.HotelFoodService;
@@ -28,6 +23,11 @@ import com.hotel.backend.service.HotelMarketService;
 import com.hotel.backend.service.HotelService;
 import com.hotel.backend.service.HotelTrafficService;
 import com.hotel.backend.service.HotelViewService;
+import com.hotel.backend.service.IDCFacilitiesService;
+import com.hotel.backend.service.IDCFoodService;
+import com.hotel.backend.service.IDCMarketService;
+import com.hotel.backend.service.IDCTrafficService;
+import com.hotel.backend.service.IDCViewService;
 import com.hotel.backend.service.LHotelFacilitiesService;
 import com.hotel.backend.service.LHotelFoodService;
 import com.hotel.backend.service.LHotelMktService;
@@ -36,6 +36,11 @@ import com.hotel.backend.service.LHotelViewService;
 import com.hotel.backend.service.LUserRoleService;
 import com.hotel.backend.service.UserService;
 import com.hotel.backend.service.UserViewService;
+import com.hotel.backend.view.IDCFacilities;
+import com.hotel.backend.view.IDCFood;
+import com.hotel.backend.view.IDCMarket;
+import com.hotel.backend.view.IDCTraffic;
+import com.hotel.backend.view.IDCView;
 import com.hotel.backend.view.UserView;
 
 /**
@@ -58,6 +63,17 @@ public class IDCController {
 
 	@Autowired
 	private HotelFoodService hotelFoodService;
+	
+	@Autowired
+	private IDCFoodService idcFoodService;
+	@Autowired
+	private IDCMarketService idcMarketService;
+	@Autowired
+	private IDCViewService idcViewService;
+	@Autowired
+	private IDCTrafficService idcTrafficService;
+	@Autowired
+	private IDCFacilitiesService idcFacilitiesService;
 
 	@Autowired
 	private HotelMarketService hotelMarketService;
@@ -214,7 +230,7 @@ public class IDCController {
 		Map<String, Integer> mapSearch = new HashMap<String, Integer>();
 		mapSearch.put("startIndex", (page-1)*rows);
 		mapSearch.put("pageSize", rows);
-		List<Market> list = hotelMarketService.getMarketListPaged(mapSearch);
+		List<IDCMarket> list = idcMarketService.getIDCMarketListPaged(mapSearch);
 		// 获取总记录数
 		int totalRows = hotelMarketService.getTotalCount();
 
@@ -250,7 +266,7 @@ public class IDCController {
 		Map<String, Integer> mapSearch = new HashMap<String, Integer>();
 		mapSearch.put("startIndex", (page-1)*rows);
 		mapSearch.put("pageSize", rows);
-		List<Food> list = hotelFoodService.getFoodListPaged(mapSearch);
+		List<IDCFood> list = idcFoodService.getIDCFoodListPaged(mapSearch);
 		// 获取总记录数
 		int totalRows = hotelFoodService.getTotalCount();
 
@@ -274,7 +290,7 @@ public class IDCController {
 		Map<String, Integer> mapSearch = new HashMap<String, Integer>();
 		mapSearch.put("startIndex", (page-1)*rows);
 		mapSearch.put("pageSize", rows);
-		List<View> list = hotelViewService.getViewListPaged(mapSearch);
+		List<IDCView> list = idcViewService.getIDCViewListPaged(mapSearch); 
 		// 获取总记录数
 		int totalRows = hotelViewService.getTotalCount();
 
@@ -298,7 +314,7 @@ public class IDCController {
 		Map<String, Integer> mapSearch = new HashMap<String, Integer>();
 		mapSearch.put("startIndex", (page-1)*rows);
 		mapSearch.put("pageSize", rows);
-		List<Traffic> list = hotelTrafficService.getTrafficListPaged(mapSearch);
+		List<IDCTraffic> list = idcTrafficService.getIDCTrafficListPaged(mapSearch);
 		// 获取总记录数
 		int totalRows = hotelTrafficService.getTotalCount();
 
@@ -316,7 +332,7 @@ public class IDCController {
 		Map<String, Integer> mapSearch = new HashMap<String, Integer>();
 		mapSearch.put("startIndex", (page-1)*rows);
 		mapSearch.put("pageSize", rows);
-		List<Facilities> list = hotelFacilitiesService.getFacilitiesListPaged(mapSearch);
+		List<IDCFacilities> list = idcFacilitiesService.getIDCFacilitiesListPaged(mapSearch);
 		// 获取总记录数
 		int totalRows = hotelTrafficService.getTotalCount();
 

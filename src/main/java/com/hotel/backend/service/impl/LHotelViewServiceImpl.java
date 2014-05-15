@@ -36,9 +36,9 @@ public class LHotelViewServiceImpl implements LHotelViewService {
      * @see com.hotel.backend.service.LHotelViewService#deleteLink(java.util.Map)
      */
     @Override
-    public void deleteLink(Map<String, String> map) {
+    public void deleteLink(String viewId) {
         // TODO Auto-generated method stub
-        lHotelViewMapper.deleteLink(map);
+        lHotelViewMapper.deleteLink(viewId);
     }
 
     /** (non-Javadoc)

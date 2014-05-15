@@ -37,7 +37,7 @@ public class FoodController {
 	String deleteFoodById(HttpServletRequest request,
 			HttpServletResponse response, String foodId) {
 
-		UserView userView = (UserView) request.getSession()
+		/*UserView userView = (UserView) request.getSession()
 				.getAttribute("user");
 
 		String hotelId = userView.getHotelId();
@@ -45,9 +45,9 @@ public class FoodController {
 		Map<String, String> map = new HashMap<String, String>();
 
 		map.put("hotelId", hotelId);
-		map.put("foodId", foodId);
+		map.put("foodId", foodId);*/
 
-		lHotelFoodService.deleteLink(map);
+		lHotelFoodService.deleteLink(foodId);
 
 		hotelFoodService.deleteFoodById(foodId);
 

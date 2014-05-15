@@ -18,7 +18,7 @@ public interface LHotelViewService {
 
     public void insertLink(Map<String, String> map);
 
-    public void deleteLink(Map<String, String> map);
+    public void deleteLink(String viewId);
 
     public void updateLink(Map<String, String> map);
     

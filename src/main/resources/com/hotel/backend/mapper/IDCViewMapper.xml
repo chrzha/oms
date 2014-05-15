@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hotel.backend.mapper.IDCViewMapper">
+	<resultMap id="BaseResultMap" type="com.hotel.backend.view.IDCView">
+
+		<id column="VIEW_ID" jdbcType="CHAR" property="id" />
+		<result column="VIEW_NAME" jdbcType="VARCHAR" property="name" />
+		<result column="VIEW_ADDRESS" jdbcType="VARCHAR" property="address" />
+		<result column="VIEW_AWAY" jdbcType="VARCHAR" property="away" />
+		<result column="VIEW_ROUT" jdbcType="VARCHAR" property="rout" />
+		<result column="VIEW_PRICE" jdbcType="FLOAT" property="price" />
+		<result column="VIEW_DESC" jdbcType="VARCHAR" property="description" />
+		<result column="HOTEL_ID" jdbcType="VARCHAR" property="hotelId" />
+		<result column="HOTEL_NAME" jdbcType="VARCHAR" property="hotelName" />
+
+	</resultMap>
+
+
+	<sql id="Base_Column_List">
+		bview.VIEW_ID,VIEW_PRICE,VIEW_NAME,VIEW_ADDRESS,VIEW_AWAY,VIEW_ROUT,VIEW_DESC,bhotel.HOTEL_ID,HOTEL_NAME
+	</sql>
+
+	<select id="getIDCViewListPaged" resultMap="BaseResultMap" parameterType="map">
+
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		BVIEW,l_view_hotel ,bhotel where
+		l_view_hotel.VIEW_ID =
+		BVIEW.VIEW_ID AND l_view_hotel.HOTEL_ID = bhotel.HOTEL_ID limit #{startIndex},#{pageSize}
+
+	</select>
+	
+</mapper>
+
+

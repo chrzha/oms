@@ -99,13 +99,16 @@
             价格
           </th>
           <th data-options="field:'address',width:150,align:'center'">
-            地址
+            所在地
           </th>
           <th data-options="field:'rout',width:100,align:'center'">
             线路
           </th>
           <th data-options="field:'description',width:180,align:'center'">
             简介
+          </th>
+          <th data-options="field:'hotelName',width:80,align:'center'">
+           发布酒店
           </th>
    
         </tr>

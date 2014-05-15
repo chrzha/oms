@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hotel.backend.mapper.IDCTrafficMapper">
+	<resultMap id="BaseResultMap" type="com.hotel.backend.view.IDCTraffic">
+		<id column="TRAFFIC_ID" jdbcType="CHAR" property="id" />
+		<result column="TRAFFIC_NAME" jdbcType="VARCHAR" property="name" />
+		<result column="TRAFFIC_TYPE" jdbcType="VARCHAR" property="type" />
+		<result column="TRAFFIC_PRICE" jdbcType="FLOAT" property="price" />
+		<result column="TRAFFIC_STARTTIME" jdbcType="VARCHAR" property="startTime" />
+		<result column="TRAFFIC_PASS" jdbcType="VARCHAR" property="pass" />
+		<result column="TRAFFIC_ENDTIIME" jdbcType="VARCHAR" property="endTime" />
+		<result column="TRAFFIC_STARTSTATION" jdbcType="VARCHAR"
+			property="startStation" />
+		<result column="TRAFFIC_ENDSTATION" jdbcType="VARCHAR"
+			property="endStation" />
+		<result column="TRAFFIC_DESC" jdbcType="VARCHAR" property="description" />
+		<result column="HOTEL_ID" jdbcType="VARCHAR" property="hotelId" />
+		<result column="HOTEL_NAME" jdbcType="VARCHAR" property="hotelName" />
+
+	</resultMap>
+
+
+	<sql id="Base_Column_List">
+		bTraffic.TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_TYPE,TRAFFIC_PRICE,TRAFFIC_STARTTIME,TRAFFIC_PASS,TRAFFIC_ENDTIIME,
+		TRAFFIC_STARTSTATION,TRAFFIC_ENDSTATION,TRAFFIC_DESC,bhotel.HOTEL_ID,HOTEL_NAME
+	</sql>
+
+	<select id="getIDCTrafficListPaged" resultMap="BaseResultMap"
+		parameterType="map">
+
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		bTraffic ,bhotel,l_traffic_hotel where bTraffic.TRAFFIC_ID = l_traffic_hotel.TRAFFIC_ID AND l_traffic_hotel.HOTEL_ID = bhotel.HOTEL_ID limit
+		#{startIndex},#{pageSize}
+
+	</select>
+
+</mapper>
+
+

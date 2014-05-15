@@ -39,9 +39,9 @@ public class LHotelMktServiceImpl implements LHotelMktService{
      * @see com.hotel.backend.service.LHotelMktService#deleteLink(java.util.Map)
      */
     @Override
-    public void deleteLink(Map<String, String> map) {
+    public void deleteLink(String marketId) {
         // TODO Auto-generated method stub
-        lHotelMktMapper.deleteLink(map);
+        lHotelMktMapper.deleteLink(marketId);
         
     }
 

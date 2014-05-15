@@ -43,7 +43,7 @@ public class FacilitiesController {
 	String deleteFacilitiesById(HttpServletRequest request,
 			HttpServletResponse response, String facilitiesId) {
 
-		UserView userView = (UserView) request.getSession()
+		/*UserView userView = (UserView) request.getSession()
 				.getAttribute("user");
 
 		String hotelId = userView.getHotelId();
@@ -51,9 +51,9 @@ public class FacilitiesController {
 		Map<String, String> map = new HashMap<String, String>();
 
 		map.put("hotelId", hotelId);
-		map.put("facilitiesId", facilitiesId);
+		map.put("facilitiesId", facilitiesId);*/
 
-		lHotelFacilitiesService.deleteLink(map);
+		lHotelFacilitiesService.deleteLink(facilitiesId);
 
 		hotelFacilitiesService.deleteFacilitiesById(facilitiesId);
 

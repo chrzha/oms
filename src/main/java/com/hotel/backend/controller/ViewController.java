@@ -41,7 +41,7 @@ public class ViewController {
 	String deleteViewById(HttpServletRequest request,
 			HttpServletResponse response, String viewId) {
 
-		UserView userView = (UserView) request.getSession()
+	/*	UserView userView = (UserView) request.getSession()
 				.getAttribute("user");
 
 		String hotelId = userView.getHotelId();
@@ -50,8 +50,8 @@ public class ViewController {
 
 		map.put("hotelId", hotelId);
 		map.put("viewId", viewId);
-
-		lHotelViewService.deleteLink(map);
+*/
+		lHotelViewService.deleteLink(viewId);
 
 		hotelViewService.deleteViewById(viewId);
 

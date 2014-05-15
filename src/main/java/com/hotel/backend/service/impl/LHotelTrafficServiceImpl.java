@@ -29,9 +29,9 @@ public class LHotelTrafficServiceImpl implements LHotelTrafficService{
 	}
 
 	@Override
-	public void deleteLink(Map<String, String> map) {
+	public void deleteLink(String trafficId) {
 		// TODO Auto-generated method stub
-		lHotelTrafficMapper.deleteLink(map);
+		lHotelTrafficMapper.deleteLink(trafficId);
 		
 	}
 

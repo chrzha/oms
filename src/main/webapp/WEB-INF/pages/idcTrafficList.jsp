@@ -94,7 +94,9 @@ a:link {
 				<th data-options="field:'pass',width:350,align:'center'">沿途经过</th>
 				<th data-options="field:'endStation',width:80,align:'center'">终点站</th>
 				<th data-options="field:'endTime',width:60,align:'center'">末班时间</th>
-			
+			 <th data-options="field:'hotelName',width:80,align:'center'">
+           发布酒店
+          </th>
 			</tr>
 		</thead>
 		

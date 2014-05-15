@@ -30,9 +30,9 @@ public class LHotelFacilitiesServiceImpl implements LHotelFacilitiesService{
 	}
 
 	@Override
-	public void deleteLink(Map<String, String> map) {
+	public void deleteLink(String facilitiesId) {
 		// TODO Auto-generated method stub
-		lHotelFacilitiesMapper.deleteLink(map);
+		lHotelFacilitiesMapper.deleteLink(facilitiesId);
 	}
 
 	@Override

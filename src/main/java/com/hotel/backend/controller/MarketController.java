@@ -41,7 +41,7 @@ public class MarketController {
 	String deleteMktById(HttpServletRequest request,
 			HttpServletResponse response, String mktId) {
 
-		UserView userView = (UserView) request.getSession()
+	/*	UserView userView = (UserView) request.getSession()
 				.getAttribute("user");
 
 		String hotelId = userView.getHotelId();
@@ -49,9 +49,9 @@ public class MarketController {
 		Map<String, String> map = new HashMap<String, String>();
 
 		map.put("hotelId", hotelId);
-		map.put("mktId", mktId);
+		map.put("mktId", mktId);*/
 
-		lHotelMktService.deleteLink(map);
+		lHotelMktService.deleteLink(mktId);
 
 		hotelMarketService.deleteMarketById(mktId);
 

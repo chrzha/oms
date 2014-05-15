@@ -22,9 +22,9 @@ public class LHotelFoodServiceImpl implements LHotelFoodService{
 	}
 
 	@Override
-	public void deleteLink(Map<String, String> map) {
+	public void deleteLink(String foodId) {
 		// TODO Auto-generated method stub
-		lHotelFoodMapper.deleteLink(map);
+		lHotelFoodMapper.deleteLink(foodId);
 		
 	}
 
