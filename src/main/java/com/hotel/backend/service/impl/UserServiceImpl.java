@@ -119,4 +119,28 @@ public class UserServiceImpl implements UserService {
 		return userMpapper.getAdminByFoodId(foodId);
 	}
 
+	@Override
+	public User getAdminByViewId(String viewId) {
+		// TODO Auto-generated method stub
+		return userMpapper.getAdminByViewId(viewId);
+	}
+
+	@Override
+	public User getAdminByMarketId(String marketId) {
+		// TODO Auto-generated method stub
+		return userMpapper.getAdminByMarketId(marketId);
+	}
+
+	@Override
+	public User getAdminByTrafficId(String trafficId) {
+		// TODO Auto-generated method stub
+		return userMpapper.getAdminByTrafficId(trafficId);
+	}
+
+	@Override
+	public User getAdminByFacilitiesId(String facilitiesId) {
+		// TODO Auto-generated method stub
+		return userMpapper.getAdminByFacilitiesId(facilitiesId);
+	}
+
 }

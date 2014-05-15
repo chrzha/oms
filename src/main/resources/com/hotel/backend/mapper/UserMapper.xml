@@ -42,14 +42,59 @@
 		SELECT COUNT(*) FROM
 		BUSER
 	</select>
-	<select id="getAdminByFoodId" parameterType="java.lang.String" resultMap="BaseResultMap">
-		SELECT buser.USER_ID,USER_NAME,USER_EMAIL,buser.USER_HOTEL_ID FROM
+	<select id="getAdminByFoodId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		SELECT
+		buser.USER_ID,USER_NAME,USER_EMAIL,buser.USER_HOTEL_ID FROM
 		buser,l_user_role,l_food_hotel where buser.USER_ID =
 		l_user_role.USER_ID and buser.USER_HOTEL_ID = l_food_hotel.HOTEL_ID
 		and l_food_hotel.FD_ID = #{foodId} and l_user_role.ROLE_ID='0002' ;
+	</select>
+
+	<select id="getAdminByViewId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		SELECT
+		buser.USER_ID,USER_NAME,USER_EMAIL,buser.USER_HOTEL_ID FROM
+		buser,l_user_role,l_view_hotel where buser.USER_ID =
+		l_user_role.USER_ID and buser.USER_HOTEL_ID = l_view_hotel.HOTEL_ID
+		and l_view_hotel.VIEW_ID = #{viewId} and l_user_role.ROLE_ID='0002' ;
 
 
 	</select>
+	<select id="getAdminByMarketId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		SELECT
+		buser.USER_ID,USER_NAME,USER_EMAIL,buser.USER_HOTEL_ID FROM
+		buser,l_user_role,l_mkt_hotel where buser.USER_ID =
+		l_user_role.USER_ID and buser.USER_HOTEL_ID = l_mkt_hotel.HOTEL_ID
+		and l_mkt_hotel.MKT_ID = #{marketId} and l_user_role.ROLE_ID='0002' ;
+
+
+	</select>
+	<select id="getAdminByTrafficId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+
+		SELECT
+		buser.USER_ID,USER_NAME,USER_EMAIL,buser.USER_HOTEL_ID FROM
+		buser,l_user_role,l_traffic_hotel where buser.USER_ID =
+		l_user_role.USER_ID and buser.USER_HOTEL_ID = l_traffic_hotel.HOTEL_ID
+		and l_traffic_hotel.TRAFFIC_ID = #{trafficId} and l_user_role.ROLE_ID='0002' ;
+
+	</select>
+	<select id="getAdminByFacilitiesId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		SELECT
+		buser.USER_ID,USER_NAME,USER_EMAIL,buser.USER_HOTEL_ID FROM
+		buser,l_user_role,l_facilities_hotel where buser.USER_ID =
+		l_user_role.USER_ID and buser.USER_HOTEL_ID = l_facilities_hotel.HOTEL_ID
+		and l_facilities_hotel.FACILITIES_ID = #{facilitiesId} and l_user_role.ROLE_ID='0002' ;
+
+
+	</select>
+
+
+
+
 
 
 	<insert id="createUser" parameterType="com.hotel.backend.entity.User">

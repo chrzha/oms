@@ -27,6 +27,10 @@ public interface UserService {
 	public Integer createUser(User user);
 	public Integer changePwdById(Map<String, String> map);
 	public User getAdminByFoodId(String foodId);
+	public User getAdminByViewId(String viewId);
+	public User getAdminByMarketId(String marketId);
+	public User getAdminByTrafficId(String trafficId);
+	public User getAdminByFacilitiesId(String facilitiesId);
 
 }
 

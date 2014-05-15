@@ -18,8 +18,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hotel.backend.entity.Facilities;
+import com.hotel.backend.entity.User;
 import com.hotel.backend.service.HotelFacilitiesService;
 import com.hotel.backend.service.LHotelFacilitiesService;
+import com.hotel.backend.service.UserService;
+import com.hotel.backend.utility.Mail;
 import com.hotel.backend.view.UserView;
 
 /**
@@ -32,6 +35,9 @@ public class FacilitiesController {
 	
 	@Autowired
 	private HotelFacilitiesService hotelFacilitiesService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@Autowired
 	private LHotelFacilitiesService lHotelFacilitiesService;
@@ -64,10 +70,38 @@ public class FacilitiesController {
 	public @ResponseBody
 	String deleteFacilitiesByIDC(HttpServletRequest request,
 			HttpServletResponse response, String facilitiesId) {
+		
+		
+		String result = "success";
+		
+		UserView userView = (UserView) request.getSession()
+				.getAttribute("user");
+
+		
+		User user = userService.getAdminByFacilitiesId(facilitiesId);
+		
+		if (userView.getRoleId().equals("0001")) {
+			//如果是IDC管理员，则发邮件通知酒店，信息未通过审核
+			    String smtp = "smtp.163.com";// smtp服务器
+			    String from = "15251327856@163.com";// 邮件显示名称
+			    String to = user.getEmail();// 收件人的邮件地址，必须是真实地址
+			    String copyto = "";// 抄送人邮件地址
+			    String subject = "信息审核未通过";// 邮件标题
+			    String content = "你好！您所在酒店编号为："+facilitiesId+"的设施信息未通过审核，已被删除！";// 邮件内容
+			    String username = "15251327856";// 发件人真实的账户名
+			    String password = "piano0713";// 发件人密码
+			    
+			    if (Mail.sendAndCc(smtp, from, to, copyto, subject, content, username, password)) {
+		           result = "success";
+		        } else {
+		           result = "error";
+		        }
+			
+		}
+		
+		lHotelFacilitiesService.deleteLink(facilitiesId);
 
 		hotelFacilitiesService.deleteFacilitiesById(facilitiesId);
-
-		String result = "success";
 		return result;
 	}
 
