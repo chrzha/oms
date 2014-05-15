@@ -38,6 +38,16 @@
     href="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/tree_themes/SimpleTree.css">
 
 </link>
+<style>
+.pre_pwd,.new_pwd,.confirm_pwd{
+	display:block;
+	color:red;
+	font-size:10px;
+	font-weight:bold;
+	width:120px;
+}
+
+</style>
 
 <script src="${pageContext.request.contextPath}/webresource/hotel-js/jquery-1.7.2.min.js">
 </script>
@@ -49,15 +59,15 @@
 </head>
 <body class="easyui-layout" >
 <div style="height:210px;width:410px;margin:100px 0 0 300px;">
-  <div class="easyui-panel"  title="修改密码" style="height:200px;width:400px;" data-options="iconCls:'icon-edit'">
+  <div class="easyui-panel"  title="修改密码" style="height:200px;width:450px;" data-options="iconCls:'icon-edit'">
   	<div style="padding:10px 0 0 10px">
 	    <form id="ff" method="post">
 	    	<table style="margin:10px 0 0 70px;">
 	    	<input type="hidden" value="${user.userPassword}" id="sessionPwd"/>
 	    	<input type="hidden" value="${user.userId}" id="userId"/>
-				<tr><td>原密码:</td><td><input type="password" id="inputPwd"></input></td></tr>
-				<tr><td>新密码:</td><td><input type="password" id="userPassword" name="userPassword"></input></td></tr>
-				<tr><td>确认密码:</td><td><input type="password" id="confirmPwd"></input></td></tr>   		
+				<tr><td>原密码:</td><td><input type="password" id="inputPwd"></input></td><td><span class="pre_pwd"></span></td></tr>
+				<tr><td>新密码:</td><td><input type="password" id="userPassword" name="userPassword"></input></td><td><span class="new_pwd">(6-20位数字、字母)</span></td></tr>
+				<tr><td>确认密码:</td><td><input type="password" id="confirmPwd"></input></td><td><span class="confirm_pwd"></span></td></tr>   		
 	    	</table>
 	    </form>
 	</div>
@@ -79,11 +89,14 @@ $(document).ready(function(){
 	var inputPwd = $("#inputPwd") ;
 	var newPwd = $("#userPassword") ;
 	var newPwd2 = $("#confirmPwd") ;
+	reg=  /[a-zA-Z0-9]{6,20}/; 
 	
 	$("#confirmBtn").click(function(){
 	
 		if(inputPwd.val()!=oldPwd.val()){
 		$.messager.alert('错误','原密码错误!','error');  
+		}else if(!reg.test(newPwd.val())){
+		  $(".new_pwd").text("密码不符合要求！");
 		}else if(newPwd.val()!==newPwd2.val()){
 		$.messager.alert('错误','两次输入的密码不一致!','error');
 		}else{

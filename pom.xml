@@ -114,6 +114,19 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-resources-plugin</artifactId>
+			<version>2.4.3</version>
+	    </dependency>
+	    
+	    <dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-install-plugin</artifactId>
+			<version>2.4</version>
+	    </dependency>
+		
 		<dependency>
 			<groupId>net.sf.json-lib</groupId>
 			<artifactId>json-lib</artifactId>
@@ -170,6 +183,7 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -183,21 +197,23 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.3.2</version>
 				<configuration>
-					<!-- do testing or not when it builds the jar -->
+					do testing or not when it builds the jar
 					<skip>true</skip>
 					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
 			</plugin>
-
+ -->
 			<!-- Tomcat -->
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
