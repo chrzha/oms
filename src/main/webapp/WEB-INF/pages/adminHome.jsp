@@ -248,20 +248,7 @@
 		<li data-options="state:'closed'">
 			<span>公共信息审核与管理</span>
 			<ul>
-				<!--<li data-options="state:'closed'">
-					<span>公共信息审核</span>
-					<ul>
-						<li>
-							<span>景点信息审核</span>
-						</li>
-						<li>
-							<span>购物信息审核</span>
-						</li>
-						<li>
-							<span>美食信息审核</span>
-						</li>
-					</ul>
-				</li>-->
+				
 				<li data-options="state:'closed'">
 					<span>公共信息审核与管理</span>
 					<ul>

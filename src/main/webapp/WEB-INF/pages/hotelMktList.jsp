@@ -71,14 +71,14 @@ a:link {
 </head>
 <body class="easyui-layout" >
   <div region="center" style="height:80px;" id="test">
-  <table class="easyui-datagrid" title="管理员列表" style="width:1000px;height:400px">
+  <table class="easyui-datagrid" title="管理员列表" style="width:1100px;height:478px">
 		<thead>
 			<tr>
-				<th data-options="field:'mktId',width:100,align:'center'">商场编号</th>
-				<th data-options="field:'mktName',width:100,align:'center'">商场名称</th>
-				<th data-options="field:'mktAddress',width:100,align:'center'">地址</th>
+				<th data-options="field:'mktId',width:80,align:'center'">商场编号</th>
+				<th data-options="field:'mktName',width:160,align:'center'">商场名称</th>
+				<th data-options="field:'mktAddress',width:240,align:'center'">地址</th>
 				<th data-options="field:'mktAway',width:100,align:'center'">距离</th>
-				<th data-options="field:'mktRout',width:100,align:'center'">线路</th>
+				<th data-options="field:'mktRout',width:80,align:'center'">线路</th>
 				<th data-options="field:'mktDesc',width:160,align:'center'">简介</th>
 				<th data-options="field:'update',width:60,align:'center'"></th>
 				<th data-options="field:'delete',width:60,align:'center'"></th>
@@ -90,7 +90,7 @@ a:link {
 				<tr>
 					<td><a  id="mktId_${status.count}">${list.id}</a></td>
 					<td><a  id="mktName_${status.count}">${list.name}</a></td>
-					<td><a  id="mktAddress_${status.count}">${list.address}</a></td>
+					<td><a  id="mktAddress_${status.count}" title="${list.address}">${list.address}</a></td>
 					 
 					<td><a  id="mktAway_${status.count}">${list.away}</a></td>
 					<td><a  id="mktRout_${status.count}">${list.rout}</a><tetd>

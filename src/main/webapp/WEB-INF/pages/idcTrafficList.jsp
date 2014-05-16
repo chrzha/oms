@@ -85,7 +85,7 @@ a:link {
 
 		<thead>
 			<tr>
-				<th data-options="field:'d',width:50,align:'center'">编号</th>
+				<th data-options="field:'id',width:50,align:'center'">编号</th>
 				<th data-options="field:'name',width:100,align:'center'">名称</th>
 				<th data-options="field:'type',width:100,align:'center'">类型</th>
 				<th data-options="field:'price',width:50,align:'center'">票价</th>

@@ -9,6 +9,7 @@ public class UserView {
 	    private String description;
 	    private String status;
 	    private String hotelId;
+	    
 	  
 		private String roleId;
 	    private String roleName;

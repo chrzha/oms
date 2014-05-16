@@ -69,15 +69,15 @@ a:link {
 </head>
 <body class="easyui-layout" >
   <div region="center" style="height:80px;">
-  <table class="easyui-datagrid" title="管理员列表" style="width:1000px;height:400px">
+  <table class="easyui-datagrid" title="管理员列表" style="width:1100px;height:478px">
 		<thead>
 			<tr>
-				<th data-options="field:'viewId',width:100,align:'center'">景点编号</th>
+				<th data-options="field:'viewId',width:80,align:'center'">景点编号</th>
 				<th data-options="field:'viewName',width:100,align:'center'">景点名称</th>
-				<th data-options="field:'viewAddress',width:100,align:'center'">地址</th>
-				<th data-options="field:'viewAway',width:100,align:'center'">距离</th>
+				<th data-options="field:'viewAddress',width:240,align:'center'">地址</th>
+				<th data-options="field:'viewAway',width:80,align:'center'">距离</th>
 				<th data-options="field:'viewRout',width:100,align:'center'">线路</th>
-				<th data-options="field:'price',width:100,align:'center'">门票</th>
+				<th data-options="field:'price',width:60,align:'center'">门票</th>
 				<th data-options="field:'viewDesc',width:160,align:'center'">简介</th>
 				<th data-options="field:'update',width:60,align:'center'"></th>
 				<th data-options="field:'delete',width:60,align:'center'"></th>
@@ -90,7 +90,7 @@ a:link {
 				<tr>
 					<td><a  id="viewId_${status.count}">${list.id}</a></td>
 					<td><a  id="viewName_${status.count}">${list.name}</a></td>
-					<td><a  id="viewAddress_${status.count}">${list.address}</a></td>
+					<td><a  id="viewAddress_${status.count}" title="${list.address}">${list.address}</a></td>
 					 
 					<td><a  id="viewAway_${status.count}">${list.away}</a></td>
 					<td><a  id="viewRout_${status.count}">${list.rout}</a></td>

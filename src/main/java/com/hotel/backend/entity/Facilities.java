@@ -14,7 +14,7 @@ public class Facilities {
 	private String type;
 	private String description;
 	private Float price;
-	private Float away;
+	private String  away;
 	public String getId() {
 		return id;
 	}
@@ -45,10 +45,10 @@ public class Facilities {
 	public void setPrice(Float price) {
 		this.price = price;
 	}
-	public Float getAway() {
+	public String getAway() {
 		return away;
 	}
-	public void setAway(Float away) {
+	public void setAway(String away) {
 		this.away = away;
 	}
 	

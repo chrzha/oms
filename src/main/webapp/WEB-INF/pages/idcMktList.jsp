@@ -85,12 +85,12 @@ a:link {
 
 		<thead>
 			<tr>
-				<th data-options="field:'id',width:100,align:'center'">商场编号</th>
-				<th data-options="field:'name',width:100,align:'center'">商场名称</th>
-				<th data-options="field:'address',width:100,align:'center'">地址</th>
+				<th data-options="field:'id',width:80,align:'center'">商场编号</th>
+				<th data-options="field:'name',width:150,align:'center'">商场名称</th>
+				<th data-options="field:'address',width:250,align:'center'">地址</th>
 				<th data-options="field:'away',width:100,align:'center'">距离</th>
 				<th data-options="field:'rout',width:100,align:'center'">线路</th>
-				<th data-options="field:'description',width:160,align:'center'">简介</th>
+				<th data-options="field:'description',width:90,align:'center'">备注</th>
 			 <th data-options="field:'hotelName',width:80,align:'center'">
            发布酒店
           </th>

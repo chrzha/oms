@@ -56,13 +56,13 @@
 </head>
 <body class="easyui-layout" >
   <div region="center" style="height:80px;">
-  <table class="easyui-datagrid" title="酒店列表" style="width:1000px;height:400px">
+  <table class="easyui-datagrid" title="酒店列表" style="width:1100px;height:478px">
 		<thead>
 			<tr>
 				<th data-options="field:'userId',width:100,align:'center'">酒店编号</th>
-				<th data-options="field:'userName',width:100,align:'center'">酒店名称</th>
+				<th data-options="field:'userName',width:150,align:'center'">酒店名称</th>
 				
-				<th data-options="field:'hotel',width:100,align:'center'">地址</th>
+				<th data-options="field:'hotel',width:250,align:'center'">地址</th>
 				<th data-options="field:'status',width:100,align:'center'">是否通过审核</th>
 				<th data-options="field:'phone',width:160,align:'center'">联系电话</th>
 				<th data-options="field:'save',width:60,align:'center'"></th>

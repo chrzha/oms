@@ -130,7 +130,7 @@ $(document).ready(function(){
 			$("#update").click(function(){
 			
 			var facilities = $("#update_form").serialize();
-				$.post("/hotel/updatefacilities",facilities,function(data){
+				$.post("/hotel/updateFacilities",facilities,function(data){
 				   if(data=="success"){
 						window.location.reload();
 				   }else{
@@ -173,18 +173,18 @@ $(document).ready(function(){
 </head>
 <body class="easyui-layout" style="width:100%;height:600px;">
   <div region="center" style="height:80px;" id="test">
-  <table class="easyui-datagrid" title="设施列表" style="width:1120px;height:450px">
+  <table class="easyui-datagrid" title="设施列表" style="width:1120px;height:478px">
 		<thead>
 			<tr>
 				<th data-options="field:' Id',width:80,align:'center'">编号</th>
-				<th data-options="field:' Name',width:100,align:'center'">名称</th>
+				<th data-options="field:' Name',width:140,align:'center'">名称</th>
 				<th data-options="field:' Type',width:100,align:'center'">类型</th>
-				<th data-options="field:' Price',width:50,align:'center'">价格</th>
-				<th data-options="field:'Away',width:100,align:'center'">距离</th>
-				<th data-options="field:' Desc',width:180,align:'center'">简介</th>
+				<th data-options="field:' Price',width:70,align:'center'">价格</th>
+				<th data-options="field:'Away',width:120,align:'center'">距离</th>
+				<th data-options="field:' Desc',width:280,align:'center'">备注</th>
 				 
-				<th data-options="field:'update',width:60,align:'center'"></th>
-				<th data-options="field:'delete',width:60,align:'center'"></th>
+				<th data-options="field:'update',width:70,align:'center'"></th>
+				<th data-options="field:'delete',width:70,align:'center'"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -234,7 +234,7 @@ $(document).ready(function(){
 	    	</form>
 	    
     </div>
-    <div id="win_update" class="easyui-window" title="修改美食记录" closed="true" style="width:400px;height:300px;" data-options="iconCls:'icon-edit'">    
+    <div id="win_update" class="easyui-window" title="修改设施记录" closed="true" style="width:400px;height:300px;" data-options="iconCls:'icon-edit'">    
        <form name="form" id="update_form" action="#" ENCTYPE="multipart/form-data" modelAttribute="facilities" method="post" >
 	    	<table style="margin:10px 0 0 70px;">		
 			
@@ -246,7 +246,7 @@ $(document).ready(function(){
 
 			<tr><td><span>类型*</span></td><td><select id="update_type" name="type" style="width:155px;">
 			
-			<option value="本店特色">本店特色</option><option value="周边美食">周边美食</option><option value="商务宴请">商务宴请</option></select></td></tr>
+			<option value="本店设施">本店设施</option><option value="娱乐设施">娱乐设施</option><option value="基础设施">基础设施</option></select></td></tr>
 
 			<tr><td><span>价格</span></td><td><input type="text" id="update_price" name="price"></td></tr>
 

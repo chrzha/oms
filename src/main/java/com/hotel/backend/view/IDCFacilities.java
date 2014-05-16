@@ -13,7 +13,7 @@ public class IDCFacilities {
 	private String type;
 	private String description;
 	private Float price;
-	private Float away;
+	private String away;
 	private String hotelId;
 	private String hotelName;
 	public String getId() {
@@ -46,10 +46,10 @@ public class IDCFacilities {
 	public void setPrice(Float price) {
 		this.price = price;
 	}
-	public Float getAway() {
+	public String getAway() {
 		return away;
 	}
-	public void setAway(Float away) {
+	public void setAway(String away) {
 		this.away = away;
 	}
 	public String getHotelId() {

@@ -71,7 +71,7 @@ a:link {
 </head>
 <body class="easyui-layout" >
   <div region="center" style="height:80px;" id="test">
-  <table class="easyui-datagrid" title="交通信息列表" style="width:1100px;height:400px">
+  <table class="easyui-datagrid" title="交通信息列表" style="width:1100px;height:478px">
 		<thead>
 			<tr>
 				<th data-options="field:'trafficId',width:50,align:'center'">编号</th>
@@ -97,7 +97,7 @@ a:link {
 					<td><a  id="trafficPrice_${status.count}">${list.price}</a></td>
 					<td><a  id="trafficStartTime_${status.count}">${list.startTime}</a><tetd>
 					<td><a  id="trafficStartStation_${status.count}">${list.startStation}</a></td>
-					<td><a  id="trafficPass_${status.count}">${list.pass}</a></td>
+					<td><a  id="trafficPass_${status.count}"  title="${list.pass}">${list.pass}</a></td>
 					<td><a  id="trafficEndStation_${status.count}">${list.endStation}</a></td>				 
 					<td><a  id="trafficEndTime_${status.count}">${list.endTime}</a></td>
 					<td> <a id="update_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">修改</a> </td>
@@ -228,6 +228,7 @@ $(document).ready(function(){
 			var trafficEndStation = $("#trafficEndStation_"+index).text();
 			var trafficEndTime = $("#trafficEndTime_"+index).text();
 			var trafficDesc = $("#trafficDesc_"+index).text();
+ 
 			
 			$("#update_id").text(trafficId);
 			$("#hidden_id").val(trafficId);
@@ -236,8 +237,8 @@ $(document).ready(function(){
 			$("#update_price").val(trafficPrice);
 			$("#update_startTime").val(trafficStartTime);
 			$("#update_startStation").val(trafficStartStation);
-			$("#update_pass").text(trafficPass);
-			$("#hidden_endStation").val(trafficEndStation);
+			$("#update_pass").val(trafficPass);
+			$("#update_endStation").val(trafficEndStation);
 			$("#update_endTime").val(trafficEndTime);
 			$("#update_description").val(trafficDesc);
 			

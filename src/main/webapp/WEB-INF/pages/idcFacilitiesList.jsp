@@ -96,11 +96,11 @@
             收费情况
           </th>
          
-          <th data-options="field:'away',width:100,align:'center'">
+          <th data-options="field:'away',width:50,align:'center'">
             距离
           </th>
-          <th data-options="field:'description',width:180,align:'center'">
-            简介
+          <th data-options="field:'description',width:250,align:'center'">
+            备注
           </th>
            <th data-options="field:'hotelName',width:80,align:'center'">
            发布酒店

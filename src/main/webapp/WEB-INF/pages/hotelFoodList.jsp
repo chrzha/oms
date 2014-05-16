@@ -204,7 +204,7 @@ $(document).ready(function(){
 </head>
 <body class="easyui-layout" style="width:100%;height:600px;">
   <div region="center" style="height:80px;" id="test">
-  <table class="easyui-datagrid" title="美食列表" style="width:1120px;height:450px">
+  <table class="easyui-datagrid" title="美食列表" style="width:1120px;height:478px">
 		<thead>
 			<tr>
 				<th data-options="field:'foodId',width:80,align:'center'">美食编号</th>
@@ -212,10 +212,10 @@ $(document).ready(function(){
 				<th data-options="field:'foodName',width:100,align:'center'">美食名称</th>
 				<th data-options="field:'foodType',width:100,align:'center'">类型</th>
 				<th data-options="field:'foodPrice',width:50,align:'center'">价格</th>
-				<th data-options="field:'foodAddress',width:150,align:'center'">地址</th>
-				<th data-options="field:'foodRout',width:100,align:'center'">线路</th>
-				<th data-options="field:'foodDesc',width:180,align:'center'">简介</th>
-				<th data-options="field:'upload',width:80,align:'center'"></th>
+				<th data-options="field:'foodAddress',width:100,align:'center'">所在酒店</th>
+				<th data-options="field:'foodRout',width:200,align:'center'">线路</th>
+				<th data-options="field:'foodDesc',width:120,align:'center'">备注</th>
+				<th data-options="field:'upload',width:60,align:'center'"></th>
 				<th data-options="field:'update',width:60,align:'center'"></th>
 				<th data-options="field:'delete',width:60,align:'center'"></th>
 			</tr>
@@ -229,8 +229,8 @@ $(document).ready(function(){
 					<td><a  id="foodName_${status.count}">${list.name}</a></td>
 					<td><a  id="foodType_${status.count}">${list.type}</a></td>
 					<td>￥<a  id="foodPrice_${status.count}">${list.price}</a></td>
-					<td><a  id="foodAddress_${status.count}">${list.address}</a></td>
-					<td><a  id="foodRout_${status.count}">${list.rout}</a></td>
+					<td><a  id="foodAddress_${status.count}" title="${list.address}">${list.address}</a></td>
+					<td><a  id="foodRout_${status.count}" title="${list.rout}">${list.rout}</a></td>
 					<td><a  id="foodDesc_${status.count}">${list.description}</a></td>
 					<td><a id="upload_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-search">换图</a></td>
 					<td><a id="update_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">修改</a></td>
@@ -259,11 +259,11 @@ $(document).ready(function(){
 
 			<tr><td><span>价格</span></td><td><input type="text" name="price"  ></td></tr>
 			
-			<tr><td><span>地址*</span></td><td><input type="text" name="address" ></td></tr>
+			<tr><td><span>所在酒店</span></td><td><input type="text" name="address" ></td></tr>
 
 			<tr><td><span>线路</span></td><td><input type="text" name="rout"></td></tr>
 
-			<tr><td><span>简介</span></td><td><input type="text" name="description"></td></tr>
+			<tr><td><span>备注</span></td><td><input type="text" name="description"></td></tr>
 					
 	    	</table>
 	    	<div class="submit" style="margin-left:120px;">
@@ -288,11 +288,11 @@ $(document).ready(function(){
 
 			<tr><td><span>价格</span></td><td><input type="text" id="update_price" name="price"></td></tr>
 
-			<tr><td><span>地址*</span></td><td><input type="text" id="update_address" name="address"></td></tr>
+			<tr><td><span>所在酒店</span></td><td><input type="text" id="update_address" name="address"></td></tr>
 
 			<tr><td><span>线路</span></td><td><input type="text" id="update_rout" name="rout"></td></tr>
 
-			<tr><td><span>简介</span></td><td><input type="text" id="update_description" name="description"></td></tr>
+			<tr><td><span>备注</span></td><td><input type="text" id="update_description" name="description"></td></tr>
 	    	</table>
 	    	<div class="submit" style="margin-left:120px;">
 	    		<a id="update" class="easyui-linkbutton" plain="true" iconCls="icon-save">保存</a>
