@@ -36,6 +36,7 @@ import com.hotel.backend.service.LHotelViewService;
 import com.hotel.backend.service.LUserRoleService;
 import com.hotel.backend.service.UserService;
 import com.hotel.backend.service.UserViewService;
+import com.hotel.backend.utility.Mail;
 import com.hotel.backend.view.IDCFacilities;
 import com.hotel.backend.view.IDCFood;
 import com.hotel.backend.view.IDCMarket;
@@ -176,7 +177,26 @@ public class IDCController {
 		applyAdminService.updateApply(applyInfo);
 
 		userViewService.updateUserViewById(map);
-
+		//发送邮件通知用户
+		
+		//审核结果
+		String result = "";
+		if (status.equals("1")) {
+			result = "通过审核";
+		}else {
+			result = "未通过审核";
+		}
+		
+		String smtp = "smtp.163.com";// smtp服务器
+	    String from = "15251327856@163.com";// 邮件显示名称
+	    String to = userService.getUserById(userId).getEmail();// 收件人的邮件地址，必须是真实地址
+	    String copyto = "";// 抄送人邮件地址
+	    String subject = "审核结果";// 邮件标题
+	    String content = "你好！审核结果为："+result;// 邮件内容
+	    String username = "15251327856";// 发件人真实的账户名
+	    String password = "piano0713";// 发件人密码
+	    
+	    Mail.sendAndCc(smtp, from, to, copyto, subject, content, username, password);
 		return new ModelAndView("success");
 	}
 
