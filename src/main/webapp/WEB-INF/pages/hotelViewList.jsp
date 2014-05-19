@@ -79,6 +79,7 @@ a:link {
 				<th data-options="field:'viewRout',width:100,align:'center'">线路</th>
 				<th data-options="field:'price',width:60,align:'center'">门票</th>
 				<th data-options="field:'viewDesc',width:160,align:'center'">简介</th>
+				<th data-options="field:'viewStatus',width:80,align:'center'">状态</th>
 				<th data-options="field:'update',width:60,align:'center'"></th>
 				<th data-options="field:'delete',width:60,align:'center'"></th>
 				
@@ -96,12 +97,13 @@ a:link {
 					<td><a  id="viewRout_${status.count}">${list.rout}</a></td>
 					<td>￥<a  id="viewPrice_${status.count}">${list.price}</a></td>
 					<td><a  id="viewDesc_${status.count}">${list.description}</a></td>
+					<td><a  id="viewStatus_${status.count}">${list.status}</a></td>
 					<td> <a id="update_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">修改</a> </td>
 				    <td> <a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove">删除</a> </td>
 				</tr>
 			</c:forEach> 
 			<tr>
-			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 			<td ><a id="addView" class="easyui-linkbutton" plain="true" iconCls="icon-add">添加</a></td>
 			</tr>
 	

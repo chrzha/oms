@@ -75,14 +75,15 @@ a:link {
 		<thead>
 			<tr>
 				<th data-options="field:'trafficId',width:50,align:'center'">编号</th>
-				<th data-options="field:'trafficName',width:100,align:'center'">名称</th>
-				<th data-options="field:'trafficType',width:100,align:'center'">类型</th>
+				<th data-options="field:'trafficName',width:60,align:'center'">名称</th>
+				<th data-options="field:'trafficType',width:80,align:'center'">类型</th>
 				<th data-options="field:'trafficPrice',width:50,align:'center'">票价</th>
 				<th data-options="field:'trafficStartTime',width:60,align:'center'">始发时间</th>
 				<th data-options="field:'trafficStartStation',width:80,align:'center'">始发站</th>
 				<th data-options="field:'trafficPass',width:350,align:'center'">沿途经过</th>
 				<th data-options="field:'trafficEndStation',width:80,align:'center'">终点站</th>
 				<th data-options="field:'trafficEndTime',width:60,align:'center'">末班时间</th>
+				<th data-options="field:'trafficStatus',width:60,align:'center'">状态</th>
 				<th data-options="field:'update',width:60,align:'center'"></th>
 				<th data-options="field:'delete',width:60,align:'center'"></th>
 			</tr>
@@ -100,13 +101,14 @@ a:link {
 					<td><a  id="trafficPass_${status.count}"  title="${list.pass}">${list.pass}</a></td>
 					<td><a  id="trafficEndStation_${status.count}">${list.endStation}</a></td>				 
 					<td><a  id="trafficEndTime_${status.count}">${list.endTime}</a></td>
+					<td><a  id="trafficStatus_${status.count}">${list.status}</a></td>
 					<td> <a id="update_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">修改</a> </td>
 					<td> <a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove">删除</a> </td>
 					
 				</tr>
 			</c:forEach> 
 			<tr>
-			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 			<td ><a id="addTraffic" class="easyui-linkbutton" plain="true" iconCls="icon-add">添加</a></td>
 			</tr>
 		</tbody>

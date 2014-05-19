@@ -182,7 +182,7 @@ $(document).ready(function(){
 				<th data-options="field:' Price',width:70,align:'center'">价格</th>
 				<th data-options="field:'Away',width:120,align:'center'">距离</th>
 				<th data-options="field:' Desc',width:280,align:'center'">备注</th>
-				 
+				 <th data-options="field:'status',width:80,align:'center'">状态</th>
 				<th data-options="field:'update',width:70,align:'center'"></th>
 				<th data-options="field:'delete',width:70,align:'center'"></th>
 			</tr>
@@ -197,13 +197,14 @@ $(document).ready(function(){
 					<td>￥<a  id="facilitiesPrice_${status.count}">${list.price}</a></td>
 					<td><a  id="facilitiesAway_${status.count}">${list.away}</a></td>
 					<td><a  id="facilitiesDesc_${status.count}">${list.description}</a></td>
+					<td><a  id="facilitiesStatus_${status.count}">${list.status}</a></td>
 					<td><a id="update_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">修改</a></td>
 					<td><a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove">删除</a></td>
 					
 				</tr>
 			</c:forEach> 
 			<tr>
-			<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 			<td ><a id="addFacilities" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a></td>
 			</tr>
 		</tbody>

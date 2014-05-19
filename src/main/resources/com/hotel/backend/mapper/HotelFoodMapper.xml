@@ -10,12 +10,12 @@
 		<result column="FD_DESC" jdbcType="VARCHAR" property="description" />
 		<result column="FD_ADDRESS" jdbcType="VARCHAR" property="address" />
 		<result column="FD_ROUT" jdbcType="VARCHAR" property="rout" />
-
+        <result column="FD_STATUS" jdbcType="VARCHAR" property="status" />
 	</resultMap>
 
 
 	<sql id="Base_Column_List">
-		bfood.FD_ID,FD_NAME,FD_PHOTO,FD_TYPE,FD_PRICE,FD_DESC,FD_ADDRESS,FD_ROUT
+		bfood.FD_ID,FD_NAME,FD_PHOTO,FD_TYPE,FD_PRICE,FD_DESC,FD_ADDRESS,FD_ROUT,FD_STATUS
 	</sql>
 
 	<select id="getFoodListPaged" resultMap="BaseResultMap"
@@ -64,9 +64,9 @@
 
 		INSERT INTO
 		bfood
-		(FD_ID,FD_NAME,FD_PHOTO,FD_TYPE,FD_PRICE,FD_DESC,FD_ADDRESS,FD_ROUT)
+		(FD_ID,FD_NAME,FD_PHOTO,FD_TYPE,FD_PRICE,FD_DESC,FD_ADDRESS,FD_ROUT,FD_STATUS)
 		VALUES
-		(#{id},#{name},#{photo},#{type},#{price},#{description},#{address},#{rout})
+		(#{id},#{name},#{photo},#{type},#{price},#{description},#{address},#{rout},#{status})
 
 	</insert>
 
@@ -80,7 +80,8 @@
 		FD_PRICE = #{price},
 		FD_DESC = #{description},
 		FD_ADDRESS = #{address},
-		FD_ROUT= #{rout}
+		FD_ROUT= #{rout},
+		FD_STATUS = {status}
 		where
 		FD_ID=#{id}
 	</update>

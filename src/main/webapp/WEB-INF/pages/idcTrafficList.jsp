@@ -94,6 +94,8 @@ a:link {
 				<th data-options="field:'pass',width:350,align:'center'">沿途经过</th>
 				<th data-options="field:'endStation',width:80,align:'center'">终点站</th>
 				<th data-options="field:'endTime',width:60,align:'center'">末班时间</th>
+				<th data-options="field:'status',width:80,align:'center',
+				formatter:function(value){if(value==0)return '未通过';else return '通过';}"> 审核状态 </th>
 			 <th data-options="field:'hotelName',width:80,align:'center'">
            发布酒店
           </th>
@@ -102,7 +104,7 @@ a:link {
 		
 	</table>
  </div>
-  <div id="toolbar"><a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="destroyUser();" >删除</a>
+  <div id="toolbar"><a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="destroyUser();" >通过/不通过</a>
     </div>
 </body>
 <script type="text/javascript">

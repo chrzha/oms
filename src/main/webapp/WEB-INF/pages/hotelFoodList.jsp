@@ -208,13 +208,14 @@ $(document).ready(function(){
 		<thead>
 			<tr>
 				<th data-options="field:'foodId',width:80,align:'center'">美食编号</th>
-				<th data-options="field:'foodPhoto',width:100,align:'center'">图片</th>
+				<th data-options="field:'foodPhoto',width:80,align:'center'">图片</th>
 				<th data-options="field:'foodName',width:100,align:'center'">美食名称</th>
-				<th data-options="field:'foodType',width:100,align:'center'">类型</th>
+				<th data-options="field:'foodType',width:80,align:'center'">类型</th>
 				<th data-options="field:'foodPrice',width:50,align:'center'">价格</th>
 				<th data-options="field:'foodAddress',width:100,align:'center'">所在酒店</th>
 				<th data-options="field:'foodRout',width:200,align:'center'">线路</th>
 				<th data-options="field:'foodDesc',width:120,align:'center'">备注</th>
+				<th data-options="field:'foodStatus',width:80,align:'center'">状态</th>
 				<th data-options="field:'upload',width:60,align:'center'"></th>
 				<th data-options="field:'update',width:60,align:'center'"></th>
 				<th data-options="field:'delete',width:60,align:'center'"></th>
@@ -232,6 +233,7 @@ $(document).ready(function(){
 					<td><a  id="foodAddress_${status.count}" title="${list.address}">${list.address}</a></td>
 					<td><a  id="foodRout_${status.count}" title="${list.rout}">${list.rout}</a></td>
 					<td><a  id="foodDesc_${status.count}">${list.description}</a></td>
+					<td><a  id="foodStatus_${status.count}">${list.status}</a></td>
 					<td><a id="upload_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-search">换图</a></td>
 					<td><a id="update_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">修改</a></td>
 					<td><a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove">删除</a></td>
@@ -239,7 +241,7 @@ $(document).ready(function(){
 				</tr>
 			</c:forEach> 
 			<tr>
-			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 			<td ><a id="addFood" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a></td>
 			</tr>
 		</tbody>

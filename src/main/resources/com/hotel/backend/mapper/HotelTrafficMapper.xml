@@ -14,13 +14,14 @@
 		<result column="TRAFFIC_ENDSTATION" jdbcType="VARCHAR"
 			property="endStation" />
 		<result column="TRAFFIC_DESC" jdbcType="VARCHAR" property="description" />
+		<result column="TRAFFIC_STATUS" jdbcType="VARCHAR" property="status" />
 
 	</resultMap>
 
 
 	<sql id="Base_Column_List">
 		bTraffic.TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_TYPE,TRAFFIC_PRICE,TRAFFIC_STARTTIME,TRAFFIC_PASS,TRAFFIC_ENDTIIME,
-		TRAFFIC_STARTSTATION,TRAFFIC_ENDSTATION,TRAFFIC_DESC
+		TRAFFIC_STARTSTATION,TRAFFIC_ENDSTATION,TRAFFIC_DESC,TRAFFIC_STATUS
 	</sql>
 
 	<select id="getTrafficListPaged" resultMap="BaseResultMap"
@@ -72,9 +73,9 @@
 		INSERT INTO
 		bTraffic
 		(TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_TYPE,TRAFFIC_PRICE,TRAFFIC_STARTTIME,TRAFFIC_PASS,TRAFFIC_ENDTIIME,
-		TRAFFIC_STARTSTATION,TRAFFIC_ENDSTATION,TRAFFIC_DESC)
+		TRAFFIC_STARTSTATION,TRAFFIC_ENDSTATION,TRAFFIC_DESC,TRAFFIC_STATUS)
 		VALUES
-		(#{id},#{name},#{type},#{price},#{startTime},#{pass},#{endTime},#{startStation},#{endStation},#{description})
+		(#{id},#{name},#{type},#{price},#{startTime},#{pass},#{endTime},#{startStation},#{endStation},#{description},#{status})
 
 	</insert>
 
@@ -89,7 +90,8 @@
 		TRAFFIC_ENDTIIME = #{endTime},
 		TRAFFIC_STARTSTATION = #{startStation},
 		TRAFFIC_ENDSTATION = #{endStation},
-		TRAFFIC_DESC = #{description}
+		TRAFFIC_DESC = #{description},
+		TRAFFIC_STATUS = #{status}
 		where
 		TRAFFIC_ID=#{id}
 	</update>

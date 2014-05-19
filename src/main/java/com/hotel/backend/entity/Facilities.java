@@ -15,6 +15,15 @@ public class Facilities {
 	private String description;
 	private Float price;
 	private String  away;
+	private String status;
+	
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public String getId() {
 		return id;
 	}

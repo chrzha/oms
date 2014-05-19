@@ -105,6 +105,9 @@
           <th data-options="field:'description',width:180,align:'center'">
             备注
           </th>
+           <th data-options="field:'status',width:80,align:'center',formatter:function(value){if(value==0)return '未通过';else return '通过';}">
+            审核状态
+          </th>
           <th data-options="field:'hotelName',width:80,align:'center'">
            发布酒店
           </th>
@@ -115,8 +118,9 @@
     </table>
 
   
-   <div id="toolbar"><a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="destroyUser();" >删除</a>
+   <div id="toolbar"><a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="destroyUser();" >通过/不通过</a>
     </div>
+    
   </div>
 </body>
 <script type="text/javascript">
