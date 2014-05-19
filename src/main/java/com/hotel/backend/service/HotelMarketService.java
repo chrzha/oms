@@ -27,4 +27,6 @@ public interface HotelMarketService {
 	public void updateMkt(Market market);
 
 	public Integer getTotalCount();
+	
+	public void changeStatusById(Map<String, String> map);
 }

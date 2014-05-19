@@ -107,9 +107,9 @@ a:link {
  function destroyUser() {
             var row = $('#dg').datagrid('getSelected');
             if (row) {
-                $.messager.confirm('确认', '确定要删除吗?', function (r) {
+                $.messager.confirm('确认', '确定要更改审核状态吗?', function (r) {
                     if (r) {
-                        $.post('/hotel/deleteViewByIDC', { viewId: row.id }, function (result) {
+                        $.post('/hotel/changeViewStatus', { viewId: row.id,status:row.status}, function (result) {
                             if (result=="success") {
                                 $('#dg').datagrid('reload');    // reload the user data  
                             } else {

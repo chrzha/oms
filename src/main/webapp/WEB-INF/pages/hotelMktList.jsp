@@ -96,7 +96,8 @@ a:link {
 					<td><a  id="mktAway_${status.count}">${list.away}</a></td>
 					<td><a  id="mktRout_${status.count}">${list.rout}</a><tetd>
 					<td><a  id="mktDesc_${status.count}">${list.description}</a></td>
-					<td><a  id="mktStatus_${status.count}">${list.status}</a></td>
+					<td><c:if test="${list.status=='1'}"> <a  id="mktStatus_${status.count}">通过</a></c:if>
+					<c:if test="${list.status=='0'}"> <a  id="mktStatus_${status.count}">未通过</a></c:if></td>
 					<td><a id="update_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">修改</a></td>
 					<td><a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove">删除</a></td>
 					

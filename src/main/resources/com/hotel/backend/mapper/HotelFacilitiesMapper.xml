@@ -83,6 +83,15 @@
 		where
 		FACILITIES_ID=#{id}
 	</update>
+	
+	 <update id="changeStatusById" parameterType="map">
+		update BFACILITIES
+		set
+		FACILITIES_STATUS = #{status}
+		where
+		FACILITIES_ID=#{id}
+	</update>
+	
 
 </mapper>
 

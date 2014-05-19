@@ -22,5 +22,7 @@ public interface HotelFoodService {
 	public void uploadFoodPhoto(Map<String, String> map);
 	
 	public Integer getTotalCount();
+	
+	public void changeStatusById(Map<String, String> map);
 
 }

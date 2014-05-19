@@ -81,6 +81,15 @@
 		MKT_ID=#{id}
 
 	</update>
+	
+	 <update id="changeStatusById" parameterType="map">
+		update bsupermarket
+		set
+		MKT_STATUS = #{status}
+		where
+		MKT_ID=#{id}
+	</update>
+	
 
 </mapper>
 

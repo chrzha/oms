@@ -68,6 +68,14 @@ public class HotelTrafficServiceImpl implements HotelTrafficService{
 		return hotelTrafficMapper.getTrafficListPaged(map);
 	}
 
+	@Override
+	public void changeStatusById(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		
+		hotelTrafficMapper.changeStatusById(map);
+		
+	}
+
 	
 
 }

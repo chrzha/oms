@@ -66,13 +66,26 @@ public class FacilitiesController {
 		String result = "success";
 		return result;
 	}
-	@RequestMapping("/deleteFacilitiesByIDC")
+	@RequestMapping("/changeFacilitiesStatus")
 	public @ResponseBody
-	String deleteFacilitiesByIDC(HttpServletRequest request,
-			HttpServletResponse response, String facilitiesId) {
+	String changeFacilitiesStatus(HttpServletRequest request,
+			HttpServletResponse response, String facilitiesId,String status) {
 		
 		
 		String result = "success";
+		
+		if (status.equals("0")) {
+			status = "1";
+		}else {
+			status = "0";
+		}
+
+		Map<String, String> map = new HashMap<String, String>();
+
+		map.put("id", facilitiesId);
+		map.put("status", status);
+		
+		hotelFacilitiesService.changeStatusById(map);
 		
 		UserView userView = (UserView) request.getSession()
 				.getAttribute("user");
@@ -99,9 +112,7 @@ public class FacilitiesController {
 			
 		}
 		
-		lHotelFacilitiesService.deleteLink(facilitiesId);
-
-		hotelFacilitiesService.deleteFacilitiesById(facilitiesId);
+		 
 		return result;
 	}
 

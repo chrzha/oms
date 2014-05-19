@@ -66,5 +66,11 @@ public class HotelFacilitiesServiceImpl implements HotelFacilitiesService{
 		return hotelFacilitiesMapper.getTotalCount();
 	}
 
+	@Override
+	public void changeStatusById(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		hotelFacilitiesMapper.changeStatusById(map);
+	}
+
 	
 }

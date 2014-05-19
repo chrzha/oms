@@ -94,6 +94,13 @@
 		where
 		FD_ID=#{id}
 	</update>
+    <update id="changeStatusById" parameterType="map">
+		update bfood
+		set
+		FD_STATUS = #{status}
+		where
+		FD_ID=#{id}
+	</update>
 
 
 </mapper>

@@ -35,7 +35,7 @@ public class MarketController {
 
 	@Autowired
 	private HotelMarketService hotelMarketService;
-	
+
 	@Autowired
 	private UserService userService;
 
@@ -47,62 +47,76 @@ public class MarketController {
 	String deleteMktById(HttpServletRequest request,
 			HttpServletResponse response, String mktId) {
 
-	/*	UserView userView = (UserView) request.getSession()
-				.getAttribute("user");
+		/*
+		 * UserView userView = (UserView) request.getSession()
+		 * .getAttribute("user");
+		 * 
+		 * String hotelId = userView.getHotelId();
+		 * 
+		 * Map<String, String> map = new HashMap<String, String>();
+		 * 
+		 * map.put("hotelId", hotelId); map.put("mktId", mktId);
+		 */
 
-		String hotelId = userView.getHotelId();
+		lHotelMktService.deleteLink(mktId);
+
+		hotelMarketService.deleteMarketById(mktId);
+
+		String result = "success";
+		return result;
+	}
+
+	@RequestMapping("/changeMktStatus")
+	public @ResponseBody
+	String changeMktStatus(HttpServletRequest request,
+			HttpServletResponse response, String mktId, String status) {
+
+		String result = "success";
+
+		if (status.equals("0")) {
+			status = "1";
+		} else {
+			status = "0";
+		}
 
 		Map<String, String> map = new HashMap<String, String>();
 
-		map.put("hotelId", hotelId);
-		map.put("mktId", mktId);*/
-
-		lHotelMktService.deleteLink(mktId);
-
-		hotelMarketService.deleteMarketById(mktId);
-
-		String result = "success";
-		return result;
-	}
-	@RequestMapping("/deleteMktByIDC")
-	public @ResponseBody
-	String deleteMktByIDC(HttpServletRequest request,
-			HttpServletResponse response, String mktId) {
+		map.put("id", mktId);
+		map.put("status", status);
 		
-		String result = "success";
-		
+		hotelMarketService.changeStatusById(map);
+
 		UserView userView = (UserView) request.getSession()
 				.getAttribute("user");
 
-		
 		User user = userService.getAdminByMarketId(mktId);
-		
+
 		if (userView.getRoleId().equals("0001")) {
-			//如果是IDC管理员，则发邮件通知酒店，信息未通过审核
-			    String smtp = "smtp.163.com";// smtp服务器
-			    String from = "15251327856@163.com";// 邮件显示名称
-			    String to = user.getEmail();// 收件人的邮件地址，必须是真实地址
-			    String copyto = "";// 抄送人邮件地址
-			    String subject = "信息审核未通过";// 邮件标题
-			    String content = "你好！您所在酒店编号为："+mktId+"的商场购物信息未通过审核，已被删除！";// 邮件内容
-			    String username = "15251327856";// 发件人真实的账户名
-			    String password = "piano0713";// 发件人密码
-			    
-			    if (Mail.sendAndCc(smtp, from, to, copyto, subject, content, username, password)) {
-		           result = "success";
-		        } else {
-		           result = "error";
-		        }
-			
+			// 如果是IDC管理员，则发邮件通知酒店，信息未通过审核
+			String smtp = "smtp.163.com";// smtp服务器
+			String from = "15251327856@163.com";// 邮件显示名称
+			String to = user.getEmail();// 收件人的邮件地址，必须是真实地址
+			String copyto = "";// 抄送人邮件地址
+			String subject = "信息审核未通过";// 邮件标题
+			String content = "你好！您所在酒店编号为：" + mktId + "的商场购物信息未通过审核，已被删除！";// 邮件内容
+			String username = "15251327856";// 发件人真实的账户名
+			String password = "piano0713";// 发件人密码
+
+			if (Mail.sendAndCc(smtp, from, to, copyto, subject, content,
+					username, password)) {
+				result = "success";
+			} else {
+				result = "error";
+			}
+
 		}
 
-		lHotelMktService.deleteLink(mktId);
-		hotelMarketService.deleteMarketById(mktId);
-
+		 
 		return result;
 	}
+
 	@RequestMapping("/goAddMkt")
-	public ModelAndView goAddMkt(){
+	public ModelAndView goAddMkt() {
 		return new ModelAndView("addMkt");
 	}
 
@@ -119,18 +133,19 @@ public class MarketController {
 
 		String hotelId = userView.getHotelId();
 
-        int size = hotelMarketService.getAllMarketList().size();
-        
-        if (size==0) {
-        	
+		int size = hotelMarketService.getAllMarketList().size();
+
+		if (size == 0) {
+
 			mktId = "0001";
-		
-        }else {
-			
-			String temp = hotelMarketService.getAllMarketList().get(size-1).getId();
-			
-			int total = Integer.parseInt(temp)+1;
-			
+
+		} else {
+
+			String temp = hotelMarketService.getAllMarketList().get(size - 1)
+					.getId();
+
+			int total = Integer.parseInt(temp) + 1;
+
 			if (total < 10) {
 				mktId = "000" + total;
 			} else if (total >= 10 && total < 100) {
@@ -141,7 +156,6 @@ public class MarketController {
 				mktId = "" + total;
 			}
 		}
-		
 
 		Map<String, String> map = new HashMap<String, String>();
 
@@ -158,16 +172,16 @@ public class MarketController {
 		}
 		return result;
 	}
-	
+
 	@RequestMapping("/updateMarket")
 	public @ResponseBody
-	String updateMarket(HttpServletRequest request, HttpServletResponse response,
+	String updateMarket(HttpServletRequest request,
+			HttpServletResponse response,
 			@ModelAttribute("market") Market market) {
 
 		String result = "success";
-        hotelMarketService.updateMkt(market);
+		hotelMarketService.updateMkt(market);
 		return result;
 	}
-	
 
 }

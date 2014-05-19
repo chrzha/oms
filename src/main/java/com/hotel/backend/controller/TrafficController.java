@@ -142,12 +142,25 @@ public class TrafficController {
 	}
 	
 	//deleteTrafficByIDC
-	@RequestMapping("/deleteTrafficByIDC")
+	@RequestMapping("/changeTrafficStatus")
 	public @ResponseBody
-	String deleteTrafficByIDC(HttpServletRequest request,
-			HttpServletResponse response, String trafficId) {
+	String changeTrafficStatus(HttpServletRequest request,
+			HttpServletResponse response, String trafficId,String status) {
 		
 		String result = "success";
+		
+		if (status.equals("0")) {
+			status = "1";
+		}else {
+			status = "0";
+		}
+
+		Map<String, String> map = new HashMap<String, String>();
+
+		map.put("id", trafficId);
+		map.put("status", status);
+		
+		hotelTrafficService.changeStatusById(map);
  
 		UserView userView = (UserView) request.getSession()
 				.getAttribute("user");
@@ -174,7 +187,7 @@ public class TrafficController {
 			
 		}
 		
-		hotelTrafficService.deleteTrafficById(trafficId);
+		 
 		return result;
 	}
 

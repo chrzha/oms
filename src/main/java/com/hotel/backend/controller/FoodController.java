@@ -51,13 +51,19 @@ public class FoodController {
 		String result = "success";
 		return result;
 	}
-	@RequestMapping("/deleteFoodByIDC")
+	@RequestMapping("/changeFoodStatus")
 	public @ResponseBody
-	String deleteFoodByIDC(HttpServletRequest request,
-			HttpServletResponse response, String foodId) {
+	String changeFoodStatus(HttpServletRequest request,
+			HttpServletResponse response, String foodId,String status) {
 		
 		
 		String result = "success";
+		
+		if (status.equals("0")) {
+			status = "1";
+		}else {
+			status = "0";
+		}
 
 		UserView userView = (UserView) request.getSession()
 				.getAttribute("user");
@@ -65,14 +71,22 @@ public class FoodController {
 		
 		User user = userService.getAdminByFoodId(foodId);
 		
-		if (userView.getRoleId().equals("0001")) {
+		Map<String, String> map = new HashMap<String, String>();
+		
+		map.put("id", foodId);
+		map.put("status", status);
+		
+		hotelFoodService.changeStatusById(map);
+		
+		
+		if (userView.getRoleId().equals("0001")&&status.equals("0")) {
 			//如果是IDC管理员，则发邮件通知酒店，信息未通过审核
 			    String smtp = "smtp.163.com";// smtp服务器
 			    String from = "15251327856@163.com";// 邮件显示名称
 			    String to = user.getEmail();// 收件人的邮件地址，必须是真实地址
 			    String copyto = "";// 抄送人邮件地址
 			    String subject = "信息审核未通过";// 邮件标题
-			    String content = "你好！您所在酒店编号为："+foodId+"的美食信息未通过审核，已被删除！";// 邮件内容
+			    String content = "你好！您所在酒店编号为："+foodId+"的美食信息未通过审核！";// 邮件内容
 			    String username = "15251327856";// 发件人真实的账户名
 			    String password = "piano0713";// 发件人密码
 			    
@@ -84,8 +98,6 @@ public class FoodController {
 			
 		}
 
-        lHotelFoodService.deleteLink(foodId);
-		hotelFoodService.deleteFoodById(foodId);
 		return result;
 	}
 

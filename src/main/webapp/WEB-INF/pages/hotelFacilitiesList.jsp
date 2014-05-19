@@ -197,7 +197,8 @@ $(document).ready(function(){
 					<td>￥<a  id="facilitiesPrice_${status.count}">${list.price}</a></td>
 					<td><a  id="facilitiesAway_${status.count}">${list.away}</a></td>
 					<td><a  id="facilitiesDesc_${status.count}">${list.description}</a></td>
-					<td><a  id="facilitiesStatus_${status.count}">${list.status}</a></td>
+					<td><c:if test="${list.status=='1'}"> <a  id="facilitiesStatus_${status.count}">通过</a></c:if>
+					<c:if test="${list.status=='0'}"> <a  id="facilitiesStatus_${status.count}">未通过</a></c:if></td>
 					<td><a id="update_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">修改</a></td>
 					<td><a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove">删除</a></td>
 					

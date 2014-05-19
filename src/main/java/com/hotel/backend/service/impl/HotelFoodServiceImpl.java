@@ -64,4 +64,10 @@ public class HotelFoodServiceImpl implements HotelFoodService{
 		return hotelFoodMapper.getAllFoodList();
 	}
 
+	@Override
+	public void changeStatusById(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		hotelFoodMapper.changeStatusById(map);
+	}
+
 }

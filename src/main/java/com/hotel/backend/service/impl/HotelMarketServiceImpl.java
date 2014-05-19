@@ -66,4 +66,11 @@ public class HotelMarketServiceImpl implements HotelMarketService{
 		return hotelMarketMapper.getAllMarketList();
 	}
 
+	@Override
+	public void changeStatusById(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		hotelMarketMapper.changeStatusById(map);
+		
+	}
+
 }

@@ -101,7 +101,8 @@ a:link {
 					<td><a  id="trafficPass_${status.count}"  title="${list.pass}">${list.pass}</a></td>
 					<td><a  id="trafficEndStation_${status.count}">${list.endStation}</a></td>				 
 					<td><a  id="trafficEndTime_${status.count}">${list.endTime}</a></td>
-					<td><a  id="trafficStatus_${status.count}">${list.status}</a></td>
+					<td><c:if test="${list.status=='1'}"> <a  id="trafficStatus_${status.count}">通过</a></c:if>
+					<c:if test="${list.status=='0'}"> <a  id="trafficStatus_${status.count}">未通过</a></c:if></td>
 					<td> <a id="update_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">修改</a> </td>
 					<td> <a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove">删除</a> </td>
 					

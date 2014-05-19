@@ -85,6 +85,14 @@
 
 	</update>
 
+ <update id="changeStatusById" parameterType="map">
+		update bview
+		set
+		VIEW_STATUS = #{status}
+		where
+		VIEW_ID=#{id}
+	</update>
+
 
 </mapper>
 

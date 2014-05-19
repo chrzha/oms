@@ -20,5 +20,7 @@ public interface HotelFacilitiesMapper {
 	public void updateFacilities(Facilities facilities);
 
 	public Integer getTotalCount();
+	
+	public void changeStatusById(Map<String, String> map);
 
 }

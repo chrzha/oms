@@ -64,12 +64,25 @@ public class ViewController {
 		String result = "success";
 		return result;
 	}
-	@RequestMapping("/deleteViewByIDC")
+	@RequestMapping("/changeViewStatus")
 	public @ResponseBody
-	String deleteViewByIDC(HttpServletRequest request,
-			HttpServletResponse response, String viewId) {
+	String changeViewStatus(HttpServletRequest request,
+			HttpServletResponse response, String viewId,String status) {
 		
 		String result = "success";
+		
+		if (status.equals("0")) {
+			status = "1";
+		}else {
+			status = "0";
+		}
+
+		Map<String, String> map = new HashMap<String, String>();
+
+		map.put("id", viewId);
+		map.put("status", status);
+		
+		hotelViewService.changeStatusById(map);
 
 		UserView userView = (UserView) request.getSession()
 				.getAttribute("user");
@@ -94,9 +107,7 @@ public class ViewController {
 		        }
 			
 		}
-		lHotelViewService.deleteLink(viewId);
-
-		hotelViewService.deleteViewById(viewId);
+	 
 
 		return result;
 	}

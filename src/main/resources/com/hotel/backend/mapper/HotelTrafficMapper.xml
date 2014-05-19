@@ -96,6 +96,15 @@
 		TRAFFIC_ID=#{id}
 	</update>
 
+
+ <update id="changeStatusById" parameterType="map">
+		update bTraffic
+		set
+		TRAFFIC_STATUS = #{status}
+		where
+		TRAFFIC_ID=#{id}
+	</update>
+
 </mapper>
 
 

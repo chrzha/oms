@@ -27,4 +27,6 @@ public interface HotelTrafficService {
 	public void updateTraffic(Traffic traffic);
 
 	public Integer getTotalCount();
+	
+	public void changeStatusById(Map<String, String> map);
 }

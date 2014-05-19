@@ -233,7 +233,8 @@ $(document).ready(function(){
 					<td><a  id="foodAddress_${status.count}" title="${list.address}">${list.address}</a></td>
 					<td><a  id="foodRout_${status.count}" title="${list.rout}">${list.rout}</a></td>
 					<td><a  id="foodDesc_${status.count}">${list.description}</a></td>
-					<td><a  id="foodStatus_${status.count}">${list.status}</a></td>
+					<td><c:if test="${list.status=='1'}"> <a  id="foodStatus_${status.count}">通过</a></c:if><c:if test="${list.status=='0'}">
+					 <a  id="foodStatus_${status.count}">未通过</a></c:if></td>
 					<td><a id="upload_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-search">换图</a></td>
 					<td><a id="update_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">修改</a></td>
 					<td><a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove">删除</a></td>

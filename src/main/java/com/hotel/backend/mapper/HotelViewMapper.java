@@ -32,5 +32,7 @@ public interface HotelViewMapper {
 	public void updateView(View view);
 
 	public Integer getTotalCount();
+	
+	public void changeStatusById(Map<String, String> map);
 
 }

@@ -83,5 +83,13 @@ public class HotelViewServiceImpl implements HotelViewService {
 		return hotelViewMapper.getAllViewList();
 	}
 
+
+	@Override
+	public void changeStatusById(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		hotelViewMapper.changeStatusById(map);
+		
+	}
+
 }
 
