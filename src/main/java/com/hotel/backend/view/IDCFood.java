@@ -19,6 +19,15 @@ public class IDCFood {
 	private String hotelId;
 	private String hotelName;
 	private String status;
+	private String flag;
+
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
 
 	public String getStatus() {
 		return status;

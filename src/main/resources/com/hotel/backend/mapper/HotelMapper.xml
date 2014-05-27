@@ -9,12 +9,14 @@
 		<result column="HOTEL_PHONE" jdbcType="CHAR" property="phone" />
 		<result column="HOTEL_DESC" jdbcType="VARCHAR" property="description" />
 		<result column="HOTEL_STATUS" jdbcType="CHAR" property="status" />
+		<result column="HOTEL_VLDT_FLAG" jdbcType="CHAR" property="flag" />
+		
 		
 	</resultMap>
 
 
 	<sql id="Base_Column_List">
-		HOTEL_ID,HOTEL_NAME,HOTEL_ADDRESS,HOTEL_LOGO,HOTEL_PHONE,HOTEL_DESC,HOTEL_STATUS
+		HOTEL_ID,HOTEL_NAME,HOTEL_ADDRESS,HOTEL_LOGO,HOTEL_PHONE,HOTEL_DESC,HOTEL_STATUS,HOTEL_VLDT_FLAG
 	</sql>
 
 	<select id="getHotelList" resultMap="BaseResultMap">

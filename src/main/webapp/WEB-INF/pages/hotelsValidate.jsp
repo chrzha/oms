@@ -64,6 +64,7 @@
 				
 				<th data-options="field:'hotel',width:250,align:'center'">地址</th>
 				<th data-options="field:'status',width:100,align:'center'">是否通过审核</th>
+				<th data-options="field:'flag',width:100,align:'center'">审核状态</th>
 				<th data-options="field:'phone',width:160,align:'center'">联系电话</th>
 				<th data-options="field:'save',width:60,align:'center'"></th>
 				<th data-options="field:'delete',width:60,align:'center'"></th>
@@ -80,6 +81,12 @@
 					<select id="status_${status.count}" disabled="disabled">
 					<option value="1" <c:if test="${list.status=='1'}">selected="selected"</c:if> >通过</option>
 					<option value="0" <c:if test="${list.status=='0'}">selected="selected"</c:if> >未通过</option>
+					</select>
+					</td>
+					<td>
+					<select id="flag_${status.count}" disabled="disabled">
+					<option value="1" <c:if test="${list.flag=='1'}">selected="selected"</c:if> >已审核</option>
+					<option value="0" <c:if test="${list.flag=='0'}">selected="selected"</c:if> >未审核</option>
 					</select>
 					</td>
 					<td><a  id="phone_${status.count}">${list.phone}</a></td>

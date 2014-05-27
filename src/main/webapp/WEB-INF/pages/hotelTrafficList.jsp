@@ -84,6 +84,7 @@ a:link {
 				<th data-options="field:'trafficEndStation',width:80,align:'center'">终点站</th>
 				<th data-options="field:'trafficEndTime',width:60,align:'center'">末班时间</th>
 				<th data-options="field:'trafficStatus',width:60,align:'center'">状态</th>
+				<th data-options="field:'trafficFlag',width:60,align:'center'">审核状态</th>
 				<th data-options="field:'update',width:60,align:'center'"></th>
 				<th data-options="field:'delete',width:60,align:'center'"></th>
 			</tr>
@@ -101,8 +102,14 @@ a:link {
 					<td><a  id="trafficPass_${status.count}"  title="${list.pass}">${list.pass}</a></td>
 					<td><a  id="trafficEndStation_${status.count}">${list.endStation}</a></td>				 
 					<td><a  id="trafficEndTime_${status.count}">${list.endTime}</a></td>
+					
 					<td><c:if test="${list.status=='1'}"> <a  id="trafficStatus_${status.count}">通过</a></c:if>
 					<c:if test="${list.status=='0'}"> <a  id="trafficStatus_${status.count}">未通过</a></c:if></td>
+					
+					<td><c:if test="${list.flag=='1'}"> <a  id="trafficFlag_${status.count}">已审核</a></c:if>
+					<c:if test="${list.flag=='0'}"> <a  id="trafficFlag_${status.count}">未审核</a></c:if></td>
+					
+					
 					<td> <a id="update_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">修改</a> </td>
 					<td> <a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove">删除</a> </td>
 					

@@ -91,11 +91,14 @@ a:link {
 				<th data-options="field:'price',width:50,align:'center'">票价</th>
 				<th data-options="field:'startTime',width:60,align:'center'">始发时间</th>
 				<th data-options="field:'startStation',width:80,align:'center'">始发站</th>
-				<th data-options="field:'pass',width:350,align:'center'">沿途经过</th>
+				<th data-options="field:'pass',width:350,align:'center'" class="easyui-tooltip">沿途经过</th>
 				<th data-options="field:'endStation',width:80,align:'center'">终点站</th>
 				<th data-options="field:'endTime',width:60,align:'center'">末班时间</th>
 				<th data-options="field:'status',width:80,align:'center',
-				formatter:function(value){if(value==0)return '未通过';else return '通过';}"> 审核状态 </th>
+				formatter:function(value){if(value==0)return '未通过';else return '通过';}"> 状态 </th>
+				
+				<th data-options="field:'flag',width:80,align:'center',
+				formatter:function(value){if(value==0)return '未审核';else return '已审核';}"> 审核状态 </th>
 			 <th data-options="field:'hotelName',width:80,align:'center'">
            发布酒店
           </th>

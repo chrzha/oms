@@ -9,13 +9,14 @@
 		<result column="MKT_ROUT" jdbcType="VARCHAR" property="rout" />
 		<result column="MKT_DESC" jdbcType="VARCHAR" property="description" />
 		<result column="MKT_STATUS" jdbcType="VARCHAR" property="status" />
+		<result column="MKT_VLDT_FLAG" jdbcType="VARCHAR" property="flag" />
 		
 
 	</resultMap>
 
 
 	<sql id="Base_Column_List">
-		bsupermarket.MKT_ID,MKT_NAME,MKT_ADDRESS,MKT_AWAY,MKT_ROUT,MKT_DESC,MKT_STATUS
+		bsupermarket.MKT_ID,MKT_NAME,MKT_ADDRESS,MKT_AWAY,MKT_ROUT,MKT_DESC,MKT_STATUS,MKT_VLDT_FLAG
 	</sql>
 
 	<select id="getMarketListPaged" resultMap="BaseResultMap" parameterType="map">

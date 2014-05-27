@@ -15,13 +15,14 @@
 			property="endStation" />
 		<result column="TRAFFIC_DESC" jdbcType="VARCHAR" property="description" />
 		<result column="TRAFFIC_STATUS" jdbcType="VARCHAR" property="status" />
+			<result column="TRAFFIC_VLDT_FLAG" jdbcType="VARCHAR" property="flag" />
 
 	</resultMap>
 
 
 	<sql id="Base_Column_List">
 		bTraffic.TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_TYPE,TRAFFIC_PRICE,TRAFFIC_STARTTIME,TRAFFIC_PASS,TRAFFIC_ENDTIIME,
-		TRAFFIC_STARTSTATION,TRAFFIC_ENDSTATION,TRAFFIC_DESC,TRAFFIC_STATUS
+		TRAFFIC_STARTSTATION,TRAFFIC_ENDSTATION,TRAFFIC_DESC,TRAFFIC_STATUS,TRAFFIC_VLDT_FLAG
 	</sql>
 
 	<select id="getTrafficListPaged" resultMap="BaseResultMap"

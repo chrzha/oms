@@ -103,6 +103,9 @@
             备注
           </th>
           <th data-options="field:'status',width:80,align:'center',formatter:function(value){if(value==0)return '未通过';else return '通过';}">
+            状态
+          </th>
+           <th data-options="field:'flag',width:80,align:'center',formatter:function(value){if(value==0)return '未审核';else return '已审核';}">
             审核状态
           </th>
            <th data-options="field:'hotelName',width:80,align:'center'">

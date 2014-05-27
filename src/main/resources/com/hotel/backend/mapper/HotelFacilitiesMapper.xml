@@ -9,12 +9,13 @@
 		<result column="FACILITIES_DESC" jdbcType="VARCHAR" property="description" />
 		<result column="FACILITIES_AWAY" jdbcType="VARCHAR" property="away" />
 		<result column="FACILITIES_STATUS" jdbcType="VARCHAR" property="status" />
+		<result column="FACILITIES_VLDT_FLAG" jdbcType="VARCHAR" property="flag" />
 
 	</resultMap>
 
 
 	<sql id="Base_Column_List">
-		BFACILITIES.FACILITIES_ID,FACILITIES_NAME,FACILITIES_TYPE,FACILITIES_PRICE,FACILITIES_DESC,FACILITIES_AWAY,FACILITIES_STATUS
+		BFACILITIES.FACILITIES_ID,FACILITIES_NAME,FACILITIES_TYPE,FACILITIES_PRICE,FACILITIES_DESC,FACILITIES_AWAY,FACILITIES_STATUS,FACILITIES_VLDT_FLAG
 	</sql>
 
 	<select id="getFacilitiesListPaged" resultMap="BaseResultMap"

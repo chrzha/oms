@@ -11,11 +11,12 @@
 		<result column="VIEW_PRICE" jdbcType="FLOAT" property="price" />
 		<result column="VIEW_DESC" jdbcType="VARCHAR" property="description" />
         <result column="VIEW_STATUS" jdbcType="VARCHAR" property="status" />
+         <result column="VIEW_VLDT_FLAG" jdbcType="VARCHAR" property="flag" />
 	</resultMap>
 
 
 	<sql id="Base_Column_List">
-		bview.VIEW_ID,VIEW_PRICE,VIEW_NAME,VIEW_ADDRESS,VIEW_AWAY,VIEW_ROUT,VIEW_DESC,VIEW_STATUS
+		bview.VIEW_ID,VIEW_PRICE,VIEW_NAME,VIEW_ADDRESS,VIEW_AWAY,VIEW_ROUT,VIEW_DESC,VIEW_STATUS,VIEW_VLDT_FLAG
 	</sql>
 
 	<select id="getViewListPaged" resultMap="BaseResultMap" parameterType="map">

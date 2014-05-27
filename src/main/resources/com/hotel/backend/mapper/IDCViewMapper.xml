@@ -13,12 +13,13 @@
 		<result column="HOTEL_ID" jdbcType="VARCHAR" property="hotelId" />
 		<result column="HOTEL_NAME" jdbcType="VARCHAR" property="hotelName" />
 		<result column="VIEW_STATUS" jdbcType="VARCHAR" property="status" />
+		<result column="VIEW_VLDT_FLAG" jdbcType="VARCHAR" property="flag" />
 
 	</resultMap>
 
 
 	<sql id="Base_Column_List">
-		bview.VIEW_ID,VIEW_PRICE,VIEW_NAME,VIEW_ADDRESS,VIEW_AWAY,VIEW_ROUT,VIEW_DESC,bview.VIEW_STATUS,bhotel.HOTEL_ID,HOTEL_NAME
+		bview.VIEW_ID,VIEW_PRICE,VIEW_NAME,VIEW_ADDRESS,VIEW_AWAY,VIEW_ROUT,VIEW_DESC,bview.VIEW_STATUS,bhotel.HOTEL_ID,HOTEL_NAME,VIEW_VLDT_FLAG
 	</sql>
 
 	<select id="getIDCViewListPaged" resultMap="BaseResultMap" parameterType="map">

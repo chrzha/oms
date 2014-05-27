@@ -91,7 +91,9 @@ a:link {
 				<th data-options="field:'price',width:50,align:'center'">门票</th>
 				<th data-options="field:'description',width:90,align:'center'">备注</th>
 				<th data-options="field:'status',width:80,align:'center',
-				formatter:function(value){if(value==0)return '未通过';else return '通过';}"> 审核状态 </th>
+				formatter:function(value){if(value==0)return '未通过';else return '通过';}"> 状态 </th>
+				<th data-options="field:'flag',width:80,align:'center',
+				formatter:function(value){if(value==0)return '未审核';else return '已审核';}"> 审核状态 </th>
 				 <th data-options="field:'hotelName',width:80,align:'center'">
            发布酒店
           </th>

@@ -11,11 +11,12 @@
 		<result column="FD_ADDRESS" jdbcType="VARCHAR" property="address" />
 		<result column="FD_ROUT" jdbcType="VARCHAR" property="rout" />
         <result column="FD_STATUS" jdbcType="VARCHAR" property="status" />
+        <result column="FD_VLDT_FLAG" jdbcType="VARCHAR" property="flag" />
 	</resultMap>
 
 
 	<sql id="Base_Column_List">
-		bfood.FD_ID,FD_NAME,FD_PHOTO,FD_TYPE,FD_PRICE,FD_DESC,FD_ADDRESS,FD_ROUT,FD_STATUS
+		bfood.FD_ID,FD_NAME,FD_PHOTO,FD_TYPE,FD_PRICE,FD_DESC,FD_ADDRESS,FD_ROUT,FD_STATUS,FD_VLDT_FLAG
 	</sql>
 
 	<select id="getFoodListPaged" resultMap="BaseResultMap"

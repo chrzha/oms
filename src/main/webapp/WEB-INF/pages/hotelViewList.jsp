@@ -80,6 +80,7 @@ a:link {
 				<th data-options="field:'price',width:60,align:'center'">门票</th>
 				<th data-options="field:'viewDesc',width:160,align:'center'">简介</th>
 				<th data-options="field:'viewStatus',width:80,align:'center'">状态</th>
+				<th data-options="field:'viewFlag',width:80,align:'center'">审核状态</th>
 				<th data-options="field:'update',width:60,align:'center'"></th>
 				<th data-options="field:'delete',width:60,align:'center'"></th>
 				
@@ -99,6 +100,8 @@ a:link {
 					<td><a  id="viewDesc_${status.count}">${list.description}</a></td>
 					<td><c:if test="${list.status=='1'}"> <a  id="viewStatus_${status.count}">通过</a></c:if>
 					<c:if test="${list.status=='0'}"> <a  id="viewStatus_${status.count}">未通过</a></c:if></td>
+					<td><c:if test="${list.flag=='1'}"> <a  id="viewFlag_${status.count}">已审核</a></c:if>
+					<c:if test="${list.flag=='0'}"> <a  id="viewFlag_${status.count}">未审核</a></c:if></td>
 					<td> <a id="update_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">修改</a> </td>
 				    <td> <a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove">删除</a> </td>
 				</tr>
