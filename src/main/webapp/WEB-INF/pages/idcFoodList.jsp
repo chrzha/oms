@@ -83,12 +83,16 @@
 
       <thead>
         <tr>
-          <th data-options="field:'id',width:50,align:'center'">
+          <th data-options="field:'id',width:60,align:'center'">
             美食编号
           </th>
          
           <th data-options="field:'name',width:100,align:'center'">
             美食名称
+          </th>
+          <th data-options="field:'photo',width:100,align:'center', 
+          formatter:function(value){return '<img src=${pageContext.request.contextPath}/webresource/hotel-img/'+value+'/>';}">
+            美食图片
           </th>
           <th data-options="field:'type',width:60,align:'center'">
             类型
@@ -99,13 +103,13 @@
           <th data-options="field:'address',width:150,align:'center'">
             所在地
           </th>
-          <th data-options="field:'rout',width:200,align:'center'">
+          <th data-options="field:'rout',width:220,align:'center'">
             线路
           </th>
           <th data-options="field:'description',width:180,align:'center'">
             备注
           </th>
-           <th data-options="field:'status',width:80,align:'center',formatter:function(value){if(value==0)return '未通过';else return '通过';}">
+           <th data-options="field:'status',width:70,align:'center',formatter:function(value){if(value==0)return '未通过';else return '通过';}">
             状态
           </th>
            <th data-options="field:'flag',width:80,align:'center',formatter:function(value){if(value==0)return '未审核';else return '已审核';}">
