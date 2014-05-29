@@ -5,6 +5,7 @@
 
 		<id column="VIEW_ID" jdbcType="CHAR" property="id" />
 		<result column="VIEW_NAME" jdbcType="VARCHAR" property="name" />
+		<result column="VIEW_PHOTO" jdbcType="VARCHAR" property="photo" />
 		<result column="VIEW_ADDRESS" jdbcType="VARCHAR" property="address" />
 		<result column="VIEW_AWAY" jdbcType="VARCHAR" property="away" />
 		<result column="VIEW_ROUT" jdbcType="VARCHAR" property="rout" />
@@ -19,7 +20,7 @@
 
 
 	<sql id="Base_Column_List">
-		bview.VIEW_ID,VIEW_PRICE,VIEW_NAME,VIEW_ADDRESS,VIEW_AWAY,VIEW_ROUT,VIEW_DESC,bview.VIEW_STATUS,bhotel.HOTEL_ID,HOTEL_NAME,VIEW_VLDT_FLAG
+		bview.VIEW_ID,VIEW_PRICE,VIEW_NAME,VIEW_PHOTO,VIEW_ADDRESS,VIEW_AWAY,VIEW_ROUT,VIEW_DESC,bview.VIEW_STATUS,bhotel.HOTEL_ID,HOTEL_NAME,VIEW_VLDT_FLAG
 	</sql>
 
 	<select id="getIDCViewListPaged" resultMap="BaseResultMap" parameterType="map">

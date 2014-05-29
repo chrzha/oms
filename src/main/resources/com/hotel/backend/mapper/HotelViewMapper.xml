@@ -5,6 +5,7 @@
 
 		<id column="VIEW_ID" jdbcType="CHAR" property="id" />
 		<result column="VIEW_NAME" jdbcType="VARCHAR" property="name" />
+		<result column="VIEW_PHOTO" jdbcType="VARCHAR" property="photo" />
 		<result column="VIEW_ADDRESS" jdbcType="VARCHAR" property="address" />
 		<result column="VIEW_AWAY" jdbcType="VARCHAR" property="away" />
 		<result column="VIEW_ROUT" jdbcType="VARCHAR" property="rout" />
@@ -16,7 +17,7 @@
 
 
 	<sql id="Base_Column_List">
-		bview.VIEW_ID,VIEW_PRICE,VIEW_NAME,VIEW_ADDRESS,VIEW_AWAY,VIEW_ROUT,VIEW_DESC,VIEW_STATUS,VIEW_VLDT_FLAG
+		bview.VIEW_ID,VIEW_PRICE,VIEW_NAME,VIEW_PHOTO,VIEW_ADDRESS,VIEW_AWAY,VIEW_ROUT,VIEW_DESC,VIEW_STATUS,VIEW_VLDT_FLAG
 	</sql>
 
 	<select id="getViewListPaged" resultMap="BaseResultMap" parameterType="map">
@@ -65,9 +66,9 @@
 
 		INSERT INTO
 		bview
-		(VIEW_ID,VIEW_NAME,VIEW_ADDRESS,VIEW_AWAY,VIEW_DESC,VIEW_ROUT,VIEW_PRICE,VIEW_STATUS)
+		(VIEW_ID,VIEW_NAME,VIEW_PHOTO,VIEW_ADDRESS,VIEW_AWAY,VIEW_DESC,VIEW_ROUT,VIEW_PRICE,VIEW_STATUS)
 		VALUES
-		(#{id},#{name},#{address},#{away},#{description},#{rout},#{price},#{status})
+		(#{id},#{name},#{photo},#{address},#{away},#{description},#{rout},#{price},#{status})
 
 	</insert>
 	

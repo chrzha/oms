@@ -83,10 +83,15 @@ a:link {
 
 		<thead>
 			<tr>
-				<th data-options="field:'id',width:100,align:'center'">景点编号</th>
+				<th data-options="field:'id',width:60,align:'center'">景点编号</th>
 				<th data-options="field:'name',width:100,align:'center'">景点名称</th>
+				 
+				 <th data-options="field:'photo',width:100,align:'center', 
+          formatter:function(value){return '<img src=${pageContext.request.contextPath}/webresource/hotel-img/'+value+'/>';}">
+            景点图片
+          </th>
 				<th data-options="field:'address',width:250,align:'center'">地址</th>
-				<th data-options="field:'away',width:100,align:'center'">距离</th>
+				<th data-options="field:'away',width:60,align:'center'">距离</th>
 				<th data-options="field:'rout',width:100,align:'center'">线路</th>
 				<th data-options="field:'price',width:50,align:'center'">门票</th>
 				<th data-options="field:'description',width:90,align:'center'">备注</th>

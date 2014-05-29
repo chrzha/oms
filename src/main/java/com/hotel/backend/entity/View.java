@@ -15,6 +15,7 @@ package com.hotel.backend.entity;
 public class View {
 	private String id;
 	private String name;
+	private String photo;
 	private String address;
 	private String away;
 	private String rout;
@@ -22,6 +23,15 @@ public class View {
 	private String description;
 	private String status;
 	private String flag;
+	
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 
 	public String getFlag() {
 		return flag;
