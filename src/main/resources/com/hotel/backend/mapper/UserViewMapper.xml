@@ -12,12 +12,13 @@
 		<result column="USER_HOTEL_ID" jdbcType="CHAR" property="hotelId" />
 		<result column="ROLE_ID" jdbcType="CHAR" property="roleId" />
 		<result column="ROLE_NAME" jdbcType="VARCHAR" property="roleName" />
+		<result column="USER_VLDT_FLAG" jdbcType="CHAR" property="flag" />
 
 	</resultMap>
 
 
 	<sql id="Base_Column_List">
-		buser.USER_ID,USER_NAME,USER_PASSWORD,USER_EMAIL,USER_PHONE,USER_DESC,USER_STATUS,USER_HOTEL_ID,brole.ROLE_ID,ROLE_NAME
+		buser.USER_ID,USER_NAME,USER_PASSWORD,USER_EMAIL,USER_PHONE,USER_DESC,USER_STATUS,USER_HOTEL_ID,brole.ROLE_ID,ROLE_NAME,USER_VLDT_FLAG
 	</sql>
 
 	<select id="getUserViewList" resultMap="BaseResultMap">

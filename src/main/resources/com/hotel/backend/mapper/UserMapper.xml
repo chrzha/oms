@@ -10,12 +10,13 @@
 		<result column="USER_DESC" jdbcType="VARCHAR" property="description" />
 		<result column="USER_STATUS" jdbcType="CHAR" property="status" />
 		<result column="USER_HOTEL_ID" jdbcType="CHAR" property="hotelId" />
+		<result column="USER_VLDT_FLAG" jdbcType="CHAR" property="flag" />
 
 	</resultMap>
 
 
 	<sql id="Base_Column_List">
-		USER_ID,USER_NAME,USER_PASSWORD,USER_EMAIL,USER_PHONE,USER_DESC,USER_STATUS,USER_HOTEL_ID
+		USER_ID,USER_NAME,USER_PASSWORD,USER_EMAIL,USER_PHONE,USER_DESC,USER_STATUS,USER_HOTEL_ID,USER_VLDT_FLAG
 	</sql>
 
 	<select id="getUserById" resultMap="BaseResultMap"

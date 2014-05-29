@@ -64,6 +64,7 @@
 				<th data-options="field:'role',width:100,align:'center'">角色</th>
 				<th data-options="field:'hotel',width:150,align:'center'">所在酒店</th>
 				<th data-options="field:'status',width:100,align:'center'">是否通过审核</th>
+				<th data-options="field:'flag',width:100,align:'center'">状态</th>
 				<th data-options="field:'phone',width:160,align:'center'">联系电话</th>
 				<th data-options="field:'email',width:160,align:'center'">电子邮箱</th>
 				<th data-options="field:'validate',width:60,align:'center'"></th>
@@ -89,6 +90,10 @@
 					<option value="2" <c:if test="${list.status=='2'}">selected="selected"</c:if> >锁定</option>
 					</select>
 					</td>
+					
+					<td><c:if test="${list.flag=='1'}"> <a  id="Flag_${status.count}">已审核</a></c:if>
+					<c:if test="${list.flag=='0'}"> <a  id="Flag_${status.count}">未审核</a></c:if></td>
+					
 					<td><a  id="phone_${status.count}">${list.phone}</a></td>
 					<td><a  id="email_${status.count}">${list.email}</a></td>
 					<td> <a href="/hotel/editUser?userId=${list.userId}" class="easyui-linkbutton" plain="true" iconCls="icon-edit">审核</a></td>

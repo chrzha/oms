@@ -9,6 +9,16 @@ public class UserView {
 	    private String description;
 	    private String status;
 	    private String hotelId;
+	    private String flag;
+
+		public String getFlag() {
+			return flag;
+		}
+
+		public void setFlag(String flag) {
+			this.flag = flag;
+		}
+
 	    
 	  
 		private String roleId;
