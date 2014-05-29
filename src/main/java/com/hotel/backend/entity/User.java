@@ -23,12 +23,22 @@ public class User {
 	private String userId;
 	private String userName;
 	private String userPassword;
+	private String realName;
 	private String email;
 	private String phone;
 	private String description;
 	private String status;
 	private String hotelId;
 	private String flag;
+	
+
+	public String getRealName() {
+		return realName;
+	}
+
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
 
 	public String getFlag() {
 		return flag;

@@ -4,6 +4,7 @@
 	<resultMap id="BaseResultMap" type="com.hotel.backend.entity.User">
 		<id column="USER_ID" jdbcType="CHAR" property="userId" />
 		<result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+		<result column="USER_REALNAME" jdbcType="VARCHAR" property="realName" />
 		<result column="USER_PASSWORD" jdbcType="VARCHAR" property="userPassword" />
 		<result column="USER_EMAIL" jdbcType="VARCHAR" property="email" />
 		<result column="USER_PHONE" jdbcType="CHAR" property="phone" />
@@ -16,7 +17,7 @@
 
 
 	<sql id="Base_Column_List">
-		USER_ID,USER_NAME,USER_PASSWORD,USER_EMAIL,USER_PHONE,USER_DESC,USER_STATUS,USER_HOTEL_ID,USER_VLDT_FLAG
+		USER_ID,USER_NAME,USER_REALNAME,USER_PASSWORD,USER_EMAIL,USER_PHONE,USER_DESC,USER_STATUS,USER_HOTEL_ID,USER_VLDT_FLAG
 	</sql>
 
 	<select id="getUserById" resultMap="BaseResultMap"
@@ -101,9 +102,9 @@
 	<insert id="createUser" parameterType="com.hotel.backend.entity.User">
 		INSERT INTO
 		BUSER
-		(USER_ID,USER_NAME,USER_PASSWORD,USER_EMAIL,USER_PHONE,USER_DESC,USER_STATUS,USER_HOTEL_ID)
+		(USER_ID,USER_NAME,USER_REALNAME,USER_PASSWORD,USER_EMAIL,USER_PHONE,USER_DESC,USER_STATUS,USER_HOTEL_ID)
 		VALUES
-		(#{userId},#{userName},#{userPassword},#{email},#{phone},#{description},#{status},#{hotelId})
+		(#{userId},#{userName},#{realName},#{userPassword},#{email},#{phone},#{description},#{status},#{hotelId})
 	</insert>
 	<update id="updateUser" parameterType="com.hotel.backend.entity.User">
 		update BUSER

@@ -189,6 +189,8 @@
     <div id="userInfo">
         <div style="background-color:#99ccff;padding:2px 5px;font-weight:bold;">登录信息<a id="update_userInfo" style="color:#ff0000;font-weight:bold;margin-left:80px;cursor:pointer;">修改</a></div>
         用户名：${user.userName}<br />
+        姓名：${user.realName}<br />
+        所在酒店：${user.hotelName}<br />
         邮&nbsp;&nbsp;箱：<a id="user_email">${user.email}</a><br />
         电&nbsp;&nbsp;话：<a id="user_phone">${user.phone}</a><br />
     </div>
@@ -225,7 +227,7 @@
 
     <div class="">
    
-    <ul class="easyui-tree" data-options="animate:true,lines:true">
+    <ul class="easyui-tree" data-options="animate:true,lines:true" style="height:350px;">
 		
 		<li data-options="state:'closed'">
 			<span>公共信息管理</span>

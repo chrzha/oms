@@ -75,6 +75,8 @@ pageEncoding="utf-8"%>
 	    	<table style="margin:10px 0 0 60px;">		
 			
 			<tr><td><span>用户名*</span></td><td><input type="text" name="userName" maxlength="20"  ></td><td><span class="username"></span></td></tr>
+			
+			<tr><td><span>真实姓名*</span></td><td><input type="text" name="realName" maxlength="20"  ></td><td><span class="username"></span></td></tr>
 
 			<tr><td><span>密码*</span></td><td><input type="password" name="userPassword" maxlength="20"  ></td><td><span class="password">(6-20位数字、字母)</span></td></tr>
 

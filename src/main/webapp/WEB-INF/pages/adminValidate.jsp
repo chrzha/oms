@@ -59,13 +59,14 @@
   <table class="easyui-datagrid" title="管理员列表" style="width:1100px;height:478px">
 		<thead>
 			<tr>
-				<th data-options="field:'userId',width:100,align:'center'">编号</th>
+				<th data-options="field:'userId',width:60,align:'center'">编号</th>
 				<th data-options="field:'userName',width:150,align:'center'">用户名</th>
+				<th data-options="field:'realName',width:80,align:'center'">真实姓名</th>
 				<th data-options="field:'role',width:100,align:'center'">角色</th>
 				<th data-options="field:'hotel',width:150,align:'center'">所在酒店</th>
-				<th data-options="field:'status',width:100,align:'center'">是否通过审核</th>
-				<th data-options="field:'flag',width:100,align:'center'">状态</th>
-				<th data-options="field:'phone',width:160,align:'center'">联系电话</th>
+				<th data-options="field:'status',width:60,align:'center'">状态</th>
+				<th data-options="field:'flag',width:70,align:'center'">审核状态</th>
+				<th data-options="field:'phone',width:110,align:'center'">联系电话</th>
 				<th data-options="field:'email',width:160,align:'center'">电子邮箱</th>
 				<th data-options="field:'validate',width:60,align:'center'"></th>
 				<th data-options="field:'delete',width:60,align:'center'"></th>
@@ -78,17 +79,16 @@
 				<tr>
 					<td><a  id="userId_${status.count}">${list.userId}</a></td>
 					<td><a  id="userName_${status.count}">${list.userName}</a></td>
+					<td><a  id="realName_${status.count}">${list.realName}</a></td>
 					<td>
 					<a id="roleId_${status.count}">${list.roleName}</a>
 					</td>
 					
-					<td><a  id="hotelId_${status.count}">${list.hotelId}</a></td>
+					<td><a  id="hotelName_${status.count}">${list.hotelName}</a></td>
 					<td>
-					<select id="status_${status.count}" disabled="disabled">
-					<option value="0" <c:if test="${list.status=='0'}">selected="selected"</c:if> >未通过</option>
-					<option value="1" <c:if test="${list.status=='1'}">selected="selected"</c:if> >通过</option>
-					<option value="2" <c:if test="${list.status=='2'}">selected="selected"</c:if> >锁定</option>
-					</select>
+					<c:if test="${list.status=='0'}"><a  id="status_${status.count}">未通过</a></c:if>
+					<c:if test="${list.status=='1'}"><a  id="status_${status.count}">通过</a></c:if>
+					<c:if test="${list.status=='2'}"><a  id="status_${status.count}">锁定</a></c:if>
 					</td>
 					
 					<td><c:if test="${list.flag=='1'}"> <a  id="Flag_${status.count}">已审核</a></c:if>
@@ -100,7 +100,7 @@
 					<td><a id="delete_${status.count}" class="easyui-linkbutton" plain="true" iconCls="icon-remove"> 删除 </a></td>
 				</tr>
 			</c:forEach> 
-			<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 			<td><a id="reload" class="easyui-linkbutton" plain="true" iconCls="icon-reload">刷新</a></td></tr>
 	
 		</tbody>

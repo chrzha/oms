@@ -1,15 +1,35 @@
 package com.hotel.backend.view;
 
+
 public class UserView {
 	    private String userId;
 	    private String userName;
+	    private String realName;
 	    private String userPassword;
 	    private String email;
 	    private String phone;
 	    private String description;
 	    private String status;
 	    private String hotelId;
+	    private String hotelName;
 	    private String flag;
+	    
+
+		public String getRealName() {
+			return realName;
+		}
+
+		public void setRealName(String realName) {
+			this.realName = realName;
+		}
+
+		public String getHotelName() {
+			return hotelName;
+		}
+
+		public void setHotelName(String hotelName) {
+			this.hotelName = hotelName;
+		}
 
 		public String getFlag() {
 			return flag;
