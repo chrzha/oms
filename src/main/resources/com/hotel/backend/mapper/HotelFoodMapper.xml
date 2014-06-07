@@ -82,7 +82,7 @@
 		FD_DESC = #{description},
 		FD_ADDRESS = #{address},
 		FD_ROUT= #{rout},
-		FD_STATUS = {status}
+		FD_STATUS = #{status}
 		where
 		FD_ID=#{id}
 	</update>
