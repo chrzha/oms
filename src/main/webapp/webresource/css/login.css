@@ -1,0 +1,75 @@
+body,html {
+	margin: 0 0;
+	height: 100%;
+}
+
+.welcome {
+	height: 50px; margin-top : 40px;
+	font-size: 40px;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+#div1 {
+	width: 100%;
+	height: 83%;
+}
+
+#logindiv {
+	background: none repeat scroll 0 0 #F1F1F1;
+	width: 335px;
+	border: 1px solid #E5E5E5;
+	margin: 0 auto;
+	padding-top: 10px;
+	padding-left: 20px;
+	padding-right: 5px;
+}
+
+input[type=text],input[type=password] {
+	width: 305px;
+	height: 32px;
+	line-height: 32px;
+	
+}
+
+form .span {
+	float:left;
+	width: 100px;
+	display: block;
+	color: #222222;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+input[type=submit] {
+	width: 65px;
+	color: #FFFFFF;
+	font-size: 13px;
+	line-height: 16px;
+	height: 35px;
+	background-color: #4D90FE;
+	border: #4D90FE;
+}
+
+#tishi  a {
+	color: #4D90FE;
+	text-decoration: none;
+}
+
+#tishi  a:hover {
+	text-decoration: underline;
+}
+
+.hightline {
+	border: 1px solid blue;
+}
+
+.error {
+	border: 1px solid red;
+}
+#userName_error,#userPassword_error,#roleId_error{
+	display:block;
+	color:red;
+	font-size:13px;
+}

@@ -3,7 +3,7 @@
 <html>
   <head>
     <title>
-      云中心管理员界面
+      oms
     </title>
     <%
     String path = request.getContextPath();
@@ -33,7 +33,7 @@
 
 </link>
 
-<script src="${pageContext.request.contextPath}/webresource/hotel-js/jquery-1.7.2.min.js">
+<script src="${pageContext.request.contextPath}/webresource/js/jquery-1.7.2.min.js">
 </script>
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/jquery.easyui.min.js">
 </script>
@@ -268,7 +268,7 @@
 
   <div region="north" style="height:70px;background-color:#E0ECFF;">
         <div style="width:700px;height:30px;margin-left:360px;">
-          <div style="font-family:华文新魏; font-size:28pt; color:#000099; margin: 18px 0px 2px 0px; font-weight:bold;">基于云模式的酒店服务信息后台管理系统 </div>
+          <div style="font-family:华文新魏; font-size:28pt; color:#000099; margin: 18px 0px 2px 0px; font-weight:bold;">OMS 订单管理系统 </div>
           
         </div>
       </div>
@@ -380,19 +380,13 @@
 <div region="center">
   <div id="tabs" class="easyui-tabs" fit="true" border="false">
     <div title="系统首页">
-     <!--<p style="text-align:center;font-size:medium;color:#666;border-bottom:#ccc 1px solid;"><b>基于云模式的酒店服务信息后台管理系统</b></p>
-        <p style="padding-left:2em;font-weight:bold;">基于云模式的酒店服务信息后台管理系统须知：</p>
+     <p style="text-align:center;font-size:medium;color:#666;border-bottom:#ccc 1px solid;"><b>OMS 订单管理系统</b></p>
+        <p style="padding-left:2em;font-weight:bold;">OMS 订单管理系统使用须知：</p>
         <p style="padding-left:2em;">
             <span style="color:#ff0000;font-weight:bold;">1. 第一次登录后务必修改自己的密码，以确保操作安全。</span><br />
-        <span id="conLabel"></span>-->
-        <div style="margin-left:200px;margin-top:30px;"><img src="${pageContext.request.contextPath}/webresource/hotel-img/cloud.jpg" /></div>
-    
-    
+        <span id="conLabel"></span>
     </div>
   </div>
-  		<div id="win_backup" class="easyui-window" title="数据备份与还原" closed="true" style="width:400px;height:100px;" data-options="iconCls:'icon-edit'">    
-			 <div id="p" class="easyui-progressbar" style="width:300px;margin-left:50px;margin-top:20px;"></div>  
-        </div>
 </div>
 <div region="south" style="height:40px;">
 <jsp:include page="copyright.jsp"></jsp:include>

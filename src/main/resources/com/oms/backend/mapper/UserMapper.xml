@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oms.backend.mapper.UserMapper">
+	<resultMap id="BaseResultMap" type="com.oms.backend.entity.User">
+		<id column="USER_ID" jdbcType="CHAR" property="userId" />
+		<result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+		<result column="USER_PASSWORD" jdbcType="VARCHAR" property="userPassword" />
+		<result column="USER_EMAIL" jdbcType="VARCHAR" property="email" />
+		<result column="USER_PHONE" jdbcType="CHAR" property="phone" />
+		<result column="USER_STATUS" jdbcType="CHAR" property="status" />
+
+	</resultMap>
+
+
+	<sql id="Base_Column_List">
+		USER_ID,USER_NAME,USER_PASSWORD,USER_EMAIL,USER_PHONE,USER_STATUS
+	</sql>
+
+	<select id="getUserById" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM USER where USER_ID=#{userId}
+	</select>
+
+	<select id="getUserByUsername" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM user where USER_NAME=#{userName}
+	</select>
+
+
+	<update id="updateUser" parameterType="com.oms.backend.entity.User">
+		update USER
+		set
+		USER_EMAIL
+		=
+		#{email},
+		USER_PHONE = #{phone}
+		where
+		USER_ID=#{userId}
+	</update>
+
+	<update id="changePwdById" parameterType="map">
+		update BUSER
+		set
+		USER_PASSWORD = #{userPassword}
+		where
+		USER_ID=#{userId}
+	</update>
+
+</mapper>

@@ -7,7 +7,7 @@
 <title>index</title>
 
 <script
-	src="${pageContext.request.contextPath}/webresource/hotel-js/jquery-1.7.2.min.js"></script>
+	src="${pageContext.request.contextPath}/webresource/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
 	function relocation(){
 		$("#indexForm").submit();
@@ -15,6 +15,6 @@
 </script>
 </head>
 <body onload="relocation()">
-<form id="indexForm" action="/hotel/login/"></form>
+<form id="indexForm" action="/login"></form>
 </body>
 </html>

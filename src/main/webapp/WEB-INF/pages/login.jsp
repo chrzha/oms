@@ -12,32 +12,24 @@
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="expires" content="0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-
-    <link 
+    <link
         rel="stylesheet"
         type="text/css"
         href="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/default/easyui.css">
-
-
   </link>
   <link 
       rel="stylesheet"
       type="text/css"
       href="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/icon.css">
-
-
 </link>
 <link 
     rel="stylesheet"
     type="text/css"
     href="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/tree_themes/SimpleTree.css">
-
-
 </link>
 
 
-<script src="${pageContext.request.contextPath}/webresource/hotel-js/jquery-1.7.2.min.js">
+<script src="${pageContext.request.contextPath}/webresource/js/jquery-1.7.2.min.js">
 </script>
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/jquery.easyui.min.js">
 </script>
@@ -45,13 +37,7 @@
 </script>
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/SimpleTree.js">
 </script>
-<script src="${pageContext.request.contextPath}/webresource/hotel-js/login.js">
-</script>
-<script type="text/javascript">
-  $(document).ready(function(){
-
-   
-  });
+<script src="${pageContext.request.contextPath}/webresource/js/login.js">
 </script>
   <style>
    #userName_error,#userPassword_error,#roleId_error,#code_error{ 
@@ -67,7 +53,8 @@
 
       <div region="north" style="height:170px;background-color:#E0ECFF;">
         <div style="width:700px;height:30px;margin-left:360px;">
-          <div style="font-family:华文新魏; font-size:28pt; color:#000099; margin: 120px 0px 2px 0px; font-weight:bold;">基于云模式的酒店服务信息后台管理系统 </div>
+          <div style="font-family:华文新魏; font-size:28pt; color:#000099; margin: 120px 0px 2px 0px; font-weight:bold;">
+          </div>
           
         </div>
       </div>
@@ -76,6 +63,7 @@
       <div region="center" style="background-color:#E0ECFF;">
         <div style="height:210px;width:410px;margin-left:490px;margin-top:10px;">
           <div class="easyui-panel"  title="登录" style="height:220px;width:450px;">
+          <form action="/validate" method="post">
             <div style="padding:10px 0 0 10px">
 
               <table style="margin:10px 0 0 70px;">
@@ -106,28 +94,7 @@
                 </span>
               </td>
             </tr>
-            <tr>
-              <td>
-                登录角色:
-              </td>
-              <td>
-                <select name="roleId" id="roleId" style="width:155px;">
-                  <option value="0001" >
-                    云中心管理员
-                  </option>
-                  <option value="0002">
-                    酒店管理员管理员
-                  </option>
-                  <option value="0003">
-                    酒店操作员
-                  </option>
-                </select>
-              </td>
-              <td>
-                <span id='roleId_error'>
-                </span>
-              </td>
-            </tr>
+
              <tr>
                 <td>
                   验证码:
@@ -147,13 +114,8 @@
         </div>
         <div style="margin:10px 0 0 160px">
           <input type="submit" id="loginBtn" value="登录" />
-          <button id="register">
-            注册
-          </button>
-          <button id="hotelRegister">
-            酒店注册
-          </button>
         </div>
+        </form>
       </div>
     </div>
 

@@ -24,9 +24,9 @@
      <mvc:annotation-driven />
 	<mvc:resources mapping="/webresource/**" location="/webresource/" />
 	
-	<context:component-scan base-package="com.hotel.backend"/>
+	<context:component-scan base-package="com.oms.backend"/>
 	<context:annotation-config />
-	<import resource="classpath:/config/applicationContext-Hotel.xml" />
+	<import resource="classpath:/config/applicationContext.xml" />
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"

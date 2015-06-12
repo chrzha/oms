@@ -1,0 +1,59 @@
+*{
+	padding:0px;
+	margin:0px;
+}
+
+.regdiv{
+	background: none repeat scroll 0 0 #F1F1F1;
+	width:550px;
+	height:540px;
+	border:1px solid silver;
+	margin-top:0px;
+	margin-left:30%;
+}
+
+.indiv{
+	margin:50px 0px 0px 50px;
+	
+}
+h1{
+	color:#6495ED;
+}
+input[type=text],input[type=password] {
+	width: 305px;
+	height: 32px;
+	line-height: 32px;
+	margin-left:10px;
+}
+input[type=submit]{
+	width:180px;
+	height:26px;
+	border:0px;
+	cursor:pointer;
+	
+}
+tr td{
+	font-size:20px;
+	color:#6495ED;
+}
+.submit{
+	width:180px;
+	margin-top:10px;
+	margin-left:140px;
+
+}
+.username, .password, .repassword, .name, .age, .telephone, .email{
+	font-size:12px;
+	color:red;
+	text-align:center;
+	display:block; 
+}
+.comment{
+	width:400px;
+	margin-left:60px;
+	margin-top:10px;
+}
+
+
+
+
