@@ -16,7 +16,7 @@ font-size: 12;
 <body>
 <center>
 <div id="copyright">
-<p>Copyright&copy2014 张庆峰.All Rights Reserved.</p>
+<p>Copyright&copy2015 xxx.All Rights Reserved.</p>
 </div>
 </center>
 </body>

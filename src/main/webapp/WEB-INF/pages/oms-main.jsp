@@ -107,12 +107,14 @@
 </head>
 <body class="easyui-layout" >
 
-  <div region="north" style="height:70px;background-color:#E0ECFF;">
-        <div style="width:700px;height:30px;margin-left:360px;">
-          <div style="font-family:华文新魏; font-size:28pt; color:#000099; margin: 18px 0px 2px 0px; font-weight:bold;">OMS 订单管理系统 </div>
-          
-        </div>
-      </div>
+  <div region="north" style="height:50%;background-color:#E0ECFF;">
+          <div style="height:80%;width:90%;">
+            <div style="font-family:华文新魏; font-size:24pt; color:#000099; font-weight:bold;
+              height:70%;margin-left:40%;margin-top:10px;">
+            OMS订单管理系统
+            </div>
+          </div>
+  </div>
 
 <div region="west" split="true" style="width:220px;" title="导航菜单">
     <div id="userInfo">
@@ -143,49 +145,28 @@
    
     <ul class="easyui-tree" data-options="animate:true,lines:true" style="height:350px;">
 		<li data-options="state:'closed'">
-			<span>管理员审核与管理</span>
+			<span>基础数据</span>
 			<ul>
 				<li>
-					<a id="adminValidate">管理员审核与管理</a>
+					<a id="adminValidate">物料</a>
 				</li>
-				<!--<li>
-					<span>管理员管理</span>
-				</li>-->
+				<li>
+					<a id="adminValidate">供应商</a>
+				</li>
+				<li>
+					<a id="adminValidate">请购人</a>
+				</li>
+				<li>
+					<a id="adminValidate">采购员</a>
+				</li>
+
 			</ul>
 		</li>
 		<li data-options="state:'closed'">
-			<span>酒店审核与管理</span>
+			<span>订单</span>
 			<ul>
 				<li>
-					<a id="hotelsValidate">酒店审核与管理</a>
-				</li>
-				<!--<li>
-					<span>酒店管理</span>
-				</li>-->
-			</ul>
-		</li>
-		<li data-options="state:'closed'">
-			<span>公共信息审核与管理</span>
-			<ul>
-				<li data-options="state:'closed'">
-					<span>公共信息审核与管理</span>
-					<ul>
-					    <li>
-							<a id="facilitiesValidate">设施信息审核</a>
-						</li>
-						<li>
-							<a id="trafficValidate">交通信息审核</a>
-						</li>
-						<li>
-							<a id="viewValidate">景点信息审核</a>
-						</li>
-						<li>
-							<a id="mktValidate">购物信息审核</a>
-						</li>
-						<li>
-							<a id="foodValidate">美食信息审核</a>
-						</li>
-					</ul>
+					<a id="hotelsValidate">采购订单</a>
 				</li>
 			</ul>
 		</li>

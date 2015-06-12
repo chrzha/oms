@@ -50,19 +50,19 @@
 </style>
  </head>
     <body class="easyui-layout" >
-
-      <div region="north" style="height:170px;background-color:#E0ECFF;">
-        <div style="width:700px;height:30px;margin-left:360px;">
-          <div style="font-family:华文新魏; font-size:28pt; color:#000099; margin: 120px 0px 2px 0px; font-weight:bold;">
+      <div region="north" style="height:50%;background-color:#E0ECFF;">
+        <div style="height:80%;width:90%;">
+          <div style="font-family:华文新魏; font-size:24pt; color:#000099; font-weight:bold;
+            height:70%;margin-left:40%;margin-top:10px;">
+          OMS订单管理系统
           </div>
           
         </div>
       </div>
 
-
       <div region="center" style="background-color:#E0ECFF;">
-        <div style="height:210px;width:410px;margin-left:490px;margin-top:10px;">
-          <div class="easyui-panel"  title="登录" style="height:220px;width:450px;">
+        <div style="height:70%;width:60%;margin-left:20%;margin-top:10px;">
+          <div class="easyui-panel"  title="登录" style="height:220px;">
           <form action="/validate" method="post">
             <div style="padding:10px 0 0 10px">
 
@@ -120,7 +120,7 @@
     </div>
 
   </div>
-  <div region="south" style="height:240px;background-color:#E0ECFF;">
+  <div region="south" style="height:40%; background-color:#E0ECFF;">
    <jsp:include page="copyright.jsp"></jsp:include>
   </div>
 
