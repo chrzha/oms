@@ -12,25 +12,20 @@
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="expires" content="0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-
-    <link 
+    <link
         rel="stylesheet"
         type="text/css"
         href="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/default/easyui.css">
-
   </link>
   <link 
       rel="stylesheet"
       type="text/css"
       href="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/icon.css">
-
 </link>
 <link 
     rel="stylesheet"
     type="text/css"
     href="${pageContext.request.contextPath}/webresource/jquery-easy-ui/themes/tree_themes/SimpleTree.css">
-
 </link>
 
 <script src="${pageContext.request.contextPath}/webresource/js/jquery-1.7.2.min.js">
@@ -45,31 +40,14 @@
 </script>
 <script type="text/javascript">
  $(document).ready(function(){
- 
- 
- 		$.post("/hotel/getAllApplyList",null,function(data){
-			if(data!=null){
-				      $.messager.show({  
-				              title:'系统消息',  
-				              msg:'有新的申请消息！\n用户编号：'+data[0].userId+",所在酒店："+data[0].hotelId,  
-				              timeout:0,  
-				              width:400,
-				              height:200,
-				              showSpeed:1000,
-				              showType:'fade'  
-				      });  
-				}
-		});
- 
- 
- 
+
 	$("#exit").click(function(){
 	
 		 $.messager.confirm('确认', '确定要退出系统吗?', function(r){  
 		 	if(r){
-		 	$.post("/hotel/logout",null,function(data){
+		 	$.post("/logout",null,function(data){
 			if(data=="true"){
-				window.location="/hotel/login";
+				window.location="/login";
 				}
 			});
 		 }
@@ -77,106 +55,19 @@
        });  
 		
 	});
-	
-	$("#adminValidate").click(function(){
-		if($("#tabs").tabs('exists','管理员审核')){
-			$("#tabs").tabs('select','管理员审核');
-			}else{
-				$('#tabs').tabs('add',{
-				title: '管理员审核',
-				content: '<iframe style="width:100%;height:480px;" src="/hotel/adminValidate"></iframe>',
-				closable: true
-			});
-		}
-	});
-	
-	$("#hotelsValidate").click(function(){
-		if($("#tabs").tabs('exists','酒店审核')){
-			$("#tabs").tabs('select','酒店审核');
-		}else{
-			$('#tabs').tabs('add',{
-				title: '酒店审核',
-				content: '<iframe style="width:100%;height:480px;" src="/hotel/hotelsValidate"></iframe>',
-				closable: true
-			});
-		}
-	});
-	
-	
+
 	$("#changePwd").click(function(){
 		if($("#tabs").tabs('exists','修改密码')){
 			$("#tabs").tabs('select','修改密码');
 			}else{
 			$('#tabs').tabs('add',{
 				title: '修改密码',
-				content: '<iframe style="width:100%;height:480px;" src="/hotel/changePwd"></iframe>',
+				content: '<iframe style="width:100%;height:480px;" src="/changePwd"></iframe>',
 				closable: true
 			});
 		}
 	});
-	//viewValidate
-	$("#viewValidate").click(function(){
-			if($("#tabs").tabs('exists','景点信息审核')){
-				$("#tabs").tabs('select','景点信息审核');
-			}else{
-			$('#tabs').tabs('add',{
-				title: '景点信息审核',
-				content: '<iframe style="width:100%;height:480px;" src="/hotel/idcViewList"></iframe>',
-				closable: true
-			});
-		}
-	});
-	//trafficValidate
-	$("#trafficValidate").click(function(){
-			if($("#tabs").tabs('exists','交通信息审核')){
-				$("#tabs").tabs('select','交通信息审核');
-			}else{
-			$('#tabs').tabs('add',{
-				title: '交通信息审核',
-				content: '<iframe style="width:100%;height:480px;" src="/hotel/idcTrafficList"></iframe>',
-				closable: true
-			});
-		}
-	});
-	
-	
-	//mktValidate
-	$("#mktValidate").click(function(){
-			if($("#tabs").tabs('exists','购物信息审核')){
-				$("#tabs").tabs('select','购物信息审核');
-			}else{
-				$('#tabs').tabs('add',{
-				title: '购物信息审核',
-				content: '<iframe style="width:100%;height:480px;" src="/hotel/idcMktList"></iframe>',
-				closable: true
-				});
-		     }
-	});
-	//foodValidate
-	$("#foodValidate").click(function(){
-			if($("#tabs").tabs('exists','美食信息审核')){
-				$("#tabs").tabs('select','美食信息审核');
-			}else{
-				$('#tabs').tabs('add',{
-				title: '美食信息审核',
-				content: '<iframe style="width:100%;height:480px;" src="/hotel/idcFoodList"></iframe>',
-				closable: true
-				});
-		     }
-	});
-	//facilitiesValidate
-	$("#facilitiesValidate").click(function(){
-			if($("#tabs").tabs('exists','设施信息审核')){
-				$("#tabs").tabs('select','设施信息审核');
-			}else{
-				$('#tabs').tabs('add',{
-				title: '设施信息审核',
-				content: '<iframe style="width:100%;height:480px;" src="/hotel/idcFacilitiesList"></iframe>',
-				closable: true
-				});
-		     }
-	});
-	
+
 	//update_userInfo
 	$("#update_userInfo").click(function(){
 	   $('#win_update_userInfo').window('open'); 
@@ -185,14 +76,12 @@
 	   
 	   	var user = $("#update_info_form").serialize();
 	  	 $.post("/hotel/updateUserInfo",user,function(data){
-				   if(data=="success"){
-						 
-				       $('#win_update_userInfo').window('close'); 
-						window.parent.location.reload();
-						
-				   }else{
-					   $.messager.alert('错误','修改成功!','error');	      
-				   } 
+               if(data=="success"){
+                   $('#win_update_userInfo').window('close');
+                    window.parent.location.reload();
+               }else{
+                   $.messager.alert('错误','修改成功!','error');
+               }
 		 });
 
 	   });
@@ -201,56 +90,8 @@
 	$("#cancle_update_info").click(function(){
 	   $('#win_update_userInfo').window('close'); 
 	});	
-	
-	//dbbackup
-	$("#dbbackup").click(function(){
-	
-	    $.messager.confirm('确认', '确定要备份吗?', function(r){  
-		 if(r){
-	 	 	$('#win_backup').window('open'); 
-		 
-		 	$.post("/hotel/backup",function(data){
-	 	 
-	 	   			var value = $('#p').progressbar('getValue');  
-           			if (value < 100){  
-               		value += Math.floor(Math.random() * 10);  
-              		$('#p').progressbar('setValue', value);  
-               		setTimeout(arguments.callee, 200);  
-           		}else{   
-                   $('#win_backup').window('close'); 
-                    $.messager.alert('提示','数据备份成功!','info');  
-           		}
-		 	});		 	
-		 }
-		});
-	 	 
-	
+
 	});
-	
-	//restoreDB
-	$("#dbrestore").click(function(){
-	
-	 $.messager.confirm('确认', '确定要还原吗?', function(r){  
-		 if(r){
-	 	 	$('#win_backup').window('open'); 
-		 
-		 	$.post("/hotel/restoreDB",function(data){
-	 	 
-	 	   			var value = $('#p').progressbar('getValue');  
-           			if (value < 100){  
-               		value += Math.floor(Math.random() * 10);  
-              		$('#p').progressbar('setValue', value);  
-               		setTimeout(arguments.callee, 200);  
-           		}else{   
-                   $('#win_backup').window('close'); 
-                    $.messager.alert('提示','数据库还原成功!','info');  
-           		}
-		 	});		 	
-		 }
-		});
-	
-	});
-	
 });
  
 </script>
@@ -346,25 +187,8 @@
 						</li>
 					</ul>
 				</li>
-				<!--<li>
-					<span>公共信息管理</span>
-				</li>-->
 			</ul>
 		</li>
-		
-		<li data-options="state:'closed'">
-			<span>数据库维护</span>
-			<ul>
-			
-						<li>
-							<a id="dbbackup">数据库备份</a>
-						</li>
-						<li>
-							<a id="dbrestore">数据库还原</a>
-						</li>
-			</ul>
-		</li>
-		
 		<li>
 			<a id="changePwd">修改密码</a>
 		</li>

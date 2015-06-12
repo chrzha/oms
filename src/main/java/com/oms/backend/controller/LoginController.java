@@ -44,7 +44,7 @@ public class LoginController {
     @RequestMapping(value = "/validate", method = RequestMethod.POST)
     public ModelAndView validateUser(HttpServletRequest request) throws IOException {
 
-        return new ModelAndView("idcHome");
+        return new ModelAndView("oms-main");
 
     }
 
