@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oms.backend.mapper.GenderMapper" >
+  <resultMap id="BaseResultMap" type="com.oms.backend.entity.Gender" >
+    <id column="gender_id" property="genderId" jdbcType="INTEGER" />
+    <result column="gender_code" property="genderCode" jdbcType="VARCHAR" />
+    <result column="gender_name" property="genderName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    gender_id, gender_code, gender_name, create_time, created_by, update_time, updated_by
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from gender
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from gender
+    where gender_id = #{genderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from gender
+    where gender_id = #{genderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.oms.backend.entity.Gender" >
+    insert into gender (gender_id, gender_code, gender_name, 
+      create_time, created_by, update_time, 
+      updated_by)
+    values (#{genderId,jdbcType=INTEGER}, #{genderCode,jdbcType=VARCHAR}, #{genderName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.oms.backend.entity.Gender" >
+    insert into gender
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="genderId != null" >
+        gender_id,
+      </if>
+      <if test="genderCode != null" >
+        gender_code,
+      </if>
+      <if test="genderName != null" >
+        gender_name,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="genderId != null" >
+        #{genderId,jdbcType=INTEGER},
+      </if>
+      <if test="genderCode != null" >
+        #{genderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="genderName != null" >
+        #{genderName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oms.backend.entity.Gender" >
+    update gender
+    <set >
+      <if test="genderCode != null" >
+        gender_code = #{genderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="genderName != null" >
+        gender_name = #{genderName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where gender_id = #{genderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oms.backend.entity.Gender" >
+    update gender
+    set gender_code = #{genderCode,jdbcType=VARCHAR},
+      gender_name = #{genderName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR}
+    where gender_id = #{genderId,jdbcType=INTEGER}
+  </update>
+</mapper>

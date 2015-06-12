@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oms.backend.mapper.InquiryOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.oms.backend.entity.InquiryOrder" >
+    <id column="inq_id" property="inqId" jdbcType="INTEGER" />
+    <result column="requester_id" property="requesterId" jdbcType="INTEGER" />
+    <result column="buyer_id" property="buyerId" jdbcType="INTEGER" />
+    <result column="quote_deadline" property="quoteDeadline" jdbcType="TIMESTAMP" />
+    <result column="estimated_aog" property="estimatedAog" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.oms.backend.entity.InquiryOrder" extends="BaseResultMap" >
+    <result column="attachment" property="attachment" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    inq_id, requester_id, buyer_id, quote_deadline, estimated_aog, create_time, created_by, 
+    update_time, updated_by
+  </sql>
+  <sql id="Blob_Column_List" >
+    attachment
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from inquiry_order
+    where inq_id = #{inqId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from inquiry_order
+    where inq_id = #{inqId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.oms.backend.entity.InquiryOrder" >
+    insert into inquiry_order (inq_id, requester_id, buyer_id, 
+      quote_deadline, estimated_aog, create_time, 
+      created_by, update_time, updated_by, 
+      attachment)
+    values (#{inqId,jdbcType=INTEGER}, #{requesterId,jdbcType=INTEGER}, #{buyerId,jdbcType=INTEGER}, 
+      #{quoteDeadline,jdbcType=TIMESTAMP}, #{estimatedAog,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createdBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, 
+      #{attachment,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.oms.backend.entity.InquiryOrder" >
+    insert into inquiry_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="inqId != null" >
+        inq_id,
+      </if>
+      <if test="requesterId != null" >
+        requester_id,
+      </if>
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="quoteDeadline != null" >
+        quote_deadline,
+      </if>
+      <if test="estimatedAog != null" >
+        estimated_aog,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+      <if test="attachment != null" >
+        attachment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="inqId != null" >
+        #{inqId,jdbcType=INTEGER},
+      </if>
+      <if test="requesterId != null" >
+        #{requesterId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="quoteDeadline != null" >
+        #{quoteDeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="estimatedAog != null" >
+        #{estimatedAog,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="attachment != null" >
+        #{attachment,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oms.backend.entity.InquiryOrder" >
+    update inquiry_order
+    <set >
+      <if test="requesterId != null" >
+        requester_id = #{requesterId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerId != null" >
+        buyer_id = #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="quoteDeadline != null" >
+        quote_deadline = #{quoteDeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="estimatedAog != null" >
+        estimated_aog = #{estimatedAog,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="attachment != null" >
+        attachment = #{attachment,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where inq_id = #{inqId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.oms.backend.entity.InquiryOrder" >
+    update inquiry_order
+    set requester_id = #{requesterId,jdbcType=INTEGER},
+      buyer_id = #{buyerId,jdbcType=INTEGER},
+      quote_deadline = #{quoteDeadline,jdbcType=TIMESTAMP},
+      estimated_aog = #{estimatedAog,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR},
+      attachment = #{attachment,jdbcType=LONGVARBINARY}
+    where inq_id = #{inqId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oms.backend.entity.InquiryOrder" >
+    update inquiry_order
+    set requester_id = #{requesterId,jdbcType=INTEGER},
+      buyer_id = #{buyerId,jdbcType=INTEGER},
+      quote_deadline = #{quoteDeadline,jdbcType=TIMESTAMP},
+      estimated_aog = #{estimatedAog,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR}
+    where inq_id = #{inqId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oms.backend.mapper.QuotItemMapper" >
+  <resultMap id="BaseResultMap" type="com.oms.backend.entity.QuotItem" >
+    <id column="quot_item_id" property="quotItemId" jdbcType="INTEGER" />
+    <result column="quot_id" property="quotId" jdbcType="INTEGER" />
+    <result column="inq_item_id" property="inqItemId" jdbcType="INTEGER" />
+    <result column="unit_price" property="unitPrice" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    quot_item_id, quot_id, inq_item_id, unit_price, create_time, created_by, update_time, 
+    updated_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from quot_item
+    where quot_item_id = #{quotItemId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from quot_item
+    where quot_item_id = #{quotItemId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.oms.backend.entity.QuotItem" >
+    insert into quot_item (quot_item_id, quot_id, inq_item_id, 
+      unit_price, create_time, created_by, 
+      update_time, updated_by)
+    values (#{quotItemId,jdbcType=INTEGER}, #{quotId,jdbcType=INTEGER}, #{inqItemId,jdbcType=INTEGER}, 
+      #{unitPrice,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.oms.backend.entity.QuotItem" >
+    insert into quot_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="quotItemId != null" >
+        quot_item_id,
+      </if>
+      <if test="quotId != null" >
+        quot_id,
+      </if>
+      <if test="inqItemId != null" >
+        inq_item_id,
+      </if>
+      <if test="unitPrice != null" >
+        unit_price,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="quotItemId != null" >
+        #{quotItemId,jdbcType=INTEGER},
+      </if>
+      <if test="quotId != null" >
+        #{quotId,jdbcType=INTEGER},
+      </if>
+      <if test="inqItemId != null" >
+        #{inqItemId,jdbcType=INTEGER},
+      </if>
+      <if test="unitPrice != null" >
+        #{unitPrice,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oms.backend.entity.QuotItem" >
+    update quot_item
+    <set >
+      <if test="quotId != null" >
+        quot_id = #{quotId,jdbcType=INTEGER},
+      </if>
+      <if test="inqItemId != null" >
+        inq_item_id = #{inqItemId,jdbcType=INTEGER},
+      </if>
+      <if test="unitPrice != null" >
+        unit_price = #{unitPrice,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where quot_item_id = #{quotItemId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oms.backend.entity.QuotItem" >
+    update quot_item
+    set quot_id = #{quotId,jdbcType=INTEGER},
+      inq_item_id = #{inqItemId,jdbcType=INTEGER},
+      unit_price = #{unitPrice,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR}
+    where quot_item_id = #{quotItemId,jdbcType=INTEGER}
+  </update>
+</mapper>

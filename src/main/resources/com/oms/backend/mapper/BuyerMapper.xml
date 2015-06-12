@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oms.backend.mapper.BuyerMapper" >
+  <resultMap id="BaseResultMap" type="com.oms.backend.entity.Buyer" >
+    <id column="buyer_id" property="buyerId" jdbcType="INTEGER" />
+    <result column="gender_id" property="genderId" jdbcType="INTEGER" />
+    <result column="buyer_code" property="buyerCode" jdbcType="VARCHAR" />
+    <result column="buyer_name" property="buyerName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    buyer_id, gender_id, buyer_code, buyer_name, create_time, created_by, update_time, 
+    updated_by
+  </sql>
+  
+  <select id="selectAll" resultType="map">
+    select buyer_id, buyer_code, buyer_name, g.gender_id, g.gender_code, g.gender_name
+    from buyer b inner join gender g on b.gender_id = g.gender_id
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from buyer
+    where buyer_id = #{buyerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from buyer
+    where buyer_id = #{buyerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.oms.backend.entity.Buyer" >
+    insert into buyer (buyer_id, gender_id, buyer_code, 
+      buyer_name, create_time, created_by, 
+      update_time, updated_by)
+    values (#{buyerId,jdbcType=INTEGER}, #{genderId,jdbcType=INTEGER}, #{buyerCode,jdbcType=VARCHAR}, 
+      #{buyerName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.oms.backend.entity.Buyer" >
+    insert into buyer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="genderId != null" >
+        gender_id,
+      </if>
+      <if test="buyerCode != null" >
+        buyer_code,
+      </if>
+      <if test="buyerName != null" >
+        buyer_name,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="genderId != null" >
+        #{genderId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerCode != null" >
+        #{buyerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerName != null" >
+        #{buyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oms.backend.entity.Buyer" >
+    update buyer
+    <set >
+      <if test="genderId != null" >
+        gender_id = #{genderId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerCode != null" >
+        buyer_code = #{buyerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerName != null" >
+        buyer_name = #{buyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where buyer_id = #{buyerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oms.backend.entity.Buyer" >
+    update buyer
+    set gender_id = #{genderId,jdbcType=INTEGER},
+      buyer_code = #{buyerCode,jdbcType=VARCHAR},
+      buyer_name = #{buyerName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR}
+    where buyer_id = #{buyerId,jdbcType=INTEGER}
+  </update>
+</mapper>

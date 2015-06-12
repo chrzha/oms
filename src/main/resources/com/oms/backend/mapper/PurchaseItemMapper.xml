@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oms.backend.mapper.PurchaseItemMapper" >
+  <resultMap id="BaseResultMap" type="com.oms.backend.entity.PurchaseItem" >
+    <id column="pur_item_id" property="purItemId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="purchase_order_inq_id" property="purchaseOrderInqId" jdbcType="INTEGER" />
+    <result column="material_material_id" property="materialMaterialId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pur_item_id, create_time, created_by, update_time, updated_by, purchase_order_inq_id, 
+    material_material_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from purchase_item
+    where pur_item_id = #{purItemId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from purchase_item
+    where pur_item_id = #{purItemId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.oms.backend.entity.PurchaseItem" >
+    insert into purchase_item (pur_item_id, create_time, created_by, 
+      update_time, updated_by, purchase_order_inq_id, 
+      material_material_id)
+    values (#{purItemId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, #{purchaseOrderInqId,jdbcType=INTEGER}, 
+      #{materialMaterialId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.oms.backend.entity.PurchaseItem" >
+    insert into purchase_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="purItemId != null" >
+        pur_item_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+      <if test="purchaseOrderInqId != null" >
+        purchase_order_inq_id,
+      </if>
+      <if test="materialMaterialId != null" >
+        material_material_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="purItemId != null" >
+        #{purItemId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseOrderInqId != null" >
+        #{purchaseOrderInqId,jdbcType=INTEGER},
+      </if>
+      <if test="materialMaterialId != null" >
+        #{materialMaterialId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oms.backend.entity.PurchaseItem" >
+    update purchase_item
+    <set >
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseOrderInqId != null" >
+        purchase_order_inq_id = #{purchaseOrderInqId,jdbcType=INTEGER},
+      </if>
+      <if test="materialMaterialId != null" >
+        material_material_id = #{materialMaterialId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where pur_item_id = #{purItemId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oms.backend.entity.PurchaseItem" >
+    update purchase_item
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR},
+      purchase_order_inq_id = #{purchaseOrderInqId,jdbcType=INTEGER},
+      material_material_id = #{materialMaterialId,jdbcType=INTEGER}
+    where pur_item_id = #{purItemId,jdbcType=INTEGER}
+  </update>
+</mapper>

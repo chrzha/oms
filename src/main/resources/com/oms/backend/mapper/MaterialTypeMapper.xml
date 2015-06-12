@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oms.backend.mapper.MaterialTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.oms.backend.entity.MaterialType" >
+    <id column="mat_type_id" property="matTypeId" jdbcType="INTEGER" />
+    <result column="mat_type_code" property="matTypeCode" jdbcType="VARCHAR" />
+    <result column="mat_type_name" property="matTypeName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mat_type_id, mat_type_code, mat_type_name, create_time, created_by, update_time, 
+    updated_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from material_type
+    where mat_type_id = #{matTypeId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from material_type
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from material_type
+    where mat_type_id = #{matTypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.oms.backend.entity.MaterialType" >
+    insert into material_type (mat_type_id, mat_type_code, mat_type_name, 
+      create_time, created_by, update_time, 
+      updated_by)
+    values (#{matTypeId,jdbcType=INTEGER}, #{matTypeCode,jdbcType=VARCHAR}, #{matTypeName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.oms.backend.entity.MaterialType" >
+    insert into material_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="matTypeId != null" >
+        mat_type_id,
+      </if>
+      <if test="matTypeCode != null" >
+        mat_type_code,
+      </if>
+      <if test="matTypeName != null" >
+        mat_type_name,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="matTypeId != null" >
+        #{matTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="matTypeCode != null" >
+        #{matTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="matTypeName != null" >
+        #{matTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oms.backend.entity.MaterialType" >
+    update material_type
+    <set >
+      <if test="matTypeCode != null" >
+        mat_type_code = #{matTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="matTypeName != null" >
+        mat_type_name = #{matTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where mat_type_id = #{matTypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oms.backend.entity.MaterialType" >
+    update material_type
+    set mat_type_code = #{matTypeCode,jdbcType=VARCHAR},
+      mat_type_name = #{matTypeName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR}
+    where mat_type_id = #{matTypeId,jdbcType=INTEGER}
+  </update>
+</mapper>

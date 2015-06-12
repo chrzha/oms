@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oms.backend.mapper.SupplierMapper" >
+  <resultMap id="BaseResultMap" type="com.oms.backend.entity.Supplier" >
+    <id column="supplier_id" property="supplierId" jdbcType="INTEGER" />
+    <result column="sup_type_id" property="supTypeId" jdbcType="INTEGER" />
+    <result column="sup_rank_id" property="supRankId" jdbcType="INTEGER" />
+    <result column="supplier_code" property="supplierCode" jdbcType="VARCHAR" />
+    <result column="supplier_name" property="supplierName" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    supplier_id, sup_type_id, sup_rank_id, supplier_code, supplier_name, address, create_time, 
+    created_by, update_time, updated_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from supplier
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from supplier
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.oms.backend.entity.Supplier" >
+    insert into supplier (supplier_id, sup_type_id, sup_rank_id, 
+      supplier_code, supplier_name, address, 
+      create_time, created_by, update_time, 
+      updated_by)
+    values (#{supplierId,jdbcType=INTEGER}, #{supTypeId,jdbcType=INTEGER}, #{supRankId,jdbcType=INTEGER}, 
+      #{supplierCode,jdbcType=VARCHAR}, #{supplierName,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.oms.backend.entity.Supplier" >
+    insert into supplier
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="supplierId != null" >
+        supplier_id,
+      </if>
+      <if test="supTypeId != null" >
+        sup_type_id,
+      </if>
+      <if test="supRankId != null" >
+        sup_rank_id,
+      </if>
+      <if test="supplierCode != null" >
+        supplier_code,
+      </if>
+      <if test="supplierName != null" >
+        supplier_name,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="supplierId != null" >
+        #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="supTypeId != null" >
+        #{supTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="supRankId != null" >
+        #{supRankId,jdbcType=INTEGER},
+      </if>
+      <if test="supplierCode != null" >
+        #{supplierCode,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierName != null" >
+        #{supplierName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oms.backend.entity.Supplier" >
+    update supplier
+    <set >
+      <if test="supTypeId != null" >
+        sup_type_id = #{supTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="supRankId != null" >
+        sup_rank_id = #{supRankId,jdbcType=INTEGER},
+      </if>
+      <if test="supplierCode != null" >
+        supplier_code = #{supplierCode,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierName != null" >
+        supplier_name = #{supplierName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oms.backend.entity.Supplier" >
+    update supplier
+    set sup_type_id = #{supTypeId,jdbcType=INTEGER},
+      sup_rank_id = #{supRankId,jdbcType=INTEGER},
+      supplier_code = #{supplierCode,jdbcType=VARCHAR},
+      supplier_name = #{supplierName,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR}
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAllSuppliers" resultType="Map" parameterType="Map">
+    select a.supplier_id as supplierId, a.supplier_code as supplierCode,
+    a.supplier_name as supplierName, a.address,b.sup_rank_name as supRankName, c.sup_type_name supTypeName
+    from supplier a left join supplier_rank b on a.sup_rank_id=b.sup_rank_id
+        left join supplier_type c on a.sup_type_id=c.sup_type_id
+    where concat_ws(supplier_code,supplier_name,address,sup_rank_name,sup_type_name) like #{sFilter,jdbcType=VARCHAR}
+     <if test="sOrder != null" >
+        order by #{sOrder,jdbcType=VARCHAR}
+      </if>
+      <if test="sOrder == null" >
+        order by a.supplier_id
+      </if>
+  </select>
+  <select id="selectTotalCount" resultType="int"  parameterType="Map">
+    select count(1) cnt
+    from supplier a left join supplier_rank b on a.sup_rank_id=b.sup_rank_id
+        left join supplier_type c on a.sup_type_id=c.sup_type_id
+    where concat_ws(supplier_code,supplier_name,address,sup_rank_name,sup_type_name) like #{sFilter,jdbcType=VARCHAR}
+     <if test="sOrder != null" >
+        order by #{sOrder,jdbcType=VARCHAR}
+      </if>
+      <if test="sOrder == null" >
+        order by a.supplier_id
+      </if>
+  </select>
+</mapper>

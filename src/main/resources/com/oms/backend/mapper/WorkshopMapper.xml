@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oms.backend.mapper.WorkshopMapper" >
+  <resultMap id="BaseResultMap" type="com.oms.backend.entity.Workshop" >
+    <id column="workshop_id" property="workshopId" jdbcType="INTEGER" />
+    <result column="workshop_code" property="workshopCode" jdbcType="VARCHAR" />
+    <result column="workshop_name" property="workshopName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    workshop_id, workshop_code, workshop_name, create_time, created_by, update_time, 
+    updated_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from workshop
+    where workshop_id = #{workshopId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from workshop
+    where workshop_id = #{workshopId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.oms.backend.entity.Workshop" >
+    insert into workshop (workshop_id, workshop_code, workshop_name, 
+      create_time, created_by, update_time, 
+      updated_by)
+    values (#{workshopId,jdbcType=INTEGER}, #{workshopCode,jdbcType=VARCHAR}, #{workshopName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.oms.backend.entity.Workshop" >
+    insert into workshop
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workshopId != null" >
+        workshop_id,
+      </if>
+      <if test="workshopCode != null" >
+        workshop_code,
+      </if>
+      <if test="workshopName != null" >
+        workshop_name,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workshopId != null" >
+        #{workshopId,jdbcType=INTEGER},
+      </if>
+      <if test="workshopCode != null" >
+        #{workshopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="workshopName != null" >
+        #{workshopName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oms.backend.entity.Workshop" >
+    update workshop
+    <set >
+      <if test="workshopCode != null" >
+        workshop_code = #{workshopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="workshopName != null" >
+        workshop_name = #{workshopName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where workshop_id = #{workshopId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oms.backend.entity.Workshop" >
+    update workshop
+    set workshop_code = #{workshopCode,jdbcType=VARCHAR},
+      workshop_name = #{workshopName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR}
+    where workshop_id = #{workshopId,jdbcType=INTEGER}
+  </update>
+</mapper>

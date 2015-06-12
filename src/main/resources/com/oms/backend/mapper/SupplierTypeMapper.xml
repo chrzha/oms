@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oms.backend.mapper.SupplierTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.oms.backend.entity.SupplierType" >
+    <id column="sup_type_id" property="supTypeId" jdbcType="INTEGER" />
+    <result column="sup_type_code" property="supTypeCode" jdbcType="VARCHAR" />
+    <result column="sup_type_name" property="supTypeName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sup_type_id, sup_type_code, sup_type_name, create_time, created_by, update_time, 
+    updated_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from supplier_type
+    where sup_type_id = #{supTypeId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAllSupplierTypes" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from supplier_type
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from supplier_type
+    where sup_type_id = #{supTypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.oms.backend.entity.SupplierType" >
+    insert into supplier_type (sup_type_id, sup_type_code, sup_type_name, 
+      create_time, created_by, update_time, 
+      updated_by)
+    values (#{supTypeId,jdbcType=INTEGER}, #{supTypeCode,jdbcType=VARCHAR}, #{supTypeName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.oms.backend.entity.SupplierType" >
+    insert into supplier_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="supTypeId != null" >
+        sup_type_id,
+      </if>
+      <if test="supTypeCode != null" >
+        sup_type_code,
+      </if>
+      <if test="supTypeName != null" >
+        sup_type_name,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="supTypeId != null" >
+        #{supTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="supTypeCode != null" >
+        #{supTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="supTypeName != null" >
+        #{supTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oms.backend.entity.SupplierType" >
+    update supplier_type
+    <set >
+      <if test="supTypeCode != null" >
+        sup_type_code = #{supTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="supTypeName != null" >
+        sup_type_name = #{supTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sup_type_id = #{supTypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oms.backend.entity.SupplierType" >
+    update supplier_type
+    set sup_type_code = #{supTypeCode,jdbcType=VARCHAR},
+      sup_type_name = #{supTypeName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR}
+    where sup_type_id = #{supTypeId,jdbcType=INTEGER}
+  </update>
+</mapper>

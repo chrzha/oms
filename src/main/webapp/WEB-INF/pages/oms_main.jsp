@@ -41,6 +41,18 @@
 <script type="text/javascript">
  $(document).ready(function(){
 
+    $("#material").click(function(){
+ 		    if($("#tabs").tabs('exists','物料信息')){
+ 			$("#tabs").tabs('select','物料信息');
+ 			}else{
+ 				$('#tabs').tabs('add',{
+ 				title: '物料信息',
+ 				content: '<iframe style="width:100%;height:480px;" src="/material/view/main"></iframe>',
+ 				closable: true
+ 			   });
+ 		    }
+ 	});
+
 	$("#exit").click(function(){
 	
 		 $.messager.confirm('确认', '确定要退出系统吗?', function(r){  
@@ -90,8 +102,6 @@
 	$("#cancle_update_info").click(function(){
 	   $('#win_update_userInfo').window('close'); 
 	});	
-
-	});
 });
  
 </script>
@@ -141,14 +151,13 @@
 	    
     </div>
 
-    <div class="" >
-   
+
     <ul class="easyui-tree" data-options="animate:true,lines:true" style="height:350px;">
 		<li data-options="state:'closed'">
 			<span>基础数据</span>
 			<ul>
 				<li>
-					<a id="adminValidate">物料</a>
+					<a id="material">物料</a>
 				</li>
 				<li>
 					<a id="adminValidate">供应商</a>
@@ -163,7 +172,7 @@
 			</ul>
 		</li>
 		<li data-options="state:'closed'">
-			<span>订单</span>
+			<span>采购管理</span>
 			<ul>
 				<li>
 					<a id="hotelsValidate">采购订单</a>
@@ -182,8 +191,8 @@
     </div>
 </div>
 
-<div region="center">
-  <div id="tabs" class="easyui-tabs" fit="true" border="false">
+<div region="center" title="您当前位置：系统首页">
+  <div id="tabs" fit="true" border="false">
     <div title="系统首页">
      <p style="text-align:center;font-size:medium;color:#666;border-bottom:#ccc 1px solid;"><b>OMS 订单管理系统</b></p>
         <p style="padding-left:2em;font-weight:bold;">OMS 订单管理系统使用须知：</p>

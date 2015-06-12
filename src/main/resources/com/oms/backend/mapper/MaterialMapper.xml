@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oms.backend.mapper.MaterialMapper" >
+  <resultMap id="BaseResultMap" type="com.oms.backend.entity.Material" >
+    <id column="material_id" property="materialId" jdbcType="INTEGER" />
+    <result column="uom_id" property="uomId" jdbcType="INTEGER" />
+    <result column="mat_type_id" property="matTypeId" jdbcType="INTEGER" />
+    <result column="material_code" property="materialCode" jdbcType="VARCHAR" />
+    <result column="material_name" property="materialName" jdbcType="VARCHAR" />
+    <result column="ref_price" property="refPrice" jdbcType="REAL" />
+    <result column="lot_size" property="lotSize" jdbcType="REAL" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    material_id, uom_id, mat_type_id, material_code, material_name, ref_price, lot_size, 
+    create_time, created_by, update_time, updated_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from material
+    where material_id = #{materialId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectAll" resultType="map" parameterType="map">
+SELECT 
+    m.material_id materialId,
+    m.uom_id uomId,
+    m.mat_type_id matTypeId,
+    m.material_code materialCode,
+    material_name materialName,
+    ref_price refPrice,
+    t.mat_type_name matTypeName,
+    u.uom_name uomName
+FROM
+    srm.material m
+        INNER JOIN
+    srm.material_type t ON m.mat_type_id = t.mat_type_id
+        INNER JOIN
+    srm.uom u ON m.uom_id = u.uom_id
+WHERE
+    CONCAT_WS('-',
+            m.material_code,
+            m.material_name,
+            t.mat_type_name,
+            u.uom_name) LIKE 
+    			<if test="search != null">
+			  		#{search,jdbcType=VARCHAR}
+			    </if>
+				<if test="search == null">
+			  		'%'
+			    </if>
+ORDER BY 
+	<if test="sort != null">
+  		${sort}
+    </if>
+	<if test="sort == null">
+  		materialId asc
+    </if>
+  </select>
+  
+    <select id="selectAllCount" resultType="int" parameterType="map">
+SELECT count(m.material_id) rowsNum
+FROM
+    srm.material m
+        INNER JOIN
+    srm.material_type t ON m.mat_type_id = t.mat_type_id
+        INNER JOIN
+    srm.uom u ON m.uom_id = u.uom_id
+WHERE
+    CONCAT_WS('-',
+            m.material_code,
+            m.material_name,
+            t.mat_type_name,
+            u.uom_name) LIKE 
+    			<if test="search != null">
+			  		#{search,jdbcType=VARCHAR}
+			    </if>
+				<if test="search == null">
+			  		'%'
+			    </if>
+  </select>
+  
+  <select id="getMaxId">
+    select ifnull(max(material_id),0) from material
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from material
+    where material_id = #{materialId,jdbcType=INTEGER}
+  </delete>
+  
+   <delete id="deleteByPrimaryKeys">
+    delete from material
+    where material_id in 
+      <foreach collection="list"   item="materialId" open="("
+      separator="," close=")">
+         #{materialId} 
+     </foreach> 
+  </delete>
+  
+  <insert id="insert" parameterType="com.oms.backend.entity.Material" >
+    insert into material (material_id, uom_id, mat_type_id, 
+      material_code, material_name, ref_price, 
+      lot_size, create_time, created_by, 
+      update_time, updated_by)
+    values (#{materialId,jdbcType=INTEGER}, #{uomId,jdbcType=INTEGER}, #{matTypeId,jdbcType=INTEGER}, 
+      #{materialCode,jdbcType=VARCHAR}, #{materialName,jdbcType=VARCHAR}, #{refPrice,jdbcType=REAL}, 
+      #{lotSize,jdbcType=REAL}, #{createTime,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.oms.backend.entity.Material" >
+    insert into material
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="materialId != null" >
+        material_id,
+      </if>
+      <if test="uomId != null" >
+        uom_id,
+      </if>
+      <if test="matTypeId != null" >
+        mat_type_id,
+      </if>
+      <if test="materialCode != null" >
+        material_code,
+      </if>
+      <if test="materialName != null" >
+        material_name,
+      </if>
+      <if test="refPrice != null" >
+        ref_price,
+      </if>
+      <if test="lotSize != null" >
+        lot_size,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="materialId != null" >
+        #{materialId,jdbcType=INTEGER},
+      </if>
+      <if test="uomId != null" >
+        #{uomId,jdbcType=INTEGER},
+      </if>
+      <if test="matTypeId != null" >
+        #{matTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="materialCode != null" >
+        #{materialCode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialName != null" >
+        #{materialName,jdbcType=VARCHAR},
+      </if>
+      <if test="refPrice != null" >
+        #{refPrice,jdbcType=REAL},
+      </if>
+      <if test="lotSize != null" >
+        #{lotSize,jdbcType=REAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oms.backend.entity.Material" >
+    update material
+    <set >
+      <if test="uomId != null" >
+        uom_id = #{uomId,jdbcType=INTEGER},
+      </if>
+      <if test="matTypeId != null" >
+        mat_type_id = #{matTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="materialCode != null" >
+        material_code = #{materialCode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialName != null" >
+        material_name = #{materialName,jdbcType=VARCHAR},
+      </if>
+      <if test="refPrice != null" >
+        ref_price = #{refPrice,jdbcType=REAL},
+      </if>
+      <if test="lotSize != null" >
+        lot_size = #{lotSize,jdbcType=REAL},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where material_id = #{materialId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oms.backend.entity.Material" >
+    update material
+    set uom_id = #{uomId,jdbcType=INTEGER},
+      mat_type_id = #{matTypeId,jdbcType=INTEGER},
+      material_code = #{materialCode,jdbcType=VARCHAR},
+      material_name = #{materialName,jdbcType=VARCHAR},
+      ref_price = #{refPrice,jdbcType=REAL},
+      lot_size = #{lotSize,jdbcType=REAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR}
+    where material_id = #{materialId,jdbcType=INTEGER}
+  </update>
+</mapper>
