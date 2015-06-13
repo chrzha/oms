@@ -42,15 +42,17 @@
  $(document).ready(function(){
 
     $("#material").click(function(){
- 		    if($("#tabs").tabs('exists','物料信息')){
- 			$("#tabs").tabs('select','物料信息');
- 			}else{
- 				$('#tabs').tabs('add',{
- 				title: '物料信息',
- 				content: '<iframe style="width:100%;height:480px;" src="/material/view/main"></iframe>',
- 				closable: true
- 			   });
- 		    }
+        //当前tab
+        var current_tab = $('#tabs').tabs('getSelected');
+        $('#tabs').tabs('update',{
+             tab:current_tab,
+             options : {
+                  border: false,
+                  title: '物料信息',
+                  content : '<iframe scrolling="auto" frameborder="0"  src="/material/view/main" style="width:100%;height:100%;"></iframe>',
+             }
+        });
+
  	});
 
 	$("#exit").click(function(){
@@ -191,15 +193,13 @@
     </div>
 </div>
 
-<div region="center" title="您当前位置：系统首页">
-  <div id="tabs" fit="true" border="false">
-    <div title="系统首页">
-     <p style="text-align:center;font-size:medium;color:#666;border-bottom:#ccc 1px solid;"><b>OMS 订单管理系统</b></p>
-        <p style="padding-left:2em;font-weight:bold;">OMS 订单管理系统使用须知：</p>
-        <p style="padding-left:2em;">
+<div region="center" id="center_div" title="您的位置：系统首页">
+  <div id="tabs" class="easyui-tabs"  fit="true" border="false" plain="false">
+        <div title="首页">
+            <p style="padding-left:2em;font-weight:bold;">OMS 订单管理系统使用须知：</p>
+            <p style="padding-left:2em;">
             <span style="color:#ff0000;font-weight:bold;">1. 第一次登录后务必修改自己的密码，以确保操作安全。</span><br />
-        <span id="conLabel"></span>
-    </div>
+        </div>
   </div>
 </div>
 <div region="south" style="height:40px;">
