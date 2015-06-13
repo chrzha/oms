@@ -41,6 +41,8 @@
 <script type="text/javascript">
  $(document).ready(function(){
 
+
+
     $("#material").click(function(){
         //当前tab
         var current_tab = $('#tabs').tabs('getSelected');
@@ -50,6 +52,20 @@
                   border: false,
                   title: '物料信息',
                   content : '<iframe scrolling="auto" frameborder="0"  src="/material/view/main" style="width:100%;height:100%;"></iframe>',
+             }
+        });
+
+ 	});
+
+    $("#order").click(function(){
+        //当前tab
+        var current_tab = $('#tabs').tabs('getSelected');
+        $('#tabs').tabs('update',{
+             tab:current_tab,
+             options : {
+                  border: false,
+                  title: '订单信息',
+                  content : '<iframe scrolling="auto" frameborder="0"  src="/order/view/main" style="width:100%;height:100%;"></iframe>',
              }
         });
 
@@ -177,7 +193,7 @@
 			<span>采购管理</span>
 			<ul>
 				<li>
-					<a id="hotelsValidate">采购订单</a>
+					<a id="order">采购订单</a>
 				</li>
 			</ul>
 		</li>

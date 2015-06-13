@@ -64,7 +64,7 @@
         <div style="height:70%;width:60%;margin-left:20%;margin-top:10px;">
           <div class="easyui-panel"  title="登录" style="height:220px;">
           <form action="/validate" method="post">
-            <div style="padding:10px 0 0 10px">
+            <div style="margin-left:30%;">
 
               <table style="margin:10px 0 0 70px;">
 
@@ -107,14 +107,14 @@
                 <img src="/hotel/getKaptchaImage" id="kaptchaImage"  style="margin-bottom: -3px;cursor:pointer;" 
                 onclick="changeCode()" class="easyui-tooltip" title="点击更换验证码"/>  <span id='code_error'>
                 </span> </td>
-      
+            </tr>
+            <tr>
+            <td></td>
+            <td>
+                <input type="submit" id="loginBtn" value="登录" />
+            </td>
             </tr>
           </table>
-
-        </div>
-        <div style="margin:10px 0 0 160px">
-          <input type="submit" id="loginBtn" value="登录" />
-        </div>
         </form>
       </div>
     </div>
