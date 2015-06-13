@@ -57,6 +57,34 @@
 
  	});
 
+    $("#supplier").click(function(){
+        //当前tab
+        var current_tab = $('#tabs').tabs('getSelected');
+        $('#tabs').tabs('update',{
+             tab:current_tab,
+             options : {
+                  border: false,
+                  title: '供应商',
+                  content : '<iframe scrolling="auto" frameborder="0"  src="/supplier/view/main" style="width:100%;height:100%;"></iframe>',
+             }
+        });
+
+ 	});
+
+    $("#buyer").click(function(){
+        //当前tab
+        var current_tab = $('#tabs').tabs('getSelected');
+        $('#tabs').tabs('update',{
+             tab:current_tab,
+             options : {
+                  border: false,
+                  title: '采购员',
+                  content : '<iframe scrolling="auto" frameborder="0"  src="/buyer/view/main" style="width:100%;height:100%;"></iframe>',
+             }
+        });
+
+ 	});
+
     $("#order").click(function(){
         //当前tab
         var current_tab = $('#tabs').tabs('getSelected');
@@ -178,13 +206,13 @@
 					<a id="material">物料</a>
 				</li>
 				<li>
-					<a id="adminValidate">供应商</a>
+					<a id="supplier">供应商</a>
 				</li>
 				<li>
-					<a id="adminValidate">请购人</a>
+					<a id="#">请购人</a>
 				</li>
 				<li>
-					<a id="adminValidate">采购员</a>
+					<a id="buyer">采购员</a>
 				</li>
 
 			</ul>

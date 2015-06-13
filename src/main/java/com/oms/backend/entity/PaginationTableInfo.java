@@ -3,8 +3,8 @@ package com.oms.backend.entity;
 public class PaginationTableInfo {
 	
 	String search;
-	String sort;
-	String order;
+    String sort;
+    String order;
 	int limit = 0;
 	int offset = 0;
 	public String getSearch() {
