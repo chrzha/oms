@@ -162,8 +162,8 @@
 </head>
 <body class="easyui-layout" >
 
-  <div region="north" style="height:50%;background-color:#E0ECFF;">
-          <div style="height:80%;width:90%;">
+  <div region="north" style="height:80%;background-color:#E0ECFF;">
+          <div style="height:80%;">
             <div style="font-family:华文新魏; font-size:24pt; color:#000099; font-weight:bold;
               height:70%;margin-left:40%;margin-top:10px;">
             OMS订单管理系统
