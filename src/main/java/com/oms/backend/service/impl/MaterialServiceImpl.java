@@ -16,76 +16,38 @@ import java.util.Map;
 @Service
 public class MaterialServiceImpl implements MaterialService {
 
-	@Autowired
-	private MaterialMapper materialMapper;
+    @Override
+    public List<Map<String, Object>> selectAll(PaginationTableInfo pti) {
+        return null;
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.haohe.srm.service.MaterialService#selectAll()
-	 */
-	@Override
-	public List<Map<String, Object>> selectAll(PaginationTableInfo pti) {
-		RowBounds rowBounds = new RowBounds(pti.getOffset(), pti.getLimit());
+    @Override
+    public int selectAllCount(PaginationTableInfo pti) {
+        return 0;
+    }
 
-		Map<String, String> paramsMap = new HashMap<String, String>();
+    @Override
+    public int insert(Material record) {
+        return 0;
+    }
 
-		if (null != pti.getSearch()) {
-			String searchStr = "%" + pti.getSearch().trim() + "%";
-			paramsMap.put("search", searchStr);
-		}
+    @Override
+    public Material selectByPrimaryKey(Integer materialId) {
+        return null;
+    }
 
-		if (null != pti.getSort() && null != pti.getOrder()) {
-			String sortStr = pti.getSort() + " " + pti.getOrder();
-			paramsMap.put("sort", sortStr);
-		}
+    @Override
+    public int deleteByPrimaryKey(Integer materialId) {
+        return 0;
+    }
 
-		return materialMapper.selectAll(paramsMap, rowBounds);
-	}
+    @Override
+    public int deleteByPrimaryKeys(List<Integer> materialIds) {
+        return 0;
+    }
 
-	public int selectAllCount(PaginationTableInfo pti) {
-
-		Map<String, String> paramsMap = new HashMap<String, String>();
-
-		if (null != pti.getSearch()) {
-			String searchStr = "%" + pti.getSearch().trim() + "%";
-			paramsMap.put("search", searchStr);
-		}
-
-		int rowsNum = materialMapper.selectAllCount(paramsMap);
-
-		Utilities.p("rowsNum=" + rowsNum);
-
-		return rowsNum;
-	}
-
-	@Override
-	public int insert(Material record) {
-		// TODO Auto-generated method stub
-		return materialMapper.insert(record);
-	}
-
-	@Override
-	public int deleteByPrimaryKey(Integer materialId) {
-		// TODO Auto-generated method stub
-		return materialMapper.deleteByPrimaryKey(materialId);
-	}
-
-	@Override
-	public int deleteByPrimaryKeys(List<Integer> materialIds){
-		return materialMapper.deleteByPrimaryKeys(materialIds);
-		
-	}
-	@Override
-	public Material selectByPrimaryKey(Integer materialId) {
-		// TODO Auto-generated method stub
-		return materialMapper.selectByPrimaryKey(materialId);
-	}
-
-	@Override
-	public int updateByPrimaryKey(Material record) {
-		// TODO Auto-generated method stub
-		return materialMapper.updateByPrimaryKey(record);
-	}
-
+    @Override
+    public int updateByPrimaryKey(Material record) {
+        return 0;
+    }
 }

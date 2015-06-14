@@ -32,16 +32,8 @@ public class BuyerController {
     @ResponseBody
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
     public Map<String, Object> list(PaginationTableInfo pti) {
-        int offset = pti.getOffset();
-        int limit = pti.getLimit();
-        
-        List<Map<String, Object>> buyerList = buyerService.selectAll(offset, limit);
 
-        Map<String, Object> result = new HashMap<String, Object>();
-        result.put("rows", buyerList);
-        result.put("total", buyerList.size());
-
-        return result;
+        return null;
     }
 
     @ResponseBody

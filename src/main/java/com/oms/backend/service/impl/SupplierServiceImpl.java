@@ -34,25 +34,7 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     public List<Map<String, Object>> selectAllSuppliers(PaginationTableInfo pti) {
 
-		int offset = pti.getOffset();
-		int limit = pti.getLimit();
-    	RowBounds rowBounds = new RowBounds(offset,limit);
-    	
-    	String sFilter = null;
-    	if (null != pti.getSearch()) {
-    		sFilter = "%" + pti.getSearch() + "%";
-    	} else {
-    		sFilter = "%%";
-    	}
-    	
-    	String sOrder = null;
-    	if (null != pti.getSort()) {
-    		sOrder = pti.getSort() + " " + pti.getOrder();
-    	}
-    	Map<String, String> paramMap = new HashMap<String, String>();
-    	paramMap.put("sFilter", sFilter);
-    	paramMap.put("sOrder", sOrder);
-        return supplierMapper.selectAllSuppliers(paramMap, rowBounds);
+		return null;
     }
 
 	@Override
@@ -88,21 +70,7 @@ public class SupplierServiceImpl implements SupplierService {
 	@Override
 	public int SupplierQuantity(PaginationTableInfo pti) {
 		
-		String sFilter = null;
-    	if (null != pti.getSearch()) {
-    		sFilter = "%" + pti.getSearch() + "%";
-    	} else {
-    		sFilter = "%%";
-    	}
-    	
-    	String sOrder = null;
-    	if (null != pti.getSort()) {
-    		sOrder = pti.getSort() + " " + pti.getOrder();
-    	}
-    	Map<String, String> paramMap = new HashMap<String, String>();
-    	paramMap.put("sFilter", sFilter);
-    	paramMap.put("sOrder", sOrder);
-		return supplierMapper.selectTotalCount(paramMap);
+		return 0;
 	}
 
 }

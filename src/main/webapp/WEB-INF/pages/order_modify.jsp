@@ -50,7 +50,7 @@
             <table style="margin-top:20px;margin-bottom:20px;margin-left:100px;">
                 <tr>
                     <td>订单编号:</td>
-                    <td><input type="text" value="${orderId }" /></td>
+                    <td><input type="text" value="${orderId}" /></td>
                     <td>供应商:</td>
                     <td><input type="text" /><font color="red">[供应商列表]</font></td>
                     <td>付款方式:</td>
