@@ -40,6 +40,9 @@
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/plugins/jquery.datebox.js">
 </script>
 <script>
+    function closeTab(){
+        parent.$("#tabs").tabs('close','新增订单');
+    }
 </script>
 </head>
 <body>
@@ -99,6 +102,13 @@
            </tr>
        </thead>
        </table>
+  </div>
+  <div id="button_panel" class="easyui-panel""
+           style="background:#fafafa;">
+          <div  style="width:80%;height:40%;margin-left:10px;margin-top:10px;">
+              <input type="button" style="width:80px;" value="保存" />
+              <input type="button" style="width:80px;" value="取消" onclick="closeTab();"/>
+          </div>
   </div>
 </div>
 </body>
