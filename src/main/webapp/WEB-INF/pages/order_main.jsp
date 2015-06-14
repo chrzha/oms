@@ -63,7 +63,6 @@ function formatterDate(value, row) {
 function QueryData() {
     $("#dg").datagrid("load", {
         "orderId":$("#search_table").find("input[name='orderId']").val()
-
     });
 }
 

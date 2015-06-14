@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ public class OrderController {
 
     @RequestMapping(value = "/view/main", method = RequestMethod.GET)
     public String viewMain() {
+        ModelAndView mv = new ModelAndView();
         return "order_main";
     }
 

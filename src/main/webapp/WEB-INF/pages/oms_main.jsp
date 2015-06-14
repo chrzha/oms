@@ -45,16 +45,15 @@
 
     $("#material").click(function(){
         //当前tab
-        var current_tab = $('#tabs').tabs('getSelected');
-        $('#tabs').tabs('update',{
-             tab:current_tab,
-             options : {
-                  border: false,
+        if($("#tabs").tabs('exists','物料信息')){
+            $("#tabs").tabs('select','物料信息');
+        }else{
+            $('#tabs').tabs('add',{
                   title: '物料信息',
                   content : '<iframe scrolling="auto" frameborder="0"  src="/material/view/main" style="width:100%;height:100%;"></iframe>',
-             }
-        });
-
+                  closable: true
+             });
+        }
  	});
 
     $("#supplier").click(function(){
@@ -86,16 +85,16 @@
  	});
 
     $("#order").click(function(){
-        //当前tab
-        var current_tab = $('#tabs').tabs('getSelected');
-        $('#tabs').tabs('update',{
-             tab:current_tab,
-             options : {
-                  border: false,
-                  title: '订单信息',
-                  content : '<iframe scrolling="auto" frameborder="0"  src="/order/view/main" style="width:100%;height:100%;"></iframe>',
-             }
-        });
+
+        if($("#tabs").tabs('exists','订单信息')){
+                    $("#tabs").tabs('select','订单信息');
+                }else{
+                    $('#tabs').tabs('add',{
+                          title: '订单信息',
+                          content : '<iframe scrolling="auto" frameborder="0"  src="/order/view/main" style="width:100%;height:100%;"></iframe>',
+                          closable: true
+                     });
+        }
 
  	});
 
@@ -232,8 +231,8 @@
 			<a id="exit">注销登录</a>
 		</li>
 	</ul>
-    
-    
+
+
     </div>
 </div>
 
