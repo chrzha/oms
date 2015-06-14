@@ -94,6 +94,40 @@ function destroy() {
             }
 }
 
+function editOrder(){
+	var rows = $("#dg").datagrid("getSelections");
+	var rowId=$("#dg").datagrid("getSelected");
+	if(rows.length>1){
+		$.messager.alert("信息","修改时只可选择一条数据！");
+	}else if(rows.length==0){
+		$.messager.alert("信息","请选择至少一行数据！");
+	}else{
+		 //当前tab
+        var current_tab = parent.$('#tabs').tabs('getSelected');
+         parent.$('#tabs').tabs('add',{
+                  border: false,
+                  title: '修改订单',
+                  content : "<iframe scrolling='auto' frameborder='0'  src='/order/view/modify/"+rowId+"' style='width:100%;height:100%;'></iframe>",
+       			 closable: true
+       			
+        });
+	}
+}
+function addOrder(){
+	 //当前tab
+        var current_tab = parent.$('#tabs').tabs('getSelected');
+        if(parent.$("#tabs").tabs('exists','新增订单')){
+				parent.$("#tabs").tabs('select','新增订单');
+			}else{
+	         parent.$('#tabs').tabs('add',{
+	                  border: false,
+	                  title: '新增订单',
+	                  content : "<iframe scrolling='auto' frameborder='0'  src='/order/view/add' style='width:100%;height:100%;'></iframe>",
+					closable: true
+						                 
+	        });
+        }
+}
 </script>
 </head>
 <body>
@@ -142,10 +176,10 @@ function destroy() {
        <div id="toolbar">
            <div>
            			<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true">查看</a>
-           			<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">新建</a>
-           			<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
+           			<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addOrder()">新建</a>
+           			<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editOrder()">修改</a>
            			<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="destroy()">删除</a>
-           			<a href="#" class="easyui-linkbutton " iconCls="icon-reload"  plain="true">刷新</a>
+           			<a href="#" class="easyui-linkbutton" iconCls="icon-reload"  plain="true">刷新</a>
            </div>
        </div>
 </div>
