@@ -15,9 +15,28 @@
       order_id, order_status, order_comment, created_time, created_by, updated_time,
     updated_by
   </sql>
-  
-  <delete id="deleteByOrderId">
-    delete from order
+  <select id="getList" parameterType="map" resultMap="BaseResultMap">
+      select * from orders o where
+      o.order_id LIKE
+      <if test="orderId != null">
+      #{orderId}
+      </if>
+      <if test="orderId == null">
+          '%'
+      </if> limit #{page},#{rows}
+  </select>
+  <select id="getTotalCount" parameterType="map" resultType="int">
+      select count(*) from orders o where
+      o.order_id LIKE
+      <if test="orderId != null">
+          #{orderId}
+      </if>
+      <if test="orderId == null">
+          '%'
+      </if>
+  </select>
+  <delete id="deleteOrderById">
+    delete from orders
     where order_id = #{orderId}
   </delete>
 

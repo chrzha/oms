@@ -7,7 +7,9 @@ import com.oms.backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 庆峰 on 2015/6/13.
@@ -19,8 +21,8 @@ public class OrderServiceImpl implements OrderService{
     private OrderMapper orderMapper;
 
     @Override
-    public int deleteOrderById(String orderId) {
-        return orderMapper.deleteOrderById(orderId);
+    public void deleteOrderById(String orderId) {
+        orderMapper.deleteOrderById(orderId);
     }
 
     @Override
@@ -35,11 +37,45 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public List<Order> getList(PaginationTableInfo pti) {
-        return orderMapper.getList(pti);
+        Map<String, Object> paramsMap = new HashMap<String,Object>();
+        int offset = (pti.getPage()-1)*pti.getRows();
+        paramsMap.put("page",offset);
+        paramsMap.put("rows",pti.getRows());
+        paramsMap.put("orderStatus",pti.getOrderStatus());
+        if (null != pti.getOrderId()){
+            paramsMap.put("orderId","%"+pti.getOrderId()+"%");
+        }else {
+            paramsMap.put("orderId",null);
+        }
+
+        if (null != pti.getCreatedBy()){
+            paramsMap.put("createdBy","%"+pti.getCreatedBy()+"%");
+        }else {
+            paramsMap.put("createdBy",null);
+        }
+        paramsMap.put("createdTime",pti.getCreatedTime());
+        return orderMapper.getList(paramsMap);
     }
 
     @Override
     public Integer getTotalCount(PaginationTableInfo pti) {
-        return orderMapper.getTotalCount(pti);
+        Map<String, Object> paramsMap = new HashMap<String,Object>();
+        int offset = (pti.getPage()-1)*pti.getRows();
+        paramsMap.put("page",offset);
+        paramsMap.put("rows",pti.getRows());
+        paramsMap.put("orderStatus",pti.getOrderStatus());
+        if (null != pti.getOrderId()){
+            paramsMap.put("orderId","%"+pti.getOrderId()+"%");
+        }else {
+            paramsMap.put("orderId",null);
+        }
+
+        if (null != pti.getCreatedBy()){
+            paramsMap.put("createdBy","%"+pti.getCreatedBy()+"%");
+        }else {
+            paramsMap.put("createdBy",null);
+        }
+        paramsMap.put("createdTime",pti.getCreatedTime());
+        return orderMapper.getTotalCount(paramsMap);
     }
 }

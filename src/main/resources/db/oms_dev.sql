@@ -11,8 +11,8 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping database structure for srm
-CREATE DATABASE IF NOT EXISTS `srm` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `srm`;
+CREATE DATABASE IF NOT EXISTS `oms` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `oms`;
 
 
 -- Dumping structure for table srm.buyer

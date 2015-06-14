@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface OrderService {
 
-    public int deleteOrderById(String orderId);
+    public void deleteOrderById(String orderId);
     public int updateOrderById(Order order);
     public int insertOrder(Order order);
     public List<Order> getList(PaginationTableInfo pti);

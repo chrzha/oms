@@ -1,4 +1,4 @@
-CREATE TABLE `order` (
+CREATE TABLE `orders` (
 	`order_id` VARCHAR(50) NOT NULL,
 	`order_status` INT(1) NOT NULL DEFAULT '0',
 	`order_comment` VARCHAR(200) NULL DEFAULT NULL,
@@ -8,4 +8,6 @@ CREATE TABLE `order` (
 	`updated_time` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
 	PRIMARY KEY (`order_id`)
 )
-ENGINE=InnoDB;
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
