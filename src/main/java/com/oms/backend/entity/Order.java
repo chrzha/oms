@@ -10,10 +10,28 @@ public class Order {
     private String orderId;
     private Integer orderStatus;
     private String orderComment;
+    private Buyer buyer;
+    private Supplier supplier;
     private Date createdTime;
     private String createdBy;
     private Date updatedTime;
     private String updatedBy;
+
+    public Buyer getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(Buyer buyer) {
+        this.buyer = buyer;
+    }
+
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
 
     public String getOrderId() {
         return orderId;
