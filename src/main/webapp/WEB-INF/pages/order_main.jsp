@@ -41,14 +41,30 @@
 </script>
 <script>
 
+$(document).ready(function(){
+        $("#submit_search").click(function(){
+            console.log(parseDate($("#search_table").find("input[name='createdTime']").val()));
+            QueryData();
+        });
+
+        function QueryData() {
+            $("#dg").datagrid("load", {
+                "orderId":$("#search_table").find("input[name='orderId']").val(),
+                "createdBy":$("#search_table").find("input[name='createdBy']").val(),
+                "orderStatus":$("#search_table").find("#orderStatus option:selected").val(),
+                "createdTime":parseDate($("#search_table").find("input[name='createdTime']").val())
+            });
+        }
+
+});
+
 $(function(){
     $('#dg').datagrid({
         url: '/order/list',
-        queryParams: form2Json(),
         method: 'POST',
         striped: true,
         fitColumns: true,
-        singleSelect: true,
+        singleSelect: false,
         rownumbers: true,
         pagination: true,
         nowrap: false,
@@ -67,9 +83,7 @@ $(function(){
     });
 });
 
-$("#submit_search").click(function () {
-    $('#dg').datagrid('load',{ queryParams: form2Json() });   //点击搜索
-});
+
 //将表单数据转为json
 function form2Json() {
     var arr = {};
@@ -100,10 +114,13 @@ function formatterDate(value, row) {
       return date.getFullYear() + '-' + monthZero + (date.getMonth() + 1) + '-' + dayZero + date.getDate();
 }
 
-function QueryData() {
-    $("#dg").datagrid("load", {
-        "orderId":$("#search_table").find("input[name='orderId']").val()
-    });
+function parseDate(dateStr){
+    var strArray = dateStr.split("/");
+    if(strArray.length == 3){
+        return new Date(strArray[2], strArray[0]-1, strArray[1]);
+    }else{
+        return new Date();
+    }
 }
 
 function destroy() {
@@ -181,12 +198,18 @@ function addOrder(){
                     <td>订单编号:</td>
                     <td><input type="text" name="orderId" /></td>
                     <td>订单状态:</td>
-                    <td><select name="orderStatus"><option value="1">all</option></select></td>
+                    <td>
+                        <select name="orderStatus" id="orderStatus">
+                            <option value="2" selected="selected">全部</option>
+                            <option value="1">已审批</option>
+                            <option value="0">未审批</option>
+                        </select>
+                    </td>
                     <td>创建人:</td>
                     <td><input type="text" name="createdBy"/></td>
                     <td>创建时间:</td>
-                    <td><input type="text" class="easyui-datebox" name="createdTime"/></td>
-                    <td><input type="submit" id="submit_search" value="查询"  src="javascript:void(0)" /></td>
+                    <td><input type="text" class="easyui-datebox" name="createdTime" id="createdTime"/></td>
+                    <td><input type="button" id="submit_search" value="查询" /></td>
                     <td><input type="reset" value="重置" /></td>
                 </tr>
             </table>

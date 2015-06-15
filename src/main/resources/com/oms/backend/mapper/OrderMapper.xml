@@ -25,7 +25,24 @@
       </if>
       <if test="orderId == null">
           '%'
-      </if> limit #{page},#{rows}
+      </if>
+      and o.created_by LIKE
+      <if test="createdBy != null">
+          #{createdBy}
+      </if>
+      <if test="createdBy == null">
+          '%'
+      </if>
+      and o.created_time LIKE
+      <if test="createdTime != null">
+          #{createdTime}
+      </if>
+      <if test="createdTime == null">
+          '%'
+      </if>
+      and o.order_status in ${orderStatus}
+
+      limit #{page},#{rows}
   </select>
 
   <select id="getOrderDetail" resultType="map">
@@ -44,6 +61,21 @@
       <if test="orderId == null">
           '%'
       </if>
+      and o.created_by LIKE
+      <if test="createdBy != null">
+          #{createdBy}
+      </if>
+      <if test="createdBy == null">
+          '%'
+      </if>
+      and o.created_time LIKE
+      <if test="createdTime != null">
+          #{createdTime}
+      </if>
+      <if test="createdTime == null">
+          '%'
+      </if>
+      and o.order_status in ${orderStatus}
   </select>
   <delete id="deleteOrderById">
     delete from orders
