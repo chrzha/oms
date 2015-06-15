@@ -4,17 +4,13 @@ import com.oms.backend.entity.Order;
 import com.oms.backend.entity.PaginationTableInfo;
 import com.oms.backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 @Controller
 @RequestMapping("order")
@@ -43,10 +39,22 @@ public class OrderController {
         return mv;
     }
 
-    @RequestMapping("/list")
+    @RequestMapping( value = "/list", method = RequestMethod.POST)
     public
     @ResponseBody
-    Map<String, Object> getOrderList(PaginationTableInfo pti) {
+    Map<String, Object> getOrderList(@RequestBody String s) {
+        String[] para = s.split("&");
+
+        String orderId = "";
+        Integer orderStatus = 1;
+        String createdBy = "";
+        Date createdTime = null;
+
+        PaginationTableInfo pti = new PaginationTableInfo();
+        pti.setOrderId(orderId);
+        pti.setOrderStatus(orderStatus);
+        pti.setCreatedBy(createdBy);
+        pti.setCreatedTime(createdTime);
         Map<String, Object> result = new HashMap<String, Object>();
         int total = orderService.getTotalCount(pti);
         List<Order> orderList = orderService.getList(pti);
@@ -77,10 +85,10 @@ public class OrderController {
         order1.put("goodsType", "OK");
         order1.put("goodsDep", "chrzha");
         order1.put("computerDep", "chrzha");
-        order1.put("number", "chrzha");
-        order1.put("price", "chrzha");
-        order1.put("rate", "chrzha");
-        order1.put("money", "chrzha");
+        order1.put("number", 45);
+        order1.put("price", 10);
+        order1.put("rate", 1.1);
+        order1.put("money", 100);
         for (int i = 0; i < 2; i++) {
             orderList.add(order1);
         }

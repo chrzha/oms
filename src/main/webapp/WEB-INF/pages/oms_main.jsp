@@ -41,7 +41,7 @@
 <script type="text/javascript">
  $(document).ready(function(){
 
-
+    $('#sb1').menubutton({menu:'#mm1'});
 
     $("#material").click(function(){
         //当前tab
@@ -163,40 +163,20 @@
 <body class="easyui-layout" >
 
   <div region="north" style="height:80%;background-color:#E0ECFF;">
-          <div style="height:80%;">
-            <div style="font-family:华文新魏; font-size:24pt; color:#000099; font-weight:bold;
-              height:70%;margin-left:40%;margin-top:10px;">
-            OMS订单管理系统
-            </div>
+          <div class="header">
+          	<div style="padding:10px;text-align:right;">
+          	        <a style="color:#000099；font-weight:bold;font-size:14pt;">欢迎你，<span href="javascript:void(0)" id="sb1" onclick="javascript:alert('edit')">
+          	        <%= request.getSession().getAttribute("userLogin") %></span></a>
+                    <div id="mm1">
+                        <div>退出</div>
+                    </div>
+          	</div>
+          	<div style="font-family:华文新魏; font-size:24pt; color:#000099; font-weight:bold;
+                 height:70%;margin-left:40%;">OMS订单管理系统</div>
           </div>
   </div>
 
 <div region="west" split="true" style="width:220px;" title="导航菜单">
-    <div id="userInfo">
-        <div style="background-color:#99ccff;padding:2px 5px;font-weight:bold;">登录信息<a id="update_userInfo" style="color:#ff0000;font-weight:bold;margin-left:70px;cursor:pointer;">修改</a></div>
-        用户名：${user.userName}<br />
-        姓名：${user.realName}<br />
-        邮&nbsp;&nbsp;箱：<a id="user_email">${user.email}</a><br />
-        电&nbsp;&nbsp;话：<a id="user_phone">${user.phone}</a><br />
-    </div>
-    <div id="win_update_userInfo" class="easyui-window" title="修改联系方式" closed="true" style="width:400px;height:170px;" data-options="iconCls:'icon-edit'">    
-       <form name="form"  id = "update_info_form" action="/hotel/???" ENCTYPE="multipart/form-data" modelAttribute="user" method="post" >
-	    	<table style="margin:10px 0 0 70px;">		
-			<input type="hidden" name="userId" value="${user.userId}">
-			
-			<tr><td><span>联系电话</span></td><td><input type="text" name="phone" value="${user.phone}"></td></tr>
-
-			<tr><td><span>邮箱</span></td><td><input type="text" name="email" value="${user.email}" class="easyui-validatebox" data-options="validType:'email'"></td></tr>
-					
-	    	</table>
-	    	<div class="submit" style="margin-left:150px;">
-	    		<a id="update_userInfo_btn" class="easyui-linkbutton" plain="true" iconCls="icon-save">保存</a>
-	    		<a id="cancle_update_info" class="easyui-linkbutton" plain="true" iconCls="icon-cancel">取消</a></div>
-	    	</form>
-	    
-    </div>
-
-
     <ul class="easyui-tree" data-options="animate:true,lines:true" style="height:350px;">
 		<li data-options="state:'closed'">
 			<span>基础数据</span>

@@ -40,6 +40,46 @@
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/plugins/jquery.datebox.js">
 </script>
 <script>
+
+$(function(){
+    $('#dg').datagrid({
+        url: '/order/list',
+        queryParams: form2Json("searchform"),
+        method: 'POST',
+        striped: true,
+        fitColumns: true,
+        singleSelect: true,
+        rownumbers: true,
+        pagination: true,
+        nowrap: false,
+        pageSize: 10,
+        pageList: [10, 20, 50, 100, 150, 200],
+        showFooter: true,
+        toolbar: "#toolbar",
+        columns: [[
+            { field: 'ck', checkbox: true },
+            { field: 'orderId', title: '订单编号', width: 250, align: 'center' },
+            { field: 'orderStatus', title: '订单状态', width: 150, align: 'center',formatter:formatterStatus},
+            { field: 'createdBy', title: '创建人', width: 150, align: 'center' },
+            { field: 'createdTime', title: '创建时间', width: 150, align: 'center',formatter:formatterDate},
+            { field: 'orderComment', title: '备注', width: 150, align: 'center' }
+        ]]
+    });
+});
+
+$("#submit_search").click(function () {
+    $('#dg').datagrid({ queryParams: form2Json("searchform") });   //点击搜索
+});
+//将表单数据转为json
+function form2Json(id) {
+    var arr = {};
+        arr.orderId = $("#search_table").find("input[name='orderId']").val();
+        arr.orderStatus = $("#search_table").find("input[name='orderStatus']").val();
+        arr.createdBy = $("#search_table").find("input[name='createdBy']").val();
+        arr.createdTime = $("#search_table").find("input[name='createdTime']").val();
+        console.log(arr);
+    return arr;
+}
 function formatterStatus(value,row){
 		if(value==0)
 		   return '未审批';
@@ -135,7 +175,7 @@ function addOrder(){
   <div id="p" class="easyui-panel" title="按条件查询"
        style="background:#fafafa;">
        <div style="width:100%;height:20%;">
-       <form>
+       <form id="searchform">
             <table id="search_table" style="margin-top:20px;margin-bottom:20px;margin-left:100px;">
                 <tr>
                     <td>订单编号:</td>
@@ -146,7 +186,7 @@ function addOrder(){
                     <td><input type="text" name="createdBy"/></td>
                     <td>创建时间:</td>
                     <td><input type="text" class="easyui-datebox" name="createdTime"/></td>
-                    <td><input type="submit" value="查询" onclick="QueryData()" src="javascript:void(0)" /></td>
+                    <td><input type="submit" id="submit_search" value="查询"  src="javascript:void(0)" /></td>
                     <td><input type="reset" value="重置" /></td>
                 </tr>
             </table>
@@ -157,20 +197,7 @@ function addOrder(){
   </div>
   <div id="order_panel" class="easyui-panel" title="订单明细"
        style="background:#fafafa;">
-       <table id="dg" class="easyui-datagrid"
-            url="/order/list"
-            rownumbers="true" pagination="true" toolbar='#toolbar'>
-       <thead>
-           <tr>
-               <th field="ck" checkbox="true"></th>
-               <th field='orderId' width="250" align="center">订单编号</th>
-               <th field='orderStatus' width="150" align="center" formatter="formatterStatus">订单状态</th>
-               <th field='createdBy' width="150" align="center">创建人</th>
-               <th field='createdTime' width="150" align="center" formatter="formatterDate">创建时间</th>
-               <th field='orderComment' width="150" align="center">备注</th>
-           </tr>
-       </thead>
-
+       <table id="dg">
        </table>
   </div>
        <div id="toolbar">

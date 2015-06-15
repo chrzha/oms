@@ -43,6 +43,49 @@
     function closeTab(){
         parent.$("#tabs").tabs('close','修改订单');
     }
+$(function(){
+    $('#dg').datagrid({
+        url: '/order/update',
+        method: 'POST',
+        striped: true,
+        fitColumns: true,
+        singleSelect: false,
+        rownumbers: true,
+        pagination: false,
+        nowrap: false,
+        pageSize: 10,
+        pageList: [10, 20, 50, 100, 150, 200],
+        showFooter: true,
+        columns: [[
+            { field: 'ck', checkbox: true },
+            { field: 'goodsId', title: '商品编号', width: 180, align: 'left' },
+            { field: 'goodsName', title: '商品名称', width: 150, align: 'left' },
+            { field: 'goodsType', title: '规格型号', width: 100, align: 'left' },
+            { field: 'goodsDep', title: '采购单位', width: 100, align: 'left' },
+            { field: 'computerDep', title: '核算单位', width: 100, align: 'right' },
+            { field: 'number', title: '采购数量', width: 100, align: 'right' },
+            { field: 'price', title: '采购单价', width: 100, align: 'right' },
+            { field: 'rate', title: '进项税率', width: 80, align: 'left' },
+            { field: 'money', title: '采购金额', width: 80, align: 'left',
+                formatter:function(value,rowData,rowIndex){
+                    var money = rowData.number*rowData.price;
+                    return money;
+                }
+            }
+        ]],
+        onBeforeLoad: function (param) {
+        },
+        onLoadSuccess: function (data) {
+
+        },
+        onLoadError: function () {
+
+        },
+        onClickCell: function (rowIndex, field, value) {
+
+        }
+    });
+});
 </script>
 </head>
 <body>
@@ -86,21 +129,7 @@
   </div>
   <div id="order_panel" class="easyui-panel" title="商品信息列表"
        style="background:#fafafa;">
-       <table id="dg" class="easyui-datagrid" url="/order/update">
-       <thead>
-           <tr>
-               <th field="ck" checkbox="true"></th>
-               <th field='goodsId' width="120"  align="center">商品编号</th>
-               <th field='goodsName' width="130" align="center">商品名称</th>
-               <th field='goodsType' width="120" align="center">规格型号</th>
-               <th field='goodsDep' width="120" align="center">采购单位</th>
-               <th field='computerDep' width="120" align="center">核算单位</th>
-               <th field='number' width="110" align="center">采购数量</th>
-               <th field='price' width="110" align="center">采购单价</th>
-               <th field='rate' width="110" align="center">进项税率</th>
-               <th field='money' width="110" align="center">采购金额</th>
-           </tr>
-       </thead>
+       <table id="dg">
        </table>
   </div>
     <div id="button_panel" class="easyui-panel""
