@@ -44,7 +44,7 @@
 $(function(){
     $('#dg').datagrid({
         url: '/order/list',
-        queryParams: form2Json("searchform"),
+        queryParams: form2Json(),
         method: 'POST',
         striped: true,
         fitColumns: true,
@@ -68,10 +68,10 @@ $(function(){
 });
 
 $("#submit_search").click(function () {
-    $('#dg').datagrid({ queryParams: form2Json("searchform") });   //点击搜索
+    $('#dg').datagrid('load',{ queryParams: form2Json() });   //点击搜索
 });
 //将表单数据转为json
-function form2Json(id) {
+function form2Json() {
     var arr = {};
         arr.orderId = $("#search_table").find("input[name='orderId']").val();
         arr.orderStatus = $("#search_table").find("input[name='orderStatus']").val();
@@ -181,7 +181,7 @@ function addOrder(){
                     <td>订单编号:</td>
                     <td><input type="text" name="orderId" /></td>
                     <td>订单状态:</td>
-                    <td><select name="orderStatus"><options><option value="1">all</option></options></select></td>
+                    <td><select name="orderStatus"><option value="1">all</option></select></td>
                     <td>创建人:</td>
                     <td><input type="text" name="createdBy"/></td>
                     <td>创建时间:</td>

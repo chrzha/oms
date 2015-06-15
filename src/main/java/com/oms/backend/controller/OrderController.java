@@ -44,13 +44,45 @@ public class OrderController {
     @ResponseBody
     Map<String, Object> getOrderList(@RequestBody String s) {
         String[] para = s.split("&");
-
         String orderId = "";
         Integer orderStatus = 1;
         String createdBy = "";
         Date createdTime = null;
+        Integer page = 1;
+        Integer rows = 10;
+
+        for(int i=0;i<para.length;i++){
+            if (para[i].startsWith("page")){
+                 page = Integer.valueOf(para[i].split("=")[1]);
+            }
+            if (para[i].startsWith("rows")){
+                rows = Integer.valueOf(para[i].split("=")[1]);
+            }
+            if (para[i].startsWith("createdBy")){
+                if(para[i].split("=").length>1){
+                    createdBy = para[i].split("=")[1];
+                }
+
+            }
+            if (para[i].startsWith("createdTime")){
+
+            }
+            if (para[i].startsWith("orderId")){
+                if(para[i].split("=").length>1){
+                    orderId = para[i].split("=")[1];
+                }
+            }
+            if (para[i].startsWith("orderStatus")){
+                if(para[i].split("=").length>1){
+                    orderStatus = Integer.valueOf(para[i].split("=")[1]);
+                }
+            }
+        }
+
 
         PaginationTableInfo pti = new PaginationTableInfo();
+        pti.setPage(page);
+        pti.setRows(rows);
         pti.setOrderId(orderId);
         pti.setOrderStatus(orderStatus);
         pti.setCreatedBy(createdBy);
