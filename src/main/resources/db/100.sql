@@ -13,9 +13,9 @@ CREATE TABLE `orders` (
 	`order_outtime` TIMESTAMP NULL DEFAULT NULL,
 	`order_getreason` VARCHAR(500) NOT NULL,
 	`created_by` VARCHAR(50) NOT NULL,
-	`created_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+	`created_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
 	`updated_by` VARCHAR(50) NOT NULL,
-	`updated_time` TIMESTAMP NULL DEFAULT NULL,
+	`updated_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (`order_id`),
 	INDEX `fk_order_supplier` (`order_supplier_id`),
 	INDEX `fk_order_buy` (`order_buyer_id`),
@@ -23,5 +23,4 @@ CREATE TABLE `orders` (
 	CONSTRAINT `fk_order_supplier` FOREIGN KEY (`order_supplier_id`) REFERENCES `supplier` (`supplier_id`) ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 COLLATE='utf8_general_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
