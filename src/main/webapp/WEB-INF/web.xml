@@ -13,6 +13,9 @@
         <param-name>defaultHtmlEscape</param-name>
         <param-value>true</param-value>
     </context-param>
+    <session-config>
+        <session-timeout>120</session-timeout>
+    </session-config>
     <servlet>
         <servlet-name>mvc-dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -110,35 +113,15 @@
         <url-pattern>/hotel/idcHome</url-pattern>
     </filter-mapping>
      -->
-      <filter>
-		<display-name>AccessFilter</display-name>
-		<filter-name>AccessFilter</filter-name>
-		<filter-class>com.oms.backend.common.AccessFilter</filter-class>
+    <filter>
+		<display-name>LoginFilter</display-name>
+		<filter-name>LoginFilter</filter-name>
+		<filter-class>com.oms.backend.filter.LoginFilter</filter-class>
 	</filter>
-	<filter-mapping>
-		<filter-name>AccessFilter</filter-name>
-		<url-pattern>/idcHome</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>AccessFilter</filter-name>
-		<url-pattern>/adminHome</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>AccessFilter</filter-name>
-		<url-pattern>/adminValidate</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>AccessFilter</filter-name>
-		<url-pattern>/changePwd</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>AccessFilter</filter-name>
-		<url-pattern>/hotelsValidate</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>AccessFilter</filter-name>
-		<url-pattern>/operatorHome</url-pattern>
-	</filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/order/*</url-pattern>
+    </filter-mapping>
 
 
 </web-app>

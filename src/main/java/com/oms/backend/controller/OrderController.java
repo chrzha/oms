@@ -31,8 +31,9 @@ public class OrderController {
 
     @RequestMapping(value = "/view/modify/{orderId}", method = RequestMethod.GET)
     public ModelAndView viewModify(@PathVariable("orderId") String orderId) {
+        HashMap<String,Object> detailMap = orderService.getOrderDetail(orderId);
         ModelAndView mv = new ModelAndView("order_modify");
-        mv.addObject("orderId", orderId+"");
+        mv.addObject("orderDetail", detailMap);
         return mv;
     }
 

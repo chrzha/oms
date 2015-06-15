@@ -53,7 +53,7 @@
             <table style="margin-top:20px;margin-bottom:20px;margin-left:100px;">
                 <tr>
                     <td>订单编号:</td>
-                    <td><input type="text" value="${orderId}" /></td>
+                    <td><input type="text" value="${orderDetail.order_id}" /></td>
                     <td>供应商:</td>
                     <td><input type="text" /><font color="red">[供应商列表]</font></td>
                     <td>付款方式:</td>
@@ -67,19 +67,19 @@
                 </tr>
                 <tr>
                 	<td>采购日期:</td>
-                	<td><input type="text" class="easyui-datebox" /></td>
+                	<td><input type="text" class="easyui-datebox" value="${orderDetail.order_buytime}"/></td>
                 	<td>到货日期:</td>
-                	<td><input type="text" class="easyui-datebox" /></td>
+                	<td><input type="text" class="easyui-datebox" value="${orderDetail.order_gettime}"/></td>
                 	<td>过期日期:</td>
-                	<td><input type="text" class="easyui-datebox" /></td>
+                	<td><input type="text" class="easyui-datebox" value="${orderDetail.order_outtime}"/></td>
                 </tr>
                 <tr>
                 	<td>采购原因:</td>
-                	<td colspan="5"><input class="easyui-textbox" data-options="multiline:true" type="text" style="width:600px;height:50px"></td>
+                	<td colspan="5"><input class="easyui-textbox" data-options="multiline:true" type="text" value="${orderDetail.order_buyreason}" style="width:600px;height:50px"></td>
                 </tr>
                 <tr>
                 	<td>备注:</td>
-                	<td colspan="5"><input class="easyui-textbox" data-options="multiline:true" type="text"  style="width:600px;height:80px"></td>
+                	<td colspan="5"><input class="easyui-textbox" data-options="multiline:true" type="text" value="${orderDetail.order_comment}" style="width:600px;height:80px"></td>
                 </tr>
             </table>
        </div>

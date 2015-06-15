@@ -3,6 +3,7 @@ package com.oms.backend.service;
 import com.oms.backend.entity.Order;
 import com.oms.backend.entity.PaginationTableInfo;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -15,5 +16,6 @@ public interface OrderService {
     public int insertOrder(Order order);
     public List<Order> getList(PaginationTableInfo pti);
     public Integer getTotalCount(PaginationTableInfo pti);
+    public HashMap<String,Object> getOrderDetail(String orderId);
 
 }

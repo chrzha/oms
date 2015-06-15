@@ -4,6 +4,7 @@ import com.oms.backend.entity.Order;
 import com.oms.backend.entity.PaginationTableInfo;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,4 +17,5 @@ public interface OrderMapper {
     public int insertOrder(Order order);
     public List<Order> getList(Map<String, Object> paramsMap);
     public Integer getTotalCount(Map<String, Object> paramsMap);
+    public HashMap<String,Object> getOrderDetail(@Param("orderId")String orderId);
 }

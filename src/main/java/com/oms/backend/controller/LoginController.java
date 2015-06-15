@@ -30,10 +30,12 @@ import java.io.IOException;
 @Path("/")
 public class LoginController {
 
+    public static final String SESSION_USERLOGIN = "userLogin";
+
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView getMainPage() {
 
         ModelAndView modelAndView = new ModelAndView("login");
@@ -43,7 +45,7 @@ public class LoginController {
     // validate
     @RequestMapping(value = "/validate", method = RequestMethod.POST)
     public ModelAndView validateUser(HttpServletRequest request) throws IOException {
-
+        request.getSession().setAttribute(SESSION_USERLOGIN,"chrzha");
         return new ModelAndView("oms_main");
 
     }

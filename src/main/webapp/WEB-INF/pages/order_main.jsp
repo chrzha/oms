@@ -96,7 +96,7 @@ function destroy() {
 
 function editOrder(){
 	var rows = $("#dg").datagrid("getSelections");
-	var rowId=$("#dg").datagrid("getSelected");
+	var row=$("#dg").datagrid("getSelected");
 	if(rows.length>1){
 		$.messager.alert("信息","修改时只可选择一条数据！");
 	}else if(rows.length==0){
@@ -107,7 +107,7 @@ function editOrder(){
          parent.$('#tabs').tabs('add',{
                   border: false,
                   title: '修改订单',
-                  content : "<iframe scrolling='auto' frameborder='0'  src='/order/view/modify/"+rowId+"' style='width:100%;height:100%;'></iframe>",
+                  content : "<iframe scrolling='auto' frameborder='0'  src='/order/view/modify/"+row.orderId+"' style='width:100%;height:100%;'></iframe>",
        			 closable: true
        			
         });

@@ -78,4 +78,9 @@ public class OrderServiceImpl implements OrderService{
         paramsMap.put("createdTime",pti.getCreatedTime());
         return orderMapper.getTotalCount(paramsMap);
     }
+
+    @Override
+    public HashMap<String, Object> getOrderDetail(String orderId) {
+        return orderMapper.getOrderDetail(orderId);
+    }
 }

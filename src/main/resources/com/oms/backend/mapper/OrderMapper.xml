@@ -4,6 +4,8 @@
   <resultMap id="BaseResultMap" type="com.oms.backend.entity.Order" >
     <id column="order_id" property="orderId" jdbcType="VARCHAR" />
     <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
+    <result column="order_buyer_id" property="buyerId" jdbcType="INTEGER" />
+    <result column="order_supplier_id" property="supplierId" jdbcType="INTEGER" />
     <result column="order_comment" property="orderComment" jdbcType="VARCHAR" />
     <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
     <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
@@ -16,7 +18,7 @@
     updated_by
   </sql>
   <select id="getList" parameterType="map" resultMap="BaseResultMap">
-      select * from orders o where
+      select o.* from orders o where
       o.order_id LIKE
       <if test="orderId != null">
       #{orderId}
@@ -24,6 +26,14 @@
       <if test="orderId == null">
           '%'
       </if> limit #{page},#{rows}
+  </select>
+
+  <select id="getOrderDetail" resultType="map">
+      select o.*,b.buyer_id,b.buyer_name,s.supplier_id,s.supplier_name
+      from orders o
+      inner join buyer b on o.order_buyer_id = b.buyer_id
+      inner join supplier s on o.order_supplier_id=s.supplier_id
+      where o.order_id = #{orderId}
   </select>
   <select id="getTotalCount" parameterType="map" resultType="int">
       select count(*) from orders o where
