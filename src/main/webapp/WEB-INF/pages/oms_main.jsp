@@ -164,7 +164,7 @@
 
   <div region="north" style="height:80%;background-color:#E0ECFF;">
           <div class="header">
-          	<div style="padding:10px;text-align:right;">
+          	<div style="padding:10px;text-align:right;float: right;">
           	        <a style="color:#000099；font-weight:bold;font-size:14pt;">欢迎你，<span href="javascript:void(0)" id="sb1" onclick="javascript:alert('edit')">
           	        <%= request.getSession().getAttribute("userLogin") %></span></a>
                     <div id="mm1">

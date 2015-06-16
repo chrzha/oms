@@ -77,6 +77,16 @@ public class OrderController {
         return res;
 
     }
+    
+    @RequestMapping("/delete/{orderId}")
+    public
+    @ResponseBody
+    String deleteGoods(@PathVariable("goodsId") String goodsId) {
+    	String res = "success";
+    	orderService.deleteOrderById(goodsId);
+    	return res;
+    	
+    }
 
     @RequestMapping("/update")
     public
@@ -95,6 +105,34 @@ public class OrderController {
         order1.put("rate", 1.1);
         order1.put("money", 100);
         for (int i = 0; i < 2; i++) {
+            orderList.add(order1);
+        }
+        result.put("total", 50);
+        result.put("rows", orderList);
+        return result;
+    }
+    @RequestMapping(value = "/goodslist", method = RequestMethod.GET)
+    public String chooseGoods() {
+    	
+        return "goods_list";
+    }
+    @RequestMapping("/choosegoods")
+    public
+    @ResponseBody
+    Map<String, Object> getGoodList(Integer page, Integer rows) {
+        List<Map<String, Object>> orderList = new ArrayList<Map<String, Object>>();
+        Map<String, Object> result = new HashMap<String, Object>();
+        Map<String, Object> order1 = new HashMap<String, Object>();
+        order1.put("goodsId", "1");
+        order1.put("goodsName", "5679677");
+        order1.put("goodsType", "OK");
+        order1.put("goodsDep", "chrzha");
+        order1.put("computerDep", "chrzha");
+        order1.put("number", 45);
+        order1.put("price", 10);
+        order1.put("rate", 1.1);
+        order1.put("money", 100);
+        for (int i = 0; i < 5; i++) {
             orderList.add(order1);
         }
         result.put("total", 50);
