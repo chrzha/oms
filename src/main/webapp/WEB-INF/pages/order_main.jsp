@@ -68,16 +68,17 @@ $(function(){
         rownumbers: true,
         pagination: true,
         nowrap: false,
+        remoteSort: false,
         pageSize: 10,
         pageList: [10, 20, 50, 100, 150, 200],
         showFooter: true,
         toolbar: "#toolbar",
         columns: [[
             { field: 'ck', checkbox: true },
-            { field: 'orderId', title: '订单编号', width: 250, align: 'center' },
-            { field: 'orderStatus', title: '订单状态', width: 150, align: 'center',formatter:formatterStatus},
-            { field: 'createdBy', title: '创建人', width: 150, align: 'center' },
-            { field: 'createdTime', title: '创建时间', width: 150, align: 'center',formatter:formatterDate},
+            { field: 'orderId', title: '订单编号', width: 250, align: 'center',sortable: 'true'},
+            { field: 'orderStatus', title: '订单状态', width: 150, align: 'center',sortable: 'true',formatter:formatterStatus},
+            { field: 'createdBy', title: '创建人', width: 150, align: 'center', sortable: 'true'},
+            { field: 'createdTime', title: '创建时间', width: 150, align: 'center',sortable: 'true',formatter:formatterDate},
             { field: 'orderComment', title: '备注', width: 150, align: 'center' }
         ]]
     });

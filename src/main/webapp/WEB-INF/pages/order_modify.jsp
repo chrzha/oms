@@ -63,7 +63,7 @@ $(function(){
             { field: 'goodsType', title: '规格型号', width: 100, align: 'left' },
             { field: 'goodsDep', title: '采购单位', width: 100, align: 'left' },
             { field: 'computerDep', title: '核算单位', width: 100, align: 'right' },
-            { field: 'number', title: '采购数量', width: 100, align: 'right' },
+            { field: 'number', title: '采购数量', width: 100, align: 'right',editor:'numberbox'},
             { field: 'price', title: '采购单价', width: 100, align: 'right' },
             { field: 'rate', title: '进项税率', width: 80, align: 'left' },
             { field: 'money', title: '采购金额', width: 80, align: 'left',
@@ -72,20 +72,16 @@ $(function(){
                     return money;
                 }
             }
-        ]],
-        onBeforeLoad: function (param) {
-        },
-        onLoadSuccess: function (data) {
-
-        },
-        onLoadError: function () {
-
-        },
-        onClickCell: function (rowIndex, field, value) {
-
-        }
+        ]]
     });
 });
+
+function updateActions(index){
+    $('#dg').datagrid('updateRow',{
+        index: index,
+        row:{}
+    });
+}
 </script>
 </head>
 <body>

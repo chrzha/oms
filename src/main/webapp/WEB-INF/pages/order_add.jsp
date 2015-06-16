@@ -40,9 +40,59 @@
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/plugins/jquery.datebox.js">
 </script>
 <script>
+$(document).ready(function(){
+
     function closeTab(){
         parent.$("#tabs").tabs('close','新增订单');
     }
+
+    function parseDate(dateStr){
+        var strArray = dateStr.split("/");
+        if(strArray.length == 3){
+            return new Date(strArray[2], strArray[0]-1, strArray[1]);
+        }else{
+            return new Date();
+        }
+    }
+
+    //save order
+    $("#save").click(function(){
+
+        var order = {};
+            order["orderId"] = $("#detail_table").find("input[name='orderId']").val(),
+            order["orderStatus"] = 0,
+            order["supplierId"] = $("#detail_table").find("#supplierId").val(),
+            order["payTypeId"] = $("#detail_table").find("#payTypeId").val(),
+            order["getDeptmtId"] = $("#detail_table").find("#getDeptmtId").val(),
+            order["orderAddress"] = $("#detail_table").find("input[name='orderAddress']").val(),
+            order["buyTime"] = parseDate($("#detail_table").find("input[name='buyTime']").val()),
+            order["getTime"] = parseDate($("#detail_table").find("input[name='getTime']").val()),
+            order["outTime"] = parseDate($("#detail_table").find("input[name='outTime']").val()),
+            order["getReason"] = $("#detail_table").find("#getReason").val(),
+            order["getDeptmtId"] = $("#detail_table").find("#getDeptmtId").val(),
+            order["orderComment"] = $("#detail_table").find("input[name='orderComment']").val(),
+
+          $.ajax({
+            url: "/order",
+            type: "post",
+            data: JSON.stringify(order),
+            datatype: "json",
+            contentType : "application/json; charset=utf-8",
+            success: function(data){
+                 $.messager.alert("成功","添加订单成功！");
+            },
+            error: function(){
+                alert("error");
+            }
+          });
+    });
+
+
+});
+
+
+
+
 </script>
 </head>
 <body>
@@ -50,38 +100,55 @@
   <div id="p" class="easyui-panel" title="基本信息"
        style="background:#fafafa;">
        <div style="width:100%;height:20%;">
-            <table style="margin-top:20px;margin-bottom:20px;margin-left:100px;">
+         <form id="detailform" action="#" enctype='application/json'>
+            <table id="detail_table" style="margin-top:20px;margin-bottom:20px;margin-left:100px;">
                 <tr>
                     <td>订单编号:</td>
-                    <td><input type="text" value="${orderId }" /></td>
+                    <td><input type="text" name="orderId" /></td>
                     <td>供应商:</td>
-                    <td><input type="text" /><font color="red">[供应商列表]</font></td>
+                    <td>
+                        <select id="supplierId" name="supplierId">
+                            <option select="true" value="1">供应商1</option>
+                            <option value="2">供应商2</option>
+                        </select>
+                    </td>
                     <td>付款方式:</td>
-                    <td><select><option>现金</option></select> </td>
+                    <td>
+                        <select id="payTypeId" name="payTypeId">
+                            <option select="true" value="1">现金</option>
+                            <option value="2">信用卡</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                 	<td>收货部门:</td>
-                	<td><select><option>采购部</option></select></td>
+                	<td>
+                	    <select id="getDeptmtId" name="getDeptmtId">
+                	        <option select="ture" value="1">采购部01</option>
+                	        <option value="2">采购部02</option>
+                	    </select>
+                	</td>
                 	<td>收货地址:</td>
-                	<td colspan="3"><input type="text" /></td>
+                	<td colspan="3"><input type="text" name="orderAddress" /></td>
                 </tr>
                 <tr>
                 	<td>采购日期:</td>
-                	<td><input type="text" class="easyui-datebox" /></td>
+                	<td><input type="text" class="easyui-datebox" name="buyTime"/></td>
                 	<td>到货日期:</td>
-                	<td><input type="text" class="easyui-datebox" /></td>
+                	<td><input type="text" class="easyui-datebox" name="getTime"/></td>
                 	<td>过期日期:</td>
-                	<td><input type="text" class="easyui-datebox" /></td>
+                	<td><input type="text" class="easyui-datebox" name="outTime"/></td>
                 </tr>
                 <tr>
                 	<td>采购原因:</td>
-                	<td colspan="5"><input class="easyui-textbox" data-options="multiline:true" type="text" style="width:600px;height:50px"></td>
+                	<td colspan="5"><input class="easyui-textbox" data-options="multiline:true" name="getReason" type="text" style="width:600px;height:50px"></td>
                 </tr>
                 <tr>
                 	<td>备注:</td>
-                	<td colspan="5"><input class="easyui-textbox" data-options="multiline:true" type="text"  style="width:600px;height:80px"></td>
+                	<td colspan="5"><input class="easyui-textbox" data-options="multiline:true" type="text" name="orderComment"  style="width:600px;height:80px"></td>
                 </tr>
             </table>
+         </form>
        </div>
   </div>
   <div id="order_panel" class="easyui-panel" title="商品信息列表"
@@ -106,7 +173,7 @@
   <div id="button_panel" class="easyui-panel""
            style="background:#fafafa;">
           <div  style="width:80%;height:40%;margin-left:10px;margin-top:10px;">
-              <input type="button" style="width:80px;" value="保存" />
+              <input type="button" style="width:80px;" id="save" value="保存" />
               <input type="button" style="width:80px;" value="取消" onclick="closeTab();"/>
           </div>
   </div>

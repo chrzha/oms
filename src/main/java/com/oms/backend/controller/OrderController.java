@@ -39,6 +39,22 @@ public class OrderController {
         return mv;
     }
 
+    @RequestMapping(value = "", method = RequestMethod.POST)
+    @ResponseBody
+    public String addOrder(@RequestBody Order order) {
+        order.setCreatedBy("system");
+        int respRow = orderService.insertOrder(order);
+        return "add successfully!";
+    }
+
+    @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/{orderId}", method = RequestMethod.PUT)
+    @ResponseBody
+    public String updateOrder(@RequestBody Order order,@PathVariable("orderId")String orderId) {
+        order.setOrderId(orderId);
+        int respRow = orderService.updateOrderById(order);
+        return "update successfully";
+    }
+
     @RequestMapping(value = "/list", method = RequestMethod.POST)
     public
     @ResponseBody

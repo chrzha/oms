@@ -12,10 +12,82 @@ public class Order {
     private String orderComment;
     private Integer buyerId;
     private Integer supplierId;
+    private Integer payTypeId;
+    private Integer getDeptmtId;
+    private Integer buyDeptmtId;
+    private String orderAddress;
+    private String getReason;
+    private Date buyTime;
+    private Date getTime;
+    private Date outTime;
     private Date createdTime;
     private String createdBy;
     private Date updatedTime;
     private String updatedBy;
+
+    public String getOrderAddress() {
+        return orderAddress;
+    }
+
+    public void setOrderAddress(String orderAddress) {
+        this.orderAddress = orderAddress;
+    }
+
+    public String getGetReason() {
+        return getReason;
+    }
+
+    public void setGetReason(String getReason) {
+        this.getReason = getReason;
+    }
+
+    public Date getBuyTime() {
+        return buyTime;
+    }
+
+    public void setBuyTime(Date buyTime) {
+        this.buyTime = buyTime;
+    }
+
+    public Date getGetTime() {
+        return getTime;
+    }
+
+    public void setGetTime(Date getTime) {
+        this.getTime = getTime;
+    }
+
+    public Date getOutTime() {
+        return outTime;
+    }
+
+    public void setOutTime(Date outTime) {
+        this.outTime = outTime;
+    }
+
+    public Integer getGetDeptmtId() {
+        return getDeptmtId;
+    }
+
+    public void setGetDeptmtId(Integer getDeptmtId) {
+        this.getDeptmtId = getDeptmtId;
+    }
+
+    public Integer getBuyDeptmtId() {
+        return buyDeptmtId;
+    }
+
+    public void setBuyDeptmtId(Integer buyDeptmtId) {
+        this.buyDeptmtId = buyDeptmtId;
+    }
+
+    public Integer getPayTypeId() {
+        return payTypeId;
+    }
+
+    public void setPayTypeId(Integer payTypeId) {
+        this.payTypeId = payTypeId;
+    }
 
     public Integer getBuyerId() {
         return buyerId;

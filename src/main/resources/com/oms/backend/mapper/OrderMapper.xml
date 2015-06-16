@@ -5,8 +5,16 @@
     <id column="order_id" property="orderId" jdbcType="VARCHAR" />
     <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
     <result column="order_buyer_id" property="buyerId" jdbcType="INTEGER" />
+    <result column="order_paytype_id" property="payTypeId" jdbcType="INTEGER" />
     <result column="order_supplier_id" property="supplierId" jdbcType="INTEGER" />
+    <result column="order_getdeptmt_id" property="getDeptmtId" jdbcType="INTEGER" />
+    <result column="order_buydeptmt_id" property="buyDeptmtId" jdbcType="INTEGER" />
     <result column="order_comment" property="orderComment" jdbcType="VARCHAR" />
+    <result column="order_address" property="orderAddress" jdbcType="VARCHAR" />
+    <result column="order_getreason" property="getReason" jdbcType="VARCHAR" />
+    <result column="order_buytime" property="buyTime" jdbcType="TIMESTAMP" />
+    <result column="order_gettime" property="getTime" jdbcType="TIMESTAMP" />
+    <result column="order_outtime" property="outTime" jdbcType="TIMESTAMP" />
     <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
     <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
     <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
@@ -81,5 +89,33 @@
     delete from orders
     where order_id = #{orderId}
   </delete>
+
+  <insert id="insertOrder" parameterType="com.oms.backend.entity.Order">
+      INSERT INTO orders (order_id, order_comment, order_supplier_id, order_paytype_id,
+      order_getdeptmt_id, order_buydeptmt_id, order_buyer_id, order_address, order_buytime,order_gettime,order_outtime,
+      order_getreason, created_by,created_time, updated_by, updated_time)
+      VALUES (#{orderId}, #{orderComment}, #{supplierId}, #{payTypeId}, #{getDeptmtId}, #{buyDeptmtId}, #{buyerId}, #{orderAddress}, #{buyTime},
+      #{getTime},#{outTime},#{getReason}, #{createdBy},now(), #{updatedBy},now());
+  </insert>
+
+  <update id="updateOrderById" parameterType="com.oms.backend.entity.Order">
+      UPDATE orders SET
+      order_status = #{orderStatus},
+      order_comment = #{orderComment},
+      order_supplier_id = #{supplierId},
+      order_paytype_id = #{payTypeId},
+      order_getdeptmt_id = #{getDeptmtId},
+      order_buydeptmt_id = #{buyDeptmtId},
+      order_buyer_id = #{buyerId},
+      order_address = #{orderAddress},
+      order_buytime = #{buyTime},
+      order_gettime = #{getTime},
+      order_outtime = #{outTime},
+      order_getreason = #{getReason},
+      updated_by = #{updatedBy},
+      updated_time = now()
+      WHERE  order_id = #{orderId}
+  </update>
+
 
 </mapper>
