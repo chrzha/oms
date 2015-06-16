@@ -39,11 +39,29 @@
 </script>
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/plugins/jquery.datebox.js">
 </script>
+<script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/plugins/jquery.edatagrid.js">
+</script>
 <script>
+
 function closeTab(){
     parent.$("#tabs").tabs('close','新增订单');
 }
 $(document).ready(function(){
+
+
+$('#dg').datagrid('beginEdit', rowIndex);
+var ed = $('#dg').datagrid('getEditors', rowIndex);
+for (var i = 0; i < ed.length; i++)
+{
+    var e = ed[i];
+    $(e.target).bind('keyup', function()
+    {
+        if (window.event.keyCode == 13)
+        {
+            alert("you check enter key");
+        }
+    });
+}
 
 
     function parseDate(dateStr){
@@ -153,7 +171,7 @@ $(document).ready(function(){
   </div>
   <div id="order_panel" class="easyui-panel" title="商品信息列表"
        style="background:#fafafa;">
-       <table id="dg" class="easyui-datagrid" url="/order/update">
+       <table id="dg" class="easyui-edatagrid" url="/order/update" idField="goodsId">
        <thead>
            <tr>
                <th field="ck" checkbox="true"></th>
@@ -162,7 +180,7 @@ $(document).ready(function(){
                <th field='goodsType' width="120" align="center">规格型号</th>
                <th field='goodsDep' width="120" align="center">采购单位</th>
                <th field='computerDep' width="120" align="center">核算单位</th>
-               <th field='number' width="110" align="center">采购数量</th>
+               <th field='number' width="110" align="center" editor="{type:'numberbox'}">采购数量</th>
                <th field='price' width="110" align="center">采购单价</th>
                <th field='rate' width="110" align="center">进项税率</th>
                <th field='money' width="110" align="center">采购金额</th>
