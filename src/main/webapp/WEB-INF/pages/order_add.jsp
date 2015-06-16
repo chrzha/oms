@@ -40,11 +40,11 @@
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/plugins/jquery.datebox.js">
 </script>
 <script>
+function closeTab(){
+    parent.$("#tabs").tabs('close','新增订单');
+}
 $(document).ready(function(){
 
-    function closeTab(){
-        parent.$("#tabs").tabs('close','新增订单');
-    }
 
     function parseDate(dateStr){
         var strArray = dateStr.split("/");

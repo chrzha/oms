@@ -119,8 +119,6 @@ function parseDate(dateStr){
     var strArray = dateStr.split("/");
     if(strArray.length == 3){
         return new Date(strArray[2], strArray[0]-1, strArray[1]);
-    }else{
-        return new Date();
     }
 }
 

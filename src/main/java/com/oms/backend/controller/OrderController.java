@@ -47,7 +47,7 @@ public class OrderController {
         return "add successfully!";
     }
 
-    @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/{orderId}", method = RequestMethod.PUT)
+    @RequestMapping( value = "/{orderId}", method = RequestMethod.PUT)
     @ResponseBody
     public String updateOrder(@RequestBody Order order,@PathVariable("orderId")String orderId) {
         order.setOrderId(orderId);

@@ -56,8 +56,8 @@
   <select id="getOrderDetail" resultType="map">
       select o.*,b.buyer_id,b.buyer_name,s.supplier_id,s.supplier_name
       from orders o
-      inner join buyer b on o.order_buyer_id = b.buyer_id
-      inner join supplier s on o.order_supplier_id=s.supplier_id
+      left join buyer b on o.order_buyer_id = b.buyer_id
+      right join supplier s on o.order_supplier_id=s.supplier_id
       where o.order_id = #{orderId}
   </select>
   <select id="getTotalCount" parameterType="map" resultType="int">
