@@ -42,27 +42,56 @@
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/plugins/jquery.edatagrid.js">
 </script>
 <script>
+var rowIndexArray = [];
+$(function(){
+    $('#dg').datagrid({
+        striped: true,
+        fitColumns: true,
+        singleSelect: false,
+        rownumbers: true,
+        pagination: true,
+        nowrap: false,
+        idField:'goodsId',
+        remoteSort: false,
+        pageSize: 10,
+        pageList: [10, 20, 50, 100, 150, 200],
+        showFooter: true,
+        toolbar: "#toolbar",
+        columns: [[
+            { field: 'ck', checkbox: true },
+            { field: 'goodsId', title: '商品编号', width: 250, align: 'center' },
+            { field: 'goodsName', title: '商品名称', width: 150, align: 'center' },
+            { field: 'goodsType', title: '规格型号', width: 150, align: 'center' },
+            { field: 'goodsDep', title: '采购单位', width: 150, align: 'center' },
+            { field: 'computerDep', title: '核算单位', width: 150, align: 'center' },
+            { field: 'number', title: '采购数量', width: 150, align: 'center',editor: { type: 'numberbox', required:true, options: { precision: 0}} },
+            { field: 'price', title: '采购单价', width: 150, align: 'center' },
+            { field: 'rate', title: '进项税率', width: 150, align: 'center' },
+            { field: 'money', title: '采购金额', width: 150, align: 'center',
+                formatter:function(value,rowData,rowIndex){
+                    var money = rowData.number*rowData.price;
+                    return money;
+                } }
+        ]],
+        onSelect: function(rowIndex, rowData) {
+            rowIndexArray.push(rowIndex);
+        },
+        onClickCell: function (rowIndex, field, value) {
+            $('#dg').datagrid('beginEdit',rowIndex);
+        },
+        onAfterEdit: function (rowIndex, rowData, changes){
+               alert(changes);
+        },
+        onCancelEdit: function (rowIndex, rowData){
+            alert(rowData);
+        }
+    });
+});
 
 function closeTab(){
     parent.$("#tabs").tabs('close','新增订单');
 }
 $(document).ready(function(){
-
-
-$('#dg').datagrid('beginEdit', rowIndex);
-var ed = $('#dg').datagrid('getEditors', rowIndex);
-for (var i = 0; i < ed.length; i++)
-{
-    var e = ed[i];
-    $(e.target).bind('keyup', function()
-    {
-        if (window.event.keyCode == 13)
-        {
-            alert("you check enter key");
-        }
-    });
-}
-
 
     function parseDate(dateStr){
         var strArray = dateStr.split("/");
@@ -86,7 +115,7 @@ for (var i = 0; i < ed.length; i++)
             order["buyTime"] = parseDate($("#detail_table").find("input[name='buyTime']").val()),
             order["getTime"] = parseDate($("#detail_table").find("input[name='getTime']").val()),
             order["outTime"] = parseDate($("#detail_table").find("input[name='outTime']").val()),
-            order["getReason"] = $("#detail_table").find("#getReason").val(),
+            order["getReason"] = $("#detail_table").find("input[name='getReason']").val(),
             order["getDeptmtId"] = $("#detail_table").find("#getDeptmtId").val(),
             order["orderComment"] = $("#detail_table").find("input[name='orderComment']").val(),
 
@@ -110,19 +139,32 @@ function destroy() {
             var rows = $('#dg').datagrid('getSelections');
 
             if(rows.length==0){
-                $.messager.alert("信息","请选择至少一行数据！");
-            }else if(rows.length>1){
-                $.messager.alert("信息","暂不支持批量删除！");
+                $.messager.alert("信息","请选择至少一行数据！","warning");
             }else {
-                var row = $('#dg').datagrid('getSelected');
-                if (row) {
-                    $.messager.confirm('确认', '确定要删除该条记录吗?', function (r) {
-                        if (r) {
+                $.messager.confirm('确认', '确定要删除该条记录吗?', function (r) {
+                    if (r) {
+                        for(var i=0;i<rows.length;i++){
+                            var index = $('#dg').datagrid('getRowIndex', rows[i]);
+                            $('#dg').datagrid('deleteRow', index);
                         }
-                    });
-                }
+                    }
+                });
             }
 }
+</script>
+<script type="text/javascript">
+  function chooseGoods(){
+     $("#choose_goods").window("open");
+  }
+  function closeWindow(){
+     $("#choose_goods").window("close");
+  }
+$(document).ready(function(){
+  $("#addGoods").click(function(){
+    alert("TO DO");
+  });
+});
+
 </script>
 </head>
 <body>
@@ -184,40 +226,39 @@ function destroy() {
   <div id="order_panel" class="easyui-panel" title="商品信息列表"
        style="background:#fafafa;">
        <div align="right">
-       		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="chooseGoods()">选择商品</a>&nbsp;&nbsp;<a href="javascript:void(0)" class="easyui-linkbutton" onclick="destroy()">删除商品</a>
-       		<div id="dd" title="My Dialog"  class="easyui-window" closed="true" style="width:600px;height:480px;"></div> 
+       		<input type="button" style="width:80px;" onclick="chooseGoods()" value="选择商品" />&nbsp;&nbsp;<input type="button" style="width:80px;" onclick="destroy()" value="删除商品" />
        </div>
-       <table id="dg" class="easyui-datagrid" url="/order/update" idField="goodsId">
-       <thead>
-           <tr>
-               <th field="ck" checkbox="true"></th>
-               <th field='goodsId' width="120"  align="center">商品编号</th>
-               <th field='goodsName' width="130" align="center">商品名称</th>
-               <th field='goodsType' width="120" align="center">规格型号</th>
-               <th field='goodsDep' width="120" align="center">采购单位</th>
-               <th field='computerDep' width="120" align="center">核算单位</th>
-               <th field='number' width="110" align="center" editor="{type:'numberbox'}">采购数量</th>
-               <th field='price' width="110" align="center">采购单价</th>
-               <th field='rate' width="110" align="center">进项税率</th>
-               <th field='money' width="110" align="center">采购金额</th>
-           </tr>
-       </thead>
+       <table id="dg">
        </table>
   </div>
-  <div id="Product" class="easyui-window"  style="width:1000px;height:300px;" >  
+  <div id="choose_goods" class="easyui-window" title="商品选择" closed="true" style="width:1000px;height:300px;" data-options="iconCls:'icon-add'">
+          <div id="order_panel" class="easyui-panel" title="商品信息列表"
+                 style="background:#fafafa;">
+                 <table id="dg" class="easyui-datagrid" url="/order/choosegoods">
+                 <thead>
+                     <tr>
+                         <th field="ck" checkbox="true"></th>
+                         <th field='goodsId' width="120"  align="center">商品编号</th>
+                         <th field='goodsName' width="120" align="center">商品名称</th>
+                         <th field='goodsType' width="120" align="center">规格型号</th>
+                         <th field='goodsDep' width="120" align="center">采购单位</th>
+                         <th field='computerDep' width="100" align="center">核算单位</th>
+                         <th field='price' width="100" align="center">采购单价</th>
+                         <th field='rate' width="100" align="center">进项税率</th>
+                     </tr>
+                 </thead>
+                 </table>
+            </div>
+            <div id="button_panel" class="easyui-panel""
+                     style="background:#fafafa;">
+                    <div  style="width:80%;height:40%;margin-left:10px;margin-top:10px;">
+                        <input type="button" style="width:80px;" id="addGoods" value="添加" />
+                        <input type="button" style="width:80px;" value="取消" onclick="closeWindow();"/>
+                    </div>
+            </div>
+
   </div>
-  <script type="text/javascript">
-   $("#Product").dialog({
-            title: '发货操作',
-            href: '/order/goodslist',
-            iconCls: 'icon-edit',
-            modal: true,
-            closed: true
-       });
-    function chooseGoods(){
-     $("#Product").dialog("open");
-    }
-  </script>
+
   <div id="button_panel" class="easyui-panel""
            style="background:#fafafa;">
           <div  style="width:80%;height:40%;margin-left:10px;margin-top:10px;">

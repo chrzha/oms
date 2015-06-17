@@ -126,9 +126,9 @@ function destroy() {
             var rows = $('#dg').datagrid('getSelections');
 
             if(rows.length==0){
-                $.messager.alert("信息","请选择至少一行数据！");
+                $.messager.alert("信息","请选择至少一行数据！","warning");
             }else if(rows.length>1){
-                $.messager.alert("信息","暂不支持批量删除！");
+                $.messager.alert("信息","暂不支持批量删除！","warning");
             }else {
                 var row = $('#dg').datagrid('getSelected');
                 if (row) {
@@ -154,9 +154,9 @@ function editOrder(){
 	var rows = $("#dg").datagrid("getSelections");
 	var row=$("#dg").datagrid("getSelected");
 	if(rows.length>1){
-		$.messager.alert("信息","修改时只可选择一条数据！");
+		$.messager.alert("信息","修改时只可选择一条数据！","warning");
 	}else if(rows.length==0){
-		$.messager.alert("信息","请选择至少一行数据！");
+		$.messager.alert("信息","请选择至少一行数据！","warning");
 	}else{
 		 //当前tab
         var current_tab = parent.$('#tabs').tabs('getSelected');

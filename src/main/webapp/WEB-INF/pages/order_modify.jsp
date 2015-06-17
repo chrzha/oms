@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
@@ -101,7 +102,7 @@ $(document).ready(function(){
             order["buyTime"] = parseDate($("#detail_table").find("input[name='buyTime']").val()),
             order["getTime"] = parseDate($("#detail_table").find("input[name='getTime']").val()),
             order["outTime"] = parseDate($("#detail_table").find("input[name='outTime']").val()),
-            order["getReason"] = $("#detail_table").find("#getReason").val(),
+            order["getReason"] = $("#detail_table").find("input[name='getReason']").val(),
             order["getDeptmtId"] = $("#detail_table").find("#getDeptmtId").val(),
             order["orderComment"] = $("#detail_table").find("input[name='orderComment']").val(),
 
@@ -120,6 +121,37 @@ $(document).ready(function(){
           });
     });
 });
+
+function destroy() {
+            var rows = $('#dg').datagrid('getSelections');
+
+            if(rows.length==0){
+                $.messager.alert("信息","请选择至少一行数据！","warning");
+            }else {
+                $.messager.confirm('确认', '确定要删除该条记录吗?', function (r) {
+                    if (r) {
+                        for(var i=0;i<rows.length;i++){
+                            var index = $('#dg').datagrid('getRowIndex', rows[i]);
+                            $('#dg').datagrid('deleteRow', index);
+                        }
+                    }
+                });
+            }
+}
+</script>
+<script type="text/javascript">
+  function chooseGoods(){
+     $("#choose_goods").window("open");
+  }
+  function closeWindow(){
+     $("#choose_goods").window("close");
+  }
+$(document).ready(function(){
+  $("#addGoods").click(function(){
+    alert("TO DO");
+  });
+});
+
 </script>
 </head>
 <body>
@@ -134,15 +166,15 @@ $(document).ready(function(){
                     <td>供应商:</td>
                     <td>
                         <select id="supplierId" name="supplierId">
-                            <option value="1">供应商1</option>
-                            <option value="2">供应商2</option>
+                            <option <c:if test="${orderDetail.order_supplier_id == 1}"> selected="selected" </c:if> value="1">供应商1</option>
+                            <option <c:if test="${orderDetail.order_supplier_id == 2}"> selected="selected" </c:if> value="2">供应商2</option>
                         </select>
                     </td>
                     <td>付款方式:</td>
                     <td>
                         <select id="payTypeId" name="payTypeId">
-                            <option value="1">现金</option>
-                            <option value="2">信用卡</option>
+                            <option <c:if test="${orderDetail.order_paytype_id == 1}"> selected="selected" </c:if> value="1">现金</option>
+                            <option <c:if test="${orderDetail.order_paytype_id == 2}"> selected="selected" </c:if> value="2">信用卡</option>
                         </select>
                     </td>
                 </tr>
@@ -150,12 +182,12 @@ $(document).ready(function(){
                 	<td>收货部门:</td>
                 	<td>
                         <select id="getDeptmtId" name="getDeptmtId">
-                            <option value="1">采购部01</option>
-                            <option value="2">采购部02</option>
+                            <option <c:if test="${orderDetail.order_getdeptmt_id == 1}"> selected="selected" </c:if> value="1">采购部01</option>
+                            <option <c:if test="${orderDetail.order_getdeptmt_id == 2}"> selected="selected" </c:if> value="2">采购部02</option>
                         </select>
                     </td>
                 	<td>收货地址:</td>
-                	<td colspan="3"><input type="text" name="orderAddress" /></td>
+                	<td colspan="3"><input type="text" name="orderAddress" value="${orderDetail.order_address}"/></td>
                 </tr>
                 <tr>
                 	<td>采购日期:</td>
@@ -167,7 +199,7 @@ $(document).ready(function(){
                 </tr>
                 <tr>
                 	<td>采购原因:</td>
-                	<td colspan="5"><input class="easyui-textbox" data-options="multiline:true" type="text" name="getReason" value="${orderDetail.order_buyreason}" style="width:600px;height:50px"></td>
+                	<td colspan="5"><input class="easyui-textbox" data-options="multiline:true" type="text" name="getReason" value="${orderDetail.order_getreason}" style="width:600px;height:50px"></td>
                 </tr>
                 <tr>
                 	<td>备注:</td>
@@ -178,9 +210,39 @@ $(document).ready(function(){
   </div>
   <div id="order_panel" class="easyui-panel" title="商品信息列表"
        style="background:#fafafa;">
+       <div align="right">
+            <input type="button" style="width:80px;" onclick="chooseGoods()" value="选择商品" />&nbsp;&nbsp;<input type="button" style="width:80px;" onclick="destroy()" value="删除商品" />
+       </div>
        <table id="dg">
        </table>
   </div>
+  <div id="choose_goods" class="easyui-window" title="商品选择" closed="true" style="width:1000px;height:300px;" data-options="iconCls:'icon-add'">
+            <div id="order_panel" class="easyui-panel" title="商品信息列表"
+                   style="background:#fafafa;">
+                   <table id="dg" class="easyui-datagrid" url="/order/choosegoods">
+                   <thead>
+                       <tr>
+                           <th field="ck" checkbox="true"></th>
+                           <th field='goodsId' width="120"  align="center">商品编号</th>
+                           <th field='goodsName' width="120" align="center">商品名称</th>
+                           <th field='goodsType' width="120" align="center">规格型号</th>
+                           <th field='goodsDep' width="120" align="center">采购单位</th>
+                           <th field='computerDep' width="100" align="center">核算单位</th>
+                           <th field='price' width="100" align="center">采购单价</th>
+                           <th field='rate' width="100" align="center">进项税率</th>
+                       </tr>
+                   </thead>
+                   </table>
+              </div>
+              <div id="button_panel" class="easyui-panel""
+                       style="background:#fafafa;">
+                      <div  style="width:80%;height:40%;margin-left:10px;margin-top:10px;">
+                          <input type="button" style="width:80px;" id="addGoods" value="添加" />
+                          <input type="button" style="width:80px;" value="取消" onclick="closeWindow();"/>
+                      </div>
+              </div>
+
+    </div>
     <div id="button_panel" class="easyui-panel""
          style="background:#fafafa;">
         <div  style="width:80%;height:40%;margin-left:10px;margin-top:10px;">

@@ -225,6 +225,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>hotel</finalName>
+		<finalName>oms</finalName>
 	</build>
 </project>
