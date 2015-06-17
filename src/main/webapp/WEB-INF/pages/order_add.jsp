@@ -104,13 +104,25 @@ for (var i = 0; i < ed.length; i++)
             }
           });
     });
-
-
+	
 });
+function destroy() {
+            var rows = $('#dg').datagrid('getSelections');
 
-
-
-
+            if(rows.length==0){
+                $.messager.alert("信息","请选择至少一行数据！");
+            }else if(rows.length>1){
+                $.messager.alert("信息","暂不支持批量删除！");
+            }else {
+                var row = $('#dg').datagrid('getSelected');
+                if (row) {
+                    $.messager.confirm('确认', '确定要删除该条记录吗?', function (r) {
+                        if (r) {
+                        }
+                    });
+                }
+            }
+}
 </script>
 </head>
 <body>
@@ -171,7 +183,11 @@ for (var i = 0; i < ed.length; i++)
   </div>
   <div id="order_panel" class="easyui-panel" title="商品信息列表"
        style="background:#fafafa;">
-       <table id="dg" class="easyui-edatagrid" url="/order/update" idField="goodsId">
+       <div align="right">
+       		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="chooseGoods()">选择商品</a>&nbsp;&nbsp;<a href="javascript:void(0)" class="easyui-linkbutton" onclick="destroy()">删除商品</a>
+       		<div id="dd" title="My Dialog"  class="easyui-window" closed="true" style="width:600px;height:480px;"></div> 
+       </div>
+       <table id="dg" class="easyui-datagrid" url="/order/update" idField="goodsId">
        <thead>
            <tr>
                <th field="ck" checkbox="true"></th>
@@ -188,6 +204,20 @@ for (var i = 0; i < ed.length; i++)
        </thead>
        </table>
   </div>
+  <div id="Product" class="easyui-window"  style="width:1000px;height:300px;" >  
+  </div>
+  <script type="text/javascript">
+   $("#Product").dialog({
+            title: '发货操作',
+            href: '/order/goodslist',
+            iconCls: 'icon-edit',
+            modal: true,
+            closed: true
+       });
+    function chooseGoods(){
+     $("#Product").dialog("open");
+    }
+  </script>
   <div id="button_panel" class="easyui-panel""
            style="background:#fafafa;">
           <div  style="width:80%;height:40%;margin-left:10px;margin-top:10px;">
