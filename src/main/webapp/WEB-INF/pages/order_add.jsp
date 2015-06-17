@@ -161,7 +161,20 @@ function destroy() {
   }
 $(document).ready(function(){
   $("#addGoods").click(function(){
-    alert("TO DO");
+    var rows = $("#dg_all").datagrid('getSelections');
+    for(var i=0;i<rows.length;i++){
+               $('#dg').datagrid('appendRow',{
+                   goodsId: rows[i].goodsId,
+                   goodsName: rows[i].goodsName,
+                   goodsType: rows[i].goodsType,
+                   goodsDep: rows[i].goodsDep,
+                   computerDep: rows[i].computerDep,
+                   number: 1,
+                   price: rows[i].price,
+                   rate: rows[i].rate
+               });
+    }
+    $("#choose_goods").window("close");
   });
 });
 
@@ -234,7 +247,7 @@ $(document).ready(function(){
   <div id="choose_goods" class="easyui-window" title="商品选择" closed="true" style="width:1000px;height:300px;" data-options="iconCls:'icon-add'">
           <div id="order_panel" class="easyui-panel" title="商品信息列表"
                  style="background:#fafafa;">
-                 <table id="dg" class="easyui-datagrid" url="/order/choosegoods">
+                 <table id="dg_all" class="easyui-datagrid" url="/order/choosegoods">
                  <thead>
                      <tr>
                          <th field="ck" checkbox="true"></th>

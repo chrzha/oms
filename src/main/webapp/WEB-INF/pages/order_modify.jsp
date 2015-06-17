@@ -76,7 +76,7 @@ $(document).ready(function(){
                 { field: 'goodsType', title: '规格型号', width: 100, align: 'left' },
                 { field: 'goodsDep', title: '采购单位', width: 100, align: 'left' },
                 { field: 'computerDep', title: '核算单位', width: 100, align: 'right' },
-                { field: 'number', title: '采购数量', width: 100, align: 'right',editor:'numberbox'},
+                { field: 'number', title: '采购数量', width: 100, align: 'right',editor: { type: 'numberbox', required:true, options: { precision: 0}} },
                 { field: 'price', title: '采购单价', width: 100, align: 'right' },
                 { field: 'rate', title: '进项税率', width: 80, align: 'left' },
                 { field: 'money', title: '采购金额', width: 80, align: 'left',
@@ -85,7 +85,10 @@ $(document).ready(function(){
                         return money;
                     }
                 }
-            ]]
+            ]],
+            onClickCell: function (rowIndex, field, value) {
+                $('#dg').datagrid('beginEdit',rowIndex);
+            }
         });
     });
 
@@ -147,9 +150,22 @@ function destroy() {
      $("#choose_goods").window("close");
   }
 $(document).ready(function(){
-  $("#addGoods").click(function(){
-    alert("TO DO");
-  });
+   $("#addGoods").click(function(){
+       var rows = $("#dg_all").datagrid('getSelections');
+       for(var i=0;i<rows.length;i++){
+           $('#dg').datagrid('appendRow',{
+               goodsId: rows[i].goodsId,
+               goodsName: rows[i].goodsName,
+               goodsType: rows[i].goodsType,
+               goodsDep: rows[i].goodsDep,
+               computerDep: rows[i].computerDep,
+               number: 1,
+               price: rows[i].price,
+               rate: rows[i].rate
+           });
+       }
+       $("#choose_goods").window("close");
+     });
 });
 
 </script>
@@ -219,7 +235,7 @@ $(document).ready(function(){
   <div id="choose_goods" class="easyui-window" title="商品选择" closed="true" style="width:1000px;height:300px;" data-options="iconCls:'icon-add'">
             <div id="order_panel" class="easyui-panel" title="商品信息列表"
                    style="background:#fafafa;">
-                   <table id="dg" class="easyui-datagrid" url="/order/choosegoods">
+                   <table id="dg_all" class="easyui-datagrid" url="/order/choosegoods">
                    <thead>
                        <tr>
                            <th field="ck" checkbox="true"></th>
