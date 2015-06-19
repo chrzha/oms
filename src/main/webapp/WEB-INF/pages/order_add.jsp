@@ -120,7 +120,7 @@ $(document).ready(function(){
             order["orderComment"] = $("#detail_table").find("input[name='orderComment']").val(),
 
           $.ajax({
-            url: "/order",
+            url: "/orders",
             type: "post",
             data: JSON.stringify(order),
             datatype: "json",
@@ -129,7 +129,7 @@ $(document).ready(function(){
                  $.messager.alert("成功","添加订单成功！");
             },
             error: function(){
-                alert("error");
+                $.messager.alert("失败","添加订单失败！","error");
             }
           });
     });
@@ -247,7 +247,7 @@ $(document).ready(function(){
   <div id="choose_goods" class="easyui-window" title="商品选择" closed="true" style="width:1000px;height:300px;" data-options="iconCls:'icon-add'">
           <div id="order_panel" class="easyui-panel" title="商品信息列表"
                  style="background:#fafafa;">
-                 <table id="dg_all" class="easyui-datagrid" url="/order/choosegoods">
+                 <table id="dg_all" class="easyui-datagrid" data-options="url:'/orders/goods',method:'get'">
                  <thead>
                      <tr>
                          <th field="ck" checkbox="true"></th>

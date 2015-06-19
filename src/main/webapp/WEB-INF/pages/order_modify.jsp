@@ -58,8 +58,8 @@ $(document).ready(function(){
 
     $(function(){
         $('#dg').datagrid({
-            url: '/order/update',
-            method: 'POST',
+            url: '/orders/goods',
+            method: 'GET',
             striped: true,
             fitColumns: true,
             singleSelect: false,
@@ -110,13 +110,13 @@ $(document).ready(function(){
             order["orderComment"] = $("#detail_table").find("input[name='orderComment']").val(),
 
           $.ajax({
-            url: "/order/"+order["orderId"],
+            url: "/orders/"+order["orderId"],
             type: "put",
             data: JSON.stringify(order),
             datatype: "json",
             contentType : "application/json; charset=utf-8",
             success: function(data){
-                 $.messager.alert("成功","添加订单成功！");
+                 $.messager.alert("成功","修改订单成功！");
             },
             error: function(){
                 alert("error");
@@ -235,7 +235,7 @@ $(document).ready(function(){
   <div id="choose_goods" class="easyui-window" title="商品选择" closed="true" style="width:1000px;height:300px;" data-options="iconCls:'icon-add'">
             <div id="order_panel" class="easyui-panel" title="商品信息列表"
                    style="background:#fafafa;">
-                   <table id="dg_all" class="easyui-datagrid" url="/order/choosegoods">
+                   <table id="dg_all" class="easyui-datagrid" data-options="url:'/orders/goods',method:'get'">
                    <thead>
                        <tr>
                            <th field="ck" checkbox="true"></th>

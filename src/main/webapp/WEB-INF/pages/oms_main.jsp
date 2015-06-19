@@ -91,7 +91,7 @@
                 }else{
                     $('#tabs').tabs('add',{
                           title: '订单信息',
-                          content : '<iframe scrolling="auto" frameborder="0"  src="/order/view/main" style="width:100%;height:100%;"></iframe>',
+                          content : '<iframe scrolling="auto" frameborder="0"  src="/orders/view/main" style="width:100%;height:100%;"></iframe>',
                           closable: true
                      });
         }
@@ -104,7 +104,7 @@
 		 	if(r){
 		 	$.post("/logout",null,function(data){
 			if(data=="true"){
-				window.location="/login";
+				window.location="/index";
 				}
 			});
 		 }

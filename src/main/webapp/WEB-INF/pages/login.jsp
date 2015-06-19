@@ -104,7 +104,7 @@
                 </input>
               </td>
               <td>
-                <img src="/hotel/getKaptchaImage" id="kaptchaImage"  style="margin-bottom: -3px;cursor:pointer;" 
+                <img src="/getKaptchaImage" id="kaptchaImage"  style="margin-bottom: -3px;cursor:pointer;"
                 onclick="changeCode()" class="easyui-tooltip" title="点击更换验证码"/>  <span id='code_error'>
                 </span> </td>
             </tr>

@@ -60,8 +60,8 @@ $(document).ready(function(){
 
 $(function(){
     $('#dg').datagrid({
-        url: '/order/list',
-        method: 'POST',
+        url: '/orders',
+        method: 'GET',
         striped: true,
         fitColumns: true,
         singleSelect: false,
@@ -84,17 +84,6 @@ $(function(){
     });
 });
 
-
-//将表单数据转为json
-function form2Json() {
-    var arr = {};
-        arr.orderId = $("#search_table").find("input[name='orderId']").val();
-        arr.orderStatus = $("#search_table").find("input[name='orderStatus']").val();
-        arr.createdBy = $("#search_table").find("input[name='createdBy']").val();
-        arr.createdTime = $("#search_table").find("input[name='createdTime']").val();
-        console.log(arr);
-    return arr;
-}
 function formatterStatus(value,row){
 		if(value==0)
 		   return '未审批';
@@ -123,31 +112,30 @@ function parseDate(dateStr){
 }
 
 function destroy() {
-            var rows = $('#dg').datagrid('getSelections');
-
-            if(rows.length==0){
-                $.messager.alert("信息","请选择至少一行数据！","warning");
-            }else if(rows.length>1){
-                $.messager.alert("信息","暂不支持批量删除！","warning");
-            }else {
-                var row = $('#dg').datagrid('getSelected');
-                if (row) {
-                    $.messager.confirm('确认', '确定要删除该条记录吗?', function (r) {
-                        if (r) {
-                            $.ajax({
-                                url : "/order/delete/"+ row.orderId,
-                                type : 'POST',
-                                success : function(data) {
-                                    $('#dg').datagrid('reload');
-                                },
-                                error : function() {
-                                    alert("删除失败！");
-                                }
-                            });
+    var rows = $('#dg').datagrid('getSelections');
+    if(rows.length==0){
+        $.messager.alert("信息","请选择至少一行数据！","warning");
+    }else if(rows.length>1){
+        $.messager.alert("信息","暂不支持批量删除！","warning");
+    }else {
+        var row = $('#dg').datagrid('getSelected');
+        if (row) {
+            $.messager.confirm('确认', '确定要删除该条记录吗?', function (r) {
+                if (r) {
+                    $.ajax({
+                        url : "/orders"+ row.orderId,
+                        type : 'DELETE',
+                        success : function(data) {
+                            $('#dg').datagrid('reload');
+                        },
+                        error : function() {
+                            alert("删除失败！");
                         }
                     });
                 }
-            }
+            });
+        }
+    }
 }
 
 function editOrder(){
@@ -163,9 +151,8 @@ function editOrder(){
          parent.$('#tabs').tabs('add',{
                   border: false,
                   title: '修改订单',
-                  content : "<iframe scrolling='auto' frameborder='0'  src='/order/view/modify/"+row.orderId+"' style='width:100%;height:100%;'></iframe>",
+                  content : "<iframe scrolling='auto' frameborder='0'  src='/orders/view/modify/"+row.orderId+"' style='width:100%;height:100%;'></iframe>",
        			 closable: true
-       			
         });
 	}
 }
@@ -178,7 +165,7 @@ function addOrder(){
 	         parent.$('#tabs').tabs('add',{
 	                  border: false,
 	                  title: '新增订单',
-	                  content : "<iframe scrolling='auto' frameborder='0'  src='/order/view/add' style='width:100%;height:100%;'></iframe>",
+	                  content : "<iframe scrolling='auto' frameborder='0'  src='/orders/view/add' style='width:100%;height:100%;'></iframe>",
 					closable: true
 						                 
 	        });
