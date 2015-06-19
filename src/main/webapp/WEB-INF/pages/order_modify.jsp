@@ -41,6 +41,9 @@
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/plugins/jquery.datebox.js">
 </script>
 <script>
+
+var rootUrl = "${pageContext.request.contextPath}";
+
 function closeTab(){
     parent.$("#tabs").tabs('close','修改订单');
 }
@@ -58,7 +61,7 @@ $(document).ready(function(){
 
     $(function(){
         $('#dg').datagrid({
-            url: '/orders/goods',
+            url: rootUrl+'/orders/goods',
             method: 'GET',
             striped: true,
             fitColumns: true,
@@ -110,7 +113,7 @@ $(document).ready(function(){
             order["orderComment"] = $("#detail_table").find("input[name='orderComment']").val(),
 
           $.ajax({
-            url: "/orders/"+order["orderId"],
+            url: rootUrl+"/orders/"+order["orderId"],
             type: "put",
             data: JSON.stringify(order),
             datatype: "json",
@@ -235,7 +238,7 @@ $(document).ready(function(){
   <div id="choose_goods" class="easyui-window" title="商品选择" closed="true" style="width:1000px;height:300px;" data-options="iconCls:'icon-add'">
             <div id="order_panel" class="easyui-panel" title="商品信息列表"
                    style="background:#fafafa;">
-                   <table id="dg_all" class="easyui-datagrid" data-options="url:'/orders/goods',method:'get'">
+                   <table id="dg_all" class="easyui-datagrid" data-options="url:''+rootUrl+'/orders/goods',method:'get'">
                    <thead>
                        <tr>
                            <th field="ck" checkbox="true"></th>

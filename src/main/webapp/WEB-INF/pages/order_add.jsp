@@ -43,6 +43,7 @@
 </script>
 <script>
 var rowIndexArray = [];
+var rootUrl = "${pageContext.request.contextPath}";
 $(function(){
     $('#dg').datagrid({
         striped: true,
@@ -120,7 +121,7 @@ $(document).ready(function(){
             order["orderComment"] = $("#detail_table").find("input[name='orderComment']").val(),
 
           $.ajax({
-            url: "/orders",
+            url: rootUrl+"/orders",
             type: "post",
             data: JSON.stringify(order),
             datatype: "json",
@@ -247,7 +248,7 @@ $(document).ready(function(){
   <div id="choose_goods" class="easyui-window" title="商品选择" closed="true" style="width:1000px;height:300px;" data-options="iconCls:'icon-add'">
           <div id="order_panel" class="easyui-panel" title="商品信息列表"
                  style="background:#fafafa;">
-                 <table id="dg_all" class="easyui-datagrid" data-options="url:'/orders/goods',method:'get'">
+                 <table id="dg_all" class="easyui-datagrid" data-options="url:''+rootUrl+'/orders/goods',method:'get'">
                  <thead>
                      <tr>
                          <th field="ck" checkbox="true"></th>

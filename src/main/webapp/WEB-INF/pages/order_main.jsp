@@ -40,6 +40,7 @@
 <script src="${pageContext.request.contextPath}/webresource/jquery-easy-ui/plugins/jquery.datebox.js">
 </script>
 <script>
+var rootUrl = "${pageContext.request.contextPath}";
 
 $(document).ready(function(){
         $("#submit_search").click(function(){
@@ -60,7 +61,7 @@ $(document).ready(function(){
 
 $(function(){
     $('#dg').datagrid({
-        url: '/orders',
+        url: rootUrl+'/orders',
         method: 'GET',
         striped: true,
         fitColumns: true,
@@ -123,13 +124,14 @@ function destroy() {
             $.messager.confirm('确认', '确定要删除该条记录吗?', function (r) {
                 if (r) {
                     $.ajax({
-                        url : "/orders"+ row.orderId,
+                        url : rootUrl+"/orders/"+ row.orderId,
                         type : 'DELETE',
                         success : function(data) {
+                            $.messager.alert("成功","删除订单成功！");
                             $('#dg').datagrid('reload');
                         },
                         error : function() {
-                            alert("删除失败！");
+                            $.messager.alert("信息","删除失败！","error");
                         }
                     });
                 }
@@ -151,7 +153,7 @@ function editOrder(){
          parent.$('#tabs').tabs('add',{
                   border: false,
                   title: '修改订单',
-                  content : "<iframe scrolling='auto' frameborder='0'  src='/orders/view/modify/"+row.orderId+"' style='width:100%;height:100%;'></iframe>",
+                  content : "<iframe scrolling='auto' frameborder='0'  src='"+rootUrl+"/orders/view/modify/"+row.orderId+"' style='width:100%;height:100%;'></iframe>",
        			 closable: true
         });
 	}
@@ -165,7 +167,7 @@ function addOrder(){
 	         parent.$('#tabs').tabs('add',{
 	                  border: false,
 	                  title: '新增订单',
-	                  content : "<iframe scrolling='auto' frameborder='0'  src='/orders/view/add' style='width:100%;height:100%;'></iframe>",
+	                  content : "<iframe scrolling='auto' frameborder='0'  src='"+rootUrl+"/orders/view/add' style='width:100%;height:100%;'></iframe>",
 					closable: true
 						                 
 	        });

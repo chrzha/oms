@@ -63,7 +63,7 @@
       <div region="center" style="background-color:#E0ECFF;">
         <div style="height:70%;width:60%;margin-left:20%;margin-top:10px;">
           <div class="easyui-panel"  title="登录" style="height:220px;">
-          <form action="/validate" method="post">
+          <form action="<%=request.getContextPath()%>/validate" method="post">
             <div style="margin-left:30%;">
 
               <table style="margin:10px 0 0 70px;">

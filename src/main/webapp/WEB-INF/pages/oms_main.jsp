@@ -41,6 +41,8 @@
 <script type="text/javascript">
  $(document).ready(function(){
 
+    var rootUrl = "${pageContext.request.contextPath}";
+
     $('#sb1').menubutton({menu:'#mm1'});
 
     $("#material").click(function(){
@@ -50,7 +52,7 @@
         }else{
             $('#tabs').tabs('add',{
                   title: '物料信息',
-                  content : '<iframe scrolling="auto" frameborder="0"  src="/material/view/main" style="width:100%;height:100%;"></iframe>',
+                  content : '<iframe scrolling="auto" frameborder="0"  src="'+rootUrl+'/material/view/main" style="width:100%;height:100%;"></iframe>',
                   closable: true
              });
         }
@@ -64,7 +66,7 @@
              options : {
                   border: false,
                   title: '供应商',
-                  content : '<iframe scrolling="auto" frameborder="0"  src="/supplier/view/main" style="width:100%;height:100%;"></iframe>',
+                  content : '<iframe scrolling="auto" frameborder="0"  src="'+rootUrl+'/supplier/view/main" style="width:100%;height:100%;"></iframe>',
              }
         });
 
@@ -78,7 +80,7 @@
              options : {
                   border: false,
                   title: '采购员',
-                  content : '<iframe scrolling="auto" frameborder="0"  src="/buyer/view/main" style="width:100%;height:100%;"></iframe>',
+                  content : '<iframe scrolling="auto" frameborder="0"  src="'+rootUrl+'/buyer/view/main" style="width:100%;height:100%;"></iframe>',
              }
         });
 
@@ -91,7 +93,7 @@
                 }else{
                     $('#tabs').tabs('add',{
                           title: '订单信息',
-                          content : '<iframe scrolling="auto" frameborder="0"  src="/orders/view/main" style="width:100%;height:100%;"></iframe>',
+                          content : '<iframe scrolling="auto" frameborder="0"  src="'+rootUrl+'/orders/view/main" style="width:100%;height:100%;"></iframe>',
                           closable: true
                      });
         }
@@ -102,9 +104,9 @@
 	
 		 $.messager.confirm('确认', '确定要退出系统吗?', function(r){  
 		 	if(r){
-		 	$.post("/logout",null,function(data){
+		 	$.post(rootUrl+"/logout",null,function(data){
 			if(data=="true"){
-				window.location="/index";
+				window.location=rootUrl+"/index";
 				}
 			});
 		 }
@@ -112,41 +114,6 @@
        });  
 		
 	});
-
-	$("#changePwd").click(function(){
-		if($("#tabs").tabs('exists','修改密码')){
-			$("#tabs").tabs('select','修改密码');
-			}else{
-			$('#tabs').tabs('add',{
-				title: '修改密码',
-				content: '<iframe style="width:100%;height:480px;" src="/changePwd"></iframe>',
-				closable: true
-			});
-		}
-	});
-
-	//update_userInfo
-	$("#update_userInfo").click(function(){
-	   $('#win_update_userInfo').window('open'); 
-	   
-	   $("#update_userInfo_btn").click(function(){
-	   
-	   	var user = $("#update_info_form").serialize();
-	  	 $.post("/hotel/updateUserInfo",user,function(data){
-               if(data=="success"){
-                   $('#win_update_userInfo').window('close');
-                    window.parent.location.reload();
-               }else{
-                   $.messager.alert('错误','修改成功!','error');
-               }
-		 });
-
-	   });
-	});
-	//cancle_update_info
-	$("#cancle_update_info").click(function(){
-	   $('#win_update_userInfo').window('close'); 
-	});	
 });
  
 </script>
